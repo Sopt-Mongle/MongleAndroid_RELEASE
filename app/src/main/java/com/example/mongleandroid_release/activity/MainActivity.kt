@@ -1,7 +1,8 @@
-package com.example.mongleandroid_release
+package com.example.mongleandroid_release.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mongleandroid_release.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
