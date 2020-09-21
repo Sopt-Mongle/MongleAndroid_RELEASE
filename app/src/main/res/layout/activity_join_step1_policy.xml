@@ -126,7 +126,7 @@
                 android:layout_marginTop="9dp"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/textView14"
-                app:srcCompat="@drawable/number1" />
+                app:srcCompat="@drawable/ic_number1" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -167,7 +167,7 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:srcCompat="@drawable/number2" />
+                app:srcCompat="@drawable/ic_number2" />
 
             <TextView
                 android:id="@+id/textView15"

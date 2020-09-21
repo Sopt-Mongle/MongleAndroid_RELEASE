@@ -26,6 +26,8 @@ class JoinStep1Activity : AppCompatActivity() {
             if(activity_join_step1_cb.isChecked) {
                 val intent = Intent(this, JoinStep2Activity::class.java)
                 startActivity(intent)
+                // 화면 전환 시 애니메이션 없애는 코드
+                overridePendingTransition(0, 0)
             } else {
                 activity_join_step1_img_warning.visibility = VISIBLE
                 activity_join_step1_tv_warning.visibility = VISIBLE
