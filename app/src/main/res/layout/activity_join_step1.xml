@@ -118,7 +118,7 @@
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginStart="28dp"
-        android:background="@drawable/dot_circle_progress_out"
+        android:background="@drawable/dot_circle_progressoff_out"
         app:layout_constraintBottom_toBottomOf="@+id/activity_join_step1_pgb"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/activity_join_step1_pgb" />
@@ -128,7 +128,7 @@
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginStart="7dp"
-        android:background="@drawable/dot_circle_progress_in"
+        android:background="@drawable/dot_circle_progressoff_in"
         app:layout_constraintBottom_toBottomOf="@+id/activity_join_step1_pgb"
         app:layout_constraintStart_toStartOf="@+id/activity_join_step1_pgb_out"
         app:layout_constraintTop_toTopOf="@+id/activity_join_step1_pgb" />
@@ -207,7 +207,7 @@
         android:id="@+id/textView11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="22dp"
         android:layout_marginEnd="47dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
@@ -217,7 +217,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/activity_join_step1_cb"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_img_warning" />
 
     <TextView
         android:id="@+id/activity_join_step1_btn_next"
