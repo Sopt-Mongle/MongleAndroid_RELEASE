@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.JoinStep2Activity">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="17dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btn_back" />
+
+    <ProgressBar
+        android:id="@+id/activity_join_step2_pgb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="41dp"
+        android:max="100"
+        android:progressTint="@color/soft_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:background="@drawable/dot_circle_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step1_pgb_out"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        android:backgroundTint="@color/soft_green"
+        android:background="@drawable/dot_circle_progress_out"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step1_pgb_in"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="7dp"
+        android:backgroundTint="@color/soft_green"
+        android:background="@drawable/dot_circle_progress_in"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step1_pgb_out"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step2_pgb_out"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/dot_circle_progress_out"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step2_pgb_in"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@drawable/dot_circle_progress_in"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step2_pgb"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
