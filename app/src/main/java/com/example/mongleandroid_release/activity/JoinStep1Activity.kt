@@ -11,11 +11,17 @@ import kotlinx.android.synthetic.main.activity_join_step1.*
 
 class JoinStep1Activity : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_step1)
 
+        // 개인정보 처리방침 설명창으로 이동
+        activity_join_step1_btn_agreeinfo.setOnClickListener {
+            val intent = Intent(this, JoinStep1PolicyActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 회원가입 2단계로 이동
         activity_join_step1_btn_next.setOnClickListener {
             val intent = Intent(this, JoinStep2Activity::class.java)
             startActivity(intent)

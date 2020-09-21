@@ -7,7 +7,7 @@
     tools:context=".activity.JoinStep1Activity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/activity_join_step1_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -26,7 +26,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="17dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_btn_back">
 
         <TextView
             android:id="@+id/textView5"
@@ -55,7 +55,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_regular"
+            android:fontFamily="@font/notosanscjkkr_demilight"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="7sp"
@@ -69,7 +69,7 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_regular"
+            android:fontFamily="@font/notosanscjkkr_demilight"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="7sp"
@@ -205,15 +205,17 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
+        android:layout_marginEnd="47dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="약관에는 '개인정보 수집 목적 및 이용'에 관한\n중요한 내용이 담겨 있습니다. 약관 동의 체크는\n해당 약관을 모두 숙지하였으며, 이에 동의함을\n의미합니다."
+        android:text="약관에는 '개인정보 수집 목적 및 이용'에 관한 중요한 내용이 담겨 있습니다. 약관 동의 체크는 해당 약관을 모두 숙지하였으며, 이에 동의함을 의미합니다."
         android:textColor="#a7a7a7"
         android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/activity_join_step1_cb"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
