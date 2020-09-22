@@ -114,19 +114,15 @@
                 app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView23"
+            <ImageView
+                android:id="@+id/imageView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
-                android:text="*"
-                android:textColor="@color/soft_green"
-                android:textSize="15sp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toEndOf="@+id/textView22"
-                app:layout_constraintTop_toTopOf="@+id/textView22" />
+                app:layout_constraintTop_toTopOf="@+id/textView22"
+                app:srcCompat="@drawable/ic_join_step2_star" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -193,6 +189,23 @@
                 app:layout_constraintTop_toTopOf="@id/activity_join_step2_img_email_warning" />
 
             <TextView
+                android:id="@+id/activity_join_step2_tv_email_valid_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="올바른 이메일 형식이 아니에요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_email_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_email_warning"
+                app:layout_constraintTop_toTopOf="@id/activity_join_step2_img_email_warning" />
+
+            <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -207,18 +220,15 @@
                 app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_pass"
                 app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_email_warning" />
 
-            <TextView
-                android:id="@+id/textView26"
+            <ImageView
+                android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
-                android:text="*"
-                android:textColor="@color/soft_green"
-                android:textSize="15sp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toEndOf="@+id/textView25"
-                app:layout_constraintTop_toTopOf="@+id/textView25" />
+                app:layout_constraintTop_toTopOf="@+id/textView25"
+                app:srcCompat="@drawable/ic_join_step2_star" />
 
             <TextView
                 android:id="@+id/textView27"
@@ -372,18 +382,15 @@
                 app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_nickname"
                 app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_pass_warning" />
 
-            <TextView
-                android:id="@+id/textView30"
+            <ImageView
+                android:id="@+id/imageView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
-                android:text="*"
-                android:textColor="@color/soft_green"
-                android:textSize="15sp"
+                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toEndOf="@+id/textView29"
-                app:layout_constraintTop_toTopOf="@+id/textView29" />
+                app:layout_constraintTop_toTopOf="@+id/textView29"
+                app:srcCompat="@drawable/ic_join_step2_star" />
 
             <TextView
                 android:id="@+id/textView31"
@@ -488,17 +495,14 @@
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_nickname_warning"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step2_img_nickname_warning" />
 
-            <TextView
-                android:id="@+id/textView32"
+            <ImageView
+                android:id="@+id/imageView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="5sp"
-                android:text="*"
-                android:textColor="@color/soft_green"
-                android:textSize="15sp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toStartOf="@+id/textView33"
-                app:layout_constraintTop_toTopOf="@+id/textView33" />
+                app:layout_constraintTop_toTopOf="@+id/textView33"
+                app:srcCompat="@drawable/ic_join_step2_star" />
 
             <TextView
                 android:id="@+id/textView33"
