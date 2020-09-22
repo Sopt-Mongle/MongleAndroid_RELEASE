@@ -83,6 +83,448 @@
         app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
 
 
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="28dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/activity_join_step2_btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_pgb_out">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text="이메일"
+                android:textColor="@color/greyish_brown"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:text="*"
+                android:textColor="@color/soft_green"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/textView22"
+                app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="end"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text="입력한 이메일로 본인 확인 메일이 전송됩니다."
+                android:textColor="#a7a7a7"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email" />
+
+            <EditText
+                android:id="@+id/activity_join_step2_et_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/et_area"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:hint="이메일 주소"
+                android:includeFontPadding="false"
+                android:inputType="textEmailAddress"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="9sp"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <ImageView
+                android:id="@+id/activity_join_step2_img_email_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_email"
+                app:srcCompat="@drawable/ic_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_email_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="이메일 주소를 입력해주세요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_email_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_email_warning"
+                app:layout_constraintTop_toTopOf="@id/activity_join_step2_img_email_warning" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text="비밀번호"
+                android:textColor="@color/greyish_brown"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_pass"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_email_warning" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:text="*"
+                android:textColor="@color/soft_green"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/textView25"
+                app:layout_constraintTop_toTopOf="@+id/textView25" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="end"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text="영문+숫자 최소 8자리 이상 입력해주세요."
+                android:textColor="#a7a7a7"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_pass" />
+
+            <EditText
+                android:id="@+id/activity_join_step2_et_pass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/et_area"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:hint="비밀번호"
+                android:includeFontPadding="false"
+                android:inputType="textPassword"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="9sp"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
+                app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+            <EditText
+                android:id="@+id/activity_join_step2_et_passcheck"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/et_area"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:hint="비밀번호 확인"
+                android:includeFontPadding="false"
+                android:inputType="textPassword"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="9sp"
+                android:maxLines="1"
+                android:paddingLeft="15dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_pass"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_pass"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_pass" />
+
+            <ImageView
+                android:id="@+id/activity_join_step2_img_pass_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_passcheck"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_passcheck"
+                app:srcCompat="@drawable/ic_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_pass_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="비밀번호를 입력해주세요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step2_img_pass_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_passcheck_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="비밀번호를 한 번 더 입력해주세요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step2_img_pass_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_pass_nomatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="비밀번호가 일치하지 않아요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step2_img_pass_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_pass_match"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="비밀번호가 일치해요!"
+                android:textColor="@color/soft_green"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_pass_warning"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step2_img_pass_warning" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text="닉네임"
+                android:textColor="@color/greyish_brown"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_nickname"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_pass_warning" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:text="*"
+                android:textColor="@color/soft_green"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/textView29"
+                app:layout_constraintTop_toTopOf="@+id/textView29" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="end"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text="몽글에서의 닉네임을 6자 이내로 입력해주세요."
+                android:textColor="#a7a7a7"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView29"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_nickname" />
+
+            <EditText
+                android:id="@+id/activity_join_step2_et_nickname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/et_area"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:hint="닉네임"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="9sp"
+                android:maxLines="1"
+                android:maxLength="6"
+                android:paddingLeft="15dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView33"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
+                app:layout_constraintTop_toBottomOf="@+id/textView29"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_nickname_cnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="end"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="2sp"
+                android:text="0"
+                android:textColor="@color/very_light_pink_two"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_tv_nickname_cnt_max"
+                app:layout_constraintEnd_toStartOf="@+id/activity_join_step2_tv_nickname_cnt_max"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step2_tv_nickname_cnt_max" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_nickname_cnt_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="end"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="2sp"
+                android:text="/6"
+                android:textColor="@color/very_light_pink_two"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_nickname" />
+
+            <ImageView
+                android:id="@+id/activity_join_step2_img_nickname_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_nickname"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_nickname"
+                app:srcCompat="@drawable/ic_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step2_tv_nickname_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="닉네임을 입력해주세요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_nickname_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_nickname_warning"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step2_img_nickname_warning" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:text="*"
+                android:textColor="@color/soft_green"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView33"
+                app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="22dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="8sp"
+                android:text=" 항목은 필수 항목입니다."
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_nickname" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
     <TextView
         android:id="@+id/activity_join_step2_btn_next"
         android:layout_width="0dp"
@@ -103,305 +545,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/activity_join_step2_btn_next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_pgb_out">
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text="이메일"
-            android:textColor="@color/greyish_brown"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:text="*"
-            android:textSize="15sp"
-            android:textColor="@color/soft_green"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="5sp"
-            app:layout_constraintStart_toEndOf="@+id/textView22"
-            app:layout_constraintTop_toTopOf="@+id/textView22" />
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:gravity="end"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text="입력한 이메일로 본인 확인 메일이 전송됩니다."
-            android:textColor="#a7a7a7"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView22"
-            app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email" />
-
-        <EditText
-            android:id="@+id/activity_join_step2_et_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/et_area"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:hint="이메일 주소"
-            android:includeFontPadding="false"
-            android:inputType="textEmailAddress"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="9sp"
-            android:maxLines="1"
-            android:paddingLeft="15dp"
-            android:paddingTop="11dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-        <ImageView
-            android:id="@+id/activity_join_step2_img_email_warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_email"
-            app:srcCompat="@drawable/ic_warning" />
-
-        <TextView
-            android:id="@+id/activity_join_step2_tv_email_warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="1sp"
-            android:text="이메일 주소를 입력해주세요!"
-            android:textColor="@color/reddish"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_email_warning"
-            app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_email_warning"
-            app:layout_constraintTop_toTopOf="@id/activity_join_step2_img_email_warning" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text="비밀번호"
-            android:textColor="@color/greyish_brown"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_pass"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_email_warning" />
-
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="5sp"
-            android:text="*"
-            android:textColor="@color/soft_green"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/textView25"
-            app:layout_constraintTop_toTopOf="@+id/textView25" />
-
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:gravity="end"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text="영문+숫자 최소 8자리 이상 입력해주세요."
-            android:textColor="#a7a7a7"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView25"
-            app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_pass" />
-
-        <EditText
-            android:id="@+id/activity_join_step2_et_pass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/et_area"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:hint="비밀번호"
-            android:includeFontPadding="false"
-            android:inputType="textPassword"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="9sp"
-            android:maxLines="1"
-            android:paddingLeft="15dp"
-            android:paddingTop="11dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
-            app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-        <EditText
-            android:id="@+id/activity_join_step2_et_passcheck"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/et_area"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:hint="비밀번호 확인"
-            android:includeFontPadding="false"
-            android:inputType="textPassword"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="9sp"
-            android:maxLines="1"
-            android:paddingLeft="15dp"
-            android:paddingTop="11dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_pass"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_pass"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_pass" />
-
-        <ImageView
-            android:id="@+id/activity_join_step2_img_pass_warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_passcheck"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_passcheck"
-            app:srcCompat="@drawable/ic_warning" />
-
-        <TextView
-            android:id="@+id/textView29"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text="닉네임"
-            android:textColor="@color/greyish_brown"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_nickname"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_pass_warning" />
-
-        <TextView
-            android:id="@+id/textView30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="5sp"
-            android:text="*"
-            android:textColor="@color/soft_green"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/textView29"
-            app:layout_constraintTop_toTopOf="@+id/textView29" />
-
-        <TextView
-            android:id="@+id/textView31"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:gravity="end"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text="몽글에서의 닉네임을 6자 이내로 입력해주세요."
-            android:textColor="#a7a7a7"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView29"
-            app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_nickname" />
-
-        <EditText
-            android:id="@+id/activity_join_step2_et_nickname"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/et_area"
-            android:fontFamily="@font/notosanscjkkr_demilight"
-            android:hint="닉네임"
-            android:includeFontPadding="false"
-            android:inputType="text"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="9sp"
-            android:maxLines="1"
-            android:paddingLeft="15dp"
-            android:paddingTop="11dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_email"
-            app:layout_constraintTop_toBottomOf="@+id/textView29" />
-
-        <ImageView
-            android:id="@+id/activity_join_step2_img_nickname_warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            app:layout_constraintStart_toStartOf="@+id/activity_join_step2_et_nickname"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_et_nickname"
-            app:srcCompat="@drawable/ic_warning" />
-
-        <TextView
-            android:id="@+id/textView32"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="5sp"
-            android:text="*"
-            android:textColor="@color/soft_green"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView33"
-            app:layout_constraintTop_toTopOf="@+id/textView33" />
-
-        <TextView
-            android:id="@+id/textView33"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="22dp"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.04"
-            android:lineSpacingExtra="8sp"
-            android:text=" 항목은 필수 항목입니다."
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
