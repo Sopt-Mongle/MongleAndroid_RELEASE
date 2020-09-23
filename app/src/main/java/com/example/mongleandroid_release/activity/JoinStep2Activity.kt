@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_join_step1.*
 import kotlinx.android.synthetic.main.activity_join_step2.*
+import java.util.regex.Pattern
 
 class JoinStep2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,13 +111,14 @@ class JoinStep2Activity : AppCompatActivity() {
             activity_join_step2_tv_passcheck_warning.visibility = GONE
             activity_join_step2_tv_pass_nomatch.visibility = GONE
             activity_join_step2_tv_pass_match.visibility = GONE
+            activity_join_step2_tv_pass_valid.visibility = GONE
 
             // password 입력창 리스너
             activity_join_step2_et_pass.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
                     // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
-                    if(!(activity_join_step2_et_email.text.isEmpty()) && !(activity_join_step2_et_pass.text.isEmpty()) &&
-                        !(activity_join_step2_et_passcheck.text.isEmpty()) && !(activity_join_step2_et_nickname.text.isEmpty()) && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
+                    if(activity_join_step2_et_email.text.isNotEmpty() && activity_join_step2_et_pass.text.isNotEmpty() &&
+                        activity_join_step2_et_passcheck.text.isNotEmpty() && activity_join_step2_et_nickname.text.isNotEmpty() && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
                         activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
                         activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
                     } else {
@@ -136,30 +138,45 @@ class JoinStep2Activity : AppCompatActivity() {
                     activity_join_step2_tv_passcheck_warning.visibility = GONE
                     activity_join_step2_tv_pass_nomatch.visibility = GONE
                     activity_join_step2_tv_pass_match.visibility = GONE
+                    activity_join_step2_tv_pass_valid.visibility = GONE
 
                     // 패스워드와 패스워드 확인 값이 다르면
-                    if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
-                        activity_join_step2_img_pass_warning.visibility = VISIBLE
-                        activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
-                        activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                        activity_join_step2_tv_pass_match.visibility = GONE
-                    } else {
-                        activity_join_step2_img_pass_warning.visibility = VISIBLE
-                        activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_possible)
-                        activity_join_step2_tv_pass_nomatch.visibility = GONE
-                        activity_join_step2_tv_pass_match.visibility = VISIBLE
+                    if(activity_join_step2_et_pass.text.isNotEmpty() && activity_join_step2_et_passcheck.text.isNotEmpty()) {
+                        if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
+                            activity_join_step2_img_pass_warning.visibility = VISIBLE
+                            activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
+                            activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
+                            activity_join_step2_tv_pass_match.visibility = GONE
+                        } else {
+                            activity_join_step2_img_pass_warning.visibility = VISIBLE
+                            activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_possible)
+                            activity_join_step2_tv_pass_nomatch.visibility = GONE
+                            activity_join_step2_tv_pass_match.visibility = VISIBLE
+                        }
                     }
 
-                    if(activity_join_step2_et_passcheck.text.toString().isEmpty()) {
+                    if(activity_join_step2_et_passcheck.text.isEmpty() || activity_join_step2_et_passcheck.text.isNotEmpty()) {
                         activity_join_step2_img_pass_warning.visibility = GONE
                         activity_join_step2_tv_pass_nomatch.visibility = GONE
                         activity_join_step2_tv_pass_match.visibility = GONE
+                        activity_join_step2_tv_pass_valid.visibility = GONE
+
+                        // 비밀번호 유효성 검사
+                        if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", activity_join_step2_et_pass.text.toString())) {
+                            activity_join_step2_img_pass_warning.visibility = VISIBLE
+                            activity_join_step2_tv_pass_valid.visibility = VISIBLE
+                        } else {
+                            activity_join_step2_img_pass_warning.visibility = GONE
+                            activity_join_step2_tv_pass_valid.visibility = GONE
+                        }
+
                     }
 
                 }
             })
 
             if(!hasFocus) activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
+
         }
 
 
@@ -174,6 +191,7 @@ class JoinStep2Activity : AppCompatActivity() {
             activity_join_step2_tv_passcheck_warning.visibility = GONE
             activity_join_step2_tv_pass_nomatch.visibility = GONE
             activity_join_step2_tv_pass_match.visibility = GONE
+            activity_join_step2_tv_pass_valid.visibility = GONE
 
             // password 확인창 리스너
             activity_join_step2_et_passcheck.addTextChangedListener(object : TextWatcher {
@@ -201,6 +219,7 @@ class JoinStep2Activity : AppCompatActivity() {
                     activity_join_step2_tv_passcheck_warning.visibility = GONE
                     activity_join_step2_tv_pass_nomatch.visibility = GONE
                     activity_join_step2_tv_pass_match.visibility = GONE
+                    activity_join_step2_tv_pass_valid.visibility = GONE
 
                     // 패스워드와 패스워드 확인 값이 다르면
                     if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
@@ -215,7 +234,7 @@ class JoinStep2Activity : AppCompatActivity() {
                         activity_join_step2_tv_pass_match.visibility = VISIBLE
                     }
 
-                    if(activity_join_step2_et_pass.text.toString().isEmpty() && activity_join_step2_et_passcheck.text.toString().isEmpty()) {
+                    if(activity_join_step2_et_pass.text.isEmpty() && activity_join_step2_et_passcheck.text.isEmpty()) {
                         activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
                         activity_join_step2_img_pass_warning.visibility = GONE
                         activity_join_step2_tv_pass_nomatch.visibility = GONE
