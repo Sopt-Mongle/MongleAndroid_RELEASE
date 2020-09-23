@@ -13,6 +13,9 @@ import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_join_step1.*
@@ -50,6 +53,7 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
                 activity_join_step2_tv_passcheck_warning.visibility = VISIBLE
                 activity_join_step2_tv_pass_nomatch.visibility = GONE
+                activity_join_step2_tv_pass_valid.visibility = GONE
             } else if(activity_join_step2_et_nickname.text.isEmpty()) {
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
                 activity_join_step2_img_nickname_warning.visibility = VISIBLE
@@ -61,15 +65,7 @@ class JoinStep2Activity : AppCompatActivity() {
         // email 입력창 리스너
         activity_join_step2_et_email.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
-                if(!(activity_join_step2_et_email.text.isEmpty()) && !(activity_join_step2_et_pass.text.isEmpty()) &&
-                            !(activity_join_step2_et_passcheck.text.isEmpty()) && !(activity_join_step2_et_nickname.text.isEmpty()) && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
-                    activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
-                    activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
-                } else {
-                    activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
-                    activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
-                }
+                forProgressOn()
             }
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -87,8 +83,22 @@ class JoinStep2Activity : AppCompatActivity() {
             activity_join_step2_img_email_warning.visibility = GONE
             activity_join_step2_tv_email_warning.visibility = GONE
             activity_join_step2_tv_email_valid_warning.visibility = GONE
+
+            // edittext 지우는 x버튼
+            activity_join_step2_et_email.clearText(activity_join_step2_btn_email_erase)
+
+            // 패스워드 일치 문구 해제
+            if(activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString()) {
+                activity_join_step2_img_pass_warning.visibility = GONE
+                activity_join_step2_tv_pass_match.visibility = GONE
+            } else {
+                activity_join_step2_img_pass_warning.visibility = VISIBLE
+                activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
+            }
+
             if(!hasFocus) {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area, null)
+                activity_join_step2_btn_email_erase.visibility = GONE
 
                 if(!(activity_join_step2_et_email.text.isEmpty()) && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
                     activity_join_step2_img_email_warning.visibility = VISIBLE
@@ -106,39 +116,24 @@ class JoinStep2Activity : AppCompatActivity() {
             // warning 문구 해제
             activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area_green, null)
             activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
-            activity_join_step2_img_pass_warning.visibility = GONE
-            activity_join_step2_tv_pass_warning.visibility = GONE
-            activity_join_step2_tv_passcheck_warning.visibility = GONE
-            activity_join_step2_tv_pass_nomatch.visibility = GONE
-            activity_join_step2_tv_pass_match.visibility = GONE
-            activity_join_step2_tv_pass_valid.visibility = GONE
+            removePassWarning()
+
+            // edittext 지우는 x버튼
+            activity_join_step2_et_pass.clearText(activity_join_step2_btn_pass_erase)
 
             // password 입력창 리스너
             activity_join_step2_et_pass.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
-                    // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
-                    if(activity_join_step2_et_email.text.isNotEmpty() && activity_join_step2_et_pass.text.isNotEmpty() &&
-                        activity_join_step2_et_passcheck.text.isNotEmpty() && activity_join_step2_et_nickname.text.isNotEmpty() && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
-                        activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
-                        activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
-                    } else {
-                        activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
-                        activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
-                    }
+                    forProgressOn()
                 }
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
                 }
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    // 경고문구 해제
+                    // warning 문구 해제
                     activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area_green, null)
                     activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
-                    activity_join_step2_img_pass_warning.visibility = GONE
-                    activity_join_step2_tv_pass_warning.visibility = GONE
-                    activity_join_step2_tv_passcheck_warning.visibility = GONE
-                    activity_join_step2_tv_pass_nomatch.visibility = GONE
-                    activity_join_step2_tv_pass_match.visibility = GONE
-                    activity_join_step2_tv_pass_valid.visibility = GONE
+                    removePassWarning()
 
                     // 패스워드와 패스워드 확인 값이 다르면
                     if(activity_join_step2_et_pass.text.isNotEmpty() && activity_join_step2_et_passcheck.text.isNotEmpty()) {
@@ -149,7 +144,7 @@ class JoinStep2Activity : AppCompatActivity() {
                             activity_join_step2_tv_pass_match.visibility = GONE
                         } else {
                             activity_join_step2_img_pass_warning.visibility = VISIBLE
-                            activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_possible)
+                            //activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_possible)
                             activity_join_step2_tv_pass_nomatch.visibility = GONE
                             activity_join_step2_tv_pass_match.visibility = VISIBLE
                         }
@@ -175,7 +170,10 @@ class JoinStep2Activity : AppCompatActivity() {
                 }
             })
 
-            if(!hasFocus) activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
+            if(!hasFocus) {
+                activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
+                activity_join_step2_btn_pass_erase.visibility = GONE
+            }
 
         }
 
@@ -186,25 +184,15 @@ class JoinStep2Activity : AppCompatActivity() {
             // warning 문구 해제
             activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
             activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area_green, null)
-            activity_join_step2_img_pass_warning.visibility = GONE
-            activity_join_step2_tv_pass_warning.visibility = GONE
-            activity_join_step2_tv_passcheck_warning.visibility = GONE
-            activity_join_step2_tv_pass_nomatch.visibility = GONE
-            activity_join_step2_tv_pass_match.visibility = GONE
-            activity_join_step2_tv_pass_valid.visibility = GONE
+            removePassWarning()
 
-            // password 확인창 리스너
+            // edittext 지우는 x버튼
+            activity_join_step2_et_passcheck.clearText(activity_join_step2_btn_passcheck_erase)
+
+            // password 확인 입력창 리스너
             activity_join_step2_et_passcheck.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
-                    // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
-                    if(!(activity_join_step2_et_email.text.isEmpty()) && !(activity_join_step2_et_pass.text.isEmpty()) &&
-                        !(activity_join_step2_et_passcheck.text.isEmpty()) && !(activity_join_step2_et_nickname.text.isEmpty()) && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
-                        activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
-                        activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
-                    } else {
-                        activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
-                        activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
-                    }
+                    forProgressOn()
                 }
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -214,12 +202,7 @@ class JoinStep2Activity : AppCompatActivity() {
                     // warning 문구 해제
                     activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
                     activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area_green, null)
-                    activity_join_step2_img_pass_warning.visibility = GONE
-                    activity_join_step2_tv_pass_warning.visibility = GONE
-                    activity_join_step2_tv_passcheck_warning.visibility = GONE
-                    activity_join_step2_tv_pass_nomatch.visibility = GONE
-                    activity_join_step2_tv_pass_match.visibility = GONE
-                    activity_join_step2_tv_pass_valid.visibility = GONE
+                    removePassWarning()
 
                     // 패스워드와 패스워드 확인 값이 다르면
                     if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
@@ -244,22 +227,17 @@ class JoinStep2Activity : AppCompatActivity() {
                 }
             })
 
-            if(!hasFocus) activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
+            if(!hasFocus) {
+                activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
+                activity_join_step2_btn_passcheck_erase.visibility = GONE
+            }
 
         }
 
         // nickname 입력창 리스너
         activity_join_step2_et_nickname.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
-                if(!(activity_join_step2_et_email.text.isEmpty()) && !(activity_join_step2_et_pass.text.isEmpty()) &&
-                    !(activity_join_step2_et_passcheck.text.isEmpty()) && !(activity_join_step2_et_nickname.text.isEmpty()) && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
-                    activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
-                    activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
-                } else {
-                    activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
-                    activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
-                }
+                forProgressOn()
             }
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -302,14 +280,48 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
             }
 
-            if(!hasFocus) activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area, null)
+            // edittext 지우는 x버튼
+            activity_join_step2_et_nickname.clearText(activity_join_step2_btn_nickname_erase)
+
+            if(!hasFocus) {
+                activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area, null)
+                activity_join_step2_btn_nickname_erase.visibility = GONE
+            }
         }
-
-
 
         // 왼쪽 상단 뒤로가기 버튼
         activity_join_step2_btn_back.setOnClickListener {
             finish()
+        }
+    }
+
+    // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
+    private fun forProgressOn() {
+        if(!(activity_join_step2_et_email.text.isEmpty()) && !(activity_join_step2_et_pass.text.isEmpty()) &&
+            !(activity_join_step2_et_passcheck.text.isEmpty()) && !(activity_join_step2_et_nickname.text.isEmpty()) && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
+            activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
+            activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
+        } else {
+            activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
+            activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
+        }
+    }
+
+    // warning 문구 해제 - pass, passcheck 공통
+    private fun removePassWarning() {
+        activity_join_step2_img_pass_warning.visibility = GONE
+        activity_join_step2_tv_pass_warning.visibility = GONE
+        activity_join_step2_tv_passcheck_warning.visibility = GONE
+        activity_join_step2_tv_pass_nomatch.visibility = GONE
+        activity_join_step2_tv_pass_match.visibility = GONE
+        activity_join_step2_tv_pass_valid.visibility = GONE
+    }
+
+    // edittext 지우는 x버튼
+    private fun EditText.clearText(button : ImageView) {
+        button.visibility = VISIBLE
+        button.setOnClickListener {
+            this.setText("")
         }
     }
 
