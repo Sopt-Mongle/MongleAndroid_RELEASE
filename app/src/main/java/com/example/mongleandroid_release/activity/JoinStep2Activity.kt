@@ -1,24 +1,16 @@
 package com.example.mongleandroid_release.activity
 
 import android.animation.ObjectAnimator
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import android.provider.ContactsContract
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
-import kotlinx.android.synthetic.main.activity_join_step1.*
 import kotlinx.android.synthetic.main.activity_join_step2.*
 import java.util.regex.Pattern
 
