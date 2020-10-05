@@ -17,6 +17,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mongleandroid_release.ProgressBarAnim
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_join_step1.*
 import kotlinx.android.synthetic.main.activity_join_step2.*
@@ -33,6 +34,10 @@ class JoinStep2Activity : AppCompatActivity() {
             progressAnimator.setDuration(500)
             progressAnimator.start()
         }, 200)
+
+        // 31-36에 대해 확장함수 ProgressBarAnim() 사용
+//        Handler().ProgressBarAnim(activity_join_step2_pgb)
+
 
         // 다음 버튼 눌렀을 때 비어있는 칸 경고문구 설정
         activity_join_step2_btn_next.setOnClickListener {
