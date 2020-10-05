@@ -47,14 +47,14 @@
         android:layout_height="wrap_content"
         android:text="문장 쓰기"
         android:textSize="19sp"
-        android:textStyle="bold"
         android:textColor="@color/black_two"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/gl_top"/>
 
     <ProgressBar
-        android:id="@+id/writing_sentence_step2_pgb"
+        android:id="@+id/writing_sentence_step3_pgb"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,58 +66,67 @@
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintTop_toTopOf="parent"/>
+
     <View
-        android:id="@+id/writing_sentence_step2_pgb_out"
+        android:id="@+id/writing_sentence_step3_pgb_out"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:background="@drawable/dot_circle_progressoff_out"
-        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step3_pgb"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
-        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb" />
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step3_pgb" />
 
     <View
-        android:id="@+id/writing_sentence_step2_pgb_in"
+        android:id="@+id/writing_sentence_step3_pgb_in"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginStart="7dp"
         android:background="@drawable/dot_circle_progressoff_in"
-        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step3_pgb"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
-        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb" />
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step3_pgb" />
 
     <View
-        android:id="@+id/writing_sentence_step2_pgb_out2"
+        android:id="@+id/writing_sentence_step3_pgb_out2"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:background="@drawable/dot_circle_progressoff_out"
-        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintEnd_toEndOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintStart_toStartOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb"/>
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintStart_toStartOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step3_pgb"/>
 
     <View
-        android:id="@+id/writing_sentence_step2_pgb_in2"
+        android:id="@+id/writing_sentence_step3_pgb_in2"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:background="@drawable/dot_circle_progressoff_in"
-        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintEnd_toEndOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintStart_toStartOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb" />
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintStart_toStartOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step3_pgb" />
+    <View
+        android:id="@+id/writing_sentence_step3_pgb_out3"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/dot_circle_progressoff_out"
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/gl_right"
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step3_pgb"/>
 
     <View
-        android:id="@+id/view3"
-        android:layout_width="9dp"
-        android:layout_height="9dp"
-        android:background="@drawable/dot_circle_gray"
-        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintEnd_toEndOf="@+id/writing_sentence_step2_pgb"
-        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb" />
-
+        android:id="@+id/writing_sentence_step3_pgb_in3"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginEnd="7dp"
+        android:background="@drawable/dot_circle_progressoff_in"
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/gl_right"
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_step3_pgb" />
 
 
     <TextView
-        android:id="@+id/writing_sentence_step2_tv_1"
+        android:id="@+id/writing_sentence_step3_tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="19sp"
@@ -129,63 +138,26 @@
         app:layout_constraintStart_toStartOf="@+id/gl_left"
         />
     <TextView
-        android:id="@+id/writing_sentence_step2_tv_2"
+        android:id="@+id/writing_sentence_step3_tv_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="19sp"
         android:textColor="@color/greyish_brown"
-        android:text="이 담긴 책을 추가해주세요!"
+        android:text="이 담길 테마를 선택해주세요!"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/writing_sentence_step2_tv_1"
-        app:layout_constraintStart_toEndOf="@id/writing_sentence_step2_tv_1"
+        app:layout_constraintTop_toTopOf="@id/writing_sentence_step3_tv_1"
+        app:layout_constraintStart_toEndOf="@id/writing_sentence_step3_tv_1"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintBottom_toTopOf="@id/writing_sentence_step2_tv_title"
-        android:layout_marginBottom="12dp"
-        android:text="책 제목"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:textColor="@color/greyish_brown"/>
 
     <TextView
-        android:id="@+id/writing_sentence_step2_tv_title"
+        android:id="@+id/writing_sentence_step3_tv_theme"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_area"
-        android:maxLength="40"
-        android:gravity="start"
-        android:layout_marginTop="220dp"
-        android:padding="16dp"
-        android:hint="책 제목을 검색해주세요."
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_left"
-        app:layout_constraintEnd_toEndOf="@+id/gl_right"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintBottom_toTopOf="@id/writing_sentence_step2_tv_author"
-        android:layout_marginBottom="12dp"
-        android:text="작가/옮긴이"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:textColor="@color/greyish_brown"/>
-
-    <TextView
-        android:id="@+id/writing_sentence_step2_tv_author"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="85dp"
         android:background="@drawable/et_area_grey"
         android:maxLength="40"
         android:gravity="start"
-        android:layout_marginTop="345dp"
+        android:layout_marginTop="180dp"
         android:padding="16dp"
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -194,42 +166,34 @@
         />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintBottom_toTopOf="@id/writing_sentence_step2_tv_publisher"
-        android:layout_marginBottom="12dp"
-        android:text="출판사"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:textColor="@color/greyish_brown"/>
-
-    <TextView
-        android:id="@+id/writing_sentence_step2_tv_publisher"
+        android:id="@+id/writing_sentence_step3_btn_theme"
+        style="@android:style/ButtonBar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_area_grey"
-        android:maxLength="40"
-        android:gravity="start"
-        android:layout_marginTop="440dp"
-        android:padding="16dp"
-        android:textSize="16sp"
+        android:layout_height="45dp"
+        android:background="@drawable/et_area_green"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="286dp"
+        android:text="테마 선택하기"
+        android:textColor="@color/soft_green"
+        android:textSize="15sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_left"
-        app:layout_constraintEnd_toEndOf="@+id/gl_right"
-        />
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintStart_toStartOf="@id/gl_left" />
+
+
 
 
 
 
     <TextView
-        android:id="@+id/writing_sentence_step2_next"
+        android:id="@+id/writing_sentence_step3_btn_next"
         style="@android:style/ButtonBar"
         android:layout_width="0dp"
         android:layout_height="58dp"
         android:background="@drawable/btn_green"
         android:gravity="center"
-        android:text="다음"
+        android:text="등록하기"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="19sp"
