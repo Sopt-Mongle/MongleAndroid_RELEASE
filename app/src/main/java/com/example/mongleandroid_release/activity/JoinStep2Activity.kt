@@ -1,6 +1,7 @@
 package com.example.mongleandroid_release.activity
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -21,9 +22,9 @@ class JoinStep2Activity : AppCompatActivity() {
 
         // 프로그래스바 애니메이션
         Handler().postDelayed({
-            val progressAnimator = ObjectAnimator.ofInt(activity_join_step2_pgb, "progress", 0, 50)
-            progressAnimator.setDuration(500)
-            progressAnimator.start()
+            val progressAnimator_step2 = ObjectAnimator.ofInt(activity_join_step2_pgb, "progress", 0, 50)
+            progressAnimator_step2.setDuration(500)
+            progressAnimator_step2.start()
         }, 200)
 
         // 다음 버튼 눌렀을 때 비어있는 칸 경고문구 설정
@@ -50,7 +51,14 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
                 activity_join_step2_img_nickname_warning.visibility = VISIBLE
                 activity_join_step2_tv_nickname_warning.visibility = VISIBLE
+            } else {
+                val intent = Intent(this, JoinStep3Activity::class.java)
+                startActivity(intent)
+                // 화면 전환 시 애니메이션 없애는 코드
+                overridePendingTransition(0, 0)
             }
+
+            // 이메일 유효성, 비밀번호 유효성 검사 if문 추가 예정
 
         }
 
@@ -291,11 +299,11 @@ class JoinStep2Activity : AppCompatActivity() {
     private fun forProgressOn() {
         if(!(activity_join_step2_et_email.text.isEmpty()) && !(activity_join_step2_et_pass.text.isEmpty()) &&
             !(activity_join_step2_et_passcheck.text.isEmpty()) && !(activity_join_step2_et_nickname.text.isEmpty()) && (activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString())) {
-            activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
-            activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
+            activity_join_step2_2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
+            activity_join_step2_2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
         } else {
-            activity_join_step2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
-            activity_join_step2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
+            activity_join_step2_2_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
+            activity_join_step2_2_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
         }
     }
 

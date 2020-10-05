@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
 
     <View
-        android:id="@+id/activity_join_step1_pgb_out"
+        android:id="@+id/activity_join_step2_1_pgb_out"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginStart="28dp"
@@ -53,17 +53,17 @@
         app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
 
     <View
-        android:id="@+id/activity_join_step1_pgb_in"
+        android:id="@+id/activity_join_step2_1_pgb_in"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginStart="7dp"
         android:background="@drawable/dot_circle_progresson_in"
         app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_pgb"
-        app:layout_constraintStart_toStartOf="@+id/activity_join_step1_pgb_out"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step2_1_pgb_out"
         app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
 
     <View
-        android:id="@+id/activity_join_step2_pgb_out"
+        android:id="@+id/activity_join_step2_2_pgb_out"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:background="@drawable/dot_circle_progressoff_out"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="@+id/activity_join_step2_pgb" />
 
     <View
-        android:id="@+id/activity_join_step2_pgb_in"
+        android:id="@+id/activity_join_step2_2_pgb_in"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:background="@drawable/dot_circle_progressoff_in"
@@ -94,7 +94,7 @@
         app:layout_constraintBottom_toTopOf="@+id/activity_join_step2_btn_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_pgb_out">
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_1_pgb_out">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
