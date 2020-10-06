@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.JoinStep3Activity">
+
+    <ImageView
+        android:id="@+id/activity_join_step3_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="17dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btn_back" />
+
+    <ProgressBar
+        android:id="@+id/activity_join_step3_pgb"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="41dp"
+        android:max="100"
+        android:progressTint="@color/soft_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_btn_back" />
+
+    <View
+        android:id="@+id/activity_join_step3_1_pgb_out"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="28dp"
+        android:background="@drawable/dot_circle_progresson_out"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step3_1_pgb_in"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@drawable/dot_circle_progresson_in"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step3_1_pgb_out"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step3_1_pgb_out"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step3_2_pgb_out"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@drawable/dot_circle_progresson_out"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step3_2_pgb_in"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@drawable/dot_circle_progresson_in"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step3_2_pgb_out"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step3_2_pgb_out"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step3_3_pgb_out"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/dot_circle_progressoff_out"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_pgb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_pgb" />
+
+    <View
+        android:id="@+id/activity_join_step3_3_pgb_in"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@drawable/dot_circle_progressoff_in"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_3_pgb_out"
+        app:layout_constraintEnd_toEndOf="@+id/activity_join_step3_3_pgb_out"
+        app:layout_constraintStart_toStartOf="@+id/activity_join_step3_3_pgb_out"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_3_pgb_out" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="21dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@+id/activity_join_step3_btn_popup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_pgb">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_pgb">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/join_step_3_img_mail" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center_horizontal"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="5sp"
+                android:text="이메일을 확인해주세요!"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="58dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center_horizontal"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="5sp"
+                android:text="입력한 mongle@mongle.com 으로 전송된 메일 속 본인 확인 인증 코드를 입력해주세요."
+                android:textColor="#909090"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="1sp"
+                android:text="5:00"
+                android:textColor="@color/soft_green"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView26"
+                app:layout_constraintStart_toStartOf="@+id/textView26"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <EditText
+                android:id="@+id/activity_join_step3_et_code1"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/et_circle_join3_off"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:maxLength="1"
+                android:nextFocusDown="@id/activity_join_step3_et_code2"
+                android:textColor="@color/soft_green"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+            <EditText
+                android:id="@+id/activity_join_step3_et_code2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/et_circle_join3_off"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:maxLength="1"
+                android:nextFocusDown="@id/activity_join_step3_et_code3"
+                android:textColor="@color/soft_green"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code1"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step3_et_code1" />
+
+            <EditText
+                android:id="@+id/activity_join_step3_et_code3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/et_circle_join3_off"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:maxLength="1"
+                android:nextFocusDown="@id/activity_join_step3_et_code4"
+                android:textColor="@color/soft_green"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code2"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step3_et_code2" />
+
+            <EditText
+                android:id="@+id/activity_join_step3_et_code4"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/et_circle_join3_off"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:maxLength="1"
+                android:nextFocusDown="@id/activity_join_step3_et_code5"
+                android:textColor="@color/soft_green"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code3"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step3_et_code3" />
+
+            <EditText
+                android:id="@+id/activity_join_step3_et_code5"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/et_circle_join3_off"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:maxLength="1"
+                android:nextFocusDown="@id/activity_join_step3_et_code6"
+                android:textColor="@color/soft_green"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code6"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code4"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step3_et_code4" />
+
+            <EditText
+                android:id="@+id/activity_join_step3_et_code6"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/et_circle_join3_off"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:inputType="number"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="5sp"
+                android:maxLength="1"
+                android:textColor="@color/soft_green"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code5"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step3_et_code5" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_join_step3_btn_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_join_step3_btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="8sp"
+            android:text="이메일을 받지 못하셨나요?"
+            android:textColor="@color/very_light_pink_two"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView12"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="6dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView30"
+            app:layout_constraintTop_toTopOf="@+id/textView30"
+            app:srcCompat="@drawable/ic_more_load" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/activity_join_step3_btn_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_green"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:gravity="center_horizontal"
+        android:includeFontPadding="false"
+        android:lineSpacingExtra="9sp"
+        android:paddingTop="15dp"
+        android:paddingBottom="14dp"
+        android:text="가입하기"
+        android:textColor="#ffffff"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/activity_join_step3_btn_repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step3_btn_back"
+        app:srcCompat="@drawable/join_step_3_btn_repeat" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
