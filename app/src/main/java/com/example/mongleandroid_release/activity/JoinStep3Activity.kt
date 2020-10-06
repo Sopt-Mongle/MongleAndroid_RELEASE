@@ -4,7 +4,11 @@ import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import androidx.core.view.marginTop
+import androidx.core.widget.addTextChangedListener
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_join_step2.*
 import kotlinx.android.synthetic.main.activity_join_step3.*
@@ -25,7 +29,47 @@ class JoinStep3Activity : AppCompatActivity() {
             finish()
         }
 
+        changeCodeBackground(activity_join_step3_et_code1)
+        changeCodeBackground(activity_join_step3_et_code2)
+        changeCodeBackground(activity_join_step3_et_code3)
+        changeCodeBackground(activity_join_step3_et_code4)
+        changeCodeBackground(activity_join_step3_et_code5)
+        changeCodeBackground(activity_join_step3_et_code6)
 
+        activity_join_step3_et_code6.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                if(!(activity_join_step3_et_code1.text.isEmpty()) && !(activity_join_step3_et_code2.text.isEmpty()) &&
+                    !(activity_join_step3_et_code3.text.isEmpty()) && !(activity_join_step3_et_code4.text.isEmpty()) &&
+                    !(activity_join_step3_et_code5.text.isEmpty()) && !(activity_join_step3_et_code6.text.isEmpty())) {
+                    activity_join_step3_3_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
+                    activity_join_step3_3_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
+                } else {
+                    activity_join_step3_3_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
+                    activity_join_step3_3_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
+
+    }
+
+    private fun changeCodeBackground(editText: EditText) {
+        editText.setOnFocusChangeListener { v, hasFocus ->
+            editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
+            if(!hasFocus) {
+                if(editText.text.isNotEmpty()) {
+                    editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
+                } else {
+                    editText.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+                }
+            }
+        }
     }
 
     override fun onPause() {

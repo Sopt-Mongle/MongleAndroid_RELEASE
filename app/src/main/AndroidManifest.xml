@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.WritingThemeActivity"></activity>
-        <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.JoinStep1PolicyActivity" />
         <activity android:name=".activity.JoinStep2Activity" />
         <activity android:name=".activity.JoinStep1Activity">
+
+        </activity>
+        <activity android:name=".activity.JoinStep3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
