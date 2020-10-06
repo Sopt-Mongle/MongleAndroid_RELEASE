@@ -35,6 +35,7 @@
 
 
     <ImageView
+        android:id="@+id/writing_sentence_step1_btn_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/writing_sentence_btn_cancel"
