@@ -15,5 +15,5 @@ fun android.os.Handler.ProgressBarAnim(ProgressBar: ProgressBar){
 }
 
 // 액티비티 전환 시 안드로이드 자체에서 뷰 전환 애니메이션 발생하므로,
-// ProgressBarAnim가 우리가 원하는 대로 동작하려 대한 추가적인 처리가 필요합니다. 면
+// ProgressBarAnim가 우리가 원하는 대로 동작하려 대한 추가적인 처리가 필요합니다.
 // 슬랙 채널에 "액티비티 전환 시 안드로이드 자체에서 뷰 전환 애니메이션 발생" 로 검색하시면 참고 자료가 있습니다.
