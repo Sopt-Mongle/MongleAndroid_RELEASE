@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Drop Shadow Stack -->
+<item> <shape android:shape="oval"> <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" /> <corners android:radius="5dp" /> <solid android:color="#00bce3c3" /> </shape> </item>
+<item> <shape android:shape="oval"> <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" /> <corners android:radius="5dp" /> <solid android:color="#10bce3c3" /> </shape> </item>
+<item> <shape android:shape="oval"> <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" /> <corners android:radius="5dp" /> <solid android:color="#20bce3c3" /> </shape> </item>
+<item> <shape android:shape="oval"> <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" /> <corners android:radius="5dp" /> <solid android:color="#30bce3c3" /> </shape> </item>
+<item> <shape android:shape="oval"> <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" /> <corners android:radius="5dp" /> <solid android:color="#50bce3c3" /> </shape> </item>
+<!-- Background -->
+<item> <shape android:shape="oval">
+    <solid
+        android:color="#ffffff" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/soft_green" />
+</shape> </item>
+</layer-list>
