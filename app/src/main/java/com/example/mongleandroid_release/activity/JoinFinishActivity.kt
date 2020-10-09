@@ -14,7 +14,7 @@ class JoinFinishActivity : AppCompatActivity() {
         activity_join_finish_tv_gomain.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
+            finishAffinity()
         }
     }
 }

@@ -47,7 +47,9 @@ class JoinStep1Activity : AppCompatActivity() {
             }
         }
 
-
+        activity_join_step1_btn_back.setOnClickListener {
+            finish()
+        }
 
 
 

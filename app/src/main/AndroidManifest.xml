@@ -19,10 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.JoinStep3Activity">
+        <activity android:name=".activity.JoinStep3Activity"
+            android:windowSoftInputMode="stateVisible">
 
         </activity>
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
         <activity android:name=".activity.MainActivity" />
     </application>
 
