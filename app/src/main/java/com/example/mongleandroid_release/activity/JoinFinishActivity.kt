@@ -4,17 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mongleandroid_release.R
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_join_finish.*
 
-class LoginActivity : AppCompatActivity() {
+class JoinFinishActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_join_finish)
 
-        activity_login_tv_join.setOnClickListener {
-            val intent = Intent(this, JoinStep1Activity::class.java)
+        activity_join_finish_tv_gomain.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finishAffinity()
         }
-
     }
 }

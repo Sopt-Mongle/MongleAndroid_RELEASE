@@ -1,6 +1,7 @@
 package com.example.mongleandroid_release.activity
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -25,8 +26,20 @@ class JoinStep3Activity : AppCompatActivity() {
             progressAnimator_step3.start()
         }, 200)
 
+        activity_join_step3_et_code1.requestFocus()
+        if(activity_join_step3_et_code1.requestFocus()) {
+            activity_join_step3_et_code1.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
+        }
+
         activity_join_step3_btn_back.setOnClickListener {
             finish()
+        }
+
+        // 인증번호가 일치한다면 -> 조건 추후에 추가
+        activity_join_step3_btn_next.setOnClickListener {
+            val intent = Intent(this, JoinFinishActivity::class.java)
+            startActivity(intent)
+            finishAffinity()
         }
 
         changeCodeBackground(activity_join_step3_et_code1)
