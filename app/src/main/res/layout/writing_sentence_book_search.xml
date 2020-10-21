@@ -112,7 +112,7 @@
             android:textColor="@color/very_light_pink_two"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="@id/gl_right"
-            app:layout_constraintTop_toTopOf="writing_sentence_book_search_tv_cnt"
+            app:layout_constraintTop_toTopOf="@id/writing_sentence_book_search_tv_cnt"
             app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_book_search_tv_cnt"/>
 
         <TextView
