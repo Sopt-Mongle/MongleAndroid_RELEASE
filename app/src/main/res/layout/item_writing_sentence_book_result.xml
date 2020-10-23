@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="17dp"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<View
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/very_light_pink_three"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    />
+
+<ImageView
+    android:id="@+id/item_writing_sentence_book_result_img"
+    android:layout_width="60dp"
+    android:layout_height="80dp"
+    android:src="@color/soft_green"
+    android:layout_marginTop="17dp"
+    android:layout_marginStart="22dp"
+    app:layout_constraintTop_toBottomOf="@+id/view"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17.4dp"
+        app:layout_constraintStart_toEndOf="@id/item_writing_sentence_book_result_img"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/item_writing_sentence_book_result_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="해리포터"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/item_writing_sentence_book_result_tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="김해리/박현주"
+            android:textSize="14sp"
+            android:textColor="@color/brown_grey" />
+
+        <TextView
+            android:id="@+id/item_writing_sentence_book_result_tv_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="TTP"
+            android:textColor="@color/brown_grey_three"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
