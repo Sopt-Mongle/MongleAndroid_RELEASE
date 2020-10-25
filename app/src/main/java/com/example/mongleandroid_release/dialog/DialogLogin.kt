@@ -1,4 +1,4 @@
-package com.example.mongleandroid_release
+package com.example.mongleandroid_release.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import android.widget.TextView
+import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.JoinStep1Activity
 
 class DialogLogin(context : Context) {

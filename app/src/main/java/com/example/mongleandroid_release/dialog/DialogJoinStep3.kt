@@ -1,13 +1,12 @@
-package com.example.mongleandroid_release
+package com.example.mongleandroid_release.dialog
 
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import android.widget.TextView
-import com.example.mongleandroid_release.activity.JoinStep1Activity
+import com.example.mongleandroid_release.R
 
 class DialogJoinStep3(context : Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
