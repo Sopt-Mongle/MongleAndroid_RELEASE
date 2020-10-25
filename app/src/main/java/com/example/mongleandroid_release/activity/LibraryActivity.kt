@@ -7,6 +7,6 @@ import com.example.mongleandroid_release.R
 class LibraryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragmenty_library)
+        setContentView(R.layout.fragment_library)
     }
 }
