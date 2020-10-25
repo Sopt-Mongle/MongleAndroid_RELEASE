@@ -10,6 +10,11 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.LibrarySentenceData
+import com.example.mongleandroid_release.network.data.response.ResponseLibrarySentenceData
+import kotlinx.android.synthetic.main.fragment_library_sentence.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

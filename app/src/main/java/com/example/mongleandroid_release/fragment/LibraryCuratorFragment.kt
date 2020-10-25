@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.LibraryCuratorAdapter
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.data.LibraryCuratorData
+import kotlinx.android.synthetic.main.fragment_library_curator.*
 
 class LibraryCuratorFragment : Fragment() {
 

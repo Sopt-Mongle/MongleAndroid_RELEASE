@@ -11,6 +11,12 @@ import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.SettingActivity
+import com.example.mongleandroid_release.adapter.LibraryPagerAdapter
+import com.example.mongleandroid_release.adapter.LibraryTabAdapter
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.ResponseMainLibraryData
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_library.*
 import retrofit2.Call

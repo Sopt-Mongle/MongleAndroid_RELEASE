@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LibraryActivity"></activity>
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.LibraryActivity" />
         <activity android:name=".activity.JoinFinishActivity" />
         <activity android:name=".activity.JoinStep1PolicyActivity" />
         <activity android:name=".activity.JoinStep2Activity" />
-        <activity android:name=".activity.JoinStep1Activity"></activity>
+        <activity android:name=".activity.JoinStep1Activity" />
         <activity
             android:name=".activity.JoinStep3Activity"
             android:windowSoftInputMode="stateVisible">
@@ -25,7 +26,7 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.MainActivity" />
     </application>
 

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.LibrarySentenceClickViewHolder
+import com.example.mongleandroid_release.network.data.response.LibrarySentenceWrite
 
 class LibrarySentenceClickAdapter(private val context: Context, var data_sen_click: List<LibrarySentenceWrite>) :
     RecyclerView.Adapter<LibrarySentenceClickViewHolder>() {

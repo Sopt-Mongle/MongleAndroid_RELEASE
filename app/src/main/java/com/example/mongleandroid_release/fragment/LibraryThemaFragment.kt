@@ -8,6 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.LibraryThemaAdapter
+import com.example.mongleandroid_release.adapter.LibraryThemaClickAdapter
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.LibraryThemaData
+import com.example.mongleandroid_release.network.data.response.ResponseLibraryThemeData
+import kotlinx.android.synthetic.main.fragment_library_thema.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

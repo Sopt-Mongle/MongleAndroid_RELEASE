@@ -1,4 +1,4 @@
-package com.example.mongleandroid_release.util
+package com.example.mongleandroid_release
 
 import android.content.Context
 import android.util.AttributeSet

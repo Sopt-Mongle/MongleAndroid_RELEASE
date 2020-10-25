@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.LibraryThemaViewHolder
+import com.example.mongleandroid_release.network.data.LibraryThemaData
 
 class LibraryThemaAdapter(private val context: Context) :
     RecyclerView.Adapter<LibraryThemaViewHolder>() {

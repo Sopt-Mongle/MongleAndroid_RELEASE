@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.network.data.LibrarySentenceData
 
 class LibrarySentenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tv_library_sentence_themename =

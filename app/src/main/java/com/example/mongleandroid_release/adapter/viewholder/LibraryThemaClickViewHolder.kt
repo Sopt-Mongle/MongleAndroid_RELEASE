@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.network.data.response.LibraryThemeWrite
 
 class LibraryThemaClickViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tv_library_thema = itemView.findViewById<TextView>(R.id.tv_library_thema)
