@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
+import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

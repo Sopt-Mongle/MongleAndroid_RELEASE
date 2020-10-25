@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.viewholder.LibraryThemaClickViewHolder
 
 class LibraryThemaClickAdapter(private val context: Context, var data_the_save : List<LibraryThemeWrite>) :
     RecyclerView.Adapter<LibraryThemaClickViewHolder>() {

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.viewholder.LibrarySentenceViewHolder
 
 class LibrarySentenceAdapter(private val context: Context) :
     RecyclerView.Adapter<LibrarySentenceViewHolder>() {

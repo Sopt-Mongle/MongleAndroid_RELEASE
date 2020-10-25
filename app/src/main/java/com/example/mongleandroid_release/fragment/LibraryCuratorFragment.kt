@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.LibraryCuratorAdapter
 
 class LibraryCuratorFragment : Fragment() {
 

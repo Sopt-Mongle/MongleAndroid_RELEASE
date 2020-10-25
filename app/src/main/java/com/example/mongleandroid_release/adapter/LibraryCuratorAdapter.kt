@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.viewholder.LibraryCuratorViewHolder
 
 class LibraryCuratorAdapter(private val context: Context) :
     RecyclerView.Adapter<LibraryCuratorViewHolder>() {
