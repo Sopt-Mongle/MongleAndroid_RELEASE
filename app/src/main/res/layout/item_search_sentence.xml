@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_search_sentence"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/search_sentence_tv_themename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="13dp"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="2sp"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:includeFontPadding="false"
+            android:textColor="#bcbcbc"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/cl_search_sentence"
+            app:layout_constraintTop_toTopOf="@id/cl_search_sentence"
+            tools:text="번아웃을 극복하고 싶을 때 봐야하는 문장" />
+
+        <TextView
+            android:id="@+id/search_sentence_tv_sentence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/search_sentence_guide_right"
+            app:layout_constraintStart_toStartOf="@+id/search_sentence_tv_themename"
+            app:layout_constraintTop_toBottomOf="@+id/search_sentence_tv_themename"
+            tools:text="결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. " />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/search_sentence_guide_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/search_sentence_tv_sentence"
+            app:layout_constraintTop_toBottomOf="@id/search_sentence_tv_sentence"
+            app:srcCompat="@drawable/search_result_sentence_ic_curator" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#59bcbcbc"
+            app:layout_constraintBottom_toBottomOf="@id/cl_search_sentence"
+            app:layout_constraintEnd_toEndOf="@id/cl_search_sentence"
+            app:layout_constraintStart_toStartOf="@id/cl_search_sentence" />
+
+        <TextView
+            android:id="@+id/search_sentence_tv_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="예스뤼"
+            android:textSize="12sp"
+            android:textColor="@color/very_light_pink_two"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="3sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

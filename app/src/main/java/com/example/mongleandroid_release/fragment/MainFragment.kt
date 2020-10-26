@@ -14,13 +14,13 @@ private const val ARG_PARAM2 = "param2"
 
 class MainFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-
+//    private var param1: String? = null
+//    private var param2: String? = null
+//
 //    private lateinit var todaySentenceAdapter: TodaySentenceAdapter
 //    private lateinit var mainNowHotCuratorAdapter: MainNowHotCuratorAdapter
 //    private lateinit var mainHotThemeAdapter: MainHotThemeAdapter
-
+//
 //
 //    override fun onCreateView(
 //        inflater: LayoutInflater, container: ViewGroup?,
@@ -45,21 +45,14 @@ class MainFragment : Fragment() {
 //        img_main_search_btn.setOnClickListener {
 //            replaceFragment(SearchFragment())
 //        }
-//
-////        vp_main.setOnClickListener {
-////            activity?.let{
-////                val intent = Intent(context, MainThemeActivity::class.java)
-////                startActivity(intent)
-////            }
-////        }
-//
-//    }
-//
-//    private fun replaceFragment(fragment: Fragment) {
-//        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
-//        transaction.replace(R.id.main_activity_fg, fragment)
-//        transaction.commit()
-//
-//    }
+
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+        transaction.replace(R.id.main_activity_fg, fragment)
+        transaction.commit()
+
+    }
 
 }

@@ -8,12 +8,8 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import androidx.core.view.marginTop
-import androidx.core.widget.addTextChangedListener
-import com.example.mongleandroid_release.DialogJoinStep3
-import com.example.mongleandroid_release.DialogLogin
+import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.R
-import kotlinx.android.synthetic.main.activity_join_step2.*
 import kotlinx.android.synthetic.main.activity_join_step3.*
 
 class JoinStep3Activity : AppCompatActivity() {
