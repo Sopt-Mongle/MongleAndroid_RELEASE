@@ -39,15 +39,17 @@ class JoinStep1Activity : AppCompatActivity() {
             if(activity_join_step1_cb.isChecked) {
                 activity_join_step1_img_warning.visibility = GONE
                 activity_join_step1_tv_warning.visibility = GONE
-                activity_join_step1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
-                activity_join_step1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
+                activity_join_step1_1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
+                activity_join_step1_1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
             } else {
-                activity_join_step1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
-                activity_join_step1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
+                activity_join_step1_1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
+                activity_join_step1_1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
             }
         }
 
-
+        activity_join_step1_btn_back.setOnClickListener {
+            finish()
+        }
 
 
 
