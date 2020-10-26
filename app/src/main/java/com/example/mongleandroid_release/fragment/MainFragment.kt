@@ -46,13 +46,13 @@ class MainFragment : Fragment() {
 //            replaceFragment(SearchFragment())
 //        }
 
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
-        transaction.replace(R.id.main_activity_fg, fragment)
-        transaction.commit()
-
-    }
+//    }
+//
+//    private fun replaceFragment(fragment: Fragment) {
+//        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+//        transaction.replace(R.id.main_activity_fg, fragment)
+//        transaction.commit()
+//
+//    }
 
 }
