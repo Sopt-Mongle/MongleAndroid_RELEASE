@@ -88,7 +88,7 @@ class LibrarySentenceFragment : Fragment() {
     //SearchFragment로 이동
     private fun replaceFragment(fragment: Fragment) {
         val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
-        transaction.replace(R.id.main_activity_fg, fragment)
+//        transaction.replace(R.id.main_activity_fg, fragment)
         transaction.commit()
 
     }

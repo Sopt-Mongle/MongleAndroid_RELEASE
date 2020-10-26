@@ -72,8 +72,8 @@ class LibraryThemaFragment : Fragment() {
 
         tx_non_thema.setOnClickListener {
             activity?.let {
-                val intent = Intent(context, NoThemeActivity::class.java)
-                startActivity(intent)
+//                val intent = Intent(context, NoThemeActivity::class.java)
+//                startActivity(intent)
             }
         }
 

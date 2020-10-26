@@ -121,7 +121,7 @@
             android:background="@drawable/btn_subscribe"
             android:button="@null"
             android:gravity="center"
-            android:text="@string/subscribe"
+            android:text="구독"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:includeFontPadding="false"
             android:textColor="#ffffff"
