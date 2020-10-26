@@ -3,7 +3,7 @@ package com.example.mongleandroid_release.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mongleandroid_release.DialogLogin
+import com.example.mongleandroid_release.dialog.DialogLogin
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_login.*
 
