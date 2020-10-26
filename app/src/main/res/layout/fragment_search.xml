@@ -7,7 +7,7 @@
     tools:context=".fragment.SearchFragment">
 
     <ImageView
-        android:id="@+id/search_fragment_btn_back"
+        android:id="@+id/fragment_search_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/search_fragment_et_search"
+        android:id="@+id/fragment_search_et_search"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
@@ -34,16 +34,16 @@
         android:maxLines="1"
         android:paddingLeft="15dp"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/search_fragment_btn_back"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_search_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_fragment_btn_back"
-        app:layout_constraintTop_toTopOf="@+id/search_fragment_btn_back">
+        app:layout_constraintStart_toEndOf="@+id/fragment_search_btn_back"
+        app:layout_constraintTop_toTopOf="@+id/fragment_search_btn_back">
 
         <requestFocus />
     </EditText>
 
     <ImageView
-        android:id="@+id/search_fragment_btn_search"
+        android:id="@+id/fragment_search_btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="14dp"
@@ -51,18 +51,20 @@
         android:paddingRight="14dp"
         android:paddingBottom="14dp"
         android:src="@drawable/btn_search"
-        app:layout_constraintBottom_toBottomOf="@+id/search_fragment_et_search"
-        app:layout_constraintEnd_toEndOf="@+id/search_fragment_et_search"
-        app:layout_constraintTop_toTopOf="@+id/search_fragment_et_search" />
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_search_et_search"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_search_et_search"
+        app:layout_constraintTop_toTopOf="@+id/fragment_search_et_search" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_search_cl_before"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="18dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_fragment_et_search">
+        app:layout_constraintTop_toBottomOf="@+id/fragment_search_et_search">
 
         <TextView
             android:id="@+id/textView6"
@@ -81,7 +83,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/search_fragment_tv_delete"
+            android:id="@+id/fragment_search_tv_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="21dp"
@@ -98,7 +100,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/search_fragment_tv_no_keyword"
+            android:id="@+id/fragment_search_tv_no_keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -112,7 +114,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_fragment_rv_recent_keyword"
+            android:id="@+id/fragment_search_rv_recent_keyword"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="15dp"
@@ -134,11 +136,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="83dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="8sp"
             android:text="추천 키워드"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -151,7 +153,7 @@
             app:flChildSpacing="8dp"
             app:flChildSpacingForLastRow="align"
             app:flRowSpacing="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/search_fragment_tv_delete"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_search_tv_delete"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7">
@@ -355,5 +357,60 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_search_cl_after"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_search_et_search">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/search_result_tab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabIndicatorColor="@color/soft_green"
+            app:tabSelectedTextColor="@color/soft_green">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:text="테마" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:text="문장" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:text="큐레이터" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/search_result_viewpager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_result_tab" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
