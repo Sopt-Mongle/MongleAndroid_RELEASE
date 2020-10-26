@@ -57,5 +57,7 @@ dependencies {
     implementation 'com.github.amarjain07:StickyScrollView:1.0.2'
     // Coordinator 사용 라이브러리
     implementation 'com.android.support:support-annotations:27.1.1'
+    //switch button custom library
+    implementation 'com.kyleduo.switchbutton:library:2.0.0'
 
 }

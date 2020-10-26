@@ -45,21 +45,14 @@ class MainFragment : Fragment() {
 //        img_main_search_btn.setOnClickListener {
 //            replaceFragment(SearchFragment())
 //        }
-//
-////        vp_main.setOnClickListener {
-////            activity?.let{
-////                val intent = Intent(context, MainThemeActivity::class.java)
-////                startActivity(intent)
-////            }
-////        }
-//
-//    }
-//
-//    private fun replaceFragment(fragment: Fragment) {
-//        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
-//        transaction.replace(R.id.main_activity_fg, fragment)
-//        transaction.commit()
-//
-//    }
+
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = fragmentManager!!.beginTransaction()
+        transaction.replace(R.id.main_activity_fg, fragment)
+        transaction.commit()
+
+    }
 
 }
