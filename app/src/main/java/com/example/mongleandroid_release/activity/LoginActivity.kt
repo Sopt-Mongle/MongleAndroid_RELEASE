@@ -19,10 +19,7 @@ class LoginActivity : AppCompatActivity() {
 
         activity_login_btn_login.setOnClickListener {
             val dlg = DialogLogin(this)
-            dlg.setOnOKClickedListener{ content ->
-
-            }
-            dlg.start("")
+            dlg.start()
         }
 
     }
