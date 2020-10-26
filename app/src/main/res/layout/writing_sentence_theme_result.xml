@@ -191,8 +191,10 @@
         android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
+        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/item_writing_sentence_theme_result" />
 
     <View
