@@ -22,9 +22,7 @@ fun<ResponseType> Call<ResponseType>.customEnqueue(
                 onSuccess(it) //통신 결과를 전달해줌
 
             } ?: onError() // response.body가 널 값이라면 == statusCode가 200-300 사이가 아니라면, onError 호출
-
         }
-
 
     })
 }
