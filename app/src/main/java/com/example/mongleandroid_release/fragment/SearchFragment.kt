@@ -38,7 +38,7 @@ class SearchFragment : Fragment() {
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt
 
         // 엔터 누르면 프레그먼트 이동
-        fragment_search_et_search.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+        fragment_search_et_search.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
 
                 return@OnKeyListener true
