@@ -1,9 +1,6 @@
 package com.example.mongleandroid_release.network
 
-import com.example.mongleandroid_release.network.data.response.ResponseLibraryCuratorData
-import com.example.mongleandroid_release.network.data.response.ResponseLibrarySentenceData
-import com.example.mongleandroid_release.network.data.response.ResponseLibraryThemeData
-import com.example.mongleandroid_release.network.data.response.ResponseMainLibraryData
+import com.example.mongleandroid_release.network.data.response.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -34,5 +31,8 @@ interface RequestInterface {
         @Header("token") token: String?
     ) : Call<ResponseLibraryCuratorData>
 
+    // 추천 큐레이터 - 성공
+    @GET("/curator/recommend")
+    fun getRecommendCurator() : Call<ResponseRecommendCuratorData>
 
 }
