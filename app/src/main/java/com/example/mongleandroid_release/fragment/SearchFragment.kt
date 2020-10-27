@@ -1,31 +1,48 @@
 package com.example.mongleandroid_release.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
+import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
+import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
 import com.example.mongleandroid_release.showKeyboard
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_search.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchFragment : Fragment() {
 
     lateinit var searchRecentAdapter: SearchRecentAdapter
 
+    private val requestToServer = RequestToServer
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        recentKeyword()
+        recommendKeyword()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
@@ -37,7 +54,7 @@ class SearchFragment : Fragment() {
         fragment_search_et_search.requestFocus()
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt
 
-        // 엔터 누르면 프레그먼트 이동
+        // 엔터 눌렀을 때 검색
         fragment_search_et_search.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
 
@@ -45,8 +62,6 @@ class SearchFragment : Fragment() {
             }
             false
         })
-
-
 
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
@@ -74,10 +89,98 @@ class SearchFragment : Fragment() {
         fragment_search_tv_delete.setOnClickListener {
             fragment_search_rv_recent_keyword.visibility = GONE
 
-            // 네트워크 부분
+            requestToServer.service.requestSearchRecentDelete(
+                token = context?.let { SharedPreferenceController.getAccessToken(it) }
+            ).enqueue(
+                object : Callback<ResponseSearchRecentDeleteData> {
+                    override fun onFailure(call: Call<ResponseSearchRecentDeleteData>, t: Throwable) {
+                        Log.d("통신실패", "$t")
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseSearchRecentDeleteData>,
+                        response: Response<ResponseSearchRecentDeleteData>
+                    ) {
+                        if (response.isSuccessful) {
+                            Log.d("최근 검색어 삭제", response.body()!!.message)
+                            fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
+                            searchRecentAdapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+            )
 
             fragment_search_tv_no_keyword.visibility = VISIBLE
         }
+
+    }
+
+    // 최근 키워드
+    private fun recentKeyword() {
+        requestToServer.service.requestSearchRecent(
+            token = context?.let { SharedPreferenceController.getAccessToken(it) }
+        ).enqueue(
+            object : Callback<ResponseSearchRecentData> {
+                override fun onFailure(call: Call<ResponseSearchRecentData>, t: Throwable) {
+                    Log.d("통신실패", "$t")
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseSearchRecentData>,
+                    response: Response<ResponseSearchRecentData>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.d("최근 검색어", response.body()!!.message)
+
+                        val layoutManager = LinearLayoutManager(view!!.context)
+                        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                        fragment_search_rv_recent_keyword.layoutManager = layoutManager
+
+                        searchRecentAdapter = SearchRecentAdapter(view!!.context)
+                        fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
+                        searchRecentAdapter.datas = response.body()!!.data
+                        searchRecentAdapter.notifyDataSetChanged()
+                    }
+
+                }
+            }
+        )
+
+    }
+
+    // 추천 키워드
+    private fun recommendKeyword() {
+
+        requestToServer.service.getRecommendKeyword().enqueue(
+            object : Callback<ResponseSearchRecommendData> {
+                override fun onFailure(call: Call<ResponseSearchRecommendData>, t: Throwable) {
+                    Log.d("통신실패", "$t")
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseSearchRecommendData>,
+                    response: Response<ResponseSearchRecommendData>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.d("추천 키워드", response.body()!!.message)
+
+                        var recommend_size = response.body()!!.data.size - 1
+
+                        for (i in 0..recommend_size) {
+                            val resId = resources.getIdentifier(
+                                "@id/tv_recommend_keyword${i + 1}",
+                                "id",
+                                activity!!.packageName
+                            )
+                            val tv = view!!.findViewById(resId) as TextView?
+                            tv?.text = response.body()!!.data[i].toString()
+                        }
+
+                    }
+
+                }
+            }
+        )
 
     }
 
