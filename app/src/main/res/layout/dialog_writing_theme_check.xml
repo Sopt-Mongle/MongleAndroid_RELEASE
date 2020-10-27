@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+
+    <ImageView
+        android:id="@+id/dialog_writing_theme_check_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/writing_theme_popup_btn_mongle"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_area"
+        android:padding="2dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_writing_theme_check_img">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="24dp"
+            android:orientation="vertical"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_end="24dp"
+            android:orientation="vertical"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_end="24dp"
+            android:orientation="horizontal"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="24dp"
+            android:orientation="horizontal"/>
+
+        <TextView
+            android:id="@+id/dialog_writing_theme_check_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/maketheme_check_img_theme"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:gravity="start"
+            android:maxLength="40"
+            android:padding="24dp"
+            android:text="번아웃을 극복하고 싶을 때 보는 문장 번아웃을 극복하고 싶을 때 보는 문장"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="-1sp"
+            android:text="테마를 등록하시겠어요?"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="130dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_writing_theme_check_tv_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="3sp"
+            android:text="테마는 한 번 등록하면\n수정 및 삭제를 할 수 없어요!"
+            android:textColor="#a7a7a7"
+            android:textSize="14sp"
+            android:layout_marginTop="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dialog_writing_theme_check_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_green"
+            android:text="네"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:paddingHorizontal="56dp"
+            android:paddingVertical="8dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintEnd_toStartOf="@id/dialog_writing_theme_check_no"
+            app:layout_constraintBottom_toBottomOf="@id/gl_bottom"/>
+
+        <TextView
+            android:id="@+id/dialog_writing_theme_check_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_white"
+            android:text="아니요"
+            android:textColor="@color/soft_green"
+            android:textSize="14sp"
+            android:paddingHorizontal="42dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintBottom_toBottomOf="@id/gl_bottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
