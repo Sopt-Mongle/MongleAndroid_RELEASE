@@ -1,9 +1,12 @@
 package com.example.mongleandroid_release.network
 
+import com.example.mongleandroid_release.network.data.request.RequestLoginData
 import com.example.mongleandroid_release.network.data.response.*
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 
 interface RequestInterface {
 
@@ -31,8 +34,12 @@ interface RequestInterface {
         @Header("token") token: String?
     ) : Call<ResponseLibraryCuratorData>
 
-    // 추천 큐레이터 - 성공
+    // 추천 큐레이터
     @GET("/curator/recommend")
     fun getRecommendCurator() : Call<ResponseRecommendCuratorData>
+
+    // 로그인
+    @POST("/users/signin")
+    fun requestLogin(@Body body: RequestLoginData) : Call<ResponseLoginData>
 
 }
