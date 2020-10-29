@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
@@ -27,12 +28,12 @@ class WritingSentenceFinishFragment : Fragment() {
 
 //        act.finish()
         val view =  inflater.inflate(R.layout.writing_sentence_finish, container, false)
-        view.findViewById<Button>(R.id.writing_sentence_finish_btn_sentence).setOnClickListener {
+        view.findViewById<TextView>(R.id.writing_sentence_finish_btn_sentence).setOnClickListener {
             val intent = Intent(it.context , MainActivity::class.java)
             it.context.startActivity(intent)
             act.finish()
         }
-        view.findViewById<Button>(R.id.writing_sentence_finish_btn_main).setOnClickListener {
+        view.findViewById<TextView>(R.id.writing_sentence_finish_btn_main).setOnClickListener {
             //나중에 문장 확인하는 뷰 만들어지면 수정해야함 !
             val intent = Intent(it.context , MainActivity::class.java)
             it.context.startActivity(intent)

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
@@ -30,10 +32,10 @@ class WritingSentenceStep1Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // 다음 버튼
-        view.findViewById<Button>(R.id.writing_sentence_step1_btn_next).setOnClickListener {
+        view.findViewById<TextView>(R.id.writing_sentence_step1_btn_next).setOnClickListener {
             it.findNavController().navigate(R.id.action_writing_step1_fg_to_writing_step2_fg)
         }
-        view.findViewById<Button>(R.id.writing_sentence_step1_btn_out).setOnClickListener {
+        view.findViewById<ImageView>(R.id.writing_sentence_step1_btn_out).setOnClickListener {
             act.finish()
         }
 
