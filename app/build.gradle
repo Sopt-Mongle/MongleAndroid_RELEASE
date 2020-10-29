@@ -22,6 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOption {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -64,12 +71,12 @@ dependencies {
 
     //navigation 사용하기
     // Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion"
 
     // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.navigationVersion"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
 }
