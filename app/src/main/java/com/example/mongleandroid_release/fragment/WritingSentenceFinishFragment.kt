@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
@@ -23,11 +25,12 @@ class WritingSentenceFinishFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-//
+        return inflater.inflate(R.layout.writing_sentence_finish, container, false)
+    }
 
-//        act.finish()
-        val view =  inflater.inflate(R.layout.writing_sentence_finish, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         view.findViewById<TextView>(R.id.writing_sentence_finish_btn_sentence).setOnClickListener {
             val intent = Intent(it.context , MainActivity::class.java)
             it.context.startActivity(intent)
@@ -39,8 +42,6 @@ class WritingSentenceFinishFragment : Fragment() {
             it.context.startActivity(intent)
             act.finish()
         }
-
-        return view
     }
 
 }

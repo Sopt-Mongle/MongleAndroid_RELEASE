@@ -23,7 +23,12 @@ class WritingSentenceStep2Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.writing_sentence_step2, container, false)
+        return inflater.inflate(R.layout.writing_sentence_step2, container, false)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // 다음 버튼
         view.findViewById<TextView>(R.id.writing_sentence_step2_btn_next).setOnClickListener {
@@ -33,7 +38,6 @@ class WritingSentenceStep2Fragment : Fragment() {
             it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step1_fg)
 
         }
-        return view
     }
 
 }

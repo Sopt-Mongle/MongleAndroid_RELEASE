@@ -22,16 +22,19 @@ class WritingSentenceStep3Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.writing_sentence_step3, container, false)
+        return inflater.inflate(R.layout.writing_sentence_step3, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         // 다음 버튼
         view.findViewById<TextView>(R.id.writing_sentence_step3_btn_next).setOnClickListener {
-            it.findNavController().navigate(R.id.action_writing_step3_fg_to_writing_finish_fg)
+            it.findNavController().navigate(R.id.action_writing_sentence_step3_fragment_to_writing_sentence_finish_fragment)
         }
         view.findViewById<ImageView>(R.id.writing_sentence_step3_btn_back).setOnClickListener {
             it.findNavController().navigate(R.id.action_writing_step3_fg_to_writing_step2_fg)
         }
-        return view
     }
+
 
 }
