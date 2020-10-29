@@ -34,7 +34,6 @@ class DialogMakethemeCheck(context : Context) {
         dlg.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dlg.setContentView(R.layout.dialog_writing_theme_check)     //다이얼로그에 사용할 xml 파일을 불러옴
 
-
         dlg.show()
 
 
@@ -52,7 +51,14 @@ class DialogMakethemeCheck(context : Context) {
         maketheme_popup_yes.setOnClickListener{
             act.setContentView(R.layout.writing_theme_finish)
             dlg.dismiss()
+            // 메인으로 돌아가기
             act.writing_theme_finish_btn_main.setOnClickListener {
+                val intent = Intent(it.context , MainActivity::class.java)
+                it.context.startActivity(intent)
+                act.finish()
+            }
+            // 이 테마에 문장 쓰기
+            act.writing_theme_finish_btn_write.setOnClickListener {
                 val intent = Intent(it.context , MainActivity::class.java)
                 it.context.startActivity(intent)
                 act.finish()
