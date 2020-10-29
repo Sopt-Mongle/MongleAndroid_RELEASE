@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_writing_sentence">
+
+
+
+
+    <fragment
+        android:id="@+id/writing_setp1_fg"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep1Fragment"
+        tools:layout="@layout/writing_sentence_step1">
+        <action
+            android:id="@+id/action_writing_setp1_fg_to_writing_setp2_fg"
+            app:destination="@id/writing_setp2_fg" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_setp2_fg"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep2Fragment"
+        tools:layout="@layout/writing_sentence_step2">
+        <action
+            android:id="@+id/action_writing_setp2_fg_to_writing_setp3_fg"
+            app:destination="@id/writing_setp3_fg" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_setp3_fg"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep3Fragment"
+        tools:layout="@layout/writing_sentence_step3">
+    </fragment>
+
+</navigation>
