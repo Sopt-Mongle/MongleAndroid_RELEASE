@@ -73,7 +73,7 @@
         android:layout_height="45dp"
         android:background="@drawable/btn_white"
         android:gravity="center"
-        android:text="이 테마에 문장 쓰러가기"
+        android:text="메인으로 돌아가기"
         android:textColor="@color/soft_green"
         android:textSize="16sp"
         android:layout_marginTop="542dp"
