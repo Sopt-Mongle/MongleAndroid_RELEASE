@@ -13,7 +13,7 @@ import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
 
 class WritingSentenceFinishFragment : Fragment() {
-    private val act : WritingSentenceActivity = context as WritingSentenceActivity
+    private val act by lazy { context as WritingSentenceActivity }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
