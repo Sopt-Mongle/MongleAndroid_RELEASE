@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.writing_theme_finish.*
 import kotlinx.android.synthetic.main.writing_theme_step1.*
 
 class WritingThemeActivity : AppCompatActivity() {
-    var btnResult : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,15 +60,6 @@ class WritingThemeActivity : AppCompatActivity() {
             val dlg = DialogMakethemeCheck(this)
             dlg.start()
             dlg.setOnOKClickedListener{
-                if(dlg.result){
-                    writing_theme_step1_et_sentence.unshowKeyboard()
-                    Toast.makeText(this, "btnResult true", Toast.LENGTH_SHORT).show()
-
-                    writing_theme_finish_btn_main.setOnClickListener {
-                        val intent = Intent(this@WritingThemeActivity , MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                }
             }
         }
 

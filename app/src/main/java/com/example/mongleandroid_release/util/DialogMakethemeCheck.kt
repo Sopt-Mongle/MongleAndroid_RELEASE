@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.WritingThemeActivity
+import com.example.mongleandroid_release.showKeyboard
 import com.example.mongleandroid_release.unshowKeyboard
 import kotlinx.android.synthetic.main.writing_theme_finish.*
 import kotlinx.android.synthetic.main.writing_theme_step1.*
@@ -19,8 +20,7 @@ import kotlinx.android.synthetic.main.writing_theme_step1.*
 
 class DialogMakethemeCheck(context : Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
-    val act : WritingThemeActivity = context as WritingThemeActivity
-    var result: Boolean = false
+    private val act : WritingThemeActivity = context as WritingThemeActivity
     private lateinit var maketheme_popup_title : TextView
     private lateinit var maketheme_popup_yes : TextView
     private lateinit var maketheme_popup_no : TextView
@@ -34,41 +34,34 @@ class DialogMakethemeCheck(context : Context) {
         dlg.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dlg.setContentView(R.layout.dialog_writing_theme_check)     //다이얼로그에 사용할 xml 파일을 불러옴
 
+
         dlg.show()
 
 
     }
-
-    fun dismiss(){
-        dlg.dismiss()
-    }
-
     fun setOnOKClickedListener(listener: (String) -> Unit) {
         this.listener = object:
             MyDialogOKClickedListener {
 
             override fun onOKClicked(content: String) {
                 listener(content)
-
             }
         }
 
         maketheme_popup_yes = dlg.findViewById(R.id.dialog_writing_theme_check_yes)
         maketheme_popup_yes.setOnClickListener{
-//            act.btnResult = true
-            result = true
             act.setContentView(R.layout.writing_theme_finish)
             dlg.dismiss()
             act.writing_theme_finish_btn_main.setOnClickListener {
                 val intent = Intent(it.context , MainActivity::class.java)
                 it.context.startActivity(intent)
+                act.finish()
             }
         }
 
         maketheme_popup_no = dlg.findViewById(R.id.dialog_writing_theme_check_no)
         maketheme_popup_no.setOnClickListener {
-//            act.btnResult = false
-            result = false
+            dlg.dismiss()
         }
 
     }
