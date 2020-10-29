@@ -9,14 +9,12 @@
 
     <FrameLayout
         android:id="@+id/main_activity_fg"
-        android:name="com.example.mongleandroid.CuratorFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/main_activity_FL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </FrameLayout>
 
 
