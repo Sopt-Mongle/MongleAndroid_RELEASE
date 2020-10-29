@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.WritingSentenceStep1Fragment">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -187,7 +189,7 @@
         app:layout_constraintTop_toTopOf="@+id/writing_sentence_step1_tv_cnt" />
 
     <TextView
-        android:id="@+id/writing_sentence_step1_next"
+        android:id="@+id/writing_sentence_step1_btn_next"
         style="@android:style/ButtonBar"
         android:layout_width="0dp"
         android:layout_height="58dp"
