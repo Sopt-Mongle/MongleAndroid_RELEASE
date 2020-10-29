@@ -8,9 +8,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.SearchThemeViewHolder
 import com.example.mongleandroid_release.network.data.response.SearchTheme
 
-class SearchThemeAdapter(private val context: Context) : RecyclerView.Adapter<SearchThemeViewHolder>() {
-
-    var datas = mutableListOf<SearchTheme>()
+class SearchThemeAdapter(private val context: Context, var datas : List<SearchTheme>) : RecyclerView.Adapter<SearchThemeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchThemeViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_search_theme, parent, false)
