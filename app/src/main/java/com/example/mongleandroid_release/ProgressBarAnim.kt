@@ -1,6 +1,8 @@
 package com.example.mongleandroid_release
 
 import android.animation.ObjectAnimator
+import android.view.View
+import android.widget.EditText
 import android.widget.ProgressBar
 import kotlinx.android.synthetic.main.activity_join_step2.*
 import java.util.logging.Handler
@@ -12,6 +14,16 @@ fun android.os.Handler.ProgressBarAnim(ProgressBar: ProgressBar){
         progressAnimator.setDuration(500)
         progressAnimator.start()
     }, 200)
+}
+
+fun EditText.forProgressOn(outView: View, inView: View){
+    if(this.text.isNotEmpty()){
+        outView.setBackgroundResource(R.drawable.dot_circle_progresson_out)
+        inView.setBackgroundResource(R.drawable.dot_circle_progresson_in)
+    }else{
+        outView.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
+        inView.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
+    }
 }
 
 // 액티비티 전환 시 안드로이드 자체에서 뷰 전환 애니메이션 발생하므로,
