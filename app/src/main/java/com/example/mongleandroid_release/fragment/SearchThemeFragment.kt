@@ -2,11 +2,12 @@ package com.example.mongleandroid_release.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchThemeAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -33,10 +34,14 @@ class SearchThemeFragment : Fragment() {
             words = search_result
         ).enqueue(object : Callback<ResponseSearchThemeData> {
             override fun onFailure(call: Call<ResponseSearchThemeData>, t: Throwable) {
-                Log.e("통신실패",t.toString())
+                Log.e("통신실패", t.toString())
             }
-            override fun onResponse(call: Call<ResponseSearchThemeData>, response: Response<ResponseSearchThemeData>) {
-                if (response.isSuccessful){
+
+            override fun onResponse(
+                call: Call<ResponseSearchThemeData>,
+                response: Response<ResponseSearchThemeData>
+            ) {
+                if (response.isSuccessful) {
                     response.body().let { body ->
                         Log.d("테마 검색", response.body()!!.message)
                         fragment_search_theme_tv_count.text = body!!.data.size.toString()
@@ -54,5 +59,4 @@ class SearchThemeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search_theme, container, false)
     }
-
 }

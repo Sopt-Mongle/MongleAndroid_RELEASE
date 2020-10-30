@@ -18,4 +18,8 @@ class SearchTabAdapter(fm:FragmentManager)
     }
 
     override fun getCount() = 3
+
+    override fun getItemPosition(`object`: Any): Int {
+        return POSITION_NONE
+    }
 }
