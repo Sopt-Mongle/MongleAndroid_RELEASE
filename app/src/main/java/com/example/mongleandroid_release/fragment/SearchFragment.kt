@@ -36,8 +36,6 @@ class SearchFragment : Fragment() {
 
     private val requestToServer = RequestToServer
 
-    val theme_data = mutableListOf<SearchTheme>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,23 +67,14 @@ class SearchFragment : Fragment() {
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
 
-            fragment_search_cl_before.visibility = GONE
-            fragment_search_cl_after.visibility = VISIBLE
-
-            // tablayout 배치
-            val resultTabLayout = view.findViewById(R.id.search_result_tab) as TabLayout
-            val resultViewPager = view.findViewById(R.id.search_result_viewpager) as ViewPager
-            resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
-            resultViewPager.offscreenPageLimit = 1
-            resultTabLayout.setupWithViewPager(resultViewPager)
-            resultTabLayout.getTabAt(0)!!.text = "테마"
-            resultTabLayout.getTabAt(1)!!.text = "문장"
-            resultTabLayout.getTabAt(2)!!.text = "큐레이터"
+            // 검색 결과 Tab 배치
+            goResult()
 
             // 검색어 뷰홀더로 보내주는 부분 (Fragment - MainActivity - ViewHolder)
             val searchword = fragment_search_et_search.text.toString()
             search_result = searchword.trim()
         }
+
 
         // 최근 키워드 전체 삭제
         fragment_search_tv_delete.setOnClickListener {
@@ -143,6 +132,17 @@ class SearchFragment : Fragment() {
                             fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
                             searchRecentAdapter.datas = response.body()!!.data
                             searchRecentAdapter.notifyDataSetChanged()
+
+                            searchRecentAdapter.setItemClickListener(
+                                object : SearchRecentAdapter.ItemClickListener{
+                                override fun onClick(view: View, position: Int) {
+                                    // 선택한 최근 검색어로 검색
+                                    goResult()
+                                    val searchword = response.body()!!.data[position]
+                                    search_result = searchword.trim()
+                                }
+
+                            })
                         }
                         Log.d("최근 검색어", response.body().toString())
                     }
@@ -150,6 +150,23 @@ class SearchFragment : Fragment() {
                 }
             }
         )
+
+    }
+
+    // 검색결과로 이동
+    private fun goResult() {
+        fragment_search_cl_before.visibility = GONE
+        fragment_search_cl_after.visibility = VISIBLE
+
+        // tablayout 배치
+        val resultTabLayout = view!!.findViewById(R.id.search_result_tab) as TabLayout
+        val resultViewPager = view!!.findViewById(R.id.search_result_viewpager) as ViewPager
+        resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
+        resultViewPager.offscreenPageLimit = 1
+        resultTabLayout.setupWithViewPager(resultViewPager)
+        resultTabLayout.getTabAt(0)!!.text = "테마"
+        resultTabLayout.getTabAt(1)!!.text = "문장"
+        resultTabLayout.getTabAt(2)!!.text = "큐레이터"
 
     }
 
