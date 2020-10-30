@@ -69,7 +69,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="7sp"
-                android:text="개인정보 처리방침"
+                android:text="개인정보 이용약관"
                 android:textColor="#717171"
                 android:textSize="23sp"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
