@@ -153,22 +153,6 @@ class SearchFragment : Fragment() {
 
     }
 
-    // 검색결과로 이동
-    private fun goResult() {
-        fragment_search_cl_before.visibility = GONE
-        fragment_search_cl_after.visibility = VISIBLE
-
-        // tablayout 배치
-        val resultTabLayout = view!!.findViewById(R.id.search_result_tab) as TabLayout
-        val resultViewPager = view!!.findViewById(R.id.search_result_viewpager) as ViewPager
-        resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
-        resultViewPager.offscreenPageLimit = 1
-        resultTabLayout.setupWithViewPager(resultViewPager)
-        resultTabLayout.getTabAt(0)!!.text = "테마"
-        resultTabLayout.getTabAt(1)!!.text = "문장"
-        resultTabLayout.getTabAt(2)!!.text = "큐레이터"
-
-    }
 
     // 추천 키워드
     private fun recommendKeyword() {
@@ -196,6 +180,12 @@ class SearchFragment : Fragment() {
                             )
                             val tv = view!!.findViewById(resId) as TextView?
                             tv?.text = response.body()!!.data[i].toString()
+                            tv?.setOnClickListener {
+                                // 선택한 추천 검색어로 검색
+                                goResult()
+                                val searchword = response.body()!!.data[i].toString()
+                                search_result = searchword.trim()
+                            }
                         }
 
                     }
@@ -203,6 +193,23 @@ class SearchFragment : Fragment() {
                 }
             }
         )
+
+    }
+
+    // 검색결과로 이동
+    private fun goResult() {
+        fragment_search_cl_before.visibility = GONE
+        fragment_search_cl_after.visibility = VISIBLE
+
+        // tablayout 배치
+        val resultTabLayout = view!!.findViewById(R.id.search_result_tab) as TabLayout
+        val resultViewPager = view!!.findViewById(R.id.search_result_viewpager) as ViewPager
+        resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
+        resultViewPager.offscreenPageLimit = 1
+        resultTabLayout.setupWithViewPager(resultViewPager)
+        resultTabLayout.getTabAt(0)!!.text = "테마"
+        resultTabLayout.getTabAt(1)!!.text = "문장"
+        resultTabLayout.getTabAt(2)!!.text = "큐레이터"
 
     }
 
