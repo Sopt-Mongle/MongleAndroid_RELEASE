@@ -9,11 +9,11 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -22,6 +22,7 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
+import com.example.mongleandroid_release.network.data.response.SearchTheme
 import com.example.mongleandroid_release.showKeyboard
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -34,6 +35,8 @@ class SearchFragment : Fragment() {
     lateinit var searchRecentAdapter: SearchRecentAdapter
 
     private val requestToServer = RequestToServer
+
+    val theme_data = mutableListOf<SearchTheme>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,19 +73,18 @@ class SearchFragment : Fragment() {
             fragment_search_cl_after.visibility = VISIBLE
 
             // tablayout 배치
-            val ResultTabLayout = view.findViewById(R.id.search_result_tab) as TabLayout
-            val ResultViewPager = view.findViewById(R.id.search_result_viewpager) as ViewPager
-            val tab_adapter = SearchTabAdapter(childFragmentManager)
-            ResultViewPager.adapter = tab_adapter
-            ResultTabLayout.setupWithViewPager(ResultViewPager)
-            ResultTabLayout.getTabAt(0)!!.text = "테마"
-            ResultTabLayout.getTabAt(1)!!.text = "문장"
-            ResultTabLayout.getTabAt(2)!!.text = "큐레이터"
+            val resultTabLayout = view.findViewById(R.id.search_result_tab) as TabLayout
+            val resultViewPager = view.findViewById(R.id.search_result_viewpager) as ViewPager
+            resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
+            resultViewPager.offscreenPageLimit = 1
+            resultTabLayout.setupWithViewPager(resultViewPager)
+            resultTabLayout.getTabAt(0)!!.text = "테마"
+            resultTabLayout.getTabAt(1)!!.text = "문장"
+            resultTabLayout.getTabAt(2)!!.text = "큐레이터"
 
             // 검색어 뷰홀더로 보내주는 부분 (Fragment - MainActivity - ViewHolder)
             val searchword = fragment_search_et_search.text.toString()
             search_result = searchword.trim()
-
         }
 
         // 최근 키워드 전체 삭제
@@ -130,16 +132,19 @@ class SearchFragment : Fragment() {
                     response: Response<ResponseSearchRecentData>
                 ) {
                     if (response.isSuccessful) {
-                        Log.d("최근 검색어", response.body()!!.message)
+                        if(response.body()!!.data.isEmpty()) {
+                            fragment_search_tv_no_keyword.visibility = VISIBLE
+                        } else {
+                            val layoutManager = LinearLayoutManager(view!!.context)
+                            layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                            fragment_search_rv_recent_keyword.layoutManager = layoutManager
 
-                        val layoutManager = LinearLayoutManager(view!!.context)
-                        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-                        fragment_search_rv_recent_keyword.layoutManager = layoutManager
-
-                        searchRecentAdapter = SearchRecentAdapter(view!!.context)
-                        fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
-                        searchRecentAdapter.datas = response.body()!!.data
-                        searchRecentAdapter.notifyDataSetChanged()
+                            searchRecentAdapter = SearchRecentAdapter(view!!.context)
+                            fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
+                            searchRecentAdapter.datas = response.body()!!.data
+                            searchRecentAdapter.notifyDataSetChanged()
+                        }
+                        Log.d("최근 검색어", response.body().toString())
                     }
 
                 }
@@ -183,7 +188,5 @@ class SearchFragment : Fragment() {
         )
 
     }
-
-
 
 }
