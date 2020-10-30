@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_join_step2.*
 import java.util.logging.Handler
 
 // 프로그래스바 애니메이션 확장함수
-fun android.os.Handler.ProgressBarAnim(ProgressBar: ProgressBar){
+fun android.os.Handler.forProgressBar(ProgressBar: ProgressBar){
     android.os.Handler().postDelayed({
         val progressAnimator = ObjectAnimator.ofInt(ProgressBar, "progress", 0, 50)
         progressAnimator.setDuration(500)

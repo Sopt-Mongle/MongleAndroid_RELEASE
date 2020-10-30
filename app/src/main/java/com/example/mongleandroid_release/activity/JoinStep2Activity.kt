@@ -11,7 +11,6 @@ import android.view.View.VISIBLE
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mongleandroid_release.ProgressBarAnim
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_join_step2.*
 import java.util.regex.Pattern

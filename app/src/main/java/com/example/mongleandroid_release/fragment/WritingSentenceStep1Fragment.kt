@@ -1,16 +1,21 @@
 package com.example.mongleandroid_release.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
+import com.example.mongleandroid_release.forProgressOn
+import kotlinx.android.synthetic.main.activity_join_step2.*
 
 class WritingSentenceStep1Fragment : Fragment() {
 
@@ -31,14 +36,32 @@ class WritingSentenceStep1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // forProgressOn
+        view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).
+                forProgressOn(view.findViewById(R.id.writing_sentence_step1_pgb_out),
+                    view.findViewById(R.id.writing_sentence_step1_pgb_in))
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // user reaction
+            }
+
+        })
+
         // 다음 버튼
         view.findViewById<TextView>(R.id.writing_sentence_step1_btn_next).setOnClickListener {
             it.findNavController().navigate(R.id.action_writing_step1_fg_to_writing_step2_fg)
         }
+        // 나가기 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_step1_btn_out).setOnClickListener {
             act.finish()
         }
-
 
     }
 }
