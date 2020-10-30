@@ -130,16 +130,19 @@ class SearchFragment : Fragment() {
                     response: Response<ResponseSearchRecentData>
                 ) {
                     if (response.isSuccessful) {
-                        Log.d("최근 검색어", response.body()!!.message)
+                        if(response.body()!!.data.isEmpty()) {
+                            fragment_search_tv_no_keyword.visibility = VISIBLE
+                        } else {
+                            val layoutManager = LinearLayoutManager(view!!.context)
+                            layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                            fragment_search_rv_recent_keyword.layoutManager = layoutManager
 
-                        val layoutManager = LinearLayoutManager(view!!.context)
-                        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-                        fragment_search_rv_recent_keyword.layoutManager = layoutManager
-
-                        searchRecentAdapter = SearchRecentAdapter(view!!.context)
-                        fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
-                        searchRecentAdapter.datas = response.body()!!.data
-                        searchRecentAdapter.notifyDataSetChanged()
+                            searchRecentAdapter = SearchRecentAdapter(view!!.context)
+                            fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
+                            searchRecentAdapter.datas = response.body()!!.data
+                            searchRecentAdapter.notifyDataSetChanged()
+                        }
+                        Log.d("최근 검색어", response.body().toString())
                     }
 
                 }
