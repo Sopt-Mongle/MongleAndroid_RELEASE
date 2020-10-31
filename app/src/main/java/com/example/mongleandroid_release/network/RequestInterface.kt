@@ -35,6 +35,12 @@ interface RequestInterface {
     @GET("/curator/recommend")
     fun getRecommendCurator() : Call<ResponseRecommendCuratorData>
 
+    // 테마 속 큐레이터
+    @GET("/curator/themeInCurator")
+    fun requestCuratorInThemeData(
+        @Header("token") token: String?
+    ) : Call<ResponseCuratorInThemeData>
+
     // 로그인
     @POST("/users/signin")
     fun requestLogin(@Body body: RequestLoginData) : Call<ResponseLoginData>
