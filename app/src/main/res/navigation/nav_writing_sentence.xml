@@ -35,13 +35,19 @@
             app:destination="@id/writing_sentence_book_search_fragment" />
         <argument
             android:name="title"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
         <argument
             android:name="author"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
         <argument
             android:name="publisher"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
     </fragment>
 
     <fragment
@@ -76,7 +82,9 @@
         tools:layout="@layout/writing_sentence_book_search">
         <action
             android:id="@+id/action_writing_sentence_book_search_fragment_to_writing_sentence_step2_fragment"
-            app:destination="@id/writing_sentence_step2_fragment" />
+            app:destination="@id/writing_sentence_step2_fragment"
+            app:popUpTo="@+id/writing_sentence_step2_fragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -85,7 +93,9 @@
         tools:layout="@layout/writing_theme_step1">
         <action
             android:id="@+id/action_writing_sentence_theme_search_fragment_to_writing_sentence_step3_fragment"
-            app:destination="@id/writing_sentence_step3_fragment" />
+            app:destination="@id/writing_sentence_step3_fragment"
+            app:popUpTo="@+id/writing_sentence_step3_fragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 </navigation>

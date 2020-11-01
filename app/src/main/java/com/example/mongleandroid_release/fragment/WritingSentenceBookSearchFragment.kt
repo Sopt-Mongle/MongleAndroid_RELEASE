@@ -63,6 +63,11 @@ class WritingSentenceBookSearchFragment : Fragment() {
         // 검색 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_search).setOnClickListener {
 
+            val action = WritingSentenceBookSearchFragmentDirections.
+            actionWritingSentenceBookSearchFragmentToWritingSentenceStep2Fragment("haha sery270", "sery270", "SOPT")
+            it.findNavController().navigate(action)
+
+
         }
 
 

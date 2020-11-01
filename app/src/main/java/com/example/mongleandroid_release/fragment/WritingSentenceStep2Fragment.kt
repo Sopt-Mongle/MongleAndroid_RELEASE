@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.forProgressBar
 import com.example.mongleandroid_release.forProgressOn
@@ -36,16 +37,26 @@ class WritingSentenceStep2Fragment : Fragment() {
     }
 
 
+    val args: WritingSentenceStep2FragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (!args.title.isNullOrEmpty()){
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text = args.title.toString()
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text = args.author.toString()
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text = args.publisher.toString()
+        }
+
+
+
+
+
 
         // forProgressOn
         view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).addTextChangedListener(object :
             TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).
-                forProgressOn(view.findViewById(R.id.writing_sentence_step2_pgb_out2),
-                    view.findViewById(R.id.writing_sentence_step2_pgb_in2))
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -56,7 +67,15 @@ class WritingSentenceStep2Fragment : Fragment() {
                 // user reaction
             }
 
+
+
         })
+
+        if(!view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text.isNullOrEmpty()){
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).
+            forProgressOn(view.findViewById(R.id.writing_sentence_step2_pgb_out2),
+                view.findViewById(R.id.writing_sentence_step2_pgb_in2))
+        }
 
 
 
@@ -68,7 +87,7 @@ class WritingSentenceStep2Fragment : Fragment() {
         // 뒤로가기 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_step2_btn_back).setOnClickListener {
             it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step1_fg)
-
+//            it.findNavController().navigateUp()
         }
 
 
