@@ -50,6 +50,9 @@ class WritingSentenceStep1Fragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // user reaction
+                //실시간 글자 수 세기
+                view.findViewById<TextView>(R.id.writing_sentence_step1_tv_cnt).text =
+                    view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).text.toString().length.toString()
             }
 
         })

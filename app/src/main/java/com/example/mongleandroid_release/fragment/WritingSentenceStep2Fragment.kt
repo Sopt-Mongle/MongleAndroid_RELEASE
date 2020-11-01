@@ -1,27 +1,23 @@
 package com.example.mongleandroid_release.fragment
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.forProgressBar
 import com.example.mongleandroid_release.forProgressOn
-import kotlinx.android.synthetic.main.activity_join_step2.*
+
 
 class WritingSentenceStep2Fragment : Fragment() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -68,10 +64,20 @@ class WritingSentenceStep2Fragment : Fragment() {
         view.findViewById<TextView>(R.id.writing_sentence_step2_btn_next).setOnClickListener {
             it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step3_fg)
         }
+
+        // 뒤로가기 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_step2_btn_back).setOnClickListener {
             it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step1_fg)
 
         }
+
+
+        // 책 검색 버튼
+        view.findViewById<ImageView>(R.id.writing_sentence_step2_btn_book_search).setOnClickListener{
+            it.findNavController().navigate(R.id.action_writing_sentence_step2_fragment_to_writing_sentence_book_search_fragment)
+
+        }
+
     }
 
 }

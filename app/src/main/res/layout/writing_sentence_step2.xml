@@ -170,6 +170,17 @@
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
         />
 
+    <ImageView
+        android:id="@+id/writing_sentence_step2_btn_book_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_btn_search"
+        android:padding="13dp"
+        app:layout_constraintEnd_toEndOf="@id/writing_sentence_step2_tv_title"
+        app:layout_constraintTop_toTopOf="@id/writing_sentence_step2_tv_title"
+        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_step2_tv_title"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

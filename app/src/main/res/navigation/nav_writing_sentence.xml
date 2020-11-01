@@ -30,6 +30,18 @@
             android:id="@+id/action_writing_step2_fg_to_writing_step1_fg"
             app:destination="@id/writing_sentence_step1_fragment"
             />
+        <action
+            android:id="@+id/action_writing_sentence_step2_fragment_to_writing_sentence_book_search_fragment"
+            app:destination="@id/writing_sentence_book_search_fragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="author"
+            app:argType="string" />
+        <argument
+            android:name="publisher"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -43,13 +55,37 @@
         <action
             android:id="@+id/action_writing_sentence_step3_fragment_to_writing_sentence_finish_fragment"
             app:destination="@id/writing_sentence_finish_fragment" />
+        <action
+            android:id="@+id/action_writing_sentence_step3_fragment_to_writing_sentence_theme_search_fragment"
+            app:destination="@id/writing_sentence_theme_search_fragment" />
+        <argument
+            android:name="theme"
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/writing_sentence_finish_fragment"
         android:name="com.example.mongleandroid_release.fragment.WritingSentenceFinishFragment"
         tools:layout="@layout/writing_sentence_finish">
+    </fragment>
 
+
+    <fragment
+        android:id="@+id/writing_sentence_book_search_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceBookSearchFragment"
+        tools:layout="@layout/writing_sentence_book_search">
+        <action
+            android:id="@+id/action_writing_sentence_book_search_fragment_to_writing_sentence_step2_fragment"
+            app:destination="@id/writing_sentence_step2_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_sentence_theme_search_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceThemeSearchFragment"
+        tools:layout="@layout/writing_theme_step1">
+        <action
+            android:id="@+id/action_writing_sentence_theme_search_fragment_to_writing_sentence_step3_fragment"
+            app:destination="@id/writing_sentence_step3_fragment" />
     </fragment>
 
 </navigation>
