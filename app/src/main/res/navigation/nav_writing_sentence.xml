@@ -71,7 +71,9 @@
             app:destination="@id/writing_sentence_theme_search_fragment" />
         <argument
             android:name="theme"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
     </fragment>
 
     <fragment
