@@ -6,17 +6,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.network.data.response.MainThemes
+import com.example.mongleandroid_release.network.data.response.ResponseMainHotThemeData
 
 class HotThemeViewHolder(itemView: View) :  RecyclerView.ViewHolder(itemView){
     val theme = itemView.findViewById<TextView>(R.id.tv_main_hot_theme)
     val sentenceNum = itemView.findViewById<TextView>(R.id.tv_main_hot_theme_count)
     val themeImg = itemView.findViewById<ImageView>(R.id.img_theme_background)
 
-    fun bind(mainThemes: MainThemes){
+    fun bind(mainThemes: ResponseMainHotThemeData){
 
-        theme.text = mainThemes.theme
-        sentenceNum.text = mainThemes.sentenceNum.toString()
-        Glide.with(itemView).load(mainThemes.themeImg).into(themeImg)
+        theme.text = mainThemes.toString()
+        sentenceNum.text = sentenceNum.toString()
+        Glide.with(itemView).load(themeImg).into(themeImg)
     }
 }
