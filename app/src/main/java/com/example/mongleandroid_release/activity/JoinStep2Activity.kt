@@ -11,7 +11,6 @@ import android.view.View.VISIBLE
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mongleandroid_release.ProgressBarAnim
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_join_step2.*
 import java.util.regex.Pattern
@@ -83,7 +82,7 @@ class JoinStep2Activity : AppCompatActivity() {
         })
 
         // email 입력창 focus -> warning 문구 해제, et_green 설정
-        activity_join_step2_et_email.setOnFocusChangeListener { v, hasFocus ->
+        activity_join_step2_et_email.setOnFocusChangeListener { _, hasFocus ->
             activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_green, null)
             activity_join_step2_img_email_warning.visibility = GONE
             activity_join_step2_tv_email_warning.visibility = GONE
@@ -117,7 +116,7 @@ class JoinStep2Activity : AppCompatActivity() {
 
 
         // password 입력창 focus -> warning 문구 해제, et_green 설정
-        activity_join_step2_et_pass.setOnFocusChangeListener { v, hasFocus ->
+        activity_join_step2_et_pass.setOnFocusChangeListener { _, hasFocus ->
             // warning 문구 해제
             activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area_green, null)
             activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
@@ -185,7 +184,7 @@ class JoinStep2Activity : AppCompatActivity() {
 
 
         // password check 입력창 focus -> warning 문구 해제, et_green 설정
-        activity_join_step2_et_passcheck.setOnFocusChangeListener { v, hasFocus ->
+        activity_join_step2_et_passcheck.setOnFocusChangeListener { _, hasFocus ->
             // warning 문구 해제
             activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
             activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area_green, null)
@@ -270,7 +269,7 @@ class JoinStep2Activity : AppCompatActivity() {
         })
 
         // nickname 입력창 focus -> warning 문구 해제, et_green 설정
-        activity_join_step2_et_nickname.setOnFocusChangeListener { v, hasFocus ->
+        activity_join_step2_et_nickname.setOnFocusChangeListener { _, hasFocus ->
 
             activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_green, null)
             activity_join_step2_img_nickname_warning.visibility = GONE

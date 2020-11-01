@@ -1,12 +1,18 @@
 package com.example.mongleandroid_release.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
+
+
+
+
 
 class WritingSentenceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_writing_sentence)
+
     }
+
 }

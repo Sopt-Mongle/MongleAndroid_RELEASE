@@ -8,10 +8,8 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import androidx.core.view.marginTop
-import androidx.core.widget.addTextChangedListener
+import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.R
-import kotlinx.android.synthetic.main.activity_join_step2.*
 import kotlinx.android.synthetic.main.activity_join_step3.*
 
 class JoinStep3Activity : AppCompatActivity() {
@@ -33,6 +31,12 @@ class JoinStep3Activity : AppCompatActivity() {
 
         activity_join_step3_btn_back.setOnClickListener {
             finish()
+        }
+
+        // 이메일을 받지 못했을 때 -> dialog -> 재전송
+        activity_join_step3_btn_popup.setOnClickListener {
+            val dlg = DialogJoinStep3(this)
+            dlg.start()
         }
 
         // 인증번호가 일치한다면 -> 조건 추후에 추가
@@ -73,7 +77,7 @@ class JoinStep3Activity : AppCompatActivity() {
     }
 
     private fun changeCodeBackground(editText: EditText) {
-        editText.setOnFocusChangeListener { v, hasFocus ->
+        editText.setOnFocusChangeListener { _, hasFocus ->
             editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
             if(!hasFocus) {
                 if(editText.text.isNotEmpty()) {

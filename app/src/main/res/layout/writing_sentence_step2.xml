@@ -2,7 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.WritingSentenceStep2Fragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_left"
@@ -33,6 +35,7 @@
         android:orientation="horizontal"/>
 
     <ImageView
+        android:id="@+id/writing_sentence_step2_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_back"
@@ -70,7 +73,7 @@
         android:id="@+id/writing_sentence_step2_pgb_out"
         android:layout_width="26dp"
         android:layout_height="26dp"
-        android:background="@drawable/dot_circle_progressoff_out"
+        android:background="@drawable/dot_circle_progresson_out"
         app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb" />
@@ -80,7 +83,7 @@
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginStart="7dp"
-        android:background="@drawable/dot_circle_progressoff_in"
+        android:background="@drawable/dot_circle_progresson_in"
         app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_step2_pgb"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintTop_toTopOf="@+id/writing_sentence_step2_pgb" />
@@ -167,6 +170,41 @@
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
         />
 
+    <ImageView
+        android:id="@+id/writing_sentence_step2_btn_book_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/main_btn_search"
+        android:padding="13dp"
+        app:layout_constraintEnd_toEndOf="@id/writing_sentence_step2_tv_title"
+        app:layout_constraintTop_toTopOf="@id/writing_sentence_step2_tv_title"
+        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_step2_tv_title"
+        />
+
+    <LinearLayout
+        android:id="@+id/writing_sentence_step2_ll_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/writing_sentence_step2_tv_title"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginVertical="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="책 제목을 검색해주세요!"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/reddish"/>
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -223,7 +261,7 @@
 
 
     <TextView
-        android:id="@+id/writing_sentence_step2_next"
+        android:id="@+id/writing_sentence_step2_btn_next"
         style="@android:style/ButtonBar"
         android:layout_width="0dp"
         android:layout_height="58dp"

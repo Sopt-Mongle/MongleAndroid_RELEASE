@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_writing_sentence"
+    app:startDestination="@id/writing_sentence_step1_fragment">
+
+
+
+
+    <fragment
+        android:id="@+id/writing_sentence_step1_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep1Fragment"
+        tools:layout="@layout/writing_sentence_step1">
+        <action
+            android:id="@+id/action_writing_step1_fg_to_writing_step2_fg"
+            app:destination="@id/writing_sentence_step2_fragment"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_sentence_step2_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep2Fragment"
+        tools:layout="@layout/writing_sentence_step2">
+        <action
+            android:id="@+id/action_writing_step2_fg_to_writing_step3_fg"
+            app:destination="@id/writing_sentence_step3_fragment"
+            />
+        <action
+            android:id="@+id/action_writing_step2_fg_to_writing_step1_fg"
+            app:destination="@id/writing_sentence_step1_fragment"
+            app:popUpTo="@+id/writing_sentence_step1_fragment"
+            app:popUpToInclusive="true"
+
+            />
+        <action
+            android:id="@+id/action_writing_sentence_step2_fragment_to_writing_sentence_book_search_fragment"
+            app:destination="@id/writing_sentence_book_search_fragment" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
+        <argument
+            android:name="author"
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
+        <argument
+            android:name="publisher"
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_sentence_step3_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep3Fragment"
+        tools:layout="@layout/writing_sentence_step3">
+        <action
+            android:id="@+id/action_writing_step3_fg_to_writing_step2_fg"
+            app:destination="@id/writing_sentence_step2_fragment"
+            app:popUpTo="@+id/writing_sentence_step2_fragment"
+            app:popUpToInclusive="true"
+           />
+        <action
+            android:id="@+id/action_writing_sentence_step3_fragment_to_writing_sentence_finish_fragment"
+            app:destination="@id/writing_sentence_finish_fragment" />
+        <action
+            android:id="@+id/action_writing_sentence_step3_fragment_to_writing_sentence_theme_search_fragment"
+            app:destination="@id/writing_sentence_theme_search_fragment" />
+        <argument
+            android:name="theme"
+            app:argType="string"
+            app:nullable="false"
+            android:defaultValue=""/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_sentence_finish_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceFinishFragment"
+        tools:layout="@layout/writing_sentence_finish">
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/writing_sentence_book_search_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceBookSearchFragment"
+        tools:layout="@layout/writing_sentence_book_search">
+        <action
+            android:id="@+id/action_writing_sentence_book_search_fragment_to_writing_sentence_step2_fragment"
+            app:destination="@id/writing_sentence_step2_fragment"
+            app:popUpTo="@+id/writing_sentence_step2_fragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/writing_sentence_theme_search_fragment"
+        android:name="com.example.mongleandroid_release.fragment.WritingSentenceThemeSearchFragment"
+        tools:layout="@layout/writing_theme_step1">
+        <action
+            android:id="@+id/action_writing_sentence_theme_search_fragment_to_writing_sentence_step3_fragment"
+            app:destination="@id/writing_sentence_step3_fragment"
+            app:popUpTo="@+id/writing_sentence_step3_fragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+</navigation>
