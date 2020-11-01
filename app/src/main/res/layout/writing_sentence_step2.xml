@@ -181,6 +181,30 @@
         app:layout_constraintBottom_toBottomOf="@id/writing_sentence_step2_tv_title"
         />
 
+    <LinearLayout
+        android:id="@+id/writing_sentence_step2_ll_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/writing_sentence_step2_tv_title"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginVertical="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="책 제목을 검색해주세요!"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/reddish"/>
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
