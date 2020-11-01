@@ -36,9 +36,9 @@ class WritingSentenceBookSearchFragment : Fragment() {
     val datas: MutableList<BookData>? = mutableListOf<BookData>()
 
     private var keyword :String = ""
-    private var title :String = "sdga"
-    private var author :String = "sdga"
-    private var publisher :String = "gdg"
+    private var title :String = ""
+    private var author :String = ""
+    private var publisher :String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -132,20 +132,16 @@ class WritingSentenceBookSearchFragment : Fragment() {
                         )
 
 
-                        // rv 동작 게시
-                        writingSentenceBookSearchAdapter.datas = body.data
-                        writingSentenceBookSearchAdapter.notifyDataSetChanged()
-
-
-
-
-                        if(body.data.size == 0){
+                        if(body.data.isNullOrEmpty()){
                             //if 서버 통신 성공 && 결과 없음
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.GONE
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_no).visibility = View.VISIBLE
 
                         }else{
+                            // rv 동작 게시
+                            writingSentenceBookSearchAdapter.datas = body.data
+                            writingSentenceBookSearchAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.VISIBLE

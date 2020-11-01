@@ -1,5 +1,4 @@
 package com.example.mongleandroid_release.adapter
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
