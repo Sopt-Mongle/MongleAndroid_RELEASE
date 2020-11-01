@@ -1,6 +1,8 @@
 package com.example.mongleandroid_release.network
 
 import com.example.mongleandroid_release.network.data.request.RequestLoginData
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
+import com.example.mongleandroid_release.network.data.request.RequestWritingThemeData
 import com.example.mongleandroid_release.network.data.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -80,5 +82,23 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Query("words") words: String
     ) : Call<ResponseSearchCuratorData>
+
+    //테마 만들기
+    @POST("/post/theme")
+    fun RequestWritingTheme(@Body body: RequestWritingThemeData) : Call<ResponseWritingThemeData>
+
+    //문장 올리기
+    @POST("/post/sentence")
+    fun RequestWritingSentence(@Body body: RequestWritingSentenceData) : Call<ResponseWritingSentenceData>
+
+    //제목으로 책 검색
+    @GET("/post/bookSearch")
+    fun RequestWritingSentenceBookSearch(
+        @Query("query") keyword: String
+    ) :Call<ResponseWritingSentenceBookSearchData>
+
+    //선택할 테마 목록 조회
+    @GET("/post/theme")
+    fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchData>
 
 }
