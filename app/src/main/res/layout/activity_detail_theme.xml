@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/img_main_theme_activity_back_btn"
+        android:id="@+id/img_detail_theme_activity_back_btn"
         android:layout_width="20dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
@@ -36,7 +36,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_main_theme_activity_back_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/img_detail_theme_activity_back_btn" />
 
     <ImageView
         android:id="@+id/imageView7"
