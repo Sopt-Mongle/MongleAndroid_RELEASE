@@ -70,12 +70,17 @@ class SearchFragment : Fragment() {
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
 
+            if(fragment_search_et_search == null) {
+                val searchword = " "
+                search_result = searchword.trim()
+            } else {
+                val searchword = fragment_search_et_search.text.toString()
+                search_result = searchword.trim()
+            }
+
             // 검색 결과로 이동
             goResult()
 
-            // 검색어 뷰홀더로 보내주는 부분 (Fragment - MainActivity - ViewHolder)
-            val searchword = fragment_search_et_search.text.toString()
-            search_result = searchword.trim()
         }
 
 
