@@ -97,7 +97,7 @@
     <fragment
         android:id="@+id/writing_sentence_theme_search_fragment"
         android:name="com.example.mongleandroid_release.fragment.WritingSentenceThemeSearchFragment"
-        tools:layout="@layout/writing_theme_step1">
+        tools:layout="@layout/writing_sentence_theme_search">
         <action
             android:id="@+id/action_writing_sentence_theme_search_fragment_to_writing_sentence_step3_fragment"
             app:destination="@id/writing_sentence_step3_fragment"

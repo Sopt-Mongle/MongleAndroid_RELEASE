@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.text.set
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -92,6 +93,11 @@ class WritingSentenceBookSearchFragment : Fragment() {
             // 책 제목 넘겨 줌
         }
 
+        // 검색창 비우기
+        view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_delete).setOnClickListener {
+            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setText("")
+        }
+
         // 검색 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_search).setOnClickListener {
 
@@ -101,14 +107,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
 
             }else{
                 requestData(keyword, view)
-//                val action = WritingSentenceBookSearchFragmentDirections.
-//                actionWritingSentenceBookSearchFragmentToWritingSentenceStep2Fragment(title, author, publisher)
-//                it.findNavController().navigate(action)
             }
-
-
-            // user reaction : 검색 결과 키워드 하이라이팅
-
 
         }
 
@@ -130,7 +129,6 @@ class WritingSentenceBookSearchFragment : Fragment() {
                             "ResponseWritingSentenceBookSearchData 통신응답바디",
                             "status: ${body!!.staus} data : ${body!!.message}"
                         )
-
 
                         if(body.data.isNullOrEmpty()){
                             //if 서버 통신 성공 && 결과 없음
