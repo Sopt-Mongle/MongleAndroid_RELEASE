@@ -33,8 +33,14 @@ class SearchSentenceFragment : Fragment() {
             override fun onFailure(call: Call<ResponseSearchSentenceData>, t: Throwable) {
                 Log.e("통신실패",t.toString())
             }
-            override fun onResponse(call: Call<ResponseSearchSentenceData>, response: Response<ResponseSearchSentenceData>) {
+            override fun onResponse(
+                call: Call<ResponseSearchSentenceData>,
+                response: Response<ResponseSearchSentenceData>
+            ) {
+                fragment_search_sentence_cl.visibility = View.GONE
+                fragment_search_sentence_cl_noresult.visibility = View.GONE
                 if (response.isSuccessful){
+                    fragment_search_sentence_cl.visibility = View.VISIBLE
                     response.body().let { body ->
                         Log.d("문장 검색", response.body()!!.message)
                         fragment_search_sentence_tv_count.text = body!!.data.size.toString()
