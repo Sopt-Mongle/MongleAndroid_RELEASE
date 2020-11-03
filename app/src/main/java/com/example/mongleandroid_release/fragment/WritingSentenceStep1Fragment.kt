@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.forProgressOn
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import kotlinx.android.synthetic.main.activity_join_step2.*
 
 class WritingSentenceStep1Fragment : Fragment() {
@@ -70,7 +71,8 @@ class WritingSentenceStep1Fragment : Fragment() {
                 view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence)
                     .setBackgroundResource(R.drawable.et_area_red)
             }else{ //빈칸 없으면 다음으로
-
+                // (/post/sentence) req data init
+                RequestWritingSentenceData(sentence = view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).text.toString())
                 it.findNavController().navigate(R.id.action_writing_step1_fg_to_writing_step2_fg)
             }
 

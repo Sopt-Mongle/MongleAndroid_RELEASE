@@ -1,7 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,18 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
 import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import com.example.mongleandroid_release.network.data.response.BookData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceBookSearchData
 import retrofit2.Call
@@ -36,9 +34,9 @@ class WritingSentenceBookSearchFragment : Fragment() {
     val datas: MutableList<BookData>? = mutableListOf<BookData>()
 
     private var keyword :String = ""
-    private var title :String = "sdga"
-    private var author :String = "sdga"
-    private var publisher :String = "gdg"
+    private var title :String = ""
+    private var author :String = ""
+    private var publisher :String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,6 +90,11 @@ class WritingSentenceBookSearchFragment : Fragment() {
             // 책 제목 넘겨 줌
         }
 
+        // 검색창 비우기
+        view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_delete).setOnClickListener {
+            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setText("")
+        }
+
         // 검색 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_search).setOnClickListener {
 
@@ -100,22 +103,16 @@ class WritingSentenceBookSearchFragment : Fragment() {
             if(keyword.isNullOrBlank()){
 
             }else{
-                requestData(keyword, view)
-//                val action = WritingSentenceBookSearchFragmentDirections.
-//                actionWritingSentenceBookSearchFragmentToWritingSentenceStep2Fragment(title, author, publisher)
-//                it.findNavController().navigate(action)
+                bookSearch(keyword, view)
             }
-
-
-            // user reaction : 검색 결과 키워드 하이라이팅
-
 
         }
 
     }
 
 
-    private fun requestData(keyword: String, view: View) {
+    // (/post/bookSearch?query={query}) API 연결
+    private fun bookSearch(keyword: String, view: View) {
         val call: Call<ResponseWritingSentenceBookSearchData> = RequestToServer.service.RequestWritingSentenceBookSearch(keyword = keyword)
         call.enqueue(object : Callback<ResponseWritingSentenceBookSearchData> {
             @SuppressLint("LongLogTag")
@@ -128,24 +125,19 @@ class WritingSentenceBookSearchFragment : Fragment() {
                     response.body().let { body ->
                         Log.e(
                             "ResponseWritingSentenceBookSearchData 통신응답바디",
-                            "status: ${body!!.staus} data : ${body!!.message}"
+                            "status: ${body!!.staus} data : ${body.message}"
                         )
 
-
-                        // rv 동작 게시
-                        writingSentenceBookSearchAdapter.datas = body.data
-                        writingSentenceBookSearchAdapter.notifyDataSetChanged()
-
-
-
-
-                        if(body.data.size == 0){
+                        if(body.data.isNullOrEmpty()){
                             //if 서버 통신 성공 && 결과 없음
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.GONE
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_no).visibility = View.VISIBLE
 
                         }else{
+                            // rv 동작 게시
+                            writingSentenceBookSearchAdapter.datas = body.data
+                            writingSentenceBookSearchAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.VISIBLE
@@ -162,6 +154,10 @@ class WritingSentenceBookSearchFragment : Fragment() {
                                     title = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_title).text.toString()
                                     author = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_author).text.toString()
                                     publisher = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_publisher).text.toString()
+
+                                    // (/post/sentence) req data init
+                                    RequestWritingSentenceData(thumbnail = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail).text.toString())
+
 
                                     // 아이템을 선택했다면 step2로 이동
                                     val action = WritingSentenceBookSearchFragmentDirections.
