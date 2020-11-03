@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/item_writing_sentence_theme_result_tv_title"
+        android:id="@+id/item_writing_theme_tv_title"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/writing_sentence_theme_5_img_4"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"  />
 
     <ImageView
-        android:id="@+id/item_writing_sentence_theme_result_img_chk"
+        android:id="@+id/item_writing_theme_img_chk"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0.5"
