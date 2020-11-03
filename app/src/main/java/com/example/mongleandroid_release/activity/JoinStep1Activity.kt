@@ -17,7 +17,7 @@ class JoinStep1Activity : AppCompatActivity() {
 
         // 개인정보 처리방침 설명창으로 이동
         activity_join_step1_btn_agreeinfo.setOnClickListener {
-            val intent = Intent(this, JoinStep1PolicyActivity::class.java)
+            val intent = Intent(this, PrivacyTermsActivity::class.java)
             startActivity(intent)
         }
 
