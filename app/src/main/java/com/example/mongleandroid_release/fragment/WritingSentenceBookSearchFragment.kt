@@ -1,7 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,13 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.text.set
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
@@ -106,7 +102,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
             if(keyword.isNullOrBlank()){
 
             }else{
-                requestData(keyword, view)
+                bookSearch(keyword, view)
             }
 
         }
@@ -114,7 +110,8 @@ class WritingSentenceBookSearchFragment : Fragment() {
     }
 
 
-    private fun requestData(keyword: String, view: View) {
+    // (/post/bookSearch?query={query}) API 연결
+    private fun bookSearch(keyword: String, view: View) {
         val call: Call<ResponseWritingSentenceBookSearchData> = RequestToServer.service.RequestWritingSentenceBookSearch(keyword = keyword)
         call.enqueue(object : Callback<ResponseWritingSentenceBookSearchData> {
             @SuppressLint("LongLogTag")
