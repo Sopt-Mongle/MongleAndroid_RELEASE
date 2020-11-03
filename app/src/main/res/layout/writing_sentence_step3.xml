@@ -184,6 +184,30 @@
         app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintStart_toStartOf="@id/gl_left" />
 
+    <LinearLayout
+        android:id="@+id/writing_sentence_step3_ll_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/writing_sentence_step3_btn_theme"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginVertical="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="테마를 선택해주세요!"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/reddish"/>
+
+    </LinearLayout>
+
 
 
 

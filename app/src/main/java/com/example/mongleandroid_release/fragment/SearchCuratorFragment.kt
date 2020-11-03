@@ -35,8 +35,14 @@ class SearchCuratorFragment : Fragment() {
             override fun onFailure(call: Call<ResponseSearchCuratorData>, t: Throwable) {
                 Log.e("통신실패",t.toString())
             }
-            override fun onResponse(call: Call<ResponseSearchCuratorData>, response: Response<ResponseSearchCuratorData>) {
+            override fun onResponse(
+                call: Call<ResponseSearchCuratorData>,
+                response: Response<ResponseSearchCuratorData>
+            ) {
+                fragment_search_curator_cl.visibility = View.GONE
+                fragment_search_curator_cl_noresult.visibility = View.GONE
                 if (response.isSuccessful){
+                    fragment_search_curator_cl.visibility = View.VISIBLE
                     response.body().let { body ->
                         Log.d("큐레이터 검색", response.body()!!.message)
                         fragment_search_curator_tv_count.text = body!!.data.size.toString()
