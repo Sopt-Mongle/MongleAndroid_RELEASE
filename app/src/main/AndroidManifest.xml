@@ -11,9 +11,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.CuratorKeywordActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".activity.DetailThemeActivity"
+            android:label="@string/title_activity_detail_theme">
+        </activity>
+        <activity android:name=".activity.CuratorKeywordActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.LibraryActivity" />
         <activity android:name=".activity.JoinFinishActivity" />
@@ -22,7 +27,7 @@
         <activity android:name=".activity.JoinStep1Activity" />
         <activity
             android:name=".activity.JoinStep3Activity"
-            android:windowSoftInputMode="stateVisible"></activity>
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
