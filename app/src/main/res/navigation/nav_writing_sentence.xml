@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_writing_sentence"
+    android:id="@+id/writing_sentence_nav"
     app:startDestination="@id/writing_sentence_step1_fragment">
 
 

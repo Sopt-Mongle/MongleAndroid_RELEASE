@@ -16,21 +16,17 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchAdapter
 import com.example.mongleandroid_release.network.RequestToServer
-import com.example.mongleandroid_release.network.data.response.ResponseSearchThemeData
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchData
 import com.example.mongleandroid_release.network.data.response.ThemeData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
 
 class WritingSentenceThemeSearchFragment : Fragment() {
 
@@ -38,7 +34,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
     val datas: MutableList<ThemeData>? = mutableListOf<ThemeData>()
 
     private var keyword :String = ""
-    private var title :String = ""
+    private var theme :String = ""
     private var img :String = ""
 
     private var isitFirst :Boolean = true
@@ -129,7 +125,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                     response.body().let { body ->
                         Log.e(
                             "ResponseWritingSentenceThemeSearchData 통신응답바디",
-                            "status: ${body!!.staus} data : ${body!!.message}"
+                            "status: ${body!!.status} data : ${body!!.message}"
                         )
 
                         if(body.data.isNullOrEmpty()){
@@ -153,12 +149,17 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                             wrtingSentenceThemeSearchAdapter.setItemClickListener(object : WritingSentenceThemeSearchAdapter.ItemClickListener{
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS","${position}번 리스트 선택")
-                                    title = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
+
+                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
 //                                    img = view.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img).setImageResource()
 
+                                    // (/post/sentence) req data init
+                                    RequestWritingSentenceData(themeIdx = Integer.parseInt(view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_themeIdx).text.toString()))
+
                                     // 아이템을 선택했다면 step3로 이동
+
                                     val action = WritingSentenceThemeSearchFragmentDirections.
-                                    actionWritingSentenceThemeSearchFragmentToWritingSentenceStep3Fragment(title)
+                                    actionWritingSentenceThemeSearchFragmentToWritingSentenceStep3Fragment(theme)
                                     view.findNavController().navigate(action)
                                 }
                             })

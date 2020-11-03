@@ -20,6 +20,9 @@ import com.example.mongleandroid_release.forProgressBar
 import com.example.mongleandroid_release.forProgressOn
 
 class WritingSentenceStep3Fragment : Fragment() {
+
+    private val args: WritingSentenceStep3FragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -38,14 +41,12 @@ class WritingSentenceStep3Fragment : Fragment() {
     }
 
 
-    val args: WritingSentenceStep3FragmentArgs by navArgs()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // booksearch에서 받아온 값 뿌리기
         if (!args.theme.isNullOrEmpty()){
-            view.findViewById<TextView>(R.id.writing_sentence_step3_tv_theme).text = args.theme.toString()
+            view.findViewById<TextView>(R.id.writing_sentence_step3_tv_theme).text = args.theme
         }
 
 

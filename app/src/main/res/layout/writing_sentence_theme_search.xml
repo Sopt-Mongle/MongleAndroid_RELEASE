@@ -115,7 +115,7 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:visibility="visible">
+            android:visibility="gone">
 
 
 
@@ -155,8 +155,19 @@
             app:layout_constraintTop_toBottomOf="@id/writing_sentence_theme_search_cl_warning"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="visible"
+            android:visibility="gone"
             >
+
+            <TextView
+                android:id="@+id/writing_sentence_theme_search_tv_themeIdx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/soft_green"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text=""
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/writing_sentence_theme_search_tv_keyword"

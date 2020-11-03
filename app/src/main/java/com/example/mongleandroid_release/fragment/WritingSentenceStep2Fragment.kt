@@ -17,9 +17,11 @@ import androidx.navigation.fragment.navArgs
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.forProgressBar
 import com.example.mongleandroid_release.forProgressOn
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 
 
 class WritingSentenceStep2Fragment : Fragment() {
+    private val args: WritingSentenceStep2FragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,15 +41,13 @@ class WritingSentenceStep2Fragment : Fragment() {
     }
 
 
-    val args: WritingSentenceStep2FragmentArgs by navArgs()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // booksearch에서 받아온 값 뿌리기
         if (!args.title.isNullOrEmpty()){
-            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text = args.title.toString()
-            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text = args.author.toString()
-            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text = args.publisher.toString()
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text = args.title
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text = args.author
+            view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text = args.publisher
         }
 
 
@@ -75,6 +75,10 @@ class WritingSentenceStep2Fragment : Fragment() {
                 view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title)
                     .setBackgroundResource(R.drawable.et_area_red)
             }else{ //빈칸 없으면 다음으로
+                // (/post/sentence) req data init
+                RequestWritingSentenceData(title = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text.toString())
+                RequestWritingSentenceData(author = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text.toString())
+                RequestWritingSentenceData(publisher = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text.toString())
                 it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step3_fg)
             }
 

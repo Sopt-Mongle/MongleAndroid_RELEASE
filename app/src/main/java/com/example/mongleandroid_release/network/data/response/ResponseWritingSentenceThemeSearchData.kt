@@ -1,7 +1,7 @@
 package com.example.mongleandroid_release.network.data.response
 
 data class ResponseWritingSentenceThemeSearchData (
-    val staus : Int,
+    val status : Int,
     val success : Boolean,
     val message : String,
     val data : MutableList<ThemeData>
