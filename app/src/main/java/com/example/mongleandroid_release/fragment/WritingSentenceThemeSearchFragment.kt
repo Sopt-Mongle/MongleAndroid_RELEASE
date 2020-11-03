@@ -112,7 +112,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
     private fun themeSearchFirst(view: View) {
 
-       var call: Call<ResponseWritingSentenceThemeSearchData> = RequestToServer.service.RequestWritingSentenceThemeSearch()
+       val call: Call<ResponseWritingSentenceThemeSearchData> = RequestToServer.service.RequestWritingSentenceThemeSearch()
 
         call.enqueue(object : Callback<ResponseWritingSentenceThemeSearchData> {
             @SuppressLint("LongLogTag")
@@ -125,7 +125,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                     response.body().let { body ->
                         Log.e(
                             "ResponseWritingSentenceThemeSearchData 통신응답바디",
-                            "status: ${body!!.status} data : ${body!!.message}"
+                            "status: ${body!!.status} data : ${body.message}"
                         )
 
                         if(body.data.isNullOrEmpty()){
@@ -174,7 +174,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         })
     }
 
-//    private fun requestData(token: String?, keyword: String, view: View) {
+//    private fun themeSearch(token: String?, keyword: String, view: View) {
 //
 //        var call: Call<ResponseSearchThemeData> = RequestToServer.service.requestSearchTheme(token, keyword)
 //

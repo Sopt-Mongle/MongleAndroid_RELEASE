@@ -20,6 +20,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
 import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import com.example.mongleandroid_release.network.data.response.BookData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceBookSearchData
 import retrofit2.Call
@@ -124,7 +125,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
                     response.body().let { body ->
                         Log.e(
                             "ResponseWritingSentenceBookSearchData 통신응답바디",
-                            "status: ${body!!.staus} data : ${body!!.message}"
+                            "status: ${body!!.staus} data : ${body.message}"
                         )
 
                         if(body.data.isNullOrEmpty()){
@@ -153,6 +154,10 @@ class WritingSentenceBookSearchFragment : Fragment() {
                                     title = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_title).text.toString()
                                     author = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_author).text.toString()
                                     publisher = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_publisher).text.toString()
+
+                                    // (/post/sentence) req data init
+                                    RequestWritingSentenceData(thumbnail = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail).text.toString())
+
 
                                     // 아이템을 선택했다면 step2로 이동
                                     val action = WritingSentenceBookSearchFragmentDirections.
