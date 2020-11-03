@@ -1,6 +1,5 @@
 package com.example.mongleandroid_release.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -14,8 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.activity.JoinStep1PolicyActivity
-import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -24,7 +21,6 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
-import com.example.mongleandroid_release.network.data.response.SearchTheme
 import com.example.mongleandroid_release.showKeyboard
 import com.example.mongleandroid_release.unshowKeyboard
 import com.google.android.material.tabs.TabLayout
