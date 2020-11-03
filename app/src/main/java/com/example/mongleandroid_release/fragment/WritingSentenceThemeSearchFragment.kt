@@ -66,7 +66,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
             ItemDecoration()
         )
         // 디폴트 rv 준비
-        requestDefaultData(view)
+        themeSearchFirst(view)
 
 
         // 검색 창
@@ -110,7 +110,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
     }
 
 
-    private fun requestDefaultData(view: View) {
+    private fun themeSearchFirst(view: View) {
 
        var call: Call<ResponseWritingSentenceThemeSearchData> = RequestToServer.service.RequestWritingSentenceThemeSearch()
 
