@@ -21,16 +21,28 @@ class JoinStep1Activity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 서비스 이용약관 설명창으로 이동
+        activity_join_step1_btn_agreeinfo2.setOnClickListener {
+            val intent2 = Intent(this, ServiceTermsActivity::class.java)
+            startActivity(intent2)
+        }
+
         // 회원가입 2단계로 이동
         activity_join_step1_btn_next.setOnClickListener {
-            if(activity_join_step1_cb.isChecked) {
+            if(activity_join_step1_cb.isChecked && activity_join_step1_cb2.isChecked) {
                 val intent = Intent(this, JoinStep2Activity::class.java)
                 startActivity(intent)
                 // 화면 전환 시 애니메이션 없애는 코드
                 overridePendingTransition(0, 0)
-            } else {
+            }
+            if (!activity_join_step1_cb.isChecked) {
                 activity_join_step1_img_warning.visibility = VISIBLE
                 activity_join_step1_tv_warning.visibility = VISIBLE
+            }
+
+            if (!activity_join_step1_cb2.isChecked) {
+                activity_join_step1_img_warning2.visibility = VISIBLE
+                activity_join_step1_tv_warning2.visibility = VISIBLE
             }
         }
 
@@ -39,6 +51,34 @@ class JoinStep1Activity : AppCompatActivity() {
             if(activity_join_step1_cb.isChecked) {
                 activity_join_step1_img_warning.visibility = GONE
                 activity_join_step1_tv_warning.visibility = GONE
+            }
+
+            if(activity_join_step1_cb2.isChecked) {
+                activity_join_step1_img_warning2.visibility = GONE
+                activity_join_step1_tv_warning2.visibility = GONE
+            }
+
+            if(activity_join_step1_cb.isChecked && activity_join_step1_cb2.isChecked) {
+                activity_join_step1_1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
+                activity_join_step1_1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
+            } else {
+                activity_join_step1_1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progressoff_out)
+                activity_join_step1_1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
+            }
+        }
+
+        activity_join_step1_cb2.setOnClickListener {
+            if(activity_join_step1_cb.isChecked) {
+                activity_join_step1_img_warning.visibility = GONE
+                activity_join_step1_tv_warning.visibility = GONE
+            }
+
+            if(activity_join_step1_cb2.isChecked) {
+                activity_join_step1_img_warning2.visibility = GONE
+                activity_join_step1_tv_warning2.visibility = GONE
+            }
+
+            if(activity_join_step1_cb.isChecked && activity_join_step1_cb2.isChecked) {
                 activity_join_step1_1_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
                 activity_join_step1_1_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
             } else {
