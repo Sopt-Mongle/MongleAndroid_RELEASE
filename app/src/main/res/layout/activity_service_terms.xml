@@ -2050,7 +2050,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.04"
                 android:lineSpacingExtra="12sp"
-                android:text="본 약관은 2020년11월 15일부터 적용됩니다.\n"
+                android:text="본 약관은 2020년 11월 15일부터 적용됩니다.\n"
                 android:textColor="#656565"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
