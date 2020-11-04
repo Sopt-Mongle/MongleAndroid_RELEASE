@@ -15,6 +15,10 @@
         <action
             android:id="@+id/action_writing_step1_fg_to_writing_step2_fg"
             app:destination="@id/writing_sentence_step2_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             />
     </fragment>
 
@@ -25,6 +29,10 @@
         <action
             android:id="@+id/action_writing_step2_fg_to_writing_step3_fg"
             app:destination="@id/writing_sentence_step3_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             />
         <action
             android:id="@+id/action_writing_step2_fg_to_writing_step1_fg"
@@ -65,7 +73,9 @@
            />
         <action
             android:id="@+id/action_writing_sentence_step3_fragment_to_writing_sentence_finish_fragment"
-            app:destination="@id/writing_sentence_finish_fragment" />
+            app:destination="@id/writing_sentence_finish_fragment"
+            app:enterAnim="@anim/fab_fade_in"
+            app:exitAnim="@anim/fab_fade_out" />
         <action
             android:id="@+id/action_writing_sentence_step3_fragment_to_writing_sentence_theme_search_fragment"
             app:destination="@id/writing_sentence_theme_search_fragment" />
