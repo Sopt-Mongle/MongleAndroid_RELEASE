@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorKeywordActivity
@@ -106,24 +108,34 @@ class CuratorFragment : Fragment() {
                     response: Response<ResponseCuratorInThemeData>
                 ) {
                     if (response.isSuccessful) {
-                        response.body().let { body ->
+                        if(response.body()!!.data!!.theme.isNullOrEmpty()) {
+                            constraintLayout4.visibility = GONE
+                            fragment_curator_rv_curator1.visibility = GONE
+                            constraintLayout5.visibility = GONE
+                            fragment_curator_rv_curator2.visibility = GONE
+                        } else {
+                            constraintLayout4.visibility = VISIBLE
+                            fragment_curator_rv_curator1.visibility = VISIBLE
+                            constraintLayout5.visibility = VISIBLE
+                            fragment_curator_rv_curator2.visibility = VISIBLE
 
-                            fragment_curator_tv_themename.text = body!!.data!!.theme[0].theme
-                            fragment_curator_tv_curator_count.text = body.data!!.theme[0].curatorNum.toString()
+                            response.body().let { body ->
+                                fragment_curator_tv_themename.text = body!!.data!!.theme[0].theme
+                                fragment_curator_tv_curator_count.text = body.data!!.theme[0].curatorNum.toString()
 
-                            fragment_curator_tv_themename2.text = body.data.theme[1].theme
-                            fragment_curator_tv_curator_count2.text = body.data.theme[1].curatorNum.toString()
+                                fragment_curator_tv_themename2.text = body.data.theme[1].theme
+                                fragment_curator_tv_curator_count2.text = body.data.theme[1].curatorNum.toString()
 
-                            Log.d("테마속 큐레이터", "${response.body()!!.data!!.theme[0].curators}")
-                            curatorInThemeAdapter = CuratorInThemeAdapter(view!!.context, body.data.theme[0].curators)
-                            fragment_curator_rv_curator1.adapter = curatorInThemeAdapter
-                            curatorInThemeAdapter.notifyDataSetChanged()
+                                Log.d("테마속 큐레이터", "${response.body()!!.data!!.theme[0].curators}")
+                                curatorInThemeAdapter = CuratorInThemeAdapter(view!!.context, body.data.theme[0].curators)
+                                fragment_curator_rv_curator1.adapter = curatorInThemeAdapter
+                                curatorInThemeAdapter.notifyDataSetChanged()
 
-                            curatorInThemeAdapter2 = CuratorInThemeAdapter(view!!.context, body.data.theme[1].curators)
-                            fragment_curator_rv_curator2.adapter = curatorInThemeAdapter2
-                            curatorInThemeAdapter2.notifyDataSetChanged()
+                                curatorInThemeAdapter2 = CuratorInThemeAdapter(view!!.context, body.data.theme[1].curators)
+                                fragment_curator_rv_curator2.adapter = curatorInThemeAdapter2
+                                curatorInThemeAdapter2.notifyDataSetChanged()
+                            }
                         }
-
 
                     }
                 }

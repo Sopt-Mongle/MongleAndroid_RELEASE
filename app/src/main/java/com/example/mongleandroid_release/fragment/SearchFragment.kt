@@ -125,7 +125,7 @@ class SearchFragment : Fragment() {
                     response: Response<ResponseSearchRecentData>
                 ) {
                     if (response.isSuccessful) {
-                        if(response.body()!!.data.isEmpty()) {
+                        if(response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
                             val layoutManager = LinearLayoutManager(view!!.context)
