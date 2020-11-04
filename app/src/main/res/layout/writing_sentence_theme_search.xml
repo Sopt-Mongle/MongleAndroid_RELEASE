@@ -36,7 +36,7 @@
 
 
     <ImageView
-        android:id="@+id/writing_sentence_theme_result_btn_back"
+        android:id="@+id/writing_sentence_theme_search_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_back"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@id/gl_top"/>
 
     <EditText
-        android:id="@+id/writing_sentence_theme_result_et_search"
+        android:id="@+id/writing_sentence_theme_search_et_search"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:background="@drawable/et_area"
@@ -75,26 +75,26 @@
     </EditText>
 
     <ImageView
-        android:id="@+id/writing_sentence_theme_result_btn_search"
+        android:id="@+id/writing_sentence_theme_search_btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_search"
         android:padding="13dp"
-        app:layout_constraintTop_toTopOf="@id/writing_sentence_theme_result_et_search"
-        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_theme_result_et_search"
-        app:layout_constraintEnd_toEndOf="@id/writing_sentence_theme_result_et_search"
+        app:layout_constraintTop_toTopOf="@id/writing_sentence_theme_search_et_search"
+        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_theme_search_et_search"
+        app:layout_constraintEnd_toEndOf="@id/writing_sentence_theme_search_et_search"
         />
 
     <ImageView
-        android:id="@+id/writing_sentence_theme_result_btn_delete"
+        android:id="@+id/writing_sentence_theme_search_btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="8dp"
         android:paddingVertical="14dp"
         android:src="@drawable/writing_sentence_theme_6_error_btn_erase"
-        app:layout_constraintEnd_toStartOf="@id/writing_sentence_theme_result_btn_search"
-        app:layout_constraintTop_toTopOf="@id/writing_sentence_theme_result_et_search"
-        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_theme_result_et_search"/>
+        app:layout_constraintEnd_toStartOf="@id/writing_sentence_theme_search_btn_search"
+        app:layout_constraintTop_toTopOf="@id/writing_sentence_theme_search_et_search"
+        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_theme_search_et_search"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/writing_sentence_theme_search_cl_after"
@@ -103,7 +103,7 @@
         android:paddingTop="10dp"
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layout_constraintEnd_toEndOf="@id/gl_right"
-        app:layout_constraintTop_toBottomOf="@id/writing_sentence_theme_result_et_search"
+        app:layout_constraintTop_toBottomOf="@id/writing_sentence_theme_search_et_search"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="visible">
 
@@ -115,12 +115,12 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:visibility="visible">
+            android:visibility="gone">
 
 
 
             <ImageView
-                android:id="@+id/writing_sentence_theme_result_img_warning"
+                android:id="@+id/writing_sentence_theme_search_img_warning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
@@ -138,16 +138,16 @@
                 android:textColor="@color/reddish"
                 android:textSize="14sp"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_theme_result_img_warning"
-                app:layout_constraintStart_toEndOf="@+id/writing_sentence_theme_result_img_warning"
-                app:layout_constraintTop_toTopOf="@+id/writing_sentence_theme_result_img_warning" />
+                app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_theme_search_img_warning"
+                app:layout_constraintStart_toEndOf="@+id/writing_sentence_theme_search_img_warning"
+                app:layout_constraintTop_toTopOf="@+id/writing_sentence_theme_search_img_warning" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/writing_sentence_theme_result_yes"
+            android:id="@+id/writing_sentence_theme_search_yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -155,11 +155,22 @@
             app:layout_constraintTop_toBottomOf="@id/writing_sentence_theme_search_cl_warning"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="visible"
+            android:visibility="gone"
             >
 
             <TextView
-                android:id="@+id/writing_sentence_theme_result_tv_keyword"
+                android:id="@+id/writing_sentence_theme_search_tv_themeIdx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/soft_green"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text=""
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/writing_sentence_theme_search_tv_keyword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/soft_green"
@@ -175,10 +186,10 @@
                 android:textColor="@color/greyish_brown_two"
                 android:textSize="14sp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/writing_sentence_theme_result_tv_keyword"
+                app:layout_constraintStart_toEndOf="@id/writing_sentence_theme_search_tv_keyword"
                 />
             <TextView
-                android:id="@+id/writing_sentence_theme_result_cnt"
+                android:id="@+id/writing_sentence_theme_search_cnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="총 10건"
@@ -190,7 +201,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/writing_sentence_theme_result_rv"
+            android:id="@+id/writing_sentence_theme_search_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
@@ -201,7 +212,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/writing_sentence_theme_result_yes"
+            app:layout_constraintTop_toBottomOf="@id/writing_sentence_theme_search_yes"
             app:spanCount="2"
             app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/item_writing_sentence_theme_result" />
@@ -257,7 +268,7 @@
         />
 
     <TextView
-        android:id="@+id/writing_sentence_theme_result_btn_next"
+        android:id="@+id/writing_sentence_theme_search_btn_next"
         style="@android:style/ButtonBar"
         android:layout_width="0dp"
         android:layout_height="58dp"

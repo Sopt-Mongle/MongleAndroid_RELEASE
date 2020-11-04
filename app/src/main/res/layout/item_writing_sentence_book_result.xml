@@ -61,6 +61,19 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:text="TTP"
             android:textColor="@color/brown_grey_three"
             android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/item_writing_sentence_book_result_tv_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="TTP"
+            android:textColor="@color/brown_grey_three"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+
+
     </LinearLayout>
 
 

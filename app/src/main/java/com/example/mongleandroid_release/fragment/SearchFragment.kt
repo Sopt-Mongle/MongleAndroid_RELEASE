@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -22,8 +21,8 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
-import com.example.mongleandroid_release.network.data.response.SearchTheme
 import com.example.mongleandroid_release.showKeyboard
+import com.example.mongleandroid_release.unshowKeyboard
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
@@ -67,12 +66,17 @@ class SearchFragment : Fragment() {
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
 
-            // 검색 결과 Tab 배치
+            if(fragment_search_et_search == null) {
+                val searchword = " "
+                search_result = searchword.trim()
+            } else {
+                val searchword = fragment_search_et_search.text.toString()
+                search_result = searchword.trim()
+            }
+
+            // 검색 결과로 이동
             goResult()
 
-            // 검색어 뷰홀더로 보내주는 부분 (Fragment - MainActivity - ViewHolder)
-            val searchword = fragment_search_et_search.text.toString()
-            search_result = searchword.trim()
         }
 
 
@@ -197,20 +201,29 @@ class SearchFragment : Fragment() {
     }
 
     // 검색결과로 이동
-    private fun goResult() {
+    fun goResult() {
+
+        // 키보드 내리는 부분
+        fragment_search_et_search.unshowKeyboard()
+
         fragment_search_cl_before.visibility = GONE
         fragment_search_cl_after.visibility = VISIBLE
 
         // tablayout 배치
-        val resultTabLayout = view!!.findViewById(R.id.search_result_tab) as TabLayout
-        val resultViewPager = view!!.findViewById(R.id.search_result_viewpager) as ViewPager
-        resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
+        val resultTabLayout = view?.findViewById(R.id.search_result_tab) as TabLayout
+        val resultViewPager = view?.findViewById(R.id.search_result_viewpager) as ViewPager
+        val resultTabAdapter = SearchTabAdapter(childFragmentManager)
+
+        resultViewPager.adapter = resultTabAdapter
         resultViewPager.offscreenPageLimit = 1
+        resultTabAdapter.notifyDataSetChanged()
+
         resultTabLayout.setupWithViewPager(resultViewPager)
         resultTabLayout.getTabAt(0)!!.text = "테마"
         resultTabLayout.getTabAt(1)!!.text = "문장"
         resultTabLayout.getTabAt(2)!!.text = "큐레이터"
 
     }
+
 
 }
