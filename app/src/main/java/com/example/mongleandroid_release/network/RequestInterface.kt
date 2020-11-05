@@ -33,9 +33,24 @@ interface RequestInterface {
         @Header("token") token: String?
     ) : Call<ResponseLibraryCuratorData>
 
+    /* 큐레이터 */
+    // 큐레이터 구독 / 취소
+    @PUT("/curator/{followedIdx}")
+    fun getFollowIdx(
+        @Header("token") token: String?,
+        @Path("followedIdx") params: Int
+    ) : Call<ResponseCuratorFollowedData>
+
     // 추천 큐레이터
     @GET("/curator/recommend")
     fun getRecommendCurator() : Call<ResponseRecommendCuratorData>
+
+    // 키워드 큐레이터 리스트
+    @GET("/curator/{keywordIdx}/keyword")
+    fun getCuratorKeyword(
+        @Header("token") token: String?,
+        @Path("keywordIdx") params: Int
+    ) : Call<ResponseCuratorKeywordData>
 
     // 테마 속 큐레이터
     @GET("/curator/themeInCurator")
@@ -43,10 +58,12 @@ interface RequestInterface {
         @Header("token") token: String?
     ) : Call<ResponseCuratorInThemeData>
 
+    /* 로그인, 회원가입 */
     // 로그인
     @POST("/users/signin")
     fun requestLogin(@Body body: RequestLoginData) : Call<ResponseLoginData>
 
+    /* 검색 */
     // 검색 - 최근 키워드
     @GET("/search/recent")
     fun requestSearchRecent(
@@ -70,13 +87,13 @@ interface RequestInterface {
         @Query("words") words: String
     ) : Call<ResponseSearchThemeData>
 
-    // 문장 검색 - 성공
+    // 문장 검색
     @GET("/search/sentence")
     fun requestResultSentenceData(
         @Query("words") words: String
     ) : Call<ResponseSearchSentenceData>
 
-    // 큐레이터 검색 - 성공
+    // 큐레이터 검색
     @GET("/search/curator")
     fun requestResultCuratorData(
         @Header("token") token: String?,
