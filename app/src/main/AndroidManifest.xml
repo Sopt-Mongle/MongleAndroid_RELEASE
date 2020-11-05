@@ -13,18 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".activity.ServiceTermsActivity" />
+        <activity android:name=".activity.ServicePolicyActivity" />
         <activity
             android:name=".activity.DetailThemeActivity"
-            android:label="@string/title_activity_detail_theme">
-        </activity>
+            android:label="@string/title_activity_detail_theme" />
         <activity android:name=".activity.CuratorKeywordActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.LibraryActivity" />
         <activity android:name=".activity.JoinFinishActivity" />
-        <activity android:name=".activity.JoinStep1PolicyActivity" />
+        <activity android:name=".activity.PrivacyTermsActivity" />
         <activity android:name=".activity.JoinStep2Activity" />
-        <activity android:name=".activity.JoinStep1Activity" />
+        <activity android:name=".activity.JoinStep1Activity" >
+
+        </activity>
         <activity
             android:name=".activity.JoinStep3Activity"
             android:windowSoftInputMode="stateVisible" />

@@ -203,21 +203,90 @@
         app:layout_constraintStart_toEndOf="@+id/activity_join_step1_img_warning"
         app:layout_constraintTop_toTopOf="@+id/activity_join_step1_img_warning" />
 
+    <CheckBox
+        android:id="@+id/activity_join_step1_cb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/cb_selector"
+        android:button="@null"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_cb" />
+
+    <TextView
+        android:id="@+id/textView138"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="8sp"
+        android:text="[필수] 서비스 이용약관 동의"
+        android:textColor="#5a5a5a"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step1_cb2"
+        app:layout_constraintStart_toEndOf="@+id/activity_join_step1_cb2"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step1_cb2" />
+
+    <ImageView
+        android:id="@+id/activity_join_step1_btn_agreeinfo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="7dp"
+        android:paddingLeft="22dp"
+        android:paddingTop="20dp"
+        android:paddingRight="22dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView138"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView138"
+        app:srcCompat="@drawable/join_step1_agree_btn_back" />
+
+    <ImageView
+        android:id="@+id/activity_join_step1_img_warning2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/activity_join_step1_cb2"
+        app:layout_constraintTop_toBottomOf="@+id/textView138"
+        app:srcCompat="@drawable/ic_warning" />
+
+    <TextView
+        android:id="@+id/activity_join_step1_tv_warning2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="1sp"
+        android:text="필수 항목을 동의해야 가입할 수 있어요!"
+        android:textColor="#cf3232"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_join_step1_img_warning2"
+        app:layout_constraintStart_toEndOf="@+id/activity_join_step1_img_warning2"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step1_img_warning2" />
+
     <TextView
         android:id="@+id/textView11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="47dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="60dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="약관에는 '개인정보 수집 목적 및 이용'에 관한 중요한 내용이 담겨 있습니다. 약관 동의 체크는 해당 약관을 모두 숙지하였으며, 이에 동의함을 의미합니다."
+        android:text="약관 동의 체크는 해당 약관을 모두 숙지하였으며, 이에 동의함을 의미합니다."
         android:textColor="#a7a7a7"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/activity_join_step1_cb"
-        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_img_warning" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_join_step1_tv_warning2" />
 
     <TextView
         android:id="@+id/activity_join_step1_btn_next"

@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.JoinStep1PolicyActivity">
+    tools:context=".activity.PrivacyTermsActivity">
 
     <ImageView
-        android:id="@+id/activity_join_policy_btn_back"
+        android:id="@+id/activity_privacy_terms_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -21,22 +21,23 @@
 
 
     <ScrollView
+        android:id="@+id/activity_privacy_terms_sv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="28dp"
         android:layout_marginEnd="26dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_join_policy_btn_back">
+        app:layout_constraintTop_toBottomOf="@+id/activity_privacy_terms_btn_back">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_join_policy_btn_back">
+            app:layout_constraintTop_toBottomOf="@+id/activity_privacy_terms_btn_back">
 
             <TextView
                 android:id="@+id/textView5"
@@ -57,6 +58,7 @@
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/join_img_mongle" />
@@ -126,7 +128,7 @@
                 android:layout_marginTop="9dp"
                 app:layout_constraintStart_toStartOf="@+id/textView14"
                 app:layout_constraintTop_toBottomOf="@+id/textView14"
-                app:srcCompat="@drawable/ic_number1" />
+                app:srcCompat="@drawable/ic_number_1" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -167,7 +169,7 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:srcCompat="@drawable/ic_number2" />
+                app:srcCompat="@drawable/ic_number_2" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -239,7 +241,7 @@
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
-                android:text="위의 개인정보 수집 이용에 대해 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 몽글의 서비스를 이용할 수 없습니다."
+                android:text="위의 개인정보 수집 이용에 대해 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 몽글의 서비스를 이용할 수 없습니다.\n"
                 android:textColor="#656565"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -248,5 +250,26 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/activity_privacy_terms_top_blur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_privacy_terms_btn_back"
+        app:srcCompat="@drawable/my_settings_service_box_blur_top" />
+
+    <ImageView
+        android:id="@+id/activity_privacy_terms_bottom_blur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/my_settings_service_box_blur_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
