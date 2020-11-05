@@ -138,6 +138,32 @@ class CuratorFragment : Fragment() {
                                 fragment_curator_rv_curator2.adapter = curatorInThemeAdapter2
                                 curatorInThemeAdapter2.notifyDataSetChanged()
 
+                                // 구독여부 통신
+                                fun subscribed(position : Int) {
+                                    requestToServer.service.getFollowIdx(
+                                        token = context?.let { SharedPreferenceController.getAccessToken(it) },
+                                        params = response.body()!!.data!!.theme[1].curators[position].curatorIdx
+                                    ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                        override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                            Log.e("통신실패", t.toString())
+                                        }
+
+                                        @SuppressLint("ResourceAsColor")
+                                        override fun onResponse(
+                                            call: Call<ResponseCuratorFollowedData>,
+                                            response: Response<ResponseCuratorFollowedData>
+                                        ) {
+                                            if (response.isSuccessful) {
+                                                if(response.body()!!.data) {
+                                                    Log.d("구독", "구독")
+                                                } else {
+                                                    Log.d("구독", "구독취소")
+                                                }
+                                            }
+
+                                        }
+                                    })
+                                }
 
                                 curatorInThemeAdapter.setItemClickListener(object : CuratorInThemeAdapter.ItemClickListener{
                                     override fun onClickItem(view: View, position: Int) {
@@ -145,33 +171,10 @@ class CuratorFragment : Fragment() {
                                     }
 
                                     override fun onClickSubscribe(view: View, position: Int) {
-
-                                        requestToServer.service.getFollowIdx(
-                                            token = context?.let { SharedPreferenceController.getAccessToken(it) },
-                                            params = response.body()!!.data!!.theme[0].curators[position].curatorIdx
-                                        ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                            override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
-                                                Log.e("통신실패", t.toString())
-                                            }
-
-                                            @SuppressLint("ResourceAsColor")
-                                            override fun onResponse(
-                                                call: Call<ResponseCuratorFollowedData>,
-                                                response: Response<ResponseCuratorFollowedData>
-                                            ) {
-                                                if (response.isSuccessful) {
-                                                    if(response.body()!!.data) {
-                                                        Log.d("구독", "구독")
-                                                    } else {
-                                                        Log.d("구독", "구독취소")
-                                                    }
-                                                }
-
-                                            }
-                                        })
-
+                                        subscribed(position)
                                     }
                                 })
+
 
                                 curatorInThemeAdapter2.setItemClickListener(object : CuratorInThemeAdapter.ItemClickListener{
                                     override fun onClickItem(view: View, position: Int) {
@@ -179,31 +182,7 @@ class CuratorFragment : Fragment() {
                                     }
 
                                     override fun onClickSubscribe(view: View, position: Int) {
-
-                                        requestToServer.service.getFollowIdx(
-                                            token = context?.let { SharedPreferenceController.getAccessToken(it) },
-                                            params = response.body()!!.data!!.theme[1].curators[position].curatorIdx
-                                        ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                            override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
-                                                Log.e("통신실패", t.toString())
-                                            }
-
-                                            @SuppressLint("ResourceAsColor")
-                                            override fun onResponse(
-                                                call: Call<ResponseCuratorFollowedData>,
-                                                response: Response<ResponseCuratorFollowedData>
-                                            ) {
-                                                if (response.isSuccessful) {
-                                                    if(response.body()!!.data) {
-                                                        Log.d("구독", "구독")
-                                                    } else {
-                                                        Log.d("구독", "구독취소")
-                                                    }
-                                                }
-
-                                            }
-                                        })
-
+                                        subscribed(position)
                                     }
                                 })
 
