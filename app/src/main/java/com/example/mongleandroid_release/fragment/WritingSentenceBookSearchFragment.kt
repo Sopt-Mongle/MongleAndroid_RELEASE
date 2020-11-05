@@ -159,7 +159,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
                                     author = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_author).text.toString()
                                     publisher = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_publisher).text.toString()
 
-                                    // (/post/sentence) req data init
+                                    // (/post/sentence) req data init (2/6):: thumbnail
                                     RequestWritingSentenceData(thumbnail = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail).text.toString())
 
 

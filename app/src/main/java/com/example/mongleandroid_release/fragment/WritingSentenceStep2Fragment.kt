@@ -75,10 +75,11 @@ class WritingSentenceStep2Fragment : Fragment() {
                 view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title)
                     .setBackgroundResource(R.drawable.et_area_red)
             }else{ //빈칸 없으면 다음으로
-                // (/post/sentence) req data init
+                // (/post/sentence) req data init (5/6):: title, author, publisher
                 RequestWritingSentenceData(title = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text.toString())
                 RequestWritingSentenceData(author = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text.toString())
                 RequestWritingSentenceData(publisher = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text.toString())
+                //thumbnail은 bookSearch에서
                 it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step3_fg)
             }
 

@@ -21,8 +21,6 @@ class WritingSentenceThemeSearchViewHolder(itemView: View) : RecyclerView.ViewHo
     val themeImg = itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img)
 
     fun bind(searchTheme: SearchTheme) {
-
-        theme.text = searchTheme.theme
         themeIdx.text = searchTheme.themeIdx.toString()
         Glide.with(itemView).load(searchTheme.themeImg).into(themeImg)
 

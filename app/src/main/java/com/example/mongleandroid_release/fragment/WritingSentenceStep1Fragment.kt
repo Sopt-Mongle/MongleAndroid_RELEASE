@@ -71,7 +71,7 @@ class WritingSentenceStep1Fragment : Fragment() {
                 view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence)
                     .setBackgroundResource(R.drawable.et_area_red)
             }else{ //빈칸 없으면 다음으로
-                // (/post/sentence) req data init
+                // (/post/sentence) req data init (1/6) :: sentence
                 RequestWritingSentenceData(sentence = view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).text.toString())
                 it.findNavController().navigate(R.id.action_writing_step1_fg_to_writing_step2_fg)
             }
