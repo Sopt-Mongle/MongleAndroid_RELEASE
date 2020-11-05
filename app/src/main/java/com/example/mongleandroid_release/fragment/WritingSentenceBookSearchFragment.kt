@@ -17,6 +17,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.MainActivity.Companion.book_result
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -103,6 +104,9 @@ class WritingSentenceBookSearchFragment : Fragment() {
             if(keyword.isNullOrBlank()){
 
             }else{
+                val bookSearchWord = view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).text.toString()
+                book_result = bookSearchWord.trim()
+
                 bookSearch(keyword, view)
             }
 

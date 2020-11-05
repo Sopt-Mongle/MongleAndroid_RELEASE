@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         var search_result = ""
+        var book_result = ""
     }
 
     // floating btn 관련
