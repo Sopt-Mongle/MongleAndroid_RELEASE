@@ -1,21 +1,22 @@
 package com.example.mongleandroid_release.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorKeywordActivity
 import com.example.mongleandroid_release.adapter.CuratorInThemeAdapter
 import com.example.mongleandroid_release.adapter.CuratorRecommendAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.customEnqueue
+import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseRecommendCuratorData
 import kotlinx.android.synthetic.main.fragment_curator.*
@@ -52,6 +53,8 @@ class CuratorFragment : Fragment() {
         goKeywordActivity(fragment_curator_tv_kipeun, 4)
         goKeywordActivity(fragment_curator_tv_dokseo, 5)
         goKeywordActivity(fragment_curator_tv_ilsang, 6)
+
+
 
     }
 
@@ -120,13 +123,13 @@ class CuratorFragment : Fragment() {
                             fragment_curator_rv_curator2.visibility = VISIBLE
 
                             response.body().let { body ->
+
                                 fragment_curator_tv_themename.text = body!!.data!!.theme[0].theme
                                 fragment_curator_tv_curator_count.text = body.data!!.theme[0].curatorNum.toString()
 
                                 fragment_curator_tv_themename2.text = body.data.theme[1].theme
                                 fragment_curator_tv_curator_count2.text = body.data.theme[1].curatorNum.toString()
 
-                                Log.d("테마속 큐레이터", "${response.body()!!.data!!.theme[0].curators}")
                                 curatorInThemeAdapter = CuratorInThemeAdapter(view!!.context, body.data.theme[0].curators)
                                 fragment_curator_rv_curator1.adapter = curatorInThemeAdapter
                                 curatorInThemeAdapter.notifyDataSetChanged()
@@ -134,6 +137,76 @@ class CuratorFragment : Fragment() {
                                 curatorInThemeAdapter2 = CuratorInThemeAdapter(view!!.context, body.data.theme[1].curators)
                                 fragment_curator_rv_curator2.adapter = curatorInThemeAdapter2
                                 curatorInThemeAdapter2.notifyDataSetChanged()
+
+
+                                curatorInThemeAdapter.setItemClickListener(object : CuratorInThemeAdapter.ItemClickListener{
+                                    override fun onClickItem(view: View, position: Int) {
+                                        // 큐레이터 상세로 이동
+                                    }
+
+                                    override fun onClickSubscribe(view: View, position: Int) {
+
+                                        requestToServer.service.getFollowIdx(
+                                            token = context?.let { SharedPreferenceController.getAccessToken(it) },
+                                            params = response.body()!!.data!!.theme[0].curators[position].curatorIdx
+                                        ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                            override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                                Log.e("통신실패", t.toString())
+                                            }
+
+                                            @SuppressLint("ResourceAsColor")
+                                            override fun onResponse(
+                                                call: Call<ResponseCuratorFollowedData>,
+                                                response: Response<ResponseCuratorFollowedData>
+                                            ) {
+                                                if (response.isSuccessful) {
+                                                    if(response.body()!!.data) {
+                                                        Log.d("구독", "구독")
+                                                    } else {
+                                                        Log.d("구독", "구독취소")
+                                                    }
+                                                }
+
+                                            }
+                                        })
+
+                                    }
+                                })
+
+                                curatorInThemeAdapter2.setItemClickListener(object : CuratorInThemeAdapter.ItemClickListener{
+                                    override fun onClickItem(view: View, position: Int) {
+                                        // 큐레이터 상세로 이동
+                                    }
+
+                                    override fun onClickSubscribe(view: View, position: Int) {
+
+                                        requestToServer.service.getFollowIdx(
+                                            token = context?.let { SharedPreferenceController.getAccessToken(it) },
+                                            params = response.body()!!.data!!.theme[1].curators[position].curatorIdx
+                                        ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                            override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                                Log.e("통신실패", t.toString())
+                                            }
+
+                                            @SuppressLint("ResourceAsColor")
+                                            override fun onResponse(
+                                                call: Call<ResponseCuratorFollowedData>,
+                                                response: Response<ResponseCuratorFollowedData>
+                                            ) {
+                                                if (response.isSuccessful) {
+                                                    if(response.body()!!.data) {
+                                                        Log.d("구독", "구독")
+                                                    } else {
+                                                        Log.d("구독", "구독취소")
+                                                    }
+                                                }
+
+                                            }
+                                        })
+
+                                    }
+                                })
+
                             }
                         }
 
