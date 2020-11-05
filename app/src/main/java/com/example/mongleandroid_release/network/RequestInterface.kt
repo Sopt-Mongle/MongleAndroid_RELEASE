@@ -99,6 +99,6 @@ interface RequestInterface {
 
     //선택할 테마 목록 조회
     @GET("/post/theme")
-    fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchData>
+    fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchFirstData>
 
 }

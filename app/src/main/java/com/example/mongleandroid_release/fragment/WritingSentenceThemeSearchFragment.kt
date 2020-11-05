@@ -19,19 +19,20 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.ItemDecoration
-import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchAdapter
+import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchFirstAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
-import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchData
-import com.example.mongleandroid_release.network.data.response.ThemeData
+import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchFirstData
+import com.example.mongleandroid_release.network.data.response.FirstThemeData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class WritingSentenceThemeSearchFragment : Fragment() {
 
-    lateinit var wrtingSentenceThemeSearchAdapter: WritingSentenceThemeSearchAdapter
-    val datas: MutableList<ThemeData>? = mutableListOf<ThemeData>()
+    lateinit var wrtingSentenceThemeSearchFirstAdapter: WritingSentenceThemeSearchFirstAdapter
+//    lateinit var wrtingSentenceThemeSearchAdapter: SearchThemeAdapter
+    val dataFirsts: MutableList<FirstThemeData>? = mutableListOf<FirstThemeData>()
 
     private var keyword :String = ""
     private var theme :String = ""
@@ -60,8 +61,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         // rv 동작 준비
         val myLayoutManager = GridLayoutManager(this.context, 2)
         view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).layoutManager = myLayoutManager
-        wrtingSentenceThemeSearchAdapter = context?.let { WritingSentenceThemeSearchAdapter(it) }!!
-        view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).adapter = wrtingSentenceThemeSearchAdapter
+        wrtingSentenceThemeSearchFirstAdapter = context?.let { WritingSentenceThemeSearchFirstAdapter(it) }!!
+        view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).adapter = wrtingSentenceThemeSearchFirstAdapter
         view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).addItemDecoration(
             ItemDecoration()
         )
@@ -112,15 +113,15 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
     private fun themeSearchFirst(view: View) {
 
-       val call: Call<ResponseWritingSentenceThemeSearchData> = RequestToServer.service.RequestWritingSentenceThemeSearch()
+       val call: Call<ResponseWritingSentenceThemeSearchFirstData> = RequestToServer.service.RequestWritingSentenceThemeSearch()
 
-        call.enqueue(object : Callback<ResponseWritingSentenceThemeSearchData> {
+        call.enqueue(object : Callback<ResponseWritingSentenceThemeSearchFirstData> {
             @SuppressLint("LongLogTag")
-            override fun onFailure(call: Call<ResponseWritingSentenceThemeSearchData>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseWritingSentenceThemeSearchFirstData>, t: Throwable) {
                 Log.e("ResponseWritingSentenceThemeSearchData 통신실패",t.toString())
             }
             @SuppressLint("LongLogTag")
-            override fun onResponse(call: Call<ResponseWritingSentenceThemeSearchData>, response: Response<ResponseWritingSentenceThemeSearchData>) {
+            override fun onResponse(call: Call<ResponseWritingSentenceThemeSearchFirstData>, response: Response<ResponseWritingSentenceThemeSearchFirstData>) {
                 if (response.isSuccessful) {
                     response.body().let { body ->
                         Log.e(
@@ -135,8 +136,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
                         }else{
                             // rv 동작 게시
-                            wrtingSentenceThemeSearchAdapter.datas = body.data
-                            wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
+                            wrtingSentenceThemeSearchFirstAdapter.datas = body.data
+                            wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility = View.VISIBLE
                             view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility = View.GONE
@@ -146,7 +147,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                             view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt).text = "총 " + body.data.size.toString() + "건"
 
                             //리사이클러뷰 아이템 클릭리스너 등록
-                            wrtingSentenceThemeSearchAdapter.setItemClickListener(object : WritingSentenceThemeSearchAdapter.ItemClickListener{
+                            wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object : WritingSentenceThemeSearchFirstAdapter.ItemClickListener{
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS","${position}번 리스트 선택")
 
@@ -173,10 +174,10 @@ class WritingSentenceThemeSearchFragment : Fragment() {
             }
         })
     }
-
+//
 //    private fun themeSearch(token: String?, keyword: String, view: View) {
 //
-//        var call: Call<ResponseSearchThemeData> = RequestToServer.service.requestSearchTheme(token, keyword)
+//        val call: Call<ResponseSearchThemeData> = RequestToServer.service.requestSearchTheme(token = token, words = keyword)
 //
 //        call.enqueue(object : Callback<ResponseSearchThemeData> {
 //            @SuppressLint("LongLogTag")
@@ -189,7 +190,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 //                    response.body().let { body ->
 //                        Log.e(
 //                            "ResponseSearchThemeData 통신응답바디",
-//                            "status: ${body!!.status} data : ${body!!.message}"
+//                            "status: ${body!!.status} data : ${body.message}"
 //                        )
 //
 //                        if(body.data.isNullOrEmpty()){
@@ -199,8 +200,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 //
 //                        }else{
 //                            // rv 동작 게시
-//                            wrtingSentenceThemeSearchAdapter.datas = body.data
-//                            wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
+//                            wrtingSentenceThemeSearchFirstAdapter.datas = body.data
+//                            wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
 //                            //if 서버 통신 성공 && 결과 있음
 //                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility = View.VISIBLE
 //                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility = View.GONE
@@ -210,7 +211,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 //                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt).text = "총 " + body.data.size.toString() + "건"
 //
 //                            //리사이클러뷰 아이템 클릭리스너 등록
-//                            wrtingSentenceThemeSearchAdapter.setItemClickListener(object : WritingSentenceThemeSearchAdapter.ItemClickListener{
+//                            wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object : WritingSentenceThemeSearchFirstAdapter.ItemClickListener{
 //                                override fun onClick(view: View, position: Int) {
 //                                    Log.d("SSS","${position}번 리스트 선택")
 //                                    title = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()

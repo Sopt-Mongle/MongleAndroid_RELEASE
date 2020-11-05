@@ -8,5 +8,3 @@ data class RequestWritingSentenceData (
     val thumbnail:	String = "", //작성할 문장이 속한 책 사진
     val themeIdx:	Int	= 0 //선택한 테마의 idx(0 : 테마 없는 테마, 그외 : 해당 테마)
 )
-
-//object RequestWritingSentenceData()
