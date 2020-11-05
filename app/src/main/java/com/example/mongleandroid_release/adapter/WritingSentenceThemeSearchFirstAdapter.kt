@@ -35,6 +35,7 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
     }
 
 
+
     //클릭 인터페이스 정의
     interface ItemClickListener{
         fun onClick(view: View, position: Int)

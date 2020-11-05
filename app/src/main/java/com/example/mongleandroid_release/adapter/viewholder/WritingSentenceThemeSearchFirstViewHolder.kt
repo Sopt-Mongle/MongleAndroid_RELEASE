@@ -16,4 +16,6 @@ class WritingSentenceThemeSearchFirstViewHolder(itemView: View) : RecyclerView.V
         Glide.with(itemView).load(FirstThemeData.themeImg).into(itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img))
 
     }
+
+
 }

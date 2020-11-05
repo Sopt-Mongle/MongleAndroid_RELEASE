@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity.Companion.book_result
+import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -160,7 +161,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
                                     publisher = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_publisher).text.toString()
 
                                     // (/post/sentence) req data init (2/6):: thumbnail
-                                    RequestWritingSentenceData(thumbnail = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail).text.toString())
+                                    WritingSentenceActivity.writingSentenceData.thumbnail = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail).text.toString()
 
 
                                     // 아이템을 선택했다면 step2로 이동
