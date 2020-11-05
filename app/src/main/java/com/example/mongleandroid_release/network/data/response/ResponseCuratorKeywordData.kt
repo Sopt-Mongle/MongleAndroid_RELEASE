@@ -4,7 +4,7 @@ data class ResponseCuratorKeywordData (
     val status : Int,
     val success : Boolean,
     val message : String,
-    val data : MutableList<CuratorKeyword>
+    val data : List<CuratorKeyword>
 )
 
 data class CuratorKeyword(

@@ -31,5 +31,5 @@ data class CuratorList(
     val img	: String, // 테마 작성자 프로필사진
     val keyword	: String, // 큐레이터 키워드
     val subscribe : Int, // 해당 큐레이터를 구독하고 있는 수
-    val alreadySubscribed : Boolean // 현재 사용자가 이 큐레이터를 구독한 상태(true: 구독함, false: 구독하지 않음)
+    var alreadySubscribed : Boolean // 현재 사용자가 이 큐레이터를 구독한 상태(true: 구독함, false: 구독하지 않음)
 )
