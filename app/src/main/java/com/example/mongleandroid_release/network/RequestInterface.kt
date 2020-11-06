@@ -106,7 +106,7 @@ interface RequestInterface {
 
     //문장 올리기
     @POST("/post/sentence")
-    fun RequestWritingSentence(@Body body: RequestWritingSentenceData) : Call<ResponseWritingSentenceData>
+    fun RequestWritingSentence(@Header("token") token: String?, @Body body: RequestWritingSentenceData) : Call<ResponseWritingSentenceData>
 
     //제목으로 책 검색
     @GET("/post/bookSearch")
@@ -116,6 +116,6 @@ interface RequestInterface {
 
     //선택할 테마 목록 조회
     @GET("/post/theme")
-    fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchData>
+    fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchFirstData>
 
 }
