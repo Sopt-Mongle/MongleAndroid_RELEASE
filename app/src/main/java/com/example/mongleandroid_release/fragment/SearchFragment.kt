@@ -1,5 +1,7 @@
 package com.example.mongleandroid_release.fragment
 
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -13,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -54,9 +57,25 @@ class SearchFragment : Fragment() {
         fragment_search_et_search.requestFocus()
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt
 
+        // 뒤로가기 버튼
+        fragment_search_btn_back.setOnClickListener {
+
+        }
+
         // 엔터 눌렀을 때 검색
-        fragment_search_et_search.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
+        fragment_search_et_search.setOnKeyListener(View.OnKeyListener { view, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                search_result = if (view == null) {
+                    val searchword = " "
+                    searchword.trim()
+                } else {
+                    val searchword = fragment_search_et_search.text.toString()
+                    searchword.trim()
+                }
+
+                // 검색 결과로 이동
+                goResult()
 
                 return@OnKeyListener true
             }
@@ -66,12 +85,12 @@ class SearchFragment : Fragment() {
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
 
-            if(fragment_search_et_search == null) {
+            search_result = if(fragment_search_et_search == null) {
                 val searchword = " "
-                search_result = searchword.trim()
+                searchword.trim()
             } else {
                 val searchword = fragment_search_et_search.text.toString()
-                search_result = searchword.trim()
+                searchword.trim()
             }
 
             // 검색 결과로 이동
