@@ -1,9 +1,11 @@
 package com.example.mongleandroid_release.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +18,15 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.forProgressBar
 import com.example.mongleandroid_release.forProgressOn
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class WritingSentenceStep3Fragment : Fragment() {
 
@@ -73,6 +82,16 @@ class WritingSentenceStep3Fragment : Fragment() {
                 view.findViewById<TextView>(R.id.writing_sentence_step3_btn_theme)
                     .setBackgroundResource(R.drawable.et_area_red)
             }else{ //빈칸 없으면 다음으로
+                // 문장 올리기
+                sentencePost()
+                Log.d("writingSentenceData :: ", "${WritingSentenceActivity.writingSentenceData.sentence} \n" +
+                        " ${WritingSentenceActivity.writingSentenceData.author} \n" +
+                        " ${WritingSentenceActivity.writingSentenceData.publisher} \n" +
+                        " ${WritingSentenceActivity.writingSentenceData.themeIdx} \n" +
+                        " ${WritingSentenceActivity.writingSentenceData.title} \n"
+                )
+
+
                 it.findNavController().navigate(R.id.action_writing_sentence_step3_fragment_to_writing_sentence_finish_fragment)
             }
         }
@@ -89,5 +108,30 @@ class WritingSentenceStep3Fragment : Fragment() {
         }
     }
 
+    private fun sentencePost(){
+        val call: Call<ResponseWritingSentenceData> = RequestToServer.service.RequestWritingSentence(token = context?.let {
+            SharedPreferenceController.getAccessToken(it)
+        }, body = WritingSentenceActivity.writingSentenceData)
+        call.enqueue(object : Callback<ResponseWritingSentenceData> {
+            @SuppressLint("LongLogTag")
+            override fun onFailure(call: Call<ResponseWritingSentenceData>, t: Throwable) {
+                Log.e("ResponseWritingSentenceData 통신실패",t.toString())
+            }
+            @SuppressLint("LongLogTag")
+            override fun onResponse(
+                call: Call<ResponseWritingSentenceData>,
+                response: Response<ResponseWritingSentenceData>
+            ) {
+                if (response.isSuccessful){
+                    response.body().let { body ->
+                        Log.e("ResponseWritingSentenceData 통신응답바디", "status: ${body!!.status} message : ${body.message} data : ${body.data}\"")
+                    }
+                }
+
+            }
+
+        })
+
+    }
 
 }

@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.forProgressBar
 import com.example.mongleandroid_release.forProgressOn
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
@@ -75,10 +76,11 @@ class WritingSentenceStep2Fragment : Fragment() {
                 view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title)
                     .setBackgroundResource(R.drawable.et_area_red)
             }else{ //빈칸 없으면 다음으로
-                // (/post/sentence) req data init
-                RequestWritingSentenceData(title = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text.toString())
-                RequestWritingSentenceData(author = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text.toString())
-                RequestWritingSentenceData(publisher = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text.toString())
+                // (/post/sentence) req data init (5/6):: title, author, publisher
+                WritingSentenceActivity.writingSentenceData.title = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).text.toString()
+                WritingSentenceActivity.writingSentenceData.author = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_author).text.toString()
+                WritingSentenceActivity.writingSentenceData.publisher = view.findViewById<TextView>(R.id.writing_sentence_step2_tv_publisher).text.toString()
+                //thumbnail은 bookSearch에서
                 it.findNavController().navigate(R.id.action_writing_step2_fg_to_writing_step3_fg)
             }
 
