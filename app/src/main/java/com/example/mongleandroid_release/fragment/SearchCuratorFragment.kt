@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import com.example.mongleandroid_release.activity.MainActivity.Companion.search_
 import com.example.mongleandroid_release.adapter.SearchCuratorAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchCuratorData
 import kotlinx.android.synthetic.main.fragment_search_curator.*
 import retrofit2.Call
@@ -49,6 +51,40 @@ class SearchCuratorFragment : Fragment() {
                         searchCuratorAdapter = SearchCuratorAdapter(view!!.context, body.data)
                         rv_search_curator.adapter = searchCuratorAdapter
                         searchCuratorAdapter.notifyDataSetChanged()
+
+
+                        searchCuratorAdapter.setItemClickListener(object : SearchCuratorAdapter.ItemClickListener{
+                            override fun onClickItem(view: View, position: Int) {
+                                // 큐레이터 상세로 이동
+                            }
+
+                            override fun onClickSubscribe(view: View, position: Int) {
+                                requestToServer.service.getFollowIdx(
+                                    token = context?.let { SharedPreferenceController.getAccessToken(it) },
+                                    params = response.body()!!.data[position].curatorIdx
+                                ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                    override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                        Log.e("통신실패", t.toString())
+                                    }
+
+                                    override fun onResponse(
+                                        call: Call<ResponseCuratorFollowedData>,
+                                        response: Response<ResponseCuratorFollowedData>
+                                    ) {
+                                        if (response.isSuccessful) {
+                                            if(response.body()!!.data) {
+                                                Log.d("구독", "구독")
+                                            } else {
+                                                Log.d("구독", "구독취소")
+                                            }
+                                        }
+
+                                    }
+                                })
+                            }
+
+                        })
+
                     }
                 } else {
                     fragment_search_curator_cl_noresult.visibility = View.VISIBLE

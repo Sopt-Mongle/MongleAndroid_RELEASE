@@ -167,6 +167,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -180,6 +181,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -193,6 +195,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -206,6 +209,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -219,6 +223,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -232,6 +237,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -245,6 +251,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -258,6 +265,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -271,6 +279,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -284,6 +293,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -297,6 +307,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -310,6 +321,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -323,6 +335,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -336,6 +349,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
@@ -349,6 +363,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="8sp"
+                android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
                 android:textSize="16sp" />
