@@ -12,10 +12,14 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.network.RequestToServer
 import kotlinx.android.synthetic.main.activity_join_step2.*
 import java.util.regex.Pattern
 
 class JoinStep2Activity : AppCompatActivity() {
+
+    val requestToServer = RequestToServer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_step2)
@@ -23,13 +27,9 @@ class JoinStep2Activity : AppCompatActivity() {
         // 프로그래스바 애니메이션
         Handler().postDelayed({
             val progressAnimator_step2 = ObjectAnimator.ofInt(activity_join_step2_pgb, "progress", 0, 50)
-            progressAnimator_step2.setDuration(500)
+            progressAnimator_step2.duration = 500
             progressAnimator_step2.start()
         }, 200)
-
-        // 31-36에 대해 확장함수 ProgressBarAnim() 사용
-//        Handler().ProgressBarAnim(activity_join_step2_pgb)
-
 
         // 다음 버튼 눌렀을 때 비어있는 칸 경고문구 설정
         activity_join_step2_btn_next.setOnClickListener {
@@ -37,6 +37,7 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
                 activity_join_step2_img_email_warning.visibility = VISIBLE
                 activity_join_step2_tv_email_warning.visibility = VISIBLE
+                activity_join_step2_tv_email_valid_warning.visibility = GONE
             } else if(activity_join_step2_et_pass.text.isEmpty()) {
                 activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area_red, null)
                 activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area_red, null)
@@ -55,14 +56,27 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
                 activity_join_step2_img_nickname_warning.visibility = VISIBLE
                 activity_join_step2_tv_nickname_warning.visibility = VISIBLE
+            } else if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", activity_join_step2_et_pass.text.toString())) {
+                activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
+                activity_join_step2_tv_pass_match.visibility = GONE
+                activity_join_step2_img_pass_warning.visibility = VISIBLE
+                activity_join_step2_tv_pass_valid.visibility = VISIBLE
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()){
+                activity_join_step2_img_email_warning.visibility = VISIBLE
+                activity_join_step2_tv_email_valid_warning.visibility = VISIBLE
             } else {
+
+                // 여기 중복체크 서버 연결
+                // 중복 없으면 다음으로 정보와 함께 이동
                 val intent = Intent(this, JoinStep3Activity::class.java)
+                intent.putExtra("email", activity_join_step2_et_email.text.toString())
+                intent.putExtra("password", activity_join_step2_et_pass.text.toString())
+                intent.putExtra("name", activity_join_step2_et_nickname.text.toString())
                 startActivity(intent)
                 // 화면 전환 시 애니메이션 없애는 코드
                 overridePendingTransition(0, 0)
-            }
 
-            // 이메일 유효성, 비밀번호 유효성 검사 if문 추가 예정
+            }
 
         }
 
@@ -78,6 +92,7 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_green, null)
                 activity_join_step2_img_email_warning.visibility = GONE
                 activity_join_step2_tv_email_warning.visibility = GONE
+                activity_join_step2_tv_email_valid_warning.visibility = GONE
             }
         })
 
@@ -104,7 +119,7 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area, null)
                 activity_join_step2_btn_email_erase.visibility = GONE
 
-                if(!(activity_join_step2_et_email.text.isEmpty()) && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
+                if(activity_join_step2_et_email.text.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
                     activity_join_step2_img_email_warning.visibility = VISIBLE
                     activity_join_step2_tv_email_valid_warning.visibility = VISIBLE
                 } else {

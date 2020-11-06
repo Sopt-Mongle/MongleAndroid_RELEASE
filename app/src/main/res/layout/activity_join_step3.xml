@@ -28,6 +28,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="41dp"
         android:max="100"
+        android:progress="50"
         android:progressTint="@color/soft_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
