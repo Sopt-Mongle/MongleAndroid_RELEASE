@@ -1,8 +1,6 @@
 package com.example.mongleandroid_release.network
 
-import com.example.mongleandroid_release.network.data.request.RequestLoginData
-import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
-import com.example.mongleandroid_release.network.data.request.RequestWritingThemeData
+import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -62,6 +60,14 @@ interface RequestInterface {
     // 로그인
     @POST("/users/signin")
     fun requestLogin(@Body body: RequestLoginData) : Call<ResponseLoginData>
+
+    // 회원가입
+    @POST("/users/signup")
+    fun requestJoin(@Body body: RequestJoinData) : Call<ResponseJoinData>
+
+    // 인증 메일 전송
+    @POST("/users/auth")
+    fun requestCode(@Body body: RequestCodeData) : Call<ResponseCodeData>
 
     /* 검색 */
     // 검색 - 최근 키워드
