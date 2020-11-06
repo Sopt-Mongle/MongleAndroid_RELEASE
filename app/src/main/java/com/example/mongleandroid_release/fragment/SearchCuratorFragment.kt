@@ -67,7 +67,6 @@ class SearchCuratorFragment : Fragment() {
                                         Log.e("통신실패", t.toString())
                                     }
 
-                                    @SuppressLint("ResourceAsColor")
                                     override fun onResponse(
                                         call: Call<ResponseCuratorFollowedData>,
                                         response: Response<ResponseCuratorFollowedData>
