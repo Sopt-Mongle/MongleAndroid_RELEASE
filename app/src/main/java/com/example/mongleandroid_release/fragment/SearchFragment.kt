@@ -1,5 +1,7 @@
 package com.example.mongleandroid_release.fragment
 
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -22,8 +24,8 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
-import com.example.mongleandroid_release.network.data.response.SearchTheme
 import com.example.mongleandroid_release.showKeyboard
+import com.example.mongleandroid_release.unshowKeyboard
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
@@ -55,9 +57,25 @@ class SearchFragment : Fragment() {
         fragment_search_et_search.requestFocus()
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt
 
+        // 뒤로가기 버튼
+        fragment_search_btn_back.setOnClickListener {
+
+        }
+
         // 엔터 눌렀을 때 검색
-        fragment_search_et_search.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
+        fragment_search_et_search.setOnKeyListener(View.OnKeyListener { view, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                search_result = if (view == null) {
+                    val searchword = " "
+                    searchword.trim()
+                } else {
+                    val searchword = fragment_search_et_search.text.toString()
+                    searchword.trim()
+                }
+
+                // 검색 결과로 이동
+                goResult()
 
                 return@OnKeyListener true
             }
@@ -67,12 +85,17 @@ class SearchFragment : Fragment() {
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
 
-            // 검색 결과 Tab 배치
+            search_result = if(fragment_search_et_search == null) {
+                val searchword = " "
+                searchword.trim()
+            } else {
+                val searchword = fragment_search_et_search.text.toString()
+                searchword.trim()
+            }
+
+            // 검색 결과로 이동
             goResult()
 
-            // 검색어 뷰홀더로 보내주는 부분 (Fragment - MainActivity - ViewHolder)
-            val searchword = fragment_search_et_search.text.toString()
-            search_result = searchword.trim()
         }
 
 
@@ -121,7 +144,7 @@ class SearchFragment : Fragment() {
                     response: Response<ResponseSearchRecentData>
                 ) {
                     if (response.isSuccessful) {
-                        if(response.body()!!.data.isEmpty()) {
+                        if(response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
                             val layoutManager = LinearLayoutManager(view!!.context)
@@ -197,20 +220,29 @@ class SearchFragment : Fragment() {
     }
 
     // 검색결과로 이동
-    private fun goResult() {
+    fun goResult() {
+
+        // 키보드 내리는 부분
+        fragment_search_et_search.unshowKeyboard()
+
         fragment_search_cl_before.visibility = GONE
         fragment_search_cl_after.visibility = VISIBLE
 
         // tablayout 배치
-        val resultTabLayout = view!!.findViewById(R.id.search_result_tab) as TabLayout
-        val resultViewPager = view!!.findViewById(R.id.search_result_viewpager) as ViewPager
-        resultViewPager.adapter = SearchTabAdapter(childFragmentManager)
+        val resultTabLayout = view?.findViewById(R.id.search_result_tab) as TabLayout
+        val resultViewPager = view?.findViewById(R.id.search_result_viewpager) as ViewPager
+        val resultTabAdapter = SearchTabAdapter(childFragmentManager)
+
+        resultViewPager.adapter = resultTabAdapter
         resultViewPager.offscreenPageLimit = 1
+        resultTabAdapter.notifyDataSetChanged()
+
         resultTabLayout.setupWithViewPager(resultViewPager)
         resultTabLayout.getTabAt(0)!!.text = "테마"
         resultTabLayout.getTabAt(1)!!.text = "문장"
         resultTabLayout.getTabAt(2)!!.text = "큐레이터"
 
     }
+
 
 }

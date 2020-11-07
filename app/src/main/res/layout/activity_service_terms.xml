@@ -1,0 +1,2082 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ServiceTermsActivity">
+
+    <ImageView
+        android:id="@+id/activity_service_terms_btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="17dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btn_cancel" />
+
+    <ScrollView
+        android:id="@+id/activity_service_terms_sv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_service_terms_btn_back"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_service_terms_btn_back">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7sp"
+                android:text="몽글"
+                android:textColor="#3e3e3e"
+                android:textSize="23sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/join_img_mongle" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:lineSpacingExtra="7sp"
+                android:text="서비스 이용약관"
+                android:textColor="#717171"
+                android:textSize="23sp"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="41dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+                <TextView
+                    android:id="@+id/tv_terms1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 1 조 (목적)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="본 약관은 회원(본 약관에 동의한 자를 말합니다 이하 “회원”이라고 합니다.) 이 몽글(이하 “회사”라고 합니다.) 이 제공하는 몽글 앱 서비스(이하 “서비스”라고 합니다.)를 이용함에 있어 회사와 회원의 권리·의무 및 책임사항을 규정함을 목적으로 합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms1">
+
+                <TextView
+                    android:id="@+id/tv_terms2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 2 조 (약관의 명시, 효력 및 개정)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms2" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 본 약관의 내용을 회원이 알 수 있도록 서비스 페이지 내에 항시 게시함으로써 이를 공지합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView4"
+                    app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+                <TextView
+                    android:id="@+id/textView50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+                <TextView
+                    android:id="@+id/textView52"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 콘텐츠산업 진흥법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 약관의 규제에 관한 법률, 소비자 기본법 등 관련 법령을 위배하지 않는 범위에서 본 약관을 개정할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView50"
+                    app:layout_constraintTop_toTopOf="@+id/textView50" />
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="3. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+                <TextView
+                    android:id="@+id/textView59"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사가 약관을 개정할 경우에는 개정약관 및 개정약관의 시행일자와 개정사유를 명시하여 그 시행일자 15일 전부터 시행일 이후 상당한 기간 동안 본 서비스 페이지에 게시하며, 개정된 약관은 그 시행일에 효력이 발생합니다. 단, 개정 내용이 회원에게 불리한 경우에는 그 시행일자 30일 전부터 시행일 이후 상당한 기간 동안 본 서비스 페이지에 게시하거나 팝업화면을 게시하는 등 이용자가 충분히 인지할 수 있는 합리적으로 가능한 방법으로 공지하며, 개정된 약관은 그 시행일에 효력이 발생됩니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView53"
+                    app:layout_constraintTop_toTopOf="@+id/textView53" />
+
+                <TextView
+                    android:id="@+id/textView60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="4. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView59" />
+
+                <TextView
+                    android:id="@+id/textView61"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사가 전항에 따라 회원에게 통지하면서 공지일로부터 개정약관 시행일까지 거부의사를 표시하지 아니하면 승인한 것으로 본다는 뜻을 명확하게 고지하였음에도 불구하고 회원의 거부의 의사표시가 없는 경우에는 변경된 약관에 동의한 것으로 봅니다. 회원이 개정약관에 동의하지 않을 경우 회원은 제14조 제1항의 규정에 따라 이용 계약을 해지할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView60"
+                    app:layout_constraintTop_toTopOf="@+id/textView60" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms2">
+
+                <TextView
+                    android:id="@+id/tv_terms3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 3 조 (약관 동의 및 서비스 이용계약의 체결)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView62"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms3" />
+
+                <TextView
+                    android:id="@+id/textView63"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사와 회원 간의 서비스 이용계약은 이용자가 본 약관 내용에 대해 동의하고 서비스 이용신청을 하면 회사가 그 신청을 승낙함으로써 성립합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView62"
+                    app:layout_constraintTop_toTopOf="@+id/textView62" />
+
+                <TextView
+                    android:id="@+id/textView64"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+                <TextView
+                    android:id="@+id/textView65"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 이용자가 서비스 회원가입 페이지의 “동의함” 버튼을 클릭하거나 이용자가 본 서비스의 이용을 시작한 경우 본 약관에 동의한 것으로 간주합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView64"
+                    app:layout_constraintTop_toTopOf="@+id/textView64" />
+
+                <TextView
+                    android:id="@+id/textView66"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="3. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView65" />
+
+                <TextView
+                    android:id="@+id/textView67"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 이용자가 필수사항 등을 성실히 입력하여
+서비스 이용신청을 완료하였을 때에는 신청 내용을 확인한 후 지체 없이 이를 승낙하여야 합니다. 단,
+회사는 아래 각 호에 해당하는 경우에는 승낙을 유보할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView66"
+                    app:layout_constraintTop_toTopOf="@+id/textView66" />
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView68"
+                    app:srcCompat="@drawable/ic_number_1" />
+
+                <TextView
+                    android:id="@+id/textView68"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="서비스의 설비용량에 현실적인 여유가 없는 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView17"
+                    app:layout_constraintTop_toBottomOf="@+id/textView67" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView69"
+                    app:srcCompat="@drawable/ic_number_2" />
+
+                <TextView
+                    android:id="@+id/textView69"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="서비스를 제공하기에는 기술적으로 문제가 있다고 판단되는 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView18"
+                    app:layout_constraintTop_toBottomOf="@+id/textView68" />
+
+                <TextView
+                    android:id="@+id/textView70"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="4. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView69" />
+
+                <TextView
+                    android:id="@+id/textView71"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="본 서비스 이용계약은 회사가 신청절차 상에서 가입완료를 표시한 시점에 성립합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView70"
+                    app:layout_constraintTop_toTopOf="@+id/textView70" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms3">
+
+                <TextView
+                    android:id="@+id/tv_terms4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 4 조 (개인정보의 보호 및 관리)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView72"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms4" />
+
+                <TextView
+                    android:id="@+id/textView73"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 서비스를 제공하기 위하여 회원으로부터 서비스 이용에 필요한 개인정보를 수집할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView72"
+                    app:layout_constraintTop_toTopOf="@+id/textView72" />
+
+                <TextView
+                    android:id="@+id/textView74"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView73" />
+
+                <TextView
+                    android:id="@+id/textView75"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 관련 법령이 정하는 바에 따라 회원의 개인정보를 보호하기 위해 노력하며, 회원의 개인정보의 보호 및 사용에 대해서는 회사가 별도로 고지하는 개인정보 처리방침을 적용합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView74"
+                    app:layout_constraintTop_toTopOf="@+id/textView74" />
+
+                <TextView
+                    android:id="@+id/textView76"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="3. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+                <TextView
+                    android:id="@+id/textView77"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 회사의 귀책 없이 회원의 귀책사유로 인하여 회원의 정보가 노출된 경우 이에 대해서는 책임을 지지 않습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView76"
+                    app:layout_constraintTop_toTopOf="@+id/textView76" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms4">
+
+                <TextView
+                    android:id="@+id/tv_terms5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 5 조 (게시물의 관리 및 임시조치)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView78"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms5" />
+
+                <TextView
+                    android:id="@+id/textView79"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="서비스 내 모든 게시물 및 콘텐츠(테마)의 관리 권한 및 책임은 해당 게시물
+및 콘텐츠를 게시한 회원에게 있습니다. 단, 회원의 요청이 있거나 기타 회사가 서비스의 원활한 운영을 위하여 필요하다고 판단되는 경우,
+회사는 게시물의 관리 등과 관련한 사항을 개선, 지원하는 등의 활동을 할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView78"
+                    app:layout_constraintTop_toTopOf="@+id/textView78" />
+
+                <TextView
+                    android:id="@+id/textView84"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView79" />
+
+                <TextView
+                    android:id="@+id/textView85"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원의 게시물 등이 관련 법령에 위반되는 내용을 포함하는 경우,
+회사는 해당 관련 법령이나 적법한 권리자의 요청에 따라 해당 게시물 등에 대한 게시중단 및 삭제 등의 조치를 취할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView84"
+                    app:layout_constraintTop_toTopOf="@+id/textView84" />
+
+                <TextView
+                    android:id="@+id/textView86"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="3. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView85" />
+
+                <TextView
+                    android:id="@+id/textView87"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 게시물 등에 회사의 약관 및 서비스 운영정책에 위반되는 사유가 있는 것으로 확인된 경우, 운영정책에 따라 해당 게시물에 대해 조치를 취할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView86"
+                    app:layout_constraintTop_toTopOf="@+id/textView86" />
+
+                <TextView
+                    android:id="@+id/textView90"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="4. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView87" />
+
+                <TextView
+                    android:id="@+id/textView91"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="정보통신망 이용촉진 및 정보보호 등에 관한 법률(이하
+“정보통신망법”이라 합니다)의 규정에 의해 다른
+회원의 공개된 게시물 등이 본인의 사생활을 침해하거나 명예를 훼손하는 등 권리를 침해 받은 회원 또는
+제3자(이하 “삭제 등 신청인”이라 합니다)는 그 침해사실을 소명하여 회사에 해당 게시물 등의 삭제 또는
+반박 내용의 게재를 요청할 수 있습니다. 이 경우 회사는 해당 게시물 등의 권리침해 여부를 판단할 수
+없거나 당사자 간의 다툼이 예상되는 경우 해당 게시물 등에 대한 접근을 임시적으로 차단하는 조치 (이하 “임시조치”라 합니다)를 최장 30일까지 취합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView90"
+                    app:layout_constraintTop_toTopOf="@+id/textView90" />
+
+                <TextView
+                    android:id="@+id/textView92"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="5. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView91" />
+
+                <TextView
+                    android:id="@+id/textView93"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="전항에 의해 본인의 게시물 등이 임시조치된 회원(이하 “게시자”라 합니다)은 임시조치기간 중 회사에
+해당 게시물 등을 복원해 줄 것을 요청(이하 “재게시 청구”라 합니다)할 수 있으며, 회사는 임시조치된 게시물의 명예훼손 등 판단에 대한 방송통신심의위원회
+심의 요청에 대한 게시자 및 삭제 등 신청인의 동의가 있는 경우 게시자 및 삭제 등 신청인을 대리하여 이를
+요청하고 동의가 없는 경우 회사가 이를 판단하여 게시물 등의 복원 여부를 결정합니다. 게시자의 재게시
+청구가 있는 경우 임시조치 기간 내에 방송통신심의위원회 또는 회사의 결정이 있으면 그 결정에 따르고
+그 결정이 임시조치 기간 내에 있지않는 경우 해당 게시물 등은 임시조치 만료일 이후 복원 됩니다. 재게시
+청구가 없는 경우 해당 게시물 등은 임시조치 기간 만료 이후 삭제됩니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView92"
+                    app:layout_constraintTop_toTopOf="@+id/textView92" />
+
+                <TextView
+                    android:id="@+id/textView94"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="6. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView93" />
+
+                <TextView
+                    android:id="@+id/textView95"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 서비스 내에 게시된 게시물 등이 원저작자의 중대한 권리를 침해한다고 인정하는 경우 회원 또는
+제3자의 신고가 없는 경우에도 임시조치(이하 “임의의 임시조치”라 합니다)를 취할 수 있습니다. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView94"
+                    app:layout_constraintTop_toTopOf="@+id/textView94" />
+
+                <TextView
+                    android:id="@+id/textView96"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="7. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView95" />
+
+                <TextView
+                    android:id="@+id/textView97"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원의 게시물 등으로 인한 법률상 이익 침해를 근거로,
+원저작자가 회원 또는 회사를 대상으로 하여 민·형사상의 법적 조치를 취하는 경우, 회사는 동 법적
+조치의 결과인 법원의 확정판결이 있을 때까지 관련 게시물 등에 대한 접근을 잠정적으로 제한할 수 있습니다.
+게시물 등의 접근 제한과 관련한 법적 조치의 소명, 법원의 확정 판결에 대한 소명 책임은 당사자가 부담합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView96"
+                    app:layout_constraintTop_toTopOf="@+id/textView96" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms5">
+
+                <TextView
+                    android:id="@+id/tv_terms6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 6 조 (회원의 의무)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms6" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원은 아래 각 호에 해당하는 행위를 하여서는 안됩니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+                <ImageView
+                    android:id="@+id/imageView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView7"
+                    app:srcCompat="@drawable/ic_number_1" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="문장을 허위로 등록하는 행위(예 : 책에 담겨있지 않은 내용 혹은 원저작물과 다른 내용을 기재하는 행위)"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView20"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                <ImageView
+                    android:id="@+id/imageView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView8"
+                    app:srcCompat="@drawable/ic_number_2" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회사의 서비스에 게시된 정보를 변경하거나 이용하여 영리 또는 비영리의 목적으로 복제·출판·방송 등에 사용하거나 제3자에게 제공하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <ImageView
+                    android:id="@+id/imageView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView99"
+                    app:srcCompat="@drawable/ic_number_3" />
+
+                <TextView
+                    android:id="@+id/textView99"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회사가 제공하는 서비스를 이용하여 제3자에게
+본인을 홍보할 기회를 제공하거나 제3자의 홍보를 대행하는 등의 방법으로 금전을 수수하거나
+서비스를 이용할 권리를 양도하고 이를 대가로 금전을 수수하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <ImageView
+                    android:id="@+id/imageView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView100"
+                    app:srcCompat="@drawable/ic_number_4" />
+
+                <TextView
+                    android:id="@+id/textView100"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회사 기타 제3자 혹은 원저작자의 명예를 훼손하거나 저작권을 침해하는 등의 권리를 침해하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView99" />
+
+                <ImageView
+                    android:id="@+id/imageView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView101"
+                    app:srcCompat="@drawable/ic_number_5" />
+
+                <TextView
+                    android:id="@+id/textView101"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="다른 회원의 계정을 도용하여 부당하게 서비스를 이용하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView100" />
+
+                <ImageView
+                    android:id="@+id/imageView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView102"
+                    app:srcCompat="@drawable/ic_number_6" />
+
+                <TextView
+                    android:id="@+id/textView102"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="외설 또는 폭력적인 메시지·화상·음성 등이 담긴
+내용을 게시하거나 공공질서 또는 공서양속에 반하는 정보를 공개 또는 게시하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView101" />
+
+                <ImageView
+                    android:id="@+id/imageView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView103"
+                    app:srcCompat="@drawable/ic_number_7" />
+
+                <TextView
+                    android:id="@+id/textView103"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="정보통신망법 등 관련 법령에 의하여 그 전송 또는
+게시가 금지되는 정보(컴퓨터 프로그램 등)를 전송·게시하거나 청소년보호법에서 규정하는 청소년유해매체물을 게시하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView102" />
+
+                <ImageView
+                    android:id="@+id/imageView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView104"
+                    app:srcCompat="@drawable/ic_number_8" />
+
+                <TextView
+                    android:id="@+id/textView104"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회사의 직원이나 서비스의 관리자를 가장하거나
+사칭하여 또는 타인의 명의를 도용하여 게시물 등을 작성하거나 이메일을 발송하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView103" />
+
+                <ImageView
+                    android:id="@+id/imageView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView105"
+                    app:srcCompat="@drawable/ic_number_9" />
+
+                <TextView
+                    android:id="@+id/textView105"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="컴퓨터 소프트웨어, 하드웨어, 전기통신 장비의 정상적인 가동을 방해·파괴할 목적으로 고안된
+소프트웨어 바이러스, 기타 다른 컴퓨터 코드·파일·프로그램을포함하고 있는 자료를 게시하거나 다른 회원에게 발송하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView104" />
+
+                <ImageView
+                    android:id="@+id/imageView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView106"
+                    app:srcCompat="@drawable/ic_number_10" />
+
+                <TextView
+                    android:id="@+id/textView106"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="스토킹(stalking), 스팸성 댓글의 게재 등 다른 회원의 정상적인 서비스 이용을 방해하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView105" />
+
+                <ImageView
+                    android:id="@+id/imageView31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView107"
+                    app:srcCompat="@drawable/ic_number_11" />
+
+                <TextView
+                    android:id="@+id/textView107"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="다른 회원의 개인정보를 그 동의 없이 수집·저장·공개하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView106" />
+
+                <ImageView
+                    android:id="@+id/imageView32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView108"
+                    app:srcCompat="@drawable/ic_number_12" />
+
+                <TextView
+                    android:id="@+id/textView108"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="광고 또는 선전 등 영리 목적으로 서비스를 이용하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView107" />
+
+                <ImageView
+                    android:id="@+id/imageView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView109"
+                    app:srcCompat="@drawable/ic_number_13" />
+
+                <TextView
+                    android:id="@+id/textView109"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회사가 제공하는 소프트웨어 등을 개작하거나 리버스 엔지니어링, 디컴파일, 디스어셈블 하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView108" />
+
+                <ImageView
+                    android:id="@+id/imageView34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView110"
+                    app:srcCompat="@drawable/ic_number_14" />
+
+                <TextView
+                    android:id="@+id/textView110"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="본 약관 및 회사가 규정한 서비스 운영정책을 위반하는 행위"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView109" />
+
+                <TextView
+                    android:id="@+id/textView111"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView110" />
+
+                <TextView
+                    android:id="@+id/textView112"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 회원이 전항 각 호의 행위를 하는 경우 해당 게시물 등을 삭제 또는 임시조치할 수 있고 회원의
+서비스 이용을 제한하거나 그 사유가 중대한 경우 일방적으로 본 계약을 해지할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textView111"
+                    app:layout_constraintTop_toTopOf="@id/textView111" />
+
+                <TextView
+                    android:id="@+id/textView113"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="3. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView112" />
+
+                <TextView
+                    android:id="@+id/textView114"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원이 본 조 제2항 각 호의 행위를 함으로써 회사에 손해가 발생한 경우, 회사는 해당 회원에 대해 손해배상을 청구할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textView113"
+                    app:layout_constraintTop_toTopOf="@id/textView113" />
+
+                <TextView
+                    android:id="@+id/textView115"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="4. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView114" />
+
+                <TextView
+                    android:id="@+id/textView116"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="본 서비스 내에서 회사의 관여 없이 회원 간 이루어지는 일체의 행위(거래 행위 포함)와 관련하여
+발생하는 모든 의무와 책임은 해당 회원에게 있으며, 회사는 그 내용에 대하여 책임을 지지 않습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textView115"
+                    app:layout_constraintTop_toTopOf="@id/textView115" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms6">
+
+                <TextView
+                    android:id="@+id/tv_terms7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 7 조 (서비스 이용의 제한 및 중지)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView117"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms7" />
+
+                <TextView
+                    android:id="@+id/textView118"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 아래 각 호에 해당하는 사유가 발생한 경우에는 회원의 서비스 이용을 제한하거나 중지시킬 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView117"
+                    app:layout_constraintTop_toTopOf="@+id/textView117" />
+
+                <ImageView
+                    android:id="@+id/imageView35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView119"
+                    app:srcCompat="@drawable/ic_number_1" />
+
+                <TextView
+                    android:id="@+id/textView119"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회원이 회사의 서비스 운영을 고의 또는 과실로  방해하는 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView35"
+                    app:layout_constraintTop_toBottomOf="@+id/textView118" />
+
+                <ImageView
+                    android:id="@+id/imageView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView120"
+                    app:srcCompat="@drawable/ic_number_2" />
+
+                <TextView
+                    android:id="@+id/textView120"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회원이 제6조의 의무를 위반한 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView35"
+                    app:layout_constraintTop_toBottomOf="@+id/textView119" />
+
+                <ImageView
+                    android:id="@+id/imageView37"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView80"
+                    app:srcCompat="@drawable/ic_number_3" />
+
+                <TextView
+                    android:id="@+id/textView80"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="기타 중대한 사유로 인하여 회사가 해당 회원에 대해 서비스 제공을 지속하는 것이 상당하지 않다고 판단되는 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView35"
+                    app:layout_constraintTop_toBottomOf="@+id/textView120" />
+
+                <TextView
+                    android:id="@+id/textView81"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView80" />
+
+                <TextView
+                    android:id="@+id/textView82"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 전항의 규정에 의하여 서비스의 이용을 제한하거나 중지한 때에는 그 사유 및 제한 기간 등을 회원에게 알립니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView117"
+                    app:layout_constraintTop_toTopOf="@+id/textView81" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms7">
+
+                <TextView
+                    android:id="@+id/tv_terms8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 8 조 (계정의 관리책임)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView83"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원은 본인의 계정 관리에 대한 책임을 부담하며, 본인 계정을 제3자가 무단 이용하는 등 회원의 귀책사유로 인해 발생하는 모든 불이익에 대한 책임을 부담합니다. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms8" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms8">
+
+                <TextView
+                    android:id="@+id/tv_terms9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 9 조 (양도금지)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView88"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원의 서비스 받을 권리는 이를 양도 내지 증여의 대상으로 하거나 질권의 목적으로 활용할 수 없습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms9" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms9">
+
+                <TextView
+                    android:id="@+id/tv_terms10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 10 조 (이용계약의 해지)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView89"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms10" />
+
+                <TextView
+                    android:id="@+id/textView98"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회원이 본 서비스 이용계약을 해지하고자 하는 때에는 회사가 제공하는 서비스 내의 회원탈퇴 기능을 이용하여 탈퇴를 요청할 수 있습니다. 회사는 탈퇴를 요청한 시점에서 불가피한 사정이 없는 한 즉시 탈퇴요청을 처리합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView89"
+                    app:layout_constraintTop_toTopOf="@+id/textView89" />
+
+                <TextView
+                    android:id="@+id/textView121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView98" />
+
+                <TextView
+                    android:id="@+id/textView122"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="본 이용 계약이 해지된 경우 회원의 게시물 등은 삭제됩니다. 단, 서비스 운영에 필요한 테마 등은 남을 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView121"
+                    app:layout_constraintTop_toTopOf="@+id/textView121" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms10">
+
+                <TextView
+                    android:id="@+id/tv_terms11"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 11 조 (면책조항)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView123"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms11" />
+
+                <TextView
+                    android:id="@+id/textView124"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 다음 각 호의 사유로 서비스를 제공할 수 없는 경우 이로 인하여 회원에게 발생한 손해에 대해서는 책임을 부담하지 않습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView123"
+                    app:layout_constraintTop_toTopOf="@+id/textView123" />
+
+                <ImageView
+                    android:id="@+id/imageView38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView125"
+                    app:srcCompat="@drawable/ic_number_1" />
+
+                <TextView
+                    android:id="@+id/textView125"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="천재지변 또는 이에 준하는 불가항력의 상태가 있는 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView124" />
+
+                <ImageView
+                    android:id="@+id/imageView39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView126"
+                    app:srcCompat="@drawable/ic_number_2" />
+
+                <TextView
+                    android:id="@+id/textView126"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제3자의 고의적인 서비스 방해가 있는 경우 "
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView125" />
+
+                <ImageView
+                    android:id="@+id/imageView40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView127"
+                    app:srcCompat="@drawable/ic_number_3" />
+
+                <TextView
+                    android:id="@+id/textView127"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="회원의 귀책사유로 서비스 이용에 장애가 발생한 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView126" />
+
+                <ImageView
+                    android:id="@+id/imageView41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView128"
+                    app:srcCompat="@drawable/ic_number_4" />
+
+                <TextView
+                    android:id="@+id/textView128"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제1호 내지 제3호를 제외한 기타 회사의 고의∙과실이 없는 사유로 서비스를 제공하는 것이 어려운 경우"
+                    android:textColor="#5f5f5f"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView127" />
+
+                <TextView
+                    android:id="@+id/textView129"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView128" />
+
+                <TextView
+                    android:id="@+id/textView130"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사는 회원이 작성하여 서비스에 게재된 정보 및 자료의 신뢰도나 정확성 등에 대해서는 보증을 하지 않으며 이로 인해 발생한 회원의 손해에 대하여는 책임을 부담하지 아니합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView123"
+                    app:layout_constraintTop_toTopOf="@+id/textView129" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms11">
+
+                <TextView
+                    android:id="@+id/tv_terms12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 12 조 (회원에 대한 통지)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView131"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="회사가 회원에 대한 통지를 하는 경우, 본 약관에 별도 규정이 없는 한 회원이 회사에 제공한 이메일 주소로 통지할 수 있습니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms12" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms12">
+
+                <TextView
+                    android:id="@+id/tv_terms13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 13 조 (약관의 해석)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView132"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="본 약관에 명시되지 않은 사항에 대해서는 회사와 회원 간 합의하여 결정하고, 합의가 되지 않는 경우 관련 법령 또는 상관례에 따릅니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms13" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/terms14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms13">
+
+                <TextView
+                    android:id="@+id/tv_terms14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_regular"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:text="제 14 조 (준거법 및 재판관할)"
+                    android:textColor="#434343"
+                    android:textSize="19sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView133"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="1. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_terms14" />
+
+                <TextView
+                    android:id="@+id/textView134"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="본 약관은 대한민국법에 의하여 규정되고 이행되며, 회사와 회원 간에 제기된 소송에는 대한민국법을 적용합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView133"
+                    app:layout_constraintTop_toTopOf="@+id/textView133" />
+
+                <TextView
+                    android:id="@+id/textView135"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="2. "
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView134" />
+
+                <TextView
+                    android:id="@+id/textView136"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="4sp"
+                    android:text="서비스 이용과 관련하여 회사와 회원 간에 발생한 분쟁은 서울중앙지방법원 또는 민사소송법 상의 관할법원에 제기합니다."
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView135"
+                    app:layout_constraintTop_toTopOf="@+id/textView135" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView137"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="51dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="12sp"
+                android:text="본 약관은 2020년 11월 15일부터 적용됩니다.\n"
+                android:textColor="#656565"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms14" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/activity_service_terms_top_blur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_service_terms_btn_back"
+        app:srcCompat="@drawable/my_settings_service_box_blur_top" />
+
+    <ImageView
+        android:id="@+id/activity_service_terms_bottom_blur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/my_settings_service_box_blur_bottom" />
+</androidx.constraintlayout.widget.ConstraintLayout>

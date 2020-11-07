@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
+import com.example.mongleandroid_release.adapter.SearchTabAdapter
 import com.example.mongleandroid_release.adapter.SearchThemeAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -41,7 +42,11 @@ class SearchThemeFragment : Fragment() {
                 call: Call<ResponseSearchThemeData>,
                 response: Response<ResponseSearchThemeData>
             ) {
+                fragment_search_theme_cl.visibility = View.GONE
+                fragment_search_theme_cl_noresult.visibility = View.GONE
+
                 if (response.isSuccessful) {
+                    fragment_search_theme_cl.visibility = View.VISIBLE
                     response.body().let { body ->
                         Log.d("테마 검색", response.body()!!.message)
                         fragment_search_theme_tv_count.text = body!!.data.size.toString()

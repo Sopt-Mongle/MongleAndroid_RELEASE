@@ -17,4 +17,10 @@ class JoinFinishActivity : AppCompatActivity() {
             finishAffinity()
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        // 화면 전환 시 애니메이션 없애는 코드
+        overridePendingTransition(0, 0)
+    }
 }

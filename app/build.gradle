@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -73,10 +74,18 @@ dependencies {
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigationVersion"
 
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion"
 
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
+
+
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    compileOnly 'com.google.android.wearable:wearable:2.6.0'
+    // Testing Fragments in Isolation
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }

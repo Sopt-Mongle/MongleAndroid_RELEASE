@@ -16,6 +16,7 @@
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="8sp"
+        android:singleLine="true"
         android:text="몽글몽"
         android:textColor="@color/soft_green"
         android:textSize="16sp"
