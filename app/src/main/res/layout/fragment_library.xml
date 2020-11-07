@@ -8,7 +8,7 @@
     android:paddingBottom="0dp"
     tools:context=".fragment.LibraryFragment">
 
-    <com.example.mongleandroid_release.NewScrollView
+    <com.example.mongleandroid_release.util.NewScrollView
         android:id="@+id/main_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -139,7 +139,7 @@
 
             </com.google.android.material.tabs.TabLayout>
 
-            <com.example.mongleandroid_release.CustomViewPager
+            <com.example.mongleandroid_release.util.CustomViewPager
                 android:id="@+id/vp_library"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
@@ -151,6 +151,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.example.mongleandroid_release.NewScrollView>
+    </com.example.mongleandroid_release.util.NewScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
