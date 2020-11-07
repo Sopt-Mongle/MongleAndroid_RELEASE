@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SettingVersionInfoActivity">
+
+    <TextView
+        android:id="@+id/tv_developer_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:letterSpacing="-0.04"
+        android:text="개발자 정보"
+        android:textColor="#292929"
+        android:textSize="19sp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_back_setting_developer_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_back"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_developer_info"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_developer_info"
+        app:layout_constraintTop_toTopOf="@id/tv_developer_info" />
+
+    <ImageView
+        android:id="@+id/img_setting_ground_developer_info"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:background="#b2f8f5ed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_settings_developer_info_img_mongle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/my_settings_developer_info_img_mongle"
+        android:layout_marginBottom="39.2dp"
+        android:layout_marginRight="1.1dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/img_setting_ground_developer_info" />
+
+    <TextView
+        android:id="@+id/tv_info_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plan"
+        android:textSize="15sp"
+        android:textColor="@color/soft_green"
+        android:background="@drawable/tv_shape"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="66dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_developer_info"/>
+
+    <TextView
+        android:id="@+id/tv_lys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이예슬"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginRight="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_ydh"
+        app:layout_constraintBottom_toBottomOf="@id/tv_ydh"
+        app:layout_constraintRight_toLeftOf="@id/tv_ydh" />
+
+    <TextView
+        android:id="@+id/tv_ydh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="유동현"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginTop="13dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_plan"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_ybm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="유보미"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_ydh"
+        app:layout_constraintBottom_toBottomOf="@id/tv_ydh"
+        app:layout_constraintLeft_toRightOf="@id/tv_ydh" />
+
+    <TextView
+        android:id="@+id/tv_info_design"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Design"
+        android:textSize="15sp"
+        android:textColor="@color/soft_green"
+        android:background="@drawable/tv_shape"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_plan"/>
+
+    <TextView
+        android:id="@+id/tv_lji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이정인"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginRight="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_ije"
+        app:layout_constraintBottom_toBottomOf="@id/tv_ije"
+        app:layout_constraintRight_toLeftOf="@id/tv_ije" />
+
+    <TextView
+        android:id="@+id/tv_ije"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="임정은"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginTop="13dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_design"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_gmj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="곽민주"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_ije"
+        app:layout_constraintBottom_toBottomOf="@id/tv_ije"
+        app:layout_constraintLeft_toRightOf="@id/tv_ije" />
+
+    <TextView
+        android:id="@+id/tv_info_front_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Front-end"
+        android:textSize="15sp"
+        android:textColor="@color/soft_green"
+        android:background="@drawable/tv_shape"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_design"/>
+
+    <TextView
+        android:id="@+id/tv_ljh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이주혁"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginRight="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_kyj"
+        app:layout_constraintBottom_toBottomOf="@id/tv_kyj"
+        app:layout_constraintRight_toLeftOf="@id/tv_kyj" />
+
+    <TextView
+        android:id="@+id/tv_kyj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="김윤재"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginTop="13dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_front_end"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_lys_i"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이예슬"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_kyj"
+        app:layout_constraintBottom_toBottomOf="@id/tv_kyj"
+        app:layout_constraintLeft_toRightOf="@id/tv_kyj" />
+
+    <TextView
+        android:id="@+id/tv_lsm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이소민"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginRight="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_psr"
+        app:layout_constraintBottom_toBottomOf="@id/tv_psr"
+        app:layout_constraintRight_toLeftOf="@id/tv_psr"/>
+
+    <TextView
+        android:id="@+id/tv_psr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="박세란"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="9dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_kyj"
+        app:layout_constraintRight_toLeftOf="@id/tv_jhj"/>
+
+    <TextView
+        android:id="@+id/tv_jhj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="조현진"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginLeft="9dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_psr"
+        app:layout_constraintBottom_toBottomOf="@id/tv_psr"
+        app:layout_constraintLeft_toRightOf="@id/tv_psr"/>
+
+    <TextView
+        android:id="@+id/tv_chy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최하영"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginLeft="18dp"
+        app:layout_constraintTop_toTopOf="@id/tv_psr"
+        app:layout_constraintBottom_toBottomOf="@id/tv_psr"
+        app:layout_constraintLeft_toRightOf="@id/tv_jhj"/>
+
+    <TextView
+        android:id="@+id/tv_info_back_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back-end"
+        android:textSize="15sp"
+        android:textColor="@color/soft_green"
+        android:background="@drawable/tv_shape"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="105dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_front_end"/>
+
+    <TextView
+        android:id="@+id/tv_khr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="김해리"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginTop="13dp"
+        android:layout_marginRight="9dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_back_end"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_phj"
+        />
+
+    <TextView
+        android:id="@+id/tv_phj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="박현주"
+        android:textSize="15sp"
+        android:textColor="#838383"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="9dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_info_back_end"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tv_khr"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
