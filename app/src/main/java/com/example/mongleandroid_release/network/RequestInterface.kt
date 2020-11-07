@@ -101,4 +101,8 @@ interface RequestInterface {
     @GET("/post/theme")
     fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchFirstData>
 
+    //테마 만들기
+    @GET("/post/themeImg")
+    fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
+
 }
