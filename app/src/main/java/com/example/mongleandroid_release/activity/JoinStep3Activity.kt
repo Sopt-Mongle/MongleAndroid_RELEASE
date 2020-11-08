@@ -2,25 +2,31 @@ package com.example.mongleandroid_release.activity
 
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
-import com.example.mongleandroid_release.dialog.DialogJoinStep3
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestCodeData
 import com.example.mongleandroid_release.network.data.request.RequestJoinData
-import kotlinx.android.synthetic.main.activity_join_step2.*
+import com.example.mongleandroid_release.network.data.response.ResponseCodeData
 import kotlinx.android.synthetic.main.activity_join_step3.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
+import kotlin.concurrent.timer
 
 class JoinStep3Activity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
+    private var timerTask : Timer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,44 +50,26 @@ class JoinStep3Activity : AppCompatActivity() {
             finish()
         }
 
-        // 인증번호 보냄
-        val intent = intent
-        val email = intent.getStringExtra("email")
-        val password = intent.getStringExtra("password")
-        val name = intent.getStringExtra("name")
-
-        Log.d("email", email)
-        requestToServer.service.requestCode(
-            RequestCodeData(
-                email = email
-            )
-        ).customEnqueue(
-            onError = {
-                Log.d("error", "auth 통신 실패")
-            },
-            onSuccess = {
-                val code = it.data.authNum
-                activity_join_step3_btn_next.setOnClickListener {
-                    val userCode = activity_join_step3_et_code1.text.toString() +
-                            activity_join_step3_et_code2.text.toString() +
-                            activity_join_step3_et_code3.text.toString() +
-                            activity_join_step3_et_code4.text.toString() +
-                            activity_join_step3_et_code5.text.toString() +
-                            activity_join_step3_et_code6.text.toString()
-
-
-                    if(code == userCode) {
-                        signUpSuccess()
-                    }
-                }
-                Log.d("메일 보냄", it.data.authNum)
-            }
-        )
+        // 3단계 넘어오자마자 인증번호 보냄 & 타이머 가동
+        startTimer()
+        authUser()
 
         // 이메일을 받지 못했을 때 -> dialog -> 재전송
         activity_join_step3_btn_popup.setOnClickListener {
             val dlg = DialogJoinStep3(this)
-            dlg.start()
+            dlg.dialog_spammail()
+            dlg.setOnOKClickedListener { content ->
+                if(content == "재전송") {
+                    startTimer()
+                    authUser()
+                }
+            }
+        }
+
+        // 재전송 버튼
+        activity_join_step3_btn_repeat.setOnClickListener {
+            startTimer()
+            authUser()
         }
 
         changeCodeBackground(activity_join_step3_et_code1)
@@ -113,21 +101,108 @@ class JoinStep3Activity : AppCompatActivity() {
             }
         })
 
-        // 다음 버튼
-        // 인증번호 체크 & 회원가입 통신
-        activity_join_step3_btn_next.setOnClickListener {
-
-
-
-            // 회원가입 통신
-
-
-        }
-
 
     }
 
-    fun signUpSuccess() {
+    private fun authUser() {
+        // 인증번호 보냄
+        val intent = intent
+        val email = intent.getStringExtra("email")
+
+        Log.d("email", email)
+        requestToServer.service.requestCode(
+            RequestCodeData(
+                email = email
+            )
+        ).enqueue(object : Callback<ResponseCodeData> {
+            override fun onFailure(call: Call<ResponseCodeData>, t: Throwable) {
+                Log.d("error", "auth 통신 실패")
+            }
+
+            override fun onResponse(
+                call: Call<ResponseCodeData>,
+                response: Response<ResponseCodeData>
+            ) {
+                if(response.isSuccessful) {
+                    val code = response.body()!!.data.authNum
+                    activity_join_step3_btn_next.setOnClickListener {
+                        val userCode = activity_join_step3_et_code1.text.toString() +
+                                activity_join_step3_et_code2.text.toString() +
+                                activity_join_step3_et_code3.text.toString() +
+                                activity_join_step3_et_code4.text.toString() +
+                                activity_join_step3_et_code5.text.toString() +
+                                activity_join_step3_et_code6.text.toString()
+
+
+                        if(code == userCode) {
+                            signUpSuccess()
+                        }
+                    }
+                }
+
+            }
+
+        })
+
+    }
+
+    private fun startTimer() {
+
+        resetTimer()
+
+        var minute = 0
+        var second = 10
+
+        timerTask = timer(period = 1000) {
+
+            runOnUiThread {
+                var timer = String.format("%02d:%02d", minute, second)
+                activity_join_step3_tv_timer.text = timer
+            }
+
+            if(second == 0 && minute == 0) {
+                //타이머 종료
+                runOnUiThread {
+                    activity_join_step3_tv_timer.text = "00:00"
+                    showTimeoutDialog()
+                }
+                cancel()
+            }
+            if(second == 0) {
+                minute--
+                second = 60
+            }
+            second--
+        }
+
+    }
+
+    private fun showTimeoutDialog() {
+        // 타이머 5분 지났을 때
+        if(activity_join_step3_tv_timer.text == "00:00") {
+            var dlg = DialogJoinStep3(this)
+            dlg.dialog_timeout()
+            dlg.setOnOKClickedListener { content ->
+                if(content == "재전송") {
+                    startTimer()
+                    authUser()
+                }
+            }
+        }
+    }
+
+    private fun resetTimer() {
+        timerTask?.cancel()
+
+        var minute = 0
+        var second = 10
+
+        var timer = String.format("\n%02d:%02d", minute, second)
+        activity_join_step3_tv_timer.text = timer
+
+    }
+
+    private fun signUpSuccess() {
         val intent = intent
         val email = intent.getStringExtra("email")
         val password = intent.getStringExtra("password")

@@ -61,6 +61,10 @@ interface RequestInterface {
     @POST("/users/signin")
     fun requestLogin(@Body body: RequestLoginData) : Call<ResponseLoginData>
 
+    // 중복 확인
+    @POST("/users/duplicate")
+    fun requestDuplicate(@Body body : RequestDuplicateData) : Call<ResponseDuplicateData>
+
     // 회원가입
     @POST("/users/signup")
     fun requestJoin(@Body body: RequestJoinData) : Call<ResponseJoinData>

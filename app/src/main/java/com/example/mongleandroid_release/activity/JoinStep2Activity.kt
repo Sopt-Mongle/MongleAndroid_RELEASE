@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.EditText
@@ -13,7 +14,13 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.customEnqueue
+import com.example.mongleandroid_release.network.data.request.RequestDuplicateData
+import com.example.mongleandroid_release.network.data.response.ResponseDuplicateData
 import kotlinx.android.synthetic.main.activity_join_step2.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 class JoinStep2Activity : AppCompatActivity() {
@@ -67,6 +74,33 @@ class JoinStep2Activity : AppCompatActivity() {
             } else {
 
                 // 여기 중복체크 서버 연결
+                requestToServer.service.requestDuplicate(
+                    RequestDuplicateData(
+                        email = activity_join_step2_et_email.text.toString(),
+                        name = activity_join_step2_et_nickname.text.toString()
+                    )
+                ).enqueue(object : Callback<ResponseDuplicateData> {
+                    override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
+                        Log.d("error", "duplicate / $t")
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseDuplicateData>,
+                        response: Response<ResponseDuplicateData>
+                    ) {
+                        if(response.isSuccessful) {
+                            //Log.d("중복서버", response.body()?.status.toString())
+                            if(response.body()!!.message == "이미 사용중인 이메일입니다.") {
+                                activity_join_step2_img_email_warning.visibility = VISIBLE
+                                activity_join_step2_tv_exist_email.visibility = VISIBLE
+                            } else if(response.body()!!.message == "이미 사용중인 닉네임입니다.") {
+                                activity_join_step2_img_nickname_warning.visibility = VISIBLE
+                                activity_join_step2_tv_exist_nickname.visibility = VISIBLE
+                            }
+                        }
+                    }
+                })
+
                 // 중복 없으면 다음으로 정보와 함께 이동
                 val intent = Intent(this, JoinStep3Activity::class.java)
                 intent.putExtra("email", activity_join_step2_et_email.text.toString())
@@ -126,6 +160,9 @@ class JoinStep2Activity : AppCompatActivity() {
                     activity_join_step2_img_email_warning.visibility = GONE
                     activity_join_step2_tv_email_valid_warning.visibility = GONE
                 }
+
+
+
             }
         }
 
