@@ -150,8 +150,8 @@ class JoinStep3Activity : AppCompatActivity() {
 
         resetTimer()
 
-        var minute = 0
-        var second = 10
+        var minute = 5
+        var second = 0
 
         timerTask = timer(period = 1000) {
 
@@ -194,8 +194,8 @@ class JoinStep3Activity : AppCompatActivity() {
     private fun resetTimer() {
         timerTask?.cancel()
 
-        var minute = 0
-        var second = 10
+        var minute = 5
+        var second = 0
 
         var timer = String.format("\n%02d:%02d", minute, second)
         activity_join_step3_tv_timer.text = timer
