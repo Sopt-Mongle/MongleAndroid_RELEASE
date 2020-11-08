@@ -7,13 +7,13 @@
     android:background="@android:color/transparent">
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/imageView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
+        android:layout_marginStart="49dp"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout7"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login_popup_btn_mongle" />
+        app:srcCompat="@drawable/writing_theme_popup_btn_mongle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout7"
@@ -23,10 +23,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView19">
+        app:layout_constraintTop_toBottomOf="@+id/imageView42">
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -35,35 +35,36 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
-            android:text="몽글에 등록되지 않은 회원이에요!"
+            android:text="입력 시간이 초과되었어요!"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView22"
+            app:layout_constraintStart_toStartOf="@+id/textView22"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="61dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="61dp"
             android:fontFamily="@font/notosanscjkkr_demilight"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
-            android:text="이메일 주소와 비밀번호를\n다시 한 번 확인해주세요!"
+            android:text="재전송을 통해\n새 인증 코드를 발급 받아주세요."
             android:textColor="#a7a7a7"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView18"
-            app:layout_constraintStart_toStartOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
         <TextView
-            android:id="@+id/dialog_login_yes"
+            android:id="@+id/dialog_join_step3_btn_repeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="22dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/dialog_btn_yes"
             android:fontFamily="@font/notosanscjkkr_regular"
@@ -71,41 +72,17 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="6sp"
-            android:paddingLeft="58dp"
+            android:paddingLeft="44dp"
             android:paddingTop="9dp"
-            android:paddingRight="57dp"
+            android:paddingRight="45dp"
             android:paddingBottom="8dp"
-            android:text="네"
+            android:text="재전송"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-        <TextView
-            android:id="@+id/dialog_login_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/dialog_btn_no"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:gravity="center_horizontal"
-            android:includeFontPadding="false"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="6sp"
-            android:paddingLeft="39dp"
-            android:paddingTop="9dp"
-            android:paddingRight="38dp"
-            android:paddingBottom="8dp"
-            android:text="회원가입"
-            android:textColor="@color/soft_green"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/dialog_login_yes"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dialog_login_yes"
-            app:layout_constraintTop_toTopOf="@+id/dialog_login_yes"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toEndOf="@+id/textView22"
+            app:layout_constraintStart_toStartOf="@+id/textView22"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

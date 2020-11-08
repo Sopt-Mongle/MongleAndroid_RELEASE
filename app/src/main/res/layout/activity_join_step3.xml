@@ -147,13 +147,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="58dp"
                 android:fontFamily="@font/notosanscjkkr_demilight"
                 android:gravity="center_horizontal"
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.04"
-                android:lineSpacingExtra="5sp"
                 android:text="입력한 mongle@mongle.com 으로 전송된 메일 속 본인 확인 인증 코드를 입력해주세요."
                 android:textColor="#909090"
                 android:textSize="15sp"
@@ -162,7 +161,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/activity_join_step3_tv_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -170,7 +169,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="0.01"
                 android:lineSpacingExtra="1sp"
-                android:text="5:00"
+                android:text="05:00"
                 android:textColor="@color/soft_green"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView26"
@@ -179,8 +178,8 @@
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code1"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
@@ -192,20 +191,21 @@
                 android:maxLength="1"
                 android:nextFocusDown="@id/activity_join_step3_et_code2"
                 android:textColor="@color/soft_green"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView28">
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_tv_timer">
 
                 <requestFocus />
             </EditText>
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code2"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="2dp"
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
@@ -216,7 +216,7 @@
                 android:maxLength="1"
                 android:nextFocusDown="@id/activity_join_step3_et_code3"
                 android:textColor="@color/soft_green"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code1"
@@ -224,8 +224,9 @@
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code3"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="2dp"
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
@@ -236,7 +237,7 @@
                 android:maxLength="1"
                 android:nextFocusDown="@id/activity_join_step3_et_code4"
                 android:textColor="@color/soft_green"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code4"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code2"
@@ -244,8 +245,9 @@
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code4"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="2dp"
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
@@ -256,7 +258,7 @@
                 android:maxLength="1"
                 android:nextFocusDown="@id/activity_join_step3_et_code5"
                 android:textColor="@color/soft_green"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code5"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code3"
@@ -264,8 +266,9 @@
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code5"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="2dp"
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
@@ -276,7 +279,7 @@
                 android:maxLength="1"
                 android:nextFocusDown="@id/activity_join_step3_et_code6"
                 android:textColor="@color/soft_green"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code6"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code4"
@@ -284,8 +287,9 @@
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code6"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="2dp"
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
@@ -295,7 +299,7 @@
                 android:lineSpacingExtra="5sp"
                 android:maxLength="1"
                 android:textColor="@color/soft_green"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code5"

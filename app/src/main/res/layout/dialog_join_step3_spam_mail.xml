@@ -29,12 +29,11 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="26dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
-            android:lineSpacingExtra="-1sp"
             android:text="메일이 스팸 메일로 분류된 것은 아닌지\n확인해주세요!"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -46,12 +45,11 @@
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/notosanscjkkr_demilight"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
-            android:lineSpacingExtra="3sp"
             android:text="스팸 메일함에도 메일이 없다면,\n재전송을 시도해주세요."
             android:textColor="#a7a7a7"
             android:textSize="14sp"
@@ -60,11 +58,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
-            android:id="@+id/dialog_join_step3_yes"
+            android:id="@+id/dialog_join_step3_spammail_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="9dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/dialog_btn_yes"
             android:fontFamily="@font/notosanscjkkr_regular"
@@ -84,7 +82,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <TextView
-            android:id="@+id/dialog_join_step3_no"
+            android:id="@+id/dialog_join_step3_spammail_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -102,10 +100,10 @@
             android:text="재전송"
             android:textColor="@color/soft_green"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/dialog_join_step3_yes"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_join_step3_spammail_yes"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dialog_join_step3_yes"
-            app:layout_constraintTop_toTopOf="@+id/dialog_join_step3_yes"
+            app:layout_constraintStart_toEndOf="@+id/dialog_join_step3_spammail_yes"
+            app:layout_constraintTop_toTopOf="@+id/dialog_join_step3_spammail_yes"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
