@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SettingVersionInfoActivity">
+
+    <TextView
+        android:id="@+id/tv_version_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:letterSpacing="-0.04"
+        android:text="버전 정보"
+        android:textColor="#292929"
+        android:textSize="19sp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_back_setting_version_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/btn_back"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_version_info"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_version_info"
+        app:layout_constraintTop_toTopOf="@id/tv_version_info" />
+
+    <ImageView
+        android:id="@+id/img_settings_version_info_img_simbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/my_settings_version_info_img_simbol"
+        android:layout_marginTop="256dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/img_setting_ground_version_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/my_settings_version_info_bg_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_settings_version_info_img_mongle"
+        android:layout_width="110dp"
+        android:layout_height="124dp"
+        android:src="@drawable/img_settings_version_info_img_mongle"
+        android:layout_marginBottom="91dp"
+        android:layout_marginLeft="53dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/img_setting_ground_version_info" />
+
+    <TextView
+        android:id="@+id/tv_version_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="최신 버전"
+        android:textSize="14sp"
+        android:textColor="@color/soft_green"
+        android:background="@drawable/tv_shape"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_settings_version_info_img_simbol"
+        />
+
+    <TextView
+        android:id="@+id/tv_version_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현재 버전 1.0"
+        android:textSize="14sp"
+        android:textColor="#a7a7a7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_version_new"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_android_os"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지원 환경 Android OS 5.0 이상"
+        android:textSize="14sp"
+        android:textColor="#a7a7a7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_version_now"
+        />
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

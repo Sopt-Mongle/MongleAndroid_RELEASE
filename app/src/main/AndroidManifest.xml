@@ -13,28 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.CuratorInfoActivity"></activity>
         <activity android:name=".activity.ServiceTermsActivity" />
         <activity android:name=".activity.ServicePolicyActivity" />
-        <activity android:name=".activity.SentenceDetailViewActivity"></activity>
-
+        <activity android:name=".activity.SentenceDetailViewActivity" />
         <activity
             android:name=".activity.DetailThemeActivity"
             android:label="@string/title_activity_detail_theme" />
         <activity android:name=".activity.CuratorKeywordActivity" />
+        <activity android:name=".activity.SettingDeveloperInfoActivity" />
+        <activity android:name=".activity.SettingVersionInfoActivity" />
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.LibraryActivity" />
         <activity android:name=".activity.JoinFinishActivity" />
         <activity android:name=".activity.PrivacyTermsActivity" />
         <activity android:name=".activity.JoinStep2Activity" />
-        <activity android:name=".activity.JoinStep1Activity" >
-
-        </activity>
+        <activity android:name=".activity.JoinStep1Activity"></activity>
         <activity
             android:name=".activity.JoinStep3Activity"
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,9 +43,7 @@
         </activity>
         <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
-        <activity android:name=".activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.MainActivity"></activity>
     </application>
 
 </manifest>
