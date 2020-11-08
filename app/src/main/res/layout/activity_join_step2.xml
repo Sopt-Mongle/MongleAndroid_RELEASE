@@ -214,7 +214,7 @@
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.04"
                 android:lineSpacingExtra="1sp"
-                android:text="올바른 이메일 형식이 아니에요!"
+                android:text="이미 가입된 이메일이에요!"
                 android:textColor="@color/reddish"
                 android:textSize="14sp"
                 android:visibility="gone"

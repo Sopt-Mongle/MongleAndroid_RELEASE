@@ -73,7 +73,9 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_tv_email_valid_warning.visibility = VISIBLE
             } else {
 
-                // 여기 중복체크 서버 연결
+                val intent = Intent(this, JoinStep3Activity::class.java)
+
+                // 전체 중복체크
                 requestToServer.service.requestDuplicate(
                     RequestDuplicateData(
                         email = activity_join_step2_et_email.text.toString(),
@@ -89,26 +91,29 @@ class JoinStep2Activity : AppCompatActivity() {
                         response: Response<ResponseDuplicateData>
                     ) {
                         if(response.isSuccessful) {
-                            //Log.d("중복서버", response.body()?.status.toString())
-                            if(response.body()!!.message == "이미 사용중인 이메일입니다.") {
+                            Log.d("중복", response.body().toString())
+                            if(response.body()!!.data!!.duplicate == "email") {
+                                activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
                                 activity_join_step2_img_email_warning.visibility = VISIBLE
                                 activity_join_step2_tv_exist_email.visibility = VISIBLE
-                            } else if(response.body()!!.message == "이미 사용중인 닉네임입니다.") {
+                            } else if(response.body()!!.data!!.duplicate == "name") {
+                                activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
                                 activity_join_step2_img_nickname_warning.visibility = VISIBLE
                                 activity_join_step2_tv_exist_nickname.visibility = VISIBLE
+                            } else {
+                                // 중복 없으면 다음으로 정보와 함께 이동
+                                intent.putExtra("email", activity_join_step2_et_email.text.toString())
+                                intent.putExtra("password", activity_join_step2_et_pass.text.toString())
+                                intent.putExtra("name", activity_join_step2_et_nickname.text.toString())
+                                startActivity(intent)
+                                // 화면 전환 시 애니메이션 없애는 코드
+                                overridePendingTransition(0, 0)
                             }
                         }
                     }
                 })
 
-                // 중복 없으면 다음으로 정보와 함께 이동
-                val intent = Intent(this, JoinStep3Activity::class.java)
-                intent.putExtra("email", activity_join_step2_et_email.text.toString())
-                intent.putExtra("password", activity_join_step2_et_pass.text.toString())
-                intent.putExtra("name", activity_join_step2_et_nickname.text.toString())
-                startActivity(intent)
-                // 화면 전환 시 애니메이션 없애는 코드
-                overridePendingTransition(0, 0)
+
 
             }
 
@@ -127,6 +132,7 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_img_email_warning.visibility = GONE
                 activity_join_step2_tv_email_warning.visibility = GONE
                 activity_join_step2_tv_email_valid_warning.visibility = GONE
+                activity_join_step2_tv_exist_email.visibility = GONE
             }
         })
 
@@ -136,6 +142,7 @@ class JoinStep2Activity : AppCompatActivity() {
             activity_join_step2_img_email_warning.visibility = GONE
             activity_join_step2_tv_email_warning.visibility = GONE
             activity_join_step2_tv_email_valid_warning.visibility = GONE
+            activity_join_step2_tv_exist_email.visibility = GONE
 
             // edittext 지우는 x버튼
             activity_join_step2_et_email.clearText(activity_join_step2_btn_email_erase)
@@ -161,6 +168,31 @@ class JoinStep2Activity : AppCompatActivity() {
                     activity_join_step2_tv_email_valid_warning.visibility = GONE
                 }
 
+                // 이메일 중복체크
+                requestToServer.service.requestDuplicate(
+                    RequestDuplicateData(
+                        email = activity_join_step2_et_email.text.toString(),
+                        name = "이메일만체크함"
+                    )
+                ).enqueue(object : Callback<ResponseDuplicateData> {
+                    override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
+                        Log.d("error", "duplicate / $t")
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseDuplicateData>,
+                        response: Response<ResponseDuplicateData>
+                    ) {
+                        if(response.isSuccessful) {
+                            if(response.body()!!.data.duplicate == "email") {
+                                activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
+                                activity_join_step2_img_email_warning.visibility = VISIBLE
+                                activity_join_step2_tv_exist_email.visibility = VISIBLE
+                            }
+                        }
+                    }
+                })
+
 
 
             }
@@ -169,6 +201,7 @@ class JoinStep2Activity : AppCompatActivity() {
 
         // password 입력창 focus -> warning 문구 해제, et_green 설정
         activity_join_step2_et_pass.setOnFocusChangeListener { _, hasFocus ->
+
             // warning 문구 해제
             activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area_green, null)
             activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
@@ -305,6 +338,7 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_green, null)
                 activity_join_step2_img_nickname_warning.visibility = GONE
                 activity_join_step2_tv_nickname_warning.visibility = GONE
+                activity_join_step2_tv_exist_nickname.visibility = GONE
 
                 // 실시간 글자수
                 if(activity_join_step2_et_nickname.text.toString().isEmpty()) {
@@ -326,6 +360,7 @@ class JoinStep2Activity : AppCompatActivity() {
             activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_green, null)
             activity_join_step2_img_nickname_warning.visibility = GONE
             activity_join_step2_tv_nickname_warning.visibility = GONE
+            activity_join_step2_tv_exist_nickname.visibility = GONE
 
             // 패스워드 일치 문구 해제
             if(activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString()) {
@@ -349,6 +384,38 @@ class JoinStep2Activity : AppCompatActivity() {
         activity_join_step2_btn_back.setOnClickListener {
             finish()
         }
+    }
+
+    private fun duplicateCheck() {
+        // 중복체크
+        requestToServer.service.requestDuplicate(
+            RequestDuplicateData(
+                email = activity_join_step2_et_email.text.toString(),
+                name = activity_join_step2_et_nickname.text.toString()
+            )
+        ).enqueue(object : Callback<ResponseDuplicateData> {
+            override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
+                Log.d("error", "duplicate / $t")
+            }
+
+            override fun onResponse(
+                call: Call<ResponseDuplicateData>,
+                response: Response<ResponseDuplicateData>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("중복서버", response.body().toString())
+                    if(response.body()!!.data!!.duplicate == "email") {
+                        activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
+                        activity_join_step2_img_email_warning.visibility = VISIBLE
+                        activity_join_step2_tv_exist_email.visibility = VISIBLE
+                    } else if(response.body()!!.data!!.duplicate == "name") {
+                        activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
+                        activity_join_step2_img_nickname_warning.visibility = VISIBLE
+                        activity_join_step2_tv_exist_nickname.visibility = VISIBLE
+                    }
+                }
+            }
+        })
     }
 
     // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
