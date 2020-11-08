@@ -215,14 +215,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_dokseo" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
+                android:id="@+id/fragment_curator_theme1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
-                android:background="@drawable/curator_img_backtheme_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22">
+
+                <ImageView
+                    android:id="@+id/fragment_curator_img_theme1"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/curator_img_backtheme_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/fragment_curator_tv_themename"
@@ -234,7 +244,6 @@
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="9sp"
                     android:text="흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야 스쳐 지나간건가 뒤돌아보는 문장 "
                     android:textColor="#ffffff"
                     android:textSize="19sp"
@@ -246,27 +255,25 @@
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
                     android:layout_marginBottom="27dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
+                    android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="-1sp"
                     android:text="큐레이터 "
-                    android:fontFamily="@font/notosanscjkkr_demilight"
-                    android:includeFontPadding="false"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_themename"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_themename" />
+                    app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_themename" />
 
                 <TextView
                     android:id="@+id/fragment_curator_tv_curator_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="-1sp"
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="-1sp"
                     android:text="53"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
@@ -277,10 +284,10 @@
                     android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="-1sp"
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="-1sp"
                     android:text="명"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
@@ -297,18 +304,28 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_curator_theme1"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_search_curator" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout5"
+                android:id="@+id/fragment_curator_theme2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/curator_img_backtheme_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_curator_rv_curator1">
+
+                <ImageView
+                    android:id="@+id/fragment_curator_img_theme2"
+                    android:layout_width="0dp"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/curator_img_backtheme_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/fragment_curator_tv_themename2"
@@ -317,10 +334,9 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="26dp"
                     android:layout_marginEnd="16dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="9sp"
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
                     android:text="흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야 스쳐 지나간건가 뒤돌아보는 문장 "
                     android:textColor="#ffffff"
                     android:textSize="19sp"
@@ -332,27 +348,25 @@
                     android:id="@+id/textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
                     android:layout_marginBottom="27dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="-1sp"
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="-1sp"
                     android:text="큐레이터 "
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_themename2"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_themename2" />
+                    app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_themename2" />
 
                 <TextView
                     android:id="@+id/fragment_curator_tv_curator_count2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="-1sp"
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="-1sp"
                     android:text="53"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
@@ -363,10 +377,10 @@
                     android:id="@+id/textView33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="-1sp"
                     android:fontFamily="@font/notosanscjkkr_demilight"
                     android:includeFontPadding="false"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="-1sp"
                     android:text="명"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
@@ -382,7 +396,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_curator_theme2"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_search_curator" />
 

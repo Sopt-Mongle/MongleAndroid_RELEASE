@@ -1,7 +1,7 @@
 package com.example.mongleandroid_release.fragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +9,10 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorKeywordActivity
 import com.example.mongleandroid_release.adapter.CuratorInThemeAdapter
@@ -19,6 +22,7 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseRecommendCuratorData
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.fragment_curator.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -112,22 +116,28 @@ class CuratorFragment : Fragment() {
                 ) {
                     if (response.isSuccessful) {
                         if(response.body()!!.data!!.theme.isNullOrEmpty()) {
-                            constraintLayout4.visibility = GONE
+                            fragment_curator_theme1.visibility = GONE
                             fragment_curator_rv_curator1.visibility = GONE
-                            constraintLayout5.visibility = GONE
+                            fragment_curator_theme2.visibility = GONE
                             fragment_curator_rv_curator2.visibility = GONE
                         } else {
-                            constraintLayout4.visibility = VISIBLE
+                            fragment_curator_theme1.visibility = VISIBLE
                             fragment_curator_rv_curator1.visibility = VISIBLE
-                            constraintLayout5.visibility = VISIBLE
+                            fragment_curator_theme2.visibility = VISIBLE
                             fragment_curator_rv_curator2.visibility = VISIBLE
 
                             response.body().let { body ->
 
                                 fragment_curator_tv_themename.text = body!!.data!!.theme[0].theme
+                                val img1 = view!!.findViewById<ImageView>(R.id.fragment_curator_img_theme1)
+                                Glide.with(view!!).load(body.data!!.theme[0].themeImg)
+                                    .apply(RequestOptions.bitmapTransform(BlurTransformation(7, 3))).into(img1)
                                 fragment_curator_tv_curator_count.text = body.data!!.theme[0].curatorNum.toString()
 
                                 fragment_curator_tv_themename2.text = body.data.theme[1].theme
+                                val img2 = view!!.findViewById<ImageView>(R.id.fragment_curator_img_theme2)
+                                Glide.with(view!!).load(body.data!!.theme[1].themeImg)
+                                    .apply(RequestOptions.bitmapTransform(BlurTransformation(7, 3))).into(img2)
                                 fragment_curator_tv_curator_count2.text = body.data.theme[1].curatorNum.toString()
 
                                 curatorInThemeAdapter = CuratorInThemeAdapter(view!!.context, body.data.theme[0].curators)
