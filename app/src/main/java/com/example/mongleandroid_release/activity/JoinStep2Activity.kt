@@ -13,6 +13,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestDuplicateData
@@ -42,35 +44,35 @@ class JoinStep2Activity : AppCompatActivity() {
         activity_join_step2_btn_next.setOnClickListener {
             if(activity_join_step2_et_email.text.isEmpty()) {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
-                activity_join_step2_img_email_warning.visibility = VISIBLE
-                activity_join_step2_tv_email_warning.visibility = VISIBLE
-                activity_join_step2_tv_email_valid_warning.visibility = GONE
+                change_visible(activity_join_step2_img_email_warning)
+                change_visible(activity_join_step2_tv_email_warning)
+                change_gone(activity_join_step2_tv_email_valid_warning)
             } else if(activity_join_step2_et_pass.text.isEmpty()) {
                 activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area_red, null)
                 activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area_red, null)
-                activity_join_step2_img_pass_warning.visibility = VISIBLE
+                change_visible(activity_join_step2_img_pass_warning)
                 activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                activity_join_step2_tv_pass_warning.visibility = VISIBLE
-                activity_join_step2_tv_pass_nomatch.visibility = GONE
+                change_visible(activity_join_step2_tv_pass_warning)
+                change_gone(activity_join_step2_tv_pass_nomatch)
             } else if(activity_join_step2_et_passcheck.text.isEmpty()) {
                 activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area_red, null)
-                activity_join_step2_img_pass_warning.visibility = VISIBLE
+                change_visible(activity_join_step2_img_pass_warning)
                 activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                activity_join_step2_tv_passcheck_warning.visibility = VISIBLE
-                activity_join_step2_tv_pass_nomatch.visibility = GONE
-                activity_join_step2_tv_pass_valid.visibility = GONE
+                change_visible(activity_join_step2_tv_passcheck_warning)
+                change_gone(activity_join_step2_tv_pass_nomatch)
+                change_gone(activity_join_step2_tv_pass_valid)
             } else if(activity_join_step2_et_nickname.text.isEmpty()) {
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
-                activity_join_step2_img_nickname_warning.visibility = VISIBLE
-                activity_join_step2_tv_nickname_warning.visibility = VISIBLE
+                change_visible(activity_join_step2_img_nickname_warning)
+                change_visible(activity_join_step2_tv_nickname_warning)
             } else if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", activity_join_step2_et_pass.text.toString())) {
                 activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                activity_join_step2_tv_pass_match.visibility = GONE
-                activity_join_step2_img_pass_warning.visibility = VISIBLE
-                activity_join_step2_tv_pass_valid.visibility = VISIBLE
+                change_gone(activity_join_step2_tv_pass_match)
+                change_visible(activity_join_step2_img_pass_warning)
+                change_visible(activity_join_step2_tv_pass_valid)
             } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()){
-                activity_join_step2_img_email_warning.visibility = VISIBLE
-                activity_join_step2_tv_email_valid_warning.visibility = VISIBLE
+                change_visible(activity_join_step2_img_email_warning)
+                change_visible(activity_join_step2_tv_email_valid_warning)
             } else {
 
                 val intent = Intent(this, JoinStep3Activity::class.java)
@@ -94,12 +96,12 @@ class JoinStep2Activity : AppCompatActivity() {
                             Log.d("중복", response.body().toString())
                             if(response.body()!!.data!!.duplicate == "email") {
                                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
-                                activity_join_step2_img_email_warning.visibility = VISIBLE
-                                activity_join_step2_tv_exist_email.visibility = VISIBLE
+                                change_visible(activity_join_step2_img_email_warning)
+                                change_visible(activity_join_step2_tv_exist_email)
                             } else if(response.body()!!.data!!.duplicate == "name") {
                                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
-                                activity_join_step2_img_nickname_warning.visibility = VISIBLE
-                                activity_join_step2_tv_exist_nickname.visibility = VISIBLE
+                                change_visible(activity_join_step2_img_nickname_warning)
+                                change_visible(activity_join_step2_tv_exist_nickname)
                             } else {
                                 // 중복 없으면 다음으로 정보와 함께 이동
                                 intent.putExtra("email", activity_join_step2_et_email.text.toString())
@@ -129,43 +131,43 @@ class JoinStep2Activity : AppCompatActivity() {
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_green, null)
-                activity_join_step2_img_email_warning.visibility = GONE
-                activity_join_step2_tv_email_warning.visibility = GONE
-                activity_join_step2_tv_email_valid_warning.visibility = GONE
-                activity_join_step2_tv_exist_email.visibility = GONE
+                change_gone(activity_join_step2_img_email_warning)
+                change_gone(activity_join_step2_tv_email_warning)
+                change_gone(activity_join_step2_tv_email_valid_warning)
+                change_gone(activity_join_step2_tv_exist_email)
             }
         })
 
         // email 입력창 focus -> warning 문구 해제, et_green 설정
         activity_join_step2_et_email.setOnFocusChangeListener { _, hasFocus ->
             activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_green, null)
-            activity_join_step2_img_email_warning.visibility = GONE
-            activity_join_step2_tv_email_warning.visibility = GONE
-            activity_join_step2_tv_email_valid_warning.visibility = GONE
-            activity_join_step2_tv_exist_email.visibility = GONE
+            change_gone(activity_join_step2_img_email_warning)
+            change_gone(activity_join_step2_tv_email_warning)
+            change_gone(activity_join_step2_tv_email_valid_warning)
+            change_gone(activity_join_step2_tv_exist_email)
 
             // edittext 지우는 x버튼
             activity_join_step2_et_email.clearText(activity_join_step2_btn_email_erase)
 
             // 패스워드 일치 문구 해제
             if(activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString()) {
-                activity_join_step2_img_pass_warning.visibility = GONE
-                activity_join_step2_tv_pass_match.visibility = GONE
+                change_gone(activity_join_step2_img_pass_warning)
+                change_gone(activity_join_step2_tv_pass_match)
             } else {
-                activity_join_step2_img_pass_warning.visibility = VISIBLE
-                activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
+                change_visible(activity_join_step2_img_pass_warning)
+                change_visible(activity_join_step2_tv_pass_nomatch)
             }
 
             if(!hasFocus) {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area, null)
-                activity_join_step2_btn_email_erase.visibility = GONE
+                change_gone(activity_join_step2_btn_email_erase)
 
                 if(activity_join_step2_et_email.text.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
-                    activity_join_step2_img_email_warning.visibility = VISIBLE
-                    activity_join_step2_tv_email_valid_warning.visibility = VISIBLE
+                    change_visible(activity_join_step2_img_email_warning)
+                    change_visible(activity_join_step2_tv_email_valid_warning)
                 } else {
-                    activity_join_step2_img_email_warning.visibility = GONE
-                    activity_join_step2_tv_email_valid_warning.visibility = GONE
+                    change_gone(activity_join_step2_img_email_warning)
+                    change_gone(activity_join_step2_tv_email_valid_warning)
                 }
 
                 // 이메일 중복체크
@@ -186,8 +188,8 @@ class JoinStep2Activity : AppCompatActivity() {
                         if(response.isSuccessful) {
                             if(response.body()!!.data.duplicate == "email") {
                                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
-                                activity_join_step2_img_email_warning.visibility = VISIBLE
-                                activity_join_step2_tv_exist_email.visibility = VISIBLE
+                                change_visible(activity_join_step2_img_email_warning)
+                                change_visible(activity_join_step2_tv_exist_email)
                             }
                         }
                     }
@@ -227,31 +229,31 @@ class JoinStep2Activity : AppCompatActivity() {
                     // 패스워드와 패스워드 확인 값이 다르면
                     if(activity_join_step2_et_pass.text.isNotEmpty() && activity_join_step2_et_passcheck.text.isNotEmpty()) {
                         if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
-                            activity_join_step2_img_pass_warning.visibility = VISIBLE
-                            activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
+                            change_visible(activity_join_step2_img_pass_warning)
+                            change_visible(activity_join_step2_tv_pass_nomatch)
                             activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                            activity_join_step2_tv_pass_match.visibility = GONE
+                            change_gone(activity_join_step2_tv_pass_match)
                         } else {
-                            activity_join_step2_img_pass_warning.visibility = VISIBLE
+                            change_visible(activity_join_step2_img_pass_warning)
                             //activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_possible)
-                            activity_join_step2_tv_pass_nomatch.visibility = GONE
-                            activity_join_step2_tv_pass_match.visibility = VISIBLE
+                            change_gone(activity_join_step2_tv_pass_nomatch)
+                            change_visible(activity_join_step2_tv_pass_match)
                         }
                     }
 
                     if(activity_join_step2_et_passcheck.text.isEmpty() || activity_join_step2_et_passcheck.text.isNotEmpty()) {
-                        activity_join_step2_img_pass_warning.visibility = GONE
-                        activity_join_step2_tv_pass_nomatch.visibility = GONE
-                        activity_join_step2_tv_pass_match.visibility = GONE
-                        activity_join_step2_tv_pass_valid.visibility = GONE
+                        change_gone(activity_join_step2_img_pass_warning)
+                        change_gone(activity_join_step2_tv_pass_nomatch)
+                        change_gone(activity_join_step2_tv_pass_match)
+                        change_gone(activity_join_step2_tv_pass_valid)
 
                         // 비밀번호 유효성 검사
                         if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", activity_join_step2_et_pass.text.toString())) {
-                            activity_join_step2_img_pass_warning.visibility = VISIBLE
-                            activity_join_step2_tv_pass_valid.visibility = VISIBLE
+                            change_visible(activity_join_step2_img_pass_warning)
+                            change_visible(activity_join_step2_tv_pass_valid)
                         } else {
-                            activity_join_step2_img_pass_warning.visibility = GONE
-                            activity_join_step2_tv_pass_valid.visibility = GONE
+                            change_gone(activity_join_step2_img_pass_warning)
+                            change_gone(activity_join_step2_tv_pass_valid)
                         }
 
                     }
@@ -261,7 +263,7 @@ class JoinStep2Activity : AppCompatActivity() {
 
             if(!hasFocus) {
                 activity_join_step2_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
-                activity_join_step2_btn_pass_erase.visibility = GONE
+                change_gone(activity_join_step2_btn_pass_erase)
             }
 
         }
@@ -295,22 +297,22 @@ class JoinStep2Activity : AppCompatActivity() {
 
                     // 패스워드와 패스워드 확인 값이 다르면
                     if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
-                        activity_join_step2_img_pass_warning.visibility = VISIBLE
-                        activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
+                        change_visible(activity_join_step2_img_pass_warning)
+                        change_visible(activity_join_step2_tv_pass_nomatch)
                         activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                        activity_join_step2_tv_pass_match.visibility = GONE
+                        change_gone(activity_join_step2_tv_pass_match)
                     } else {
-                        activity_join_step2_img_pass_warning.visibility = VISIBLE
-                        activity_join_step2_tv_pass_nomatch.visibility = GONE
+                        change_visible(activity_join_step2_img_pass_warning)
+                        change_gone(activity_join_step2_tv_pass_nomatch)
                         activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_possible)
-                        activity_join_step2_tv_pass_match.visibility = VISIBLE
+                        change_visible(activity_join_step2_tv_pass_match)
                     }
 
                     if(activity_join_step2_et_pass.text.isEmpty() && activity_join_step2_et_passcheck.text.isEmpty()) {
                         activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
-                        activity_join_step2_img_pass_warning.visibility = GONE
-                        activity_join_step2_tv_pass_nomatch.visibility = GONE
-                        activity_join_step2_tv_pass_match.visibility = GONE
+                        change_gone(activity_join_step2_img_pass_warning)
+                        change_gone(activity_join_step2_tv_pass_nomatch)
+                        change_gone(activity_join_step2_tv_pass_match)
                     }
 
                 }
@@ -318,7 +320,7 @@ class JoinStep2Activity : AppCompatActivity() {
 
             if(!hasFocus) {
                 activity_join_step2_et_passcheck.background = resources.getDrawable(R.drawable.et_area, null)
-                activity_join_step2_btn_passcheck_erase.visibility = GONE
+                change_gone(activity_join_step2_btn_passcheck_erase)
             }
 
         }
@@ -336,19 +338,19 @@ class JoinStep2Activity : AppCompatActivity() {
 
                 // 경고문구 해제
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_green, null)
-                activity_join_step2_img_nickname_warning.visibility = GONE
-                activity_join_step2_tv_nickname_warning.visibility = GONE
-                activity_join_step2_tv_exist_nickname.visibility = GONE
+                change_gone(activity_join_step2_img_nickname_warning)
+                change_gone(activity_join_step2_tv_nickname_warning)
+                change_gone(activity_join_step2_tv_exist_nickname)
 
                 // 실시간 글자수
-                if(activity_join_step2_et_nickname.text.toString().isEmpty()) {
-                    activity_join_step2_tv_nickname_cnt.visibility = GONE
-                    activity_join_step2_tv_nickname_cnt_max.visibility = GONE
+                if(activity_join_step2_et_nickname.text.isEmpty()) {
+                    change_gone(activity_join_step2_tv_nickname_cnt)
+                    change_gone(activity_join_step2_tv_nickname_cnt_max)
                 } else {
-                    activity_join_step2_tv_nickname_cnt.visibility = VISIBLE
-                    activity_join_step2_tv_nickname_cnt_max.visibility = VISIBLE
-                    val nickname_length = activity_join_step2_et_nickname.text.toString()
-                    activity_join_step2_tv_nickname_cnt.setText(nickname_length.length.toString())
+                    change_visible(activity_join_step2_tv_nickname_cnt)
+                    change_visible(activity_join_step2_tv_nickname_cnt_max)
+                    val nickname_length = activity_join_step2_et_nickname.text.length.toString()
+                    activity_join_step2_tv_nickname_cnt.text = nickname_length
                 }
 
             }
@@ -358,17 +360,17 @@ class JoinStep2Activity : AppCompatActivity() {
         activity_join_step2_et_nickname.setOnFocusChangeListener { _, hasFocus ->
 
             activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_green, null)
-            activity_join_step2_img_nickname_warning.visibility = GONE
-            activity_join_step2_tv_nickname_warning.visibility = GONE
-            activity_join_step2_tv_exist_nickname.visibility = GONE
+            change_gone(activity_join_step2_img_nickname_warning)
+            change_gone(activity_join_step2_tv_nickname_warning)
+            change_gone(activity_join_step2_tv_exist_nickname)
 
             // 패스워드 일치 문구 해제
             if(activity_join_step2_et_pass.text.toString() == activity_join_step2_et_passcheck.text.toString()) {
-                activity_join_step2_img_pass_warning.visibility = GONE
-                activity_join_step2_tv_pass_match.visibility = GONE
+                change_gone(activity_join_step2_img_pass_warning)
+                change_gone(activity_join_step2_tv_pass_match)
             } else {
-                activity_join_step2_img_pass_warning.visibility = VISIBLE
-                activity_join_step2_tv_pass_nomatch.visibility = VISIBLE
+                change_visible(activity_join_step2_img_pass_warning)
+                change_visible(activity_join_step2_tv_pass_nomatch)
             }
 
             // edittext 지우는 x버튼
@@ -376,7 +378,7 @@ class JoinStep2Activity : AppCompatActivity() {
 
             if(!hasFocus) {
                 activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area, null)
-                activity_join_step2_btn_nickname_erase.visibility = GONE
+                change_gone(activity_join_step2_btn_nickname_erase)
             }
         }
 
@@ -384,38 +386,6 @@ class JoinStep2Activity : AppCompatActivity() {
         activity_join_step2_btn_back.setOnClickListener {
             finish()
         }
-    }
-
-    private fun duplicateCheck() {
-        // 중복체크
-        requestToServer.service.requestDuplicate(
-            RequestDuplicateData(
-                email = activity_join_step2_et_email.text.toString(),
-                name = activity_join_step2_et_nickname.text.toString()
-            )
-        ).enqueue(object : Callback<ResponseDuplicateData> {
-            override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
-                Log.d("error", "duplicate / $t")
-            }
-
-            override fun onResponse(
-                call: Call<ResponseDuplicateData>,
-                response: Response<ResponseDuplicateData>
-            ) {
-                if(response.isSuccessful) {
-                    Log.d("중복서버", response.body().toString())
-                    if(response.body()!!.data!!.duplicate == "email") {
-                        activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
-                        activity_join_step2_img_email_warning.visibility = VISIBLE
-                        activity_join_step2_tv_exist_email.visibility = VISIBLE
-                    } else if(response.body()!!.data!!.duplicate == "name") {
-                        activity_join_step2_et_nickname.background = resources.getDrawable(R.drawable.et_area_red, null)
-                        activity_join_step2_img_nickname_warning.visibility = VISIBLE
-                        activity_join_step2_tv_exist_nickname.visibility = VISIBLE
-                    }
-                }
-            }
-        })
     }
 
     // 모든 칸 입력 완료 -> 프로그래스바 불 켜짐
@@ -432,17 +402,17 @@ class JoinStep2Activity : AppCompatActivity() {
 
     // warning 문구 해제 - pass, passcheck 공통
     private fun removePassWarning() {
-        activity_join_step2_img_pass_warning.visibility = GONE
-        activity_join_step2_tv_pass_warning.visibility = GONE
-        activity_join_step2_tv_passcheck_warning.visibility = GONE
-        activity_join_step2_tv_pass_nomatch.visibility = GONE
-        activity_join_step2_tv_pass_match.visibility = GONE
-        activity_join_step2_tv_pass_valid.visibility = GONE
+        change_gone(activity_join_step2_img_pass_warning)
+        change_gone(activity_join_step2_tv_pass_warning)
+        change_gone(activity_join_step2_tv_passcheck_warning)
+        change_gone(activity_join_step2_tv_pass_nomatch)
+        change_gone(activity_join_step2_tv_pass_match)
+        change_gone(activity_join_step2_tv_pass_valid)
     }
 
     // edittext 지우는 x버튼
     private fun EditText.clearText(button : ImageView) {
-        button.visibility = VISIBLE
+        change_visible(button)
         button.setOnClickListener {
             this.setText("")
         }

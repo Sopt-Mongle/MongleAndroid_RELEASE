@@ -451,7 +451,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_pass_warning" />
 
             <ImageView
-                android:id="@+id/activity_profile_img"
+                android:id="@+id/imageView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
