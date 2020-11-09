@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,17 +9,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.MainHotThemeAdapter
 import com.example.mongleandroid_release.adapter.MainNowHotCuratorAdapter
 import com.example.mongleandroid_release.adapter.MainPagerAdapter
 import com.example.mongleandroid_release.adapter.TodaySentenceAdapter
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseMainHotThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseMainNowHotData
 import com.example.mongleandroid_release.network.data.response.ResponseTodaySentenceData
 import kotlinx.android.synthetic.main.fragment_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainFragment : Fragment() {
+
+    val requestToServer = RequestToServer//싱글톤 그대로 가져옴
 
     private var data = mutableListOf<ResponseTodaySentenceData>() // 오늘의 문장
     private var data2 = mutableListOf<ResponseMainNowHotData>() // 지금 인기있는 큐레이터
@@ -47,7 +56,9 @@ class MainFragment : Fragment() {
 
         setHotThemeAdapter(data3) // 인기있는 테마 리사이클러뷰
         setHotCuratorAdapter(data2) // 지금 인기있는 큐레이터 리사이클러뷰
-        setAdatodaySentenceAdapterpter(data)//오늘의 문장 리사이클러뷰
+        //setAdatodaySentenceAdapterpter(data)//오늘의 문장 리사이클러뷰
+
+        requestTodaySentenceData() // 오늘의 문장 통신
 
         img_main_search_btn.setOnClickListener {
             replaceFragment(SearchFragment())
@@ -59,6 +70,47 @@ class MainFragment : Fragment() {
         val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
         transaction.replace(R.id.main_activity_fg, fragment)
         transaction.commit()
+
+    }
+
+    //오늘의 문장 통신
+    private fun requestTodaySentenceData() {
+
+        requestToServer.service.RequestMainSentences(
+            token = SharedPreferenceController.getAccessToken(requireView().context)
+        ).enqueue(
+            object : Callback<ResponseTodaySentenceData> {
+                override fun onFailure(
+                    call: Call<ResponseTodaySentenceData>,
+                    t: Throwable
+                ) {
+                    Log.d( "통신실패", t.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseTodaySentenceData>,
+                    response: Response<ResponseTodaySentenceData>
+                ) {
+                    if (response.isSuccessful) {
+                        todaySentenceAdapter = TodaySentenceAdapter(response.body()!!.data, view!!.context)
+                        main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
+                        todaySentenceAdapter.notifyDataSetChanged()
+
+                        //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
+                        todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
+                            override fun onClick(view: View, position: Int) {
+                                Log.d("SSS","${position}번 리스트 선택")
+                                activity?.let{
+                                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                        })
+                    }
+                }
+
+            }
+        )
 
     }
 
@@ -106,25 +158,25 @@ class MainFragment : Fragment() {
 
 
      //오늘의 문장 어댑터 연결
-    private fun setAdatodaySentenceAdapterpter(todaySentenceItem : MutableList<ResponseTodaySentenceData>) {
-         todaySentenceAdapter =
-            TodaySentenceAdapter(
-                todaySentenceItem,
-                this.requireContext()
-            )
-        main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
-
-        //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
-        todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
-            override fun onClick(view: View, position: Int) {
-                Log.d("SSS","${position}번 리스트 선택")
-                activity?.let{
-//                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
-//                    startActivity(intent)
-                }
-            }
-        })
-
-    }
+//    private fun setAdatodaySentenceAdapterpter(todaySentenceItem : MutableList<ResponseTodaySentenceData>) {
+//         todaySentenceAdapter =
+//            TodaySentenceAdapter(
+//                todaySentenceItem,
+//                this.requireContext()
+//            )
+//        main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
+//
+//        //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
+//        todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
+//            override fun onClick(view: View, position: Int) {
+//                Log.d("SSS","${position}번 리스트 선택")
+//                activity?.let{
+////                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
+////                    startActivity(intent)
+//                }
+//            }
+//        })
+//
+//    }
 
 }
