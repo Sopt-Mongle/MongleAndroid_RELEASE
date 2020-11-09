@@ -1,27 +1,32 @@
 package com.example.mongleandroid_release.util
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.Window
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.WritingThemeActivity
-import com.example.mongleandroid_release.showKeyboard
-import com.example.mongleandroid_release.unshowKeyboard
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.request.RequestWritingThemeData
+import com.example.mongleandroid_release.network.data.response.ResponseWritingThemeData
 import kotlinx.android.synthetic.main.writing_theme_finish.*
-import kotlinx.android.synthetic.main.writing_theme_step1.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class DialogMakethemeCheck(context : Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
     private val act : WritingThemeActivity = context as WritingThemeActivity
-    private lateinit var maketheme_popup_title : TextView
+
+    private var requestWritingThemeData =  RequestWritingThemeData("", -1)
     private lateinit var maketheme_popup_yes : TextView
     private lateinit var maketheme_popup_no : TextView
     private lateinit var listener : MyDialogOKClickedListener
@@ -47,8 +52,11 @@ class DialogMakethemeCheck(context : Context) {
             }
         }
 
+        requestWritingThemeData = act.writingThemeData
         maketheme_popup_yes = dlg.findViewById(R.id.dialog_writing_theme_check_yes)
         maketheme_popup_yes.setOnClickListener{
+            Log.d("requestWritingThemeData", "${requestWritingThemeData.themeImgIdx} && ${requestWritingThemeData.theme}")
+            themePost(requestWritingThemeData)
             act.setContentView(R.layout.writing_theme_finish)
             dlg.dismiss()
             // 메인으로 돌아가기
@@ -76,6 +84,32 @@ class DialogMakethemeCheck(context : Context) {
 
     interface MyDialogOKClickedListener {
         fun onOKClicked(content : String)
+    }
+
+
+    private fun themePost(body : RequestWritingThemeData){
+        val call: Call<ResponseWritingThemeData> = RequestToServer.service.RequestWritingTheme(token = this.let{
+            SharedPreferenceController.getAccessToken(context = this.act)}, body = body)
+        call.enqueue(object : Callback<ResponseWritingThemeData> {
+            @SuppressLint("LongLogTag")
+            override fun onFailure(call: Call<ResponseWritingThemeData>, t: Throwable) {
+                Log.e("ResponseWritingThemeData 통신실패",t.toString())
+            }
+            @SuppressLint("LongLogTag")
+            override fun onResponse(
+                call: Call<ResponseWritingThemeData>,
+                response: Response<ResponseWritingThemeData>
+            ) {
+                if (response.isSuccessful){
+                    response.body().let { body ->
+                        Log.e("ResponseWritingThemeData 통신응답바디", "status: ${body!!.status} message : ${body.message} ")
+                    }
+                }
+
+            }
+
+        })
+
     }
 
 }

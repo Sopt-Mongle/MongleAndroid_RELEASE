@@ -85,7 +85,7 @@ interface RequestInterface {
 
     //테마 만들기
     @POST("/post/theme")
-    fun RequestWritingTheme(@Body body: RequestWritingThemeData) : Call<ResponseWritingThemeData>
+    fun RequestWritingTheme(@Header("token") token: String?, @Body body: RequestWritingThemeData) : Call<ResponseWritingThemeData>
 
     //문장 올리기
     @POST("/post/sentence")
@@ -101,7 +101,7 @@ interface RequestInterface {
     @GET("/post/theme")
     fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchFirstData>
 
-    //테마 만들기
+    //테마 이미지 조희
     @GET("/post/themeImg")
     fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
 
