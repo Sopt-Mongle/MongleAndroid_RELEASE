@@ -10,7 +10,6 @@
         android:id="@+id/topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,11 +18,12 @@
             android:id="@+id/activity_profile_btn_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="3dp"
-            android:backgroundTint="@color/white"
+            android:layout_marginTop="4dp"
+            android:paddingStart="17dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="23dp"
+            android:paddingBottom="15dp"
             android:src="@drawable/btn_back"
-            android:tint="@color/very_light_pink_two"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,34 +42,41 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView9"
-        android:layout_width="74dp"
+        android:id="@+id/activity_profile_img"
+        android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="154dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="151dp"
+        android:layout_marginTop="25dp"
+        android:paddingEnd="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topbar"
         tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/activity_profile_btn_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img"
+        app:layout_constraintEnd_toEndOf="@+id/activity_profile_img"
+        app:srcCompat="@drawable/my_settings_profile_ic_camera" />
 
     <TextView
         android:id="@+id/textView39"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:lineSpacingExtra="8sp"
         android:text="닉네임"
         android:textColor="@color/greyish_brown"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_img" />
 
     <EditText
-        android:id="@+id/activity_profile_update_nickname"
+        android:id="@+id/activity_profile_et_nickname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -84,16 +91,125 @@
         android:paddingTop="12dp"
         android:paddingRight="15dp"
         android:paddingBottom="12dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
     <TextView
+        android:id="@+id/activity_profile_tv_nickname_cnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="2sp"
+        android:text="0"
+        android:textColor="@color/soft_green"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_tv_nickname_cnt_max"
+        app:layout_constraintEnd_toStartOf="@+id/activity_profile_tv_nickname_cnt_max"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_tv_nickname_cnt_max" />
+
+    <TextView
+        android:id="@+id/activity_profile_tv_nickname_cnt_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="2sp"
+        android:text="/6"
+        android:textColor="@color/very_light_pink_two"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_nickname"
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_et_nickname" />
+
+    <ImageView
+        android:id="@+id/activity_profile_img_nickname_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/activity_profile_et_nickname"
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_et_nickname"
+        app:srcCompat="@drawable/ic_warning" />
+
+    <TextView
+        android:id="@+id/activity_profile_tv_nickname_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="1sp"
+        android:text="닉네임을 입력해주세요!"
+        android:textColor="@color/reddish"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_nickname_warning"
+        app:layout_constraintStart_toEndOf="@+id/activity_profile_img_nickname_warning"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_img_nickname_warning" />
+
+    <TextView
+        android:id="@+id/activity_profile_tv_nickname_exist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="1sp"
+        android:text="이미 사용 중인 닉네임이에요!"
+        android:textColor="@color/reddish"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_nickname_warning"
+        app:layout_constraintStart_toEndOf="@+id/activity_profile_img_nickname_warning"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_img_nickname_warning" />
+
+
+    <TextView
+        android:id="@+id/activity_profile_tv_nickname_possible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="1sp"
+        android:text="사용 가능한 닉네임이에요!"
+        android:textColor="@color/soft_green"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_nickname_warning"
+        app:layout_constraintStart_toEndOf="@+id/activity_profile_img_nickname_warning"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_img_nickname_warning" />
+
+    <ImageView
+        android:id="@+id/activity_profile_btn_nickname_erase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_et_nickname"
+        app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_nickname"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_et_nickname"
+        app:srcCompat="@drawable/btn_erase" />
+
+    <TextView
         android:id="@+id/textView40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="33dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
@@ -101,136 +217,192 @@
         android:text="키워드"
         android:textColor="@color/greyish_brown"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_profile_update_nickname" />
+        app:layout_constraintStart_toStartOf="@+id/activity_profile_et_nickname"
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_img_nickname_warning" />
 
     <TextView
-        android:id="@+id/activity_prifile_tv_gamsung"
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:letterSpacing="-0.04"
+        android:text="당신의 문장 취향을 대표할 키워드를 설정해주세요."
+        android:textColor="#a7a7a7"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView40"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/activity_profile_radiogroup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/et_area_keyword"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:gravity="center_horizontal"
-        android:includeFontPadding="false"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="15dp"
-        android:text="감성자극"
-        android:textColor="@color/brown_grey_two"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/activity_prifile_tv_donggi"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView40" />
-
-    <TextView
-        android:id="@+id/activity_prifile_tv_donggi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_area_keyword"
-        android:gravity="center_horizontal"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="15dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:includeFontPadding="false"
-        android:text="동기부여"
-        android:textColor="@color/brown_grey_two"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/activity_prifile_tv_jagi"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/activity_prifile_tv_gamsung"
-        app:layout_constraintTop_toTopOf="@+id/activity_prifile_tv_gamsung" />
-
-    <TextView
-        android:id="@+id/activity_prifile_tv_kipeun"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_area_keyword"
-        android:gravity="center_horizontal"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:paddingTop="16dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:includeFontPadding="false"
-        android:paddingBottom="15dp"
-        android:text="깊은생각"
-        android:textColor="@color/brown_grey_two"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/activity_prifile_tv_doksu"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_prifile_tv_gamsung" />
-
-    <TextView
-        android:id="@+id/activity_prifile_tv_jagi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_area_keyword"
-        android:gravity="center_horizontal"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="15dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:includeFontPadding="false"
-        android:text="자기계발"
-        android:textColor="@color/brown_grey_two"
-        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/activity_prifile_tv_donggi"
-        app:layout_constraintTop_toTopOf="@+id/activity_prifile_tv_donggi" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView40">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/activity_profile_btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/keyword_background_selector"
+                android:button="@null"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="감성자극"
+                android:textColor="@color/keyword_text_selector"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn2"
+                app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn2"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RadioButton
+                android:id="@+id/activity_profile_btn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/keyword_background_selector"
+                android:button="@null"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="동기부여"
+                android:textColor="@color/keyword_text_selector"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn3"
+                app:layout_constraintStart_toEndOf="@+id/activity_profile_btn1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/activity_profile_btn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/keyword_background_selector"
+                android:button="@null"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="자기계발"
+                android:textColor="@color/keyword_text_selector"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activity_profile_btn2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/activity_profile_btn4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/keyword_background_selector"
+                android:button="@null"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="깊은생각"
+                android:textColor="@color/keyword_text_selector"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn5"
+                app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RadioButton
+                android:id="@+id/activity_profile_btn5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/keyword_background_selector"
+                android:button="@null"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="독서기록"
+                android:textColor="@color/keyword_text_selector"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn6"
+                app:layout_constraintStart_toEndOf="@+id/activity_profile_btn4" />
+
+            <RadioButton
+                android:id="@+id/activity_profile_btn6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/keyword_background_selector"
+                android:button="@null"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:paddingTop="16dp"
+                android:paddingBottom="15dp"
+                android:text="일상문장"
+                android:textColor="@color/keyword_text_selector"
+                android:textSize="14sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activity_profile_btn5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/activity_profile_img_keyword_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/textView40"
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_radiogroup"
+        app:srcCompat="@drawable/ic_warning" />
 
     <TextView
-        android:id="@+id/activity_prifile_tv_doksu"
-        android:layout_width="0dp"
+        android:id="@+id/activity_profile_tv_keyword_warning"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/et_area_keyword"
-        android:gravity="center_horizontal"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="15dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
         android:includeFontPadding="false"
-        android:text="독서기록"
-        android:textColor="@color/brown_grey_two"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="1sp"
+        android:text="키워드를 설정해주세요!"
+        android:textColor="@color/reddish"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_prifile_tv_kipeun"
-        app:layout_constraintEnd_toStartOf="@+id/activity_prifile_tv_ilsang"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/activity_prifile_tv_kipeun" />
-
-    <TextView
-        android:id="@+id/activity_prifile_tv_ilsang"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_area_keyword"
-        android:gravity="center_horizontal"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="6sp"
-        android:paddingTop="16dp"
-        android:paddingBottom="15dp"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:includeFontPadding="false"
-        android:text="일상문장"
-        android:textColor="@color/brown_grey_two"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/activity_prifile_tv_doksu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/activity_prifile_tv_doksu" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_keyword_warning"
+        app:layout_constraintStart_toEndOf="@+id/activity_profile_img_keyword_warning"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_img_keyword_warning" />
 
     <TextView
         android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="33dp"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
@@ -239,10 +411,10 @@
         android:textColor="@color/greyish_brown"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_prifile_tv_kipeun" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_img_keyword_warning" />
 
     <EditText
-        android:id="@+id/activity_profile_update_nickname2"
+        android:id="@+id/activity_profile_et_introduce"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -258,16 +430,78 @@
         android:paddingTop="12dp"
         android:paddingRight="15dp"
         android:paddingBottom="12dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+    <ImageView
+        android:id="@+id/activity_profile_img_introduce_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/activity_profile_et_introduce"
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_et_introduce"
+        app:srcCompat="@drawable/ic_warning" />
+
+    <TextView
+        android:id="@+id/activity_profile_tv_introduce_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="1sp"
+        android:text="소개를 입력해주세요!"
+        android:textColor="@color/reddish"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_introduce_warning"
+        app:layout_constraintStart_toEndOf="@+id/activity_profile_img_introduce_warning"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_img_introduce_warning" />
+
+    <TextView
+        android:id="@+id/activity_profile_tv_introduce_cnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="2sp"
+        android:text="0"
+        android:textColor="@color/soft_green"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_tv_introduce_cnt_max"
+        app:layout_constraintEnd_toStartOf="@+id/activity_profile_tv_introduce_cnt_max"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_tv_introduce_cnt_max" />
+
+    <TextView
+        android:id="@+id/activity_profile_tv_introduce_cnt_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:gravity="end"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="2sp"
+        android:text="/30"
+        android:textColor="@color/very_light_pink_two"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_introduce"
+        app:layout_constraintTop_toBottomOf="@+id/activity_profile_et_introduce" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
