@@ -41,23 +41,24 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/activity_profile_img"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="25dp"
-        android:paddingEnd="2dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/my_settings_profile_img_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topbar"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/topbar" />
 
     <ImageView
         android:id="@+id/activity_profile_btn_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img"
-        app:layout_constraintEnd_toEndOf="@+id/activity_profile_img"
+        app:layout_constraintStart_toStartOf="@+id/activity_profile_img"
         app:srcCompat="@drawable/my_settings_profile_ic_camera" />
 
     <TextView
@@ -83,16 +84,17 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/et_area"
         android:ems="10"
-        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:fontFamily="@font/notosanscjkkr_regular"
         android:hint="닉네임을 6자 이내로 입력해주세요."
         android:includeFontPadding="false"
         android:inputType="textPersonName"
+        android:maxLength="6"
         android:paddingLeft="15dp"
         android:paddingTop="12dp"
         android:paddingRight="15dp"
         android:paddingBottom="12dp"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/textView39" />
@@ -198,7 +200,11 @@
         android:id="@+id/activity_profile_btn_nickname_erase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="2dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/activity_profile_et_nickname"
         app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_nickname"
@@ -421,17 +427,18 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/et_area"
         android:ems="10"
-        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:fontFamily="@font/notosanscjkkr_regular"
         android:hint="30자 이내로 입력해주세요."
         android:includeFontPadding="false"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:maxLength="30"
         android:maxLines="1"
         android:paddingLeft="15dp"
         android:paddingTop="12dp"
-        android:paddingRight="15dp"
+        android:paddingRight="40dp"
         android:paddingBottom="12dp"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
@@ -497,6 +504,21 @@
         app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_introduce"
         app:layout_constraintTop_toBottomOf="@+id/activity_profile_et_introduce" />
 
+    <ImageView
+        android:id="@+id/activity_profile_btn_introduce_erase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_et_introduce"
+        app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_introduce"
+        app:layout_constraintTop_toTopOf="@+id/activity_profile_et_introduce"
+        app:srcCompat="@drawable/btn_erase" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout9"
         android:layout_width="match_parent"
@@ -508,7 +530,7 @@
 
 
         <TextView
-            android:id="@+id/activity_writing_sentence_btn_next1"
+            android:id="@+id/activity_profile_btn_next"
             style="@android:style/ButtonBar"
             android:layout_width="match_parent"
             android:layout_height="58dp"
