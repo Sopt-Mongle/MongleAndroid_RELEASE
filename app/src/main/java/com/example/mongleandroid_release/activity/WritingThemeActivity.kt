@@ -1,33 +1,21 @@
 package com.example.mongleandroid_release.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.adapter.ItemDecoration
-import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchAdapter
 import com.example.mongleandroid_release.adapter.WritingThemeImgAdapter
-import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchViewHolder
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingThemeImgData
-import com.example.mongleandroid_release.unshowKeyboard
 import com.example.mongleandroid_release.util.DialogMakethemeCheck
-import kotlinx.android.synthetic.main.writing_theme_finish.*
+import kotlinx.android.synthetic.main.item_writing_theme_img.*
 import kotlinx.android.synthetic.main.writing_theme_step1.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +24,7 @@ import retrofit2.Response
 class WritingThemeActivity : AppCompatActivity() {
 
     lateinit var writingThemeImgAdapter: WritingThemeImgAdapter
-    var requestWritingThemeData =  RequestWritingThemeData("", -1)
+    var writingThemeData =  RequestWritingThemeData("", -1)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +43,7 @@ class WritingThemeActivity : AppCompatActivity() {
         // 텍스트 변화 감지를 위해서 addTextChangedListener에 TextWatcher 객체 생성해서 넣어줌
         writing_theme_step1_et_sentence.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                requestWritingThemeData.theme = writing_theme_step1_et_sentence.toString()
+                writingThemeData.theme = writing_theme_step1_et_sentence.text.toString()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -78,7 +66,7 @@ class WritingThemeActivity : AppCompatActivity() {
 
         // 테마 등록 버튼
         writing_theme_step1_next.setOnClickListener {
-            if(requestWritingThemeData.theme.isEmpty() || requestWritingThemeData.themeImgIdx <=0 ){
+            if(writingThemeData.theme.isEmpty() || writingThemeData.themeImgIdx <=0 ){
                 // 빈칸처리
             }else{
                 Toast.makeText(this, "등록 팝업 등장.", Toast.LENGTH_SHORT).show()
@@ -137,7 +125,7 @@ class WritingThemeActivity : AppCompatActivity() {
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS", "${position}번 리스트 선택")
 
-                                    requestWritingThemeData.themeImgIdx = Integer.parseInt(R.id.item_writing_theme_tv_imgIdx.toString())
+                                    writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
 
                                 }
                             })
@@ -153,6 +141,7 @@ class WritingThemeActivity : AppCompatActivity() {
 
         })
     }
+
 
 
 
