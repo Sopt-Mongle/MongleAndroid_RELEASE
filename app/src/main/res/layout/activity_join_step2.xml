@@ -232,7 +232,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_et_email"
                 app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_email"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step2_et_email"
-                app:srcCompat="@drawable/join_step2_email_2_btn_erase" />
+                app:srcCompat="@drawable/btn_erase" />
 
             <TextView
                 android:id="@+id/textView25"
@@ -422,7 +422,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_et_pass"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step2_et_pass"
-                app:srcCompat="@drawable/join_step2_email_2_btn_erase" />
+                app:srcCompat="@drawable/btn_erase" />
 
             <ImageView
                 android:id="@+id/activity_join_step2_btn_passcheck_erase"
@@ -433,7 +433,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_et_passcheck"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step2_et_passcheck"
-                app:srcCompat="@drawable/join_step2_email_2_btn_erase" />
+                app:srcCompat="@drawable/btn_erase" />
 
             <TextView
                 android:id="@+id/textView29"
@@ -451,7 +451,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_join_step2_img_pass_warning" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/activity_profile_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"
@@ -590,7 +590,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_et_nickname"
                 app:layout_constraintEnd_toEndOf="@+id/activity_join_step2_et_nickname"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step2_et_nickname"
-                app:srcCompat="@drawable/join_step2_email_2_btn_erase" />
+                app:srcCompat="@drawable/btn_erase" />
 
             <ImageView
                 android:id="@+id/imageView10"
