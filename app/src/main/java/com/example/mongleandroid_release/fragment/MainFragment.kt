@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.MainHotThemeAdapter
 import com.example.mongleandroid_release.adapter.MainNowHotCuratorAdapter
@@ -27,10 +28,8 @@ import retrofit2.Response
 
 class MainFragment : Fragment() {
 
-    val requestToServer = RequestToServer//싱글톤 그대로 가져옴
+    val requestToServer = RequestToServer
 
-    private var data = mutableListOf<ResponseTodaySentenceData>() // 오늘의 문장
-    private var data2 = mutableListOf<ResponseMainNowHotData>() // 지금 인기있는 큐레이터
     private var data3 = mutableListOf<ResponseMainHotThemeData>() // 테마
 
     private lateinit var todaySentenceAdapter: TodaySentenceAdapter
@@ -55,10 +54,9 @@ class MainFragment : Fragment() {
         tl_main.setupWithViewPager(vp_main)
 
         setHotThemeAdapter(data3) // 인기있는 테마 리사이클러뷰
-        setHotCuratorAdapter(data2) // 지금 인기있는 큐레이터 리사이클러뷰
-        //setAdatodaySentenceAdapterpter(data)//오늘의 문장 리사이클러뷰
 
         requestTodaySentenceData() // 오늘의 문장 통신
+        requestMainCurators() // 지금 인기있는 큐레이터 통신
 
         img_main_search_btn.setOnClickListener {
             replaceFragment(SearchFragment())
@@ -137,46 +135,42 @@ class MainFragment : Fragment() {
         })
     }
 
-//지금 인기있는 큐레이터 어댑터 연결
-    private fun setHotCuratorAdapter(mainNowHotCuratorItem: MutableList<ResponseMainNowHotData>) {
-        mainNowHotCuratorAdapter =
-            MainNowHotCuratorAdapter(
-                mainNowHotCuratorItem,
-                this.requireContext()
-            )
+    //인기있는 큐레이터 통신
+    private fun requestMainCurators() {
 
-        rv_main_now_hot_curator.adapter = mainNowHotCuratorAdapter
+        requestToServer.service.GetMainQurators().enqueue(
+            object : Callback<ResponseMainNowHotData> {
 
-        //리사이클러뷰 아이템 클릭리스너 등록
-        mainNowHotCuratorAdapter.setItemClickListener(object : MainNowHotCuratorAdapter.ItemClickListener{
-            override fun onClick(view: View, position: Int) {
-                Log.d("SSS","${position}번 리스트 선택")
+                override fun onResponse(
+                    call: Call<ResponseMainNowHotData>,
+                    response: Response<ResponseMainNowHotData>
+                ) {
+                    if (response.isSuccessful) {
+                        mainNowHotCuratorAdapter = MainNowHotCuratorAdapter(response.body()!!.data, view!!.context)
+                        rv_main_now_hot_curator.adapter = mainNowHotCuratorAdapter
+                        mainNowHotCuratorAdapter.notifyDataSetChanged()
+
+                        //큐레이터 리사이클러뷰 아이템 클릭리스너 등록
+                        mainNowHotCuratorAdapter.setItemClickListener(object : MainNowHotCuratorAdapter.ItemClickListener{
+                            override fun onClick(view: View, position: Int) {
+                                Log.d("SSS","${position}번 리스트 선택")
+                                activity?.let{
+                                    val intent = Intent(context, CuratorInfoActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                        })
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseMainNowHotData>, t: Throwable) {
+
+                }
+
             }
-        })
+        )
+
     }
 
-
-
-     //오늘의 문장 어댑터 연결
-//    private fun setAdatodaySentenceAdapterpter(todaySentenceItem : MutableList<ResponseTodaySentenceData>) {
-//         todaySentenceAdapter =
-//            TodaySentenceAdapter(
-//                todaySentenceItem,
-//                this.requireContext()
-//            )
-//        main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
-//
-//        //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
-//        todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
-//            override fun onClick(view: View, position: Int) {
-//                Log.d("SSS","${position}번 리스트 선택")
-//                activity?.let{
-////                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
-////                    startActivity(intent)
-//                }
-//            }
-//        })
-//
-//    }
 
 }

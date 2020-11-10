@@ -137,4 +137,8 @@ interface RequestInterface {
     fun RequestMainSentences(
         @Header("token") token: String?
     ) : Call<ResponseTodaySentenceData>
+
+    // 메인 - 지금 인기있는 큐레이터 목록 조회 - 성공
+    @GET("/main/curators")
+    fun GetMainQurators() : Call<ResponseMainNowHotData>
 }
