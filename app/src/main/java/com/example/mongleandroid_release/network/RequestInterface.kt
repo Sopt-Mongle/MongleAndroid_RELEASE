@@ -132,4 +132,9 @@ interface RequestInterface {
     @GET("/post/themeImg")
     fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
 
+    //메인 - 오늘의 문장
+    @GET("/main/sentences")
+    fun RequestMainSentences(
+        @Header("token") token: String?
+    ) : Call<ResponseTodaySentenceData>
 }
