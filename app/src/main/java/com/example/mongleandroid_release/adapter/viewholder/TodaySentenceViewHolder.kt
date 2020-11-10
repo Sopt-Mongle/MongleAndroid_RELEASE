@@ -12,7 +12,7 @@ class TodaySentenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
 
 
     fun bind(todaySentence: TodaySentence){
-        tv_today_sentence.text = todaySentence.toString()
-        tv_today_sentence_title.text = todaySentence.toString()
+        tv_today_sentence.text = todaySentence.sentence
+        tv_today_sentence_title.text = todaySentence.title
     }
 }
