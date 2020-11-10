@@ -1,11 +1,12 @@
 package com.example.mongleandroid_release.network.data.response
 
-data class ResponseDetailThemeData(
+data class ResponseThemeDetailData(
     val status : Int,
     val success : Boolean,
     val message : String,
     val data : ThemeDetailData?
 )
+
 data class ThemeDetailData(
     val theme : List<DataTheme>,
     val sentence : List<DataSentence>
