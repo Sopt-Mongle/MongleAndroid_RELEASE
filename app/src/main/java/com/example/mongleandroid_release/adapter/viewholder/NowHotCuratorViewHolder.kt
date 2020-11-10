@@ -15,9 +15,8 @@ class NowHotCuratorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
     val keyword = itemView.findViewById<TextView>(R.id.tv_curator_keyword)
 
     fun bind(mainCurator: MainCurator) {
-        Glide.with(itemView).load(img).into(img)
-        name.text = mainCurator.toString()
-        keyword.text = mainCurator.toString()
-
+        Glide.with(itemView).load(mainCurator.img).into(img)
+        name.text = mainCurator.name
+        keyword.text = mainCurator.keyword
     }
 }
