@@ -16,6 +16,27 @@ import retrofit2.Response
 
 class DetailThemeActivity : AppCompatActivity() {
 
+    //DataTheme 데이터
+    private var themeIdx = 0
+    private var theme = ""
+    private var themeImg = ""
+    private var saves = 0
+    private var writer = ""
+    private var writerImg = ""
+    private var alreadyBookmarked = false
+    private var sentenceNum = 0
+
+    //DataSentence 데이터
+    private var sentenceIdx = 0
+    private var sentence = ""
+    private var likes = 0
+    private var title = "String"
+    private var author = "String"
+    private var publisher = "String"
+    private var timestamp = "String"
+    private var alreadyLiked = false
+
+
     val requestToServer = RequestToServer
 
     private lateinit var detailThemeAdapter: DetailThemeAdapter
@@ -99,6 +120,30 @@ class DetailThemeActivity : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+
+    // 리사이클러뷰 아이템 통신
+    private fun loadDatas() {
+        requestToServer.service.GetDetailTheme(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+            params = intent.getIntExtra("param", 0)
+        ).enqueue(object : retrofit2.Callback<ResponseThemeDetailData>{
+            override fun onFailure(call: Call<ResponseThemeDetailData>, t: Throwable) {
+                Log.e("통신 실패", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<ResponseThemeDetailData>,
+                response: Response<ResponseThemeDetailData>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("테마 통신 성공", "${response.body()!!.data}")
+
+                }
+            }
+
+        })
     }
 
 }
