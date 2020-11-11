@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.WritingSentenceStep1Fragment">
+    tools:context=".fragment.WritingSentenceStep1Fragment"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -152,7 +154,7 @@
         android:id="@+id/writing_sentence_step1_et_sentence"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@drawable/et_area"
+        android:background="@drawable/et_state_focused"
         android:maxLength="40"
         android:gravity="start"
         android:layout_marginTop="160dp"
@@ -163,7 +165,6 @@
         app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
         >
-        <requestFocus />
     </EditText>
 
     <TextView

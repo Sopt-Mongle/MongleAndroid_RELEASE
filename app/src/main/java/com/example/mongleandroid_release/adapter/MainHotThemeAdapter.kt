@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.HotThemeViewHolder
-import com.example.mongleandroid_release.network.data.response.ResponseMainHotThemeData
+import com.example.mongleandroid_release.network.data.response.MainThemes
 
-class MainHotThemeAdapter(var datas: MutableList<ResponseMainHotThemeData>, val context: Context) : RecyclerView.Adapter<HotThemeViewHolder>() {
+class MainHotThemeAdapter(var datas: List<MainThemes>, val context: Context) : RecyclerView.Adapter<HotThemeViewHolder>() {
 
     private lateinit var itemClickListener: ItemClickListener
 

@@ -134,6 +134,41 @@ interface RequestInterface {
     @GET("/post/themeImg")
     fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
 
+    //메인 - 오늘의 문장 - 성공
+    @GET("/main/sentences")
+    fun RequestMainSentences(
+        @Header("token") token: String?
+    ) : Call<ResponseTodaySentenceData>
+
+    // 메인 - 지금 인기있는 큐레이터 목록 조회 - 성공
+    @GET("/main/curators")
+    fun GetMainQurators() : Call<ResponseMainNowHotData>
+
+    // 메인 - 오늘 하루 저장이 가장 많이 된 테마목록 조회 - 성공
+    @GET("/main/themes")
+    fun GetMainThemes(
+        @Header("token") token: String?
+    ) : Call<ResponseMainHotThemeData>
+
+    // 메인 - 문장을 기다리고 있는 테마 목록 조회
+    @GET("/main/waitThemes")
+    fun GetMainWaitThemes(
+        @Header("token") token: String?
+    ) : Call<ResponseMainHotThemeData>
+
+    // 메인 - 요즘 사람들이 많이 본 테마
+    @GET("/main/nowThemes")
+    fun GetMainNowThemes(
+        @Header("token") token: String?
+    ) : Call<ResponseMainHotThemeData>
+
+    //테마 상세 조회
+    @GET("/detail/theme/{themeIdx}")
+    fun GetDetailTheme(
+        @Header("token") token: String?,
+        @Path ("themeIdx") params: Int
+    ) : Call<ResponseThemeDetailData>
+
     /* 설정 */
     // 프로필 수정
     @Multipart
