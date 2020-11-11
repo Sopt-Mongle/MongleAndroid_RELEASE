@@ -41,7 +41,7 @@ class WritingSentenceStep1Fragment : Fragment() {
                 // 경고 해제
                 view.findViewById<LinearLayout>(R.id.writing_sentence_step1_ll_warning).visibility = View.GONE
                 view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence)
-                    .setBackgroundResource(R.drawable.et_area)
+                    .setBackgroundResource(R.drawable.et_state_focused)
 
                 // 초록 불 켜지기
                 view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).
@@ -58,6 +58,7 @@ class WritingSentenceStep1Fragment : Fragment() {
                 //실시간 글자 수 세기
                 view.findViewById<TextView>(R.id.writing_sentence_step1_tv_cnt).text =
                     view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).text.toString().length.toString()
+
             }
 
         })
