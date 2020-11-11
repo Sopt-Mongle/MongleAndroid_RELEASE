@@ -13,8 +13,10 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
@@ -44,7 +46,6 @@ class ProfileActivity : AppCompatActivity() {
     private val requestToServer = RequestToServer
     private val PICK_FROM_ALBUM = 100
     lateinit private var fileUri : Uri
-    private var filePath : File? = null
     private var keywordIndex : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -335,7 +336,12 @@ class ProfileActivity : AppCompatActivity() {
                 response: Response<ResponseUpdateProfileData>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("프로필 수정 안", response.body().toString())
+                    val customToast = layoutInflater.inflate(R.layout.toast_update_profile, null)
+                    val toast = Toast(applicationContext)
+                    toast.duration = Toast.LENGTH_SHORT
+                    toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL , 0, 0)
+                    toast.view = customToast
+                    toast.show()
                 }
             }
 
