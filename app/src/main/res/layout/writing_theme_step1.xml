@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_left"
@@ -82,24 +84,47 @@
         />
 
 
-
     <EditText
         android:id="@+id/writing_theme_step1_et_sentence"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/et_area"
-        android:maxLength="40"
+        android:layout_marginTop="116dp"
+        android:background="@drawable/et_state_focused"
         android:gravity="start"
-        android:layout_marginTop="112dp"
-        android:padding="16dp"
         android:hint="40자 이내로 적어주세요."
+        android:maxLength="40"
+        android:padding="16dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
-        >
-        <requestFocus />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gl_left"
+        app:layout_constraintTop_toTopOf="parent">
     </EditText>
+
+    <LinearLayout
+        android:id="@+id/writing_theme_step1_ll_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/writing_theme_step1_et_sentence"
+        android:layout_marginTop="9dp"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginVertical="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="테마 이름을 적어주세요!"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/reddish"/>
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/writing_theme_step1_tv_cnt"
@@ -132,8 +157,8 @@
         android:text="테마 배경 이미지"
         android:textStyle="bold"
         android:textColor="@color/soft_green"
-        android:layout_marginTop="200dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="44dp"
+        app:layout_constraintTop_toBottomOf="@id/writing_theme_step1_et_sentence"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
         />
     <TextView
@@ -152,17 +177,39 @@
         android:id="@+id/writing_theme_rv"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="21dp"
         android:orientation="horizontal"
         android:clipToPadding="false"
         android:visibility="visible"
         android:paddingEnd="23dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/writing_theme_step1_tv_3"
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_writing_theme_img"
         />
+    <LinearLayout
+        android:id="@+id/writing_theme_step1_ll_warning2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/writing_theme_rv"
+        android:layout_marginTop="9dp"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_warning"
+            android:layout_marginVertical="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="테마 배경 이미지를 선택해주세요!"
+            android:layout_marginStart="3dp"
+            android:textColor="@color/reddish"/>
 
+    </LinearLayout>
 
     <TextView
         android:id="@+id/writing_theme_step1_next"

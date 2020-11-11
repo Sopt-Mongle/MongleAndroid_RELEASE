@@ -7,7 +7,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.WritingThemeImgAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -44,6 +47,8 @@ class WritingThemeActivity : AppCompatActivity() {
         writing_theme_step1_et_sentence.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
                 writingThemeData.theme = writing_theme_step1_et_sentence.text.toString()
+                writing_theme_step1_et_sentence
+                    .setBackgroundResource(R.drawable.et_state_focused)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -54,9 +59,12 @@ class WritingThemeActivity : AppCompatActivity() {
                 // writing_theme_step1_et_sentence 빨간 박스 해제
                 // 테마 이름 글자 수 카운팅
                 writing_theme_step1_tv_cnt.text = writing_theme_step1_et_sentence.text.toString().length.toString()
+                writing_theme_step1_ll_warning.visibility = View.GONE
+
             }
 
         })
+
 
         // 테마 사진 리스트
 //        //rv 동작
@@ -66,19 +74,27 @@ class WritingThemeActivity : AppCompatActivity() {
 
         // 테마 등록 버튼
         writing_theme_step1_next.setOnClickListener {
-            if(writingThemeData.theme.isEmpty() || writingThemeData.themeImgIdx <=0 ){
-                // 빈칸처리
-            }else{
-                Toast.makeText(this, "등록 팝업 등장.", Toast.LENGTH_SHORT).show()
+            // 빈칸 경고
+            if(writing_theme_step1_et_sentence.text.isEmpty()) {
+                writing_theme_step1_ll_warning.visibility = View.VISIBLE
 
-                val dlg = DialogMakethemeCheck(this)
-                dlg.start()
-                dlg.setOnOKClickedListener{
+                writing_theme_step1_et_sentence
+                    .setBackgroundResource(R.drawable.et_area_red)
+            }else if(writingThemeData.themeImgIdx == -1){
+                writing_theme_step1_ll_warning2.visibility = View.VISIBLE
+            }else { //빈칸 없으면 다음으로
+                if(writingThemeData.theme.isEmpty() || writingThemeData.themeImgIdx <=0 ){
+
+                }else{
+                    Toast.makeText(this, "등록 팝업 등장.", Toast.LENGTH_SHORT).show()
+
+                    val dlg = DialogMakethemeCheck(this)
+                    dlg.start()
+                    dlg.setOnOKClickedListener{
+                    }
                 }
+
             }
-
-
-
         }
 
 
@@ -124,8 +140,9 @@ class WritingThemeActivity : AppCompatActivity() {
                                 WritingThemeImgAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS", "${position}번 리스트 선택")
-
+                                    writing_theme_step1_et_sentence.clearFocus()
                                     writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
+                                    writing_theme_step1_ll_warning2.visibility = View.GONE
 
                                 }
                             })
