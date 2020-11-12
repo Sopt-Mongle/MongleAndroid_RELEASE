@@ -107,7 +107,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="75dp"
-        android:layout_marginTop="390dp"/>
+        android:layout_marginTop="440dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/onboarding_step3_skip"

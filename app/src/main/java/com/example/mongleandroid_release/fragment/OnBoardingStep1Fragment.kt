@@ -1,14 +1,27 @@
 package com.example.mongleandroid_release.fragment
 
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.LoginActivity
+import com.example.mongleandroid_release.activity.MainActivity
+import com.example.mongleandroid_release.activity.OnBoardingActivity
+import com.example.mongleandroid_release.activity.WritingSentenceActivity
+import kotlinx.android.synthetic.main.activity_on_boarding.*
+import kotlinx.android.synthetic.main.onboarding_step1.*
+import kotlinx.android.synthetic.main.onboarding_step2.*
 
 class OnBoardingStep1Fragment : Fragment() {
 
+    private val act by lazy { context as OnBoardingActivity }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +35,25 @@ class OnBoardingStep1Fragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.onboarding_step1, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // btn 다음으로 이동
+        onboarding_step1_next.setOnClickListener {
+            act.onboarding_vp.currentItem = 1
+        }
+
+        onboarding_step1_skip.setOnClickListener {
+            val intent = Intent(it.context , LoginActivity::class.java)
+            it.context.startActivity(intent)
+            act.finish()
+        }
+
+
+    }
+
+
 
 
 }

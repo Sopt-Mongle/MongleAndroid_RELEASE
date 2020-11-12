@@ -33,12 +33,13 @@
 
     <ImageView
         android:id="@+id/onboarding_4_bg"
-        android:layout_width="0dp"
-        android:layout_height="580dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="@drawable/onboarding_4_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_step4_login"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -109,7 +110,8 @@
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintTop_toBottomOf="@id/onboarding_4_bg"
-        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_step4_main"
+        android:layout_marginTop="22dp"
         android:paddingVertical="18dp"/>
 
     <TextView
@@ -121,9 +123,11 @@
         android:textColor="@color/very_light_pink_two"
         android:textSize="17sp"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintEnd_toEndOf="@id/gl_right"
+        app:layout_constraintStart_toStartOf="@id/onboarding_step4_login"
+        app:layout_constraintEnd_toEndOf="@id/onboarding_step4_login"
         app:layout_constraintTop_toBottomOf="@id/onboarding_step4_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="22dp"
         android:padding="18dp"/>
 
 

@@ -20,5 +20,5 @@ BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         }
     }
 
-    override fun getCount() =  4
+    override fun getCount() = 4
 }
