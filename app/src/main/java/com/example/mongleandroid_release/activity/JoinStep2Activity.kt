@@ -68,8 +68,14 @@ class JoinStep2Activity : AppCompatActivity() {
             } else if(!Pattern.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", activity_join_step2_et_pass.text.toString())) {
                 activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
                 change_gone(activity_join_step2_tv_pass_match)
+                change_gone(activity_join_step2_tv_pass_nomatch)
                 change_visible(activity_join_step2_img_pass_warning)
                 change_visible(activity_join_step2_tv_pass_valid)
+            } else if(activity_join_step2_et_pass.text.toString() != activity_join_step2_et_passcheck.text.toString()) {
+                change_visible(activity_join_step2_img_pass_warning)
+                change_visible(activity_join_step2_tv_pass_nomatch)
+                activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
+                change_gone(activity_join_step2_tv_pass_match)
             } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()){
                 change_visible(activity_join_step2_img_email_warning)
                 change_visible(activity_join_step2_tv_email_valid_warning)

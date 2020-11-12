@@ -1,12 +1,17 @@
 package com.example.mongleandroid_release.activity
 
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
@@ -23,6 +28,7 @@ import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.timer
 
+
 class JoinStep3Activity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
@@ -34,15 +40,34 @@ class JoinStep3Activity : AppCompatActivity() {
 
         // 프로그래스바 애니메이션
         Handler().postDelayed({
-            val progressAnimator_step3 = ObjectAnimator.ofInt(activity_join_step3_pgb, "progress", 50, 100)
+            val progressAnimator_step3 = ObjectAnimator.ofInt(
+                activity_join_step3_pgb,
+                "progress",
+                50,
+                100
+            )
             progressAnimator_step3.duration = 500
             progressAnimator_step3.start()
         }, 200)
 
+        // 밖에 누르면 키보드 없어짐
+        activity_join_step3_cl_in.setOnClickListener {
+            hideKeyboard()
+        }
+
+
         // 인증번호 칸에 포커스
         activity_join_step3_et_code1.requestFocus()
+
         if(activity_join_step3_et_code1.requestFocus()) {
-            activity_join_step3_et_code1.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
+            activity_join_step3_et_code1.background = resources.getDrawable(
+                R.drawable.et_circle_join3_on,
+                null
+            )
+            // 뷰 줄어듦
+            Handler().postDelayed({
+                hideEmpty()
+            }, 900)
         }
 
         // 뒤로가기 버튼
@@ -64,6 +89,7 @@ class JoinStep3Activity : AppCompatActivity() {
                     authUser()
                 }
             }
+            showEmpty()
         }
 
         // 재전송 버튼
@@ -81,10 +107,11 @@ class JoinStep3Activity : AppCompatActivity() {
 
         activity_join_step3_et_code6.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                if(activity_join_step3_et_code1.text.isNotEmpty() && activity_join_step3_et_code2.text.isNotEmpty() &&
+                if (activity_join_step3_et_code1.text.isNotEmpty() && activity_join_step3_et_code2.text.isNotEmpty() &&
                     activity_join_step3_et_code3.text.isNotEmpty() && activity_join_step3_et_code4.text.isNotEmpty() &&
                     activity_join_step3_et_code5.text.isNotEmpty() && activity_join_step3_et_code6.text.isNotEmpty()
                 ) {
+                    hideKeyboard()
                     activity_join_step3_3_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
                     activity_join_step3_3_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
                 } else {
@@ -92,6 +119,7 @@ class JoinStep3Activity : AppCompatActivity() {
                     activity_join_step3_3_pgb_in.setBackgroundResource(R.drawable.dot_circle_progressoff_in)
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -101,6 +129,23 @@ class JoinStep3Activity : AppCompatActivity() {
             }
         })
 
+    }
+
+    private fun hideKeyboard() {
+        (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .hideSoftInputFromWindow(activity_join_step3_et_code1.windowToken, 0)
+        (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .hideSoftInputFromWindow(activity_join_step3_et_code2.windowToken, 0)
+        (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .hideSoftInputFromWindow(activity_join_step3_et_code3.windowToken, 0)
+        (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .hideSoftInputFromWindow(activity_join_step3_et_code4.windowToken, 0)
+        (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .hideSoftInputFromWindow(activity_join_step3_et_code5.windowToken, 0)
+        (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+            .hideSoftInputFromWindow(activity_join_step3_et_code6.windowToken, 0)
+
+        showEmpty()
 
     }
 
@@ -123,7 +168,7 @@ class JoinStep3Activity : AppCompatActivity() {
                 call: Call<ResponseCodeData>,
                 response: Response<ResponseCodeData>
             ) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
                     val code = response.body()!!.data.authNum
                     activity_join_step3_btn_next.setOnClickListener {
                         val userCode = activity_join_step3_et_code1.text.toString() +
@@ -134,7 +179,7 @@ class JoinStep3Activity : AppCompatActivity() {
                                 activity_join_step3_et_code6.text.toString()
 
 
-                        if(code == userCode) {
+                        if (code == userCode) {
                             signUpSuccess()
                         }
                     }
@@ -188,6 +233,7 @@ class JoinStep3Activity : AppCompatActivity() {
                     authUser()
                 }
             }
+            showEmpty()
         }
     }
 
@@ -196,7 +242,6 @@ class JoinStep3Activity : AppCompatActivity() {
 
         var minute = 5
         var second = 0
-
         var timer = String.format("\n%02d:%02d", minute, second)
         activity_join_step3_tv_timer.text = timer
 
@@ -228,16 +273,42 @@ class JoinStep3Activity : AppCompatActivity() {
     }
 
     private fun changeCodeBackground(editText: EditText) {
+        editText.setOnClickListener {
+            hideEmpty()
+        }
+
         editText.setOnFocusChangeListener { _, hasFocus ->
+
             editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
             if(!hasFocus) {
+                editText.clearFocus()
                 if(editText.text.isNotEmpty()) {
                     editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
                 } else {
-                    editText.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+                    editText.background = resources.getDrawable(
+                        R.drawable.et_circle_join3_off,
+                        null
+                    )
                 }
             }
         }
+    }
+
+
+    private fun hideEmpty() {
+        view_empty1.visibility = GONE
+        view_empty2.visibility = GONE
+        view_empty3.visibility = GONE
+        view_empty4.visibility = GONE
+        view_empty5.visibility = GONE
+    }
+
+    private fun showEmpty() {
+        view_empty1.visibility = VISIBLE
+        view_empty2.visibility = VISIBLE
+        view_empty3.visibility = VISIBLE
+        view_empty4.visibility = VISIBLE
+        view_empty5.visibility = VISIBLE
     }
 
     override fun onPause() {
