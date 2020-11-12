@@ -18,6 +18,7 @@ import com.example.mongleandroid_release.adapter.MainPagerAdapter
 import com.example.mongleandroid_release.adapter.TodaySentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.MainThemes
 import com.example.mongleandroid_release.network.data.response.ResponseMainHotThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseMainNowHotData
 import com.example.mongleandroid_release.network.data.response.ResponseTodaySentenceData
@@ -28,6 +29,8 @@ import retrofit2.Response
 
 
 class MainFragment : Fragment() {
+
+    lateinit var items: MutableList<MainThemes>
 
     val requestToServer = RequestToServer
 
@@ -61,6 +64,10 @@ class MainFragment : Fragment() {
         img_main_search_btn.setOnClickListener {
             replaceFragment(SearchFragment())
         }
+
+    }
+    private fun init() {
+
 
     }
 
