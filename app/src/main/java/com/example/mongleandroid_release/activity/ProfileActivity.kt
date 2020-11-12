@@ -315,6 +315,11 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_et_nickname.text.toString()
         )
 
+        val keywordIdx = RequestBody.create(
+            MediaType.parse("text/plain"),
+            keywordIndex.toString()
+        )
+
         val introduce = RequestBody.create(
             MediaType.parse("text/plain"),
             activity_profile_et_introduce.text.toString()
@@ -324,7 +329,7 @@ class ProfileActivity : AppCompatActivity() {
             token = this.let { SharedPreferenceController.getAccessToken(it) },
             img = picture_rb,
             name = name,
-            keywordIdx = keywordIndex,
+            keywordIdx = keywordIdx,
             introduce = introduce
         ).enqueue(object : Callback<ResponseUpdateProfileData> {
             override fun onFailure(call: Call<ResponseUpdateProfileData>, t: Throwable) {

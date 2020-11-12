@@ -177,7 +177,7 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Part img: MultipartBody.Part,
         @Part("name") name: RequestBody,
-        @Part("keywordIdx") keywordIdx: Int,
+        @Part("keywordIdx") keywordIdx: RequestBody,
         @Part("introduce") introduce: RequestBody
     ) : Call<ResponseUpdateProfileData>
 }
