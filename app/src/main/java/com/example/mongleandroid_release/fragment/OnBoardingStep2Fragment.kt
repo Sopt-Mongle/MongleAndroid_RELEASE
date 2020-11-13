@@ -36,7 +36,6 @@ class OnBoardingStep2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // list up
 
         // vp 이동
 
@@ -59,21 +58,22 @@ class OnBoardingStep2Fragment : Fragment() {
         onboarding_step2_skip.visibility = View.GONE
         onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_2_img_mongle)
         onboarding_step2_img_list.visibility = View.VISIBLE
-
-
         GlobalScope.launch {
+//            this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
+//                onboarding_step2_next.visibility = View.GONE
+//                onboarding_step2_skip.visibility = View.GONE
+//                onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_2_img_mongle)
+//                onboarding_step2_img_list.visibility = View.VISIBLE
+//            })
             onboarding_step2_img_list.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_list_in))
             delay(1000L)
             this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step2_next.visibility = View.VISIBLE
-            })
-            onboarding_step2_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
-
-            delay(300L)
-            this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step2_skip.visibility = View.VISIBLE
             })
+            onboarding_step2_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
             onboarding_step2_skip.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+
         }
 
     }

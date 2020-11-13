@@ -42,6 +42,8 @@ class OnBoardingStep1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onboarding_step1_next.visibility = View.GONE
+        onboarding_step1_skip.visibility = View.GONE
 
         // btn 다음으로 이동
         onboarding_step1_next.setOnClickListener {
@@ -59,21 +61,19 @@ class OnBoardingStep1Fragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        onboarding_step1_next.visibility = View.GONE
-        onboarding_step1_skip.visibility = View.GONE
-
         GlobalScope.launch {
+            this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step1_next.visibility = View.GONE
+                onboarding_step1_skip.visibility = View.GONE
+            })
             delay(100L)
             this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step1_next.visibility = View.VISIBLE
-            })
-            onboarding_step1_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
-
-            delay(300L)
-            this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step1_skip.visibility = View.VISIBLE
             })
+            onboarding_step1_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
             onboarding_step1_skip.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+
         }
 
     }
