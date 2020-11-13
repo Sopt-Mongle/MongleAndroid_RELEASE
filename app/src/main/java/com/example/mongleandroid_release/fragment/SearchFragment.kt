@@ -1,8 +1,8 @@
 package com.example.mongleandroid_release.fragment
 
-import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -57,6 +56,33 @@ class SearchFragment : Fragment() {
         fragment_search_et_search.requestFocus()
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt
 
+        // 검색창에 초점 맞았을 때
+        fragment_search_et_search.setOnClickListener {
+            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            fragment_search_et_search.isCursorVisible = true
+        }
+
+        fragment_search_et_search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+                fragment_search_et_search.isCursorVisible = true
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
         // 뒤로가기 버튼
         fragment_search_btn_back.setOnClickListener {
 
@@ -65,6 +91,7 @@ class SearchFragment : Fragment() {
         // 엔터 눌렀을 때 검색
         fragment_search_et_search.setOnKeyListener(View.OnKeyListener { view, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                hideFocus()
 
                 search_result = if (view == null) {
                     val searchword = " "
@@ -84,6 +111,7 @@ class SearchFragment : Fragment() {
 
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
+            hideFocus()
 
             search_result = if(fragment_search_et_search == null) {
                 val searchword = " "
@@ -129,6 +157,16 @@ class SearchFragment : Fragment() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        fragment_search_et_search.setText("")
+    }
+
+    private fun hideFocus() {
+        fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
+        fragment_search_et_search.isCursorVisible = false
+    }
+
     // 최근 키워드
     private fun recentKeyword() {
         requestToServer.service.requestSearchRecent(
@@ -163,6 +201,9 @@ class SearchFragment : Fragment() {
                                     goResult()
                                     val searchword = response.body()!!.data[position]
                                     search_result = searchword.trim()
+
+                                    fragment_search_et_search.setText(searchword)
+                                    hideFocus()
                                 }
 
                             })
@@ -208,6 +249,9 @@ class SearchFragment : Fragment() {
                                 goResult()
                                 val searchword = response.body()!!.data[i].toString()
                                 search_result = searchword.trim()
+
+                                fragment_search_et_search.setText(searchword)
+                                hideFocus()
                             }
                         }
 
@@ -221,6 +265,8 @@ class SearchFragment : Fragment() {
 
     // 검색결과로 이동
     fun goResult() {
+
+        hideFocus()
 
         // 키보드 내리는 부분
         fragment_search_et_search.unshowKeyboard()

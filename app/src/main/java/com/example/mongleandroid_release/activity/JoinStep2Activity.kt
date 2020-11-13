@@ -40,6 +40,17 @@ class JoinStep2Activity : AppCompatActivity() {
             progressAnimator_step2.start()
         }, 200)
 
+        activity_join_step2_sv.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            change_visible(activity_join_step2_top_blur)
+            change_visible(activity_join_step2_bottom_blur)
+
+            if(scrollY == 0) {
+                change_gone(activity_join_step2_top_blur)
+                change_gone(activity_join_step2_bottom_blur)
+            }
+        }
+
+
         // 다음 버튼 눌렀을 때 비어있는 칸 경고문구 설정
         activity_join_step2_btn_next.setOnClickListener {
             if(activity_join_step2_et_email.text.isEmpty()) {

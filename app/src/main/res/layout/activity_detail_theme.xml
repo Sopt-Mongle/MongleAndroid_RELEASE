@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/activity_join_step2_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"

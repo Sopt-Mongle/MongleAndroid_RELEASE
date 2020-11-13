@@ -84,7 +84,7 @@
 
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/activity_join_step2_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="28dp"
@@ -625,6 +625,15 @@
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/activity_join_step2_bottom_blur"
+        android:layout_width="0dp"
+        android:layout_height="123dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_gradient" />
 
     <TextView
         android:id="@+id/activity_join_step2_btn_next"
@@ -646,6 +655,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/activity_join_step2_top_blur"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_sv"
+        app:srcCompat="@drawable/top_blur" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -86,12 +86,17 @@ class CuratorFragment : Fragment() {
                         call: Call<ResponseRecommendCuratorData>,
                         response: Response<ResponseRecommendCuratorData>
                     ) {
-                        Log.d("통신", response.body().toString())
                         if (response.isSuccessful) {
-                            Log.d("추천 큐레이터", "${response.body()}")
-                            curatorRecommendAdapter = CuratorRecommendAdapter(view!!.context, response.body()!!.data)
-                            fragment_curator_rv_recommend.adapter = curatorRecommendAdapter
-                            curatorRecommendAdapter.notifyDataSetChanged()
+                            if(response.body()!!.data.isNullOrEmpty()) {
+                                Log.d("통신결과", "null or empty")
+                            } else {
+                                Log.d("추천 큐레이터", "${response.body()}")
+                                curatorRecommendAdapter = CuratorRecommendAdapter(view!!.context, response.body()!!.data)
+                                fragment_curator_rv_recommend.adapter = curatorRecommendAdapter
+
+                                curatorRecommendAdapter.notifyDataSetChanged()
+                            }
+
                         }
 
                     }
