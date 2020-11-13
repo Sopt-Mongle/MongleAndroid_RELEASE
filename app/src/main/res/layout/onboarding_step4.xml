@@ -39,7 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/onboarding_step4_login"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="170dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -92,9 +93,11 @@
         android:layout_height="wrap_content"
         android:src="@drawable/onboarding_4_img_mongle"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="290dp"/>
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="430dp"
+        android:visibility="gone"/>
 
 
 
@@ -112,7 +115,8 @@
         app:layout_constraintTop_toBottomOf="@id/onboarding_4_bg"
         app:layout_constraintBottom_toTopOf="@id/onboarding_step4_main"
         android:layout_marginTop="22dp"
-        android:paddingVertical="18dp"/>
+        android:paddingVertical="18dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/onboarding_step4_main"
@@ -128,7 +132,8 @@
         app:layout_constraintTop_toBottomOf="@id/onboarding_step4_login"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="22dp"
-        android:padding="18dp"/>
+        android:padding="18dp"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

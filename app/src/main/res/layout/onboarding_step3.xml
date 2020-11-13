@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="250dp"/>
 
     <ImageView
         android:id="@+id/onboarding_3_img_mongle"
@@ -106,7 +106,7 @@
         android:src="@drawable/onboarding_3_img_mongle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="75dp"
+        android:layout_marginStart="105dp"
         android:layout_marginTop="440dp"
         android:visibility="gone"/>
 
@@ -120,7 +120,8 @@
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layout_constraintBottom_toBottomOf="@id/gl_bottom"
-        android:padding="18dp"/>
+        android:padding="18dp"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/onboarding_step3_next"
@@ -133,7 +134,8 @@
         app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintBottom_toBottomOf="@id/gl_bottom"
         android:paddingHorizontal="51dp"
-        android:paddingVertical="18dp"/>
+        android:paddingVertical="18dp"
+        android:visibility="gone"/>
 
 
 

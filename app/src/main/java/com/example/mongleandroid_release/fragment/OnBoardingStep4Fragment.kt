@@ -12,8 +12,12 @@ import com.example.mongleandroid_release.activity.LoginActivity
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.OnBoardingActivity
 import kotlinx.android.synthetic.main.activity_on_boarding.*
+import kotlinx.android.synthetic.main.onboarding_step2.*
 import kotlinx.android.synthetic.main.onboarding_step3.*
 import kotlinx.android.synthetic.main.onboarding_step4.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class OnBoardingStep4Fragment : Fragment() {
@@ -53,8 +57,24 @@ class OnBoardingStep4Fragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-//        onboarding_3_img_mongle.visibility = View.VISIBLE
-//        onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(this.context,R.anim.mongle_in))
+        onboarding_step4_main.visibility = View.GONE
+        onboarding_step4_login.visibility = View.GONE
+        onboarding_4_img_mongle.visibility = View.VISIBLE
+        onboarding_4_img_mongle.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.mongle_down))
+
+        GlobalScope.launch {
+            delay(900L)
+            this@OnBoardingStep4Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step4_login.visibility = View.VISIBLE
+            })
+            onboarding_step4_login.startAnimation(AnimationUtils.loadAnimation(context, R.anim.mongle_list_in))
+
+            delay(800L)
+            this@OnBoardingStep4Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step4_main.visibility = View.VISIBLE
+            })
+            onboarding_step4_main.startAnimation(AnimationUtils.loadAnimation(context, R.anim.mongle_list_in))
+        }
 
     }
 

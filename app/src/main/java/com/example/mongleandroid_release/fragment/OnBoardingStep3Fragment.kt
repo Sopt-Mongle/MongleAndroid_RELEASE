@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_on_boarding.*
 import kotlinx.android.synthetic.main.onboarding_step1.*
 import kotlinx.android.synthetic.main.onboarding_step2.*
 import kotlinx.android.synthetic.main.onboarding_step3.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class OnBoardingStep3Fragment : Fragment() {
@@ -52,7 +55,23 @@ class OnBoardingStep3Fragment : Fragment() {
     override fun onResume() {
         super.onResume()
         onboarding_3_img_mongle.visibility = View.VISIBLE
-        onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(this.context,R.anim.mongle_in))
+        onboarding_step3_next.visibility = View.GONE
+        onboarding_step3_skip.visibility = View.GONE
+
+        GlobalScope.launch {
+            onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_in))
+            delay(1000L)
+            this@OnBoardingStep3Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step3_next.visibility = View.VISIBLE
+            })
+            onboarding_step3_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+
+            delay(300L)
+            this@OnBoardingStep3Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step3_skip.visibility = View.VISIBLE
+            })
+            onboarding_step3_skip.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+        }
 
     }
 }
