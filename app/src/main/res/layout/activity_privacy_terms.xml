@@ -255,18 +255,17 @@
         android:id="@+id/activity_privacy_terms_top_blur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activity_privacy_terms_btn_back"
+        app:layout_constraintTop_toTopOf="@+id/activity_privacy_terms_sv"
         app:srcCompat="@drawable/my_settings_service_box_blur_top" />
 
     <ImageView
         android:id="@+id/activity_privacy_terms_bottom_blur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

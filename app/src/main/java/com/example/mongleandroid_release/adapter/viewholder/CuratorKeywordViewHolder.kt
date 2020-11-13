@@ -17,7 +17,11 @@ class CuratorKeywordViewHolder(itemView : View) : RecyclerView.ViewHolder(itemVi
     val alreadySubscribed = itemView.findViewById<CheckBox>(R.id.search_curator_btn_subscribe)
 
     fun bind(curatorKeyword : CuratorKeyword) {
-        Glide.with(itemView).load(curatorKeyword.img).into(img)
+        if(curatorKeyword.img == null) {
+            Glide.with(itemView).load(R.drawable.detailview_img_profile).into(img)
+        } else {
+            Glide.with(itemView).load(curatorKeyword.img).into(img)
+        }
         name.text = curatorKeyword.name
         keyword.text = curatorKeyword.keyword
         subscribe.text = curatorKeyword.subscribe.toString()

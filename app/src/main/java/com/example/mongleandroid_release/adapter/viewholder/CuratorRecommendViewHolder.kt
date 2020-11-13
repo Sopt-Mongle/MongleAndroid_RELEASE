@@ -14,7 +14,11 @@ class CuratorRecommendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
     val keyword = itemView.findViewById<TextView>(R.id.tv_curator_keyword)
 
     fun bind(recommendCurator: RecommendCurator) {
-        Glide.with(itemView).load(recommendCurator.img).into(img)
+        if(recommendCurator.img == null) {
+            Glide.with(itemView).load(R.drawable.detailview_img_profile).into(img)
+        } else {
+            Glide.with(itemView).load(recommendCurator.img).into(img)
+        }
         name.text = recommendCurator.name
         keyword.text = recommendCurator.keyword
     }

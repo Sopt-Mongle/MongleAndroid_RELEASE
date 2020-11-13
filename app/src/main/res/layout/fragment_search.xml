@@ -37,10 +37,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/fragment_search_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fragment_search_btn_back"
-        app:layout_constraintTop_toTopOf="@+id/fragment_search_btn_back">
-
-        <requestFocus />
-    </EditText>
+        app:layout_constraintTop_toTopOf="@+id/fragment_search_btn_back"/>
 
     <ImageView
         android:id="@+id/fragment_search_btn_search"

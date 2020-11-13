@@ -54,15 +54,15 @@ class OnBoardingStep4Fragment : Fragment() {
         }
     }
 
-
     override fun onResume() {
         super.onResume()
-        onboarding_step4_main.visibility = View.GONE
-        onboarding_step4_login.visibility = View.GONE
-        onboarding_4_img_mongle.visibility = View.VISIBLE
-        onboarding_4_img_mongle.startAnimation(AnimationUtils.loadAnimation(this.context, R.anim.mongle_down))
-
         GlobalScope.launch {
+            this@OnBoardingStep4Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step4_main.visibility = View.INVISIBLE
+                onboarding_step4_login.visibility = View.INVISIBLE
+                onboarding_4_img_mongle.visibility = View.VISIBLE
+            })
+            onboarding_4_img_mongle.startAnimation(AnimationUtils.loadAnimation(context, R.anim.mongle_down))
             delay(900L)
             this@OnBoardingStep4Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step4_login.visibility = View.VISIBLE
