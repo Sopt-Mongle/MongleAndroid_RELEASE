@@ -180,4 +180,11 @@ interface RequestInterface {
         @Part("keywordIdx") keywordIdx: RequestBody,
         @Part("introduce") introduce: RequestBody
     ) : Call<ResponseUpdateProfileData>
+
+    //문장 상세 조회
+    @GET("/detail/sentence/{sentenceIdx}")
+    fun GetDetailSentence(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceDetailData>
 }

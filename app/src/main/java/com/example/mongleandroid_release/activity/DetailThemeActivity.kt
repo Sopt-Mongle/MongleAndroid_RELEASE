@@ -75,6 +75,15 @@ class DetailThemeActivity : AppCompatActivity() {
                     if(response.isSuccessful) {
                         //var themesData = intent.getParcelableArrayExtra("mainThemes")
                         Log.d("아 제발","${themeIdx}번 리스트 선택")
+
+                        if (response.body()!!.data?.theme.isNullOrEmpty()) {
+
+                        } else {
+                            tv_main_theme_title.text = response.body()!!.data!!.theme[0].theme
+                            tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
+                            textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
+                            textView11.text = response.body()!!.data!!.theme[0].saves.toString()
+                        }
                         //tv_main_theme_title.text = themesData.get(1).toString()
 //                        for (i in 0..5) {
 //                            tv_main_theme_title.text = response.body()!!.data!!.theme[i].theme
@@ -83,17 +92,14 @@ class DetailThemeActivity : AppCompatActivity() {
 //                            textView11.text = response.body()!!.data!!.theme[i].saves.toString()
 //                        }
                         //val themeIdx = intent.getIntExtra("param", 0)
-                        tv_main_theme_title.text = response.body()!!.data!!.theme[0].theme
-                        tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
-                        textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
-                        textView11.text = response.body()!!.data!!.theme[0].saves.toString()
+
                     }
                 }
 
             }
         )
     }
-
+// 리사이클러뷰 통신
     private fun requestMainThemeData() {
 
         requestToServer.service.GetDetailTheme(
