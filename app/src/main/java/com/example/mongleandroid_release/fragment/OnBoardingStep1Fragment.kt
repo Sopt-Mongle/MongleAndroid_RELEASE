@@ -18,6 +18,10 @@ import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import kotlinx.android.synthetic.main.activity_on_boarding.*
 import kotlinx.android.synthetic.main.onboarding_step1.*
 import kotlinx.android.synthetic.main.onboarding_step2.*
+import kotlinx.android.synthetic.main.onboarding_step4.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class OnBoardingStep1Fragment : Fragment() {
 
@@ -50,6 +54,27 @@ class OnBoardingStep1Fragment : Fragment() {
             act.finish()
         }
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onboarding_step1_next.visibility = View.GONE
+        onboarding_step1_skip.visibility = View.GONE
+
+        GlobalScope.launch {
+            delay(100L)
+            this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step1_next.visibility = View.VISIBLE
+            })
+            onboarding_step1_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+
+            delay(300L)
+            this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step1_skip.visibility = View.VISIBLE
+            })
+            onboarding_step1_skip.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+        }
 
     }
 

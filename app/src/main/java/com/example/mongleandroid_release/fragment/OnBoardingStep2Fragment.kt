@@ -15,9 +15,7 @@ import com.example.mongleandroid_release.activity.OnBoardingActivity
 import kotlinx.android.synthetic.main.activity_on_boarding.*
 import kotlinx.android.synthetic.main.onboarding_step1.*
 import kotlinx.android.synthetic.main.onboarding_step2.*
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.*
 
 
 class OnBoardingStep2Fragment : Fragment() {
@@ -44,27 +42,7 @@ class OnBoardingStep2Fragment : Fragment() {
 
         // btn 이동
         onboarding_step2_next.setOnClickListener {
-
-            suspend fun fetchTwoDocs() = coroutineScope {
-                val deferreds = listOf(     // fetch two docs at the same time
-                    async { // mongle3 로 변경
-                        onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_3_img_mongle) },  // async returns a result for the first doc
-                    async { onboarding_2_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_out)) } ,
-                    async { act.onboarding_vp.currentItem =2 }
-                )
-                deferreds.awaitAll()
-            }
-
-
-//
-//
-//            // mongle3 로 변경
-//            onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_3_img_mongle)
-//            // mongle exit anim
-//            onboarding_2_img_mongle.startAnimation(AnimationUtils.loadAnimation(this.context,R.anim.mongle_out))
-//
-//
-//            act.onboarding_vp.currentItem =2
+            animCoroutines()
         }
 
         onboarding_step2_skip.setOnClickListener {
@@ -77,12 +55,48 @@ class OnBoardingStep2Fragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        onboarding_step2_next.visibility = View.GONE
+        onboarding_step2_skip.visibility = View.GONE
         onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_2_img_mongle)
-        onboarding_step2_img_list.startAnimation(AnimationUtils.loadAnimation(this.context,R.anim.mongle_list_in))
+        onboarding_step2_img_list.visibility = View.VISIBLE
+
+
+        GlobalScope.launch {
+            onboarding_step2_img_list.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_list_in))
+            delay(1000L)
+            this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step2_next.visibility = View.VISIBLE
+            })
+            onboarding_step2_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+
+            delay(300L)
+            this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                onboarding_step2_skip.visibility = View.VISIBLE
+            })
+            onboarding_step2_skip.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
+        }
 
     }
 
 
+
+    private fun animCoroutines() {
+        onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_3_img_mongle)
+        onboarding_2_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_out))
+        GlobalScope.launch {
+            delay(900L)
+            this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
+                act.onboarding_vp.currentItem =2
+            }
+
+            )
+
+        }
+
+
+
+
+    }
 
 
 }
