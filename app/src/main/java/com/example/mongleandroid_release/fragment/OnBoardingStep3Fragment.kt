@@ -39,6 +39,7 @@ class OnBoardingStep3Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         // btn 이동
         onboarding_step3_next.setOnClickListener {
             act.onboarding_vp.currentItem = 3
@@ -51,13 +52,6 @@ class OnBoardingStep3Fragment : Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        onboarding_3_img_mongle.visibility = View.VISIBLE
-        onboarding_step3_next.visibility = View.GONE
-        onboarding_step3_skip.visibility = View.GONE
-
-    }
 
     override fun onResume() {
         super.onResume()
@@ -77,13 +71,9 @@ class OnBoardingStep3Fragment : Fragment() {
             onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_jump_down))
             this@OnBoardingStep3Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step3_next.visibility = View.VISIBLE
-            })
-            onboarding_step3_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
-
-            delay(300L)
-            this@OnBoardingStep3Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step3_skip.visibility = View.VISIBLE
             })
+            onboarding_step3_next.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
             onboarding_step3_skip.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_fade_in))
         }
 
