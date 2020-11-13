@@ -57,12 +57,21 @@ class OnBoardingStep1Fragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        onboarding_step1_next.visibility = View.GONE
+        onboarding_step1_skip.visibility = View.GONE
+    }
+
     override fun onResume() {
         super.onResume()
         onboarding_step1_next.visibility = View.GONE
         onboarding_step1_skip.visibility = View.GONE
-
         GlobalScope.launch {
+//            this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
+//                onboarding_step1_next.visibility = View.GONE
+//                onboarding_step1_skip.visibility = View.GONE
+//            })
             delay(100L)
             this@OnBoardingStep1Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step1_next.visibility = View.VISIBLE

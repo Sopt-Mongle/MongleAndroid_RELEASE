@@ -53,15 +53,27 @@ class OnBoardingStep2Fragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        onboarding_step2_next.visibility = View.GONE
+        onboarding_step2_skip.visibility = View.GONE
+        onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_2_img_mongle)
+        onboarding_step2_img_list.visibility = View.VISIBLE
+    }
+
     override fun onResume() {
         super.onResume()
         onboarding_step2_next.visibility = View.GONE
         onboarding_step2_skip.visibility = View.GONE
         onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_2_img_mongle)
         onboarding_step2_img_list.visibility = View.VISIBLE
-
-
         GlobalScope.launch {
+//            this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {
+//                onboarding_step2_next.visibility = View.GONE
+//                onboarding_step2_skip.visibility = View.GONE
+//                onboarding_2_img_mongle.setImageResource(R.drawable.onboarding_2_img_mongle)
+//                onboarding_step2_img_list.visibility = View.VISIBLE
+//            })
             onboarding_step2_img_list.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_list_in))
             delay(1000L)
             this@OnBoardingStep2Fragment.activity?.runOnUiThread(java.lang.Runnable {

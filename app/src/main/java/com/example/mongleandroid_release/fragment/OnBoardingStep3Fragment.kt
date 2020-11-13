@@ -51,16 +51,30 @@ class OnBoardingStep3Fragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        onboarding_3_img_mongle.visibility = View.VISIBLE
+        onboarding_step3_next.visibility = View.GONE
+        onboarding_step3_skip.visibility = View.GONE
+
+    }
 
     override fun onResume() {
         super.onResume()
         onboarding_3_img_mongle.visibility = View.VISIBLE
         onboarding_step3_next.visibility = View.GONE
         onboarding_step3_skip.visibility = View.GONE
-
         GlobalScope.launch {
+//            this@OnBoardingStep3Fragment.activity?.runOnUiThread(java.lang.Runnable {
+//                onboarding_3_img_mongle.visibility = View.VISIBLE
+//                onboarding_step3_next.visibility = View.GONE
+//                onboarding_step3_skip.visibility = View.GONE
+//            })
             onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_in))
             delay(1000L)
+            onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_jump_up))
+            delay(500L)
+            onboarding_3_img_mongle.startAnimation(AnimationUtils.loadAnimation(context,R.anim.mongle_jump_down))
             this@OnBoardingStep3Fragment.activity?.runOnUiThread(java.lang.Runnable {
                 onboarding_step3_next.visibility = View.VISIBLE
             })
