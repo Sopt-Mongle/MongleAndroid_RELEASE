@@ -15,6 +15,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.customEnqueue
@@ -105,13 +107,24 @@ class JoinStep3Activity : AppCompatActivity() {
         changeCodeBackground(activity_join_step3_et_code5)
         changeCodeBackground(activity_join_step3_et_code6)
 
-        activity_join_step3_et_code6.addTextChangedListener(object : TextWatcher {
+        etTextChangedListener(activity_join_step3_et_code1)
+        etTextChangedListener(activity_join_step3_et_code2)
+        etTextChangedListener(activity_join_step3_et_code3)
+        etTextChangedListener(activity_join_step3_et_code4)
+        etTextChangedListener(activity_join_step3_et_code5)
+        etTextChangedListener(activity_join_step3_et_code6)
+
+    }
+
+    private fun etTextChangedListener(editText: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 if (activity_join_step3_et_code1.text.isNotEmpty() && activity_join_step3_et_code2.text.isNotEmpty() &&
                     activity_join_step3_et_code3.text.isNotEmpty() && activity_join_step3_et_code4.text.isNotEmpty() &&
                     activity_join_step3_et_code5.text.isNotEmpty() && activity_join_step3_et_code6.text.isNotEmpty()
                 ) {
                     hideKeyboard()
+                    editText.isCursorVisible = false
                     activity_join_step3_3_pgb_out.setBackgroundResource(R.drawable.dot_circle_progresson_out)
                     activity_join_step3_3_pgb_in.setBackgroundResource(R.drawable.dot_circle_progresson_in)
                 } else {
@@ -125,10 +138,11 @@ class JoinStep3Activity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+                changeCodeBackGray()
+                editText.isCursorVisible = true
+                editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
             }
         })
-
     }
 
     private fun hideKeyboard() {
@@ -178,9 +192,11 @@ class JoinStep3Activity : AppCompatActivity() {
                                 activity_join_step3_et_code5.text.toString() +
                                 activity_join_step3_et_code6.text.toString()
 
-
                         if (code == userCode) {
                             signUpSuccess()
+                        } else {
+                            hideKeyboard()
+                            showErrorEsg()
                         }
                     }
                 }
@@ -279,6 +295,8 @@ class JoinStep3Activity : AppCompatActivity() {
 
         editText.setOnFocusChangeListener { _, hasFocus ->
 
+            changeCodeBackGray()
+            editText.isCursorVisible = true
             editText.background = resources.getDrawable(R.drawable.et_circle_join3_on, null)
             if(!hasFocus) {
                 editText.clearFocus()
@@ -292,6 +310,30 @@ class JoinStep3Activity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showErrorEsg() {
+        activity_join_step3_et_code1.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+        activity_join_step3_et_code2.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+        activity_join_step3_et_code3.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+        activity_join_step3_et_code4.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+        activity_join_step3_et_code5.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+        activity_join_step3_et_code6.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+
+        change_visible(activity_join_step3_ic_error)
+        change_visible(activity_join_step3_tv_error)
+    }
+
+    private fun changeCodeBackGray() {
+        activity_join_step3_et_code1.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+        activity_join_step3_et_code2.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+        activity_join_step3_et_code3.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+        activity_join_step3_et_code4.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+        activity_join_step3_et_code5.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+        activity_join_step3_et_code6.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+
+        change_gone(activity_join_step3_ic_error)
+        change_gone(activity_join_step3_tv_error)
     }
 
 
