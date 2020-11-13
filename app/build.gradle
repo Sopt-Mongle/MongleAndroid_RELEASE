@@ -23,6 +23,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -92,4 +95,7 @@ dependencies {
     compileOnly 'com.google.android.wearable:wearable:2.6.0'
     // Testing Fragments in Isolation
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+
+    // Material View Pager Dots Indicator
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 }
