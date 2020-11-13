@@ -33,7 +33,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:background="@drawable/onboarding_1_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,10 +94,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/onboarding_3_img_bookshelf"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="250dp"/>
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="230dp"/>
 
     <ImageView
         android:id="@+id/onboarding_3_img_mongle"
@@ -106,8 +105,8 @@
         android:src="@drawable/onboarding_3_img_mongle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="410dp"
         android:visibility="gone"/>
 
     <TextView

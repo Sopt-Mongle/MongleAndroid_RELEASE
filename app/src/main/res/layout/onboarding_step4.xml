@@ -93,10 +93,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/onboarding_4_img_mongle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="300dp"
         android:visibility="gone"/>
 
 
@@ -113,10 +112,9 @@
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintTop_toBottomOf="@id/onboarding_4_bg"
-        app:layout_constraintBottom_toTopOf="@id/onboarding_step4_main"
         android:layout_marginTop="22dp"
         android:paddingVertical="18dp"
-        android:visibility="gone"/>
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/onboarding_step4_main"
@@ -133,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="22dp"
         android:padding="18dp"
-        android:visibility="gone"/>
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
