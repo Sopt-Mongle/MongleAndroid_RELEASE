@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import com.example.mongleandroid_release.dialog.DialogLogin
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.network.RequestToServer
@@ -23,6 +25,24 @@ class LoginActivity : AppCompatActivity() {
         activity_login_tv_join.setOnClickListener {
             val intent = Intent(this, JoinStep1Activity::class.java)
             startActivity(intent)
+        }
+
+        activity_login_tv_findid.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
+        }
+
+        activity_login_tv_findpass.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
         }
 
         activity_login_btn_login.setOnClickListener {
