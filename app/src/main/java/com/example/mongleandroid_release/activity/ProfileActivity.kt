@@ -55,6 +55,18 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        activity_profile_sv.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            change_visible(activity_profile_top_blur)
+            change_visible(activity_profile_bottom_blur)
+
+            if(scrollY == 0) {
+                change_gone(activity_profile_top_blur)
+                change_gone(activity_profile_bottom_blur)
+            }
+        }
+
+
+
         fileUri = SharedPreferenceController.getImage(this)?.toUri()
 
         // 이미지 둥글게

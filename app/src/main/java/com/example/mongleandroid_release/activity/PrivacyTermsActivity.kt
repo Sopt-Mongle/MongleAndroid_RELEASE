@@ -6,7 +6,10 @@ import android.view.View.VISIBLE
 import android.view.ViewTreeObserver.OnScrollChangedListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import kotlinx.android.synthetic.main.activity_privacy_terms.*
+import kotlinx.android.synthetic.main.activity_service_terms.*
 
 
 class PrivacyTermsActivity : AppCompatActivity() {
@@ -19,9 +22,13 @@ class PrivacyTermsActivity : AppCompatActivity() {
             finish()
         }
 
-        activity_privacy_terms_sv.viewTreeObserver.addOnScrollChangedListener {
-            activity_privacy_terms_top_blur.visibility = VISIBLE
-            activity_privacy_terms_bottom_blur.visibility = VISIBLE
+        activity_privacy_terms_sv.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            change_visible(activity_privacy_terms_top_blur)
+            change_visible(activity_privacy_terms_bottom_blur)
+            if(scrollY == 0) {
+                change_gone(activity_privacy_terms_top_blur)
+                change_gone(activity_privacy_terms_bottom_blur)
+            }
         }
 
     }

@@ -42,9 +42,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/activity_profile_sv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout9"
+        app:layout_constraintBottom_toTopOf="@+id/activity_profile_btn_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topbar">
@@ -438,6 +439,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="60dp"
                 android:background="@drawable/et_area"
                 android:ems="10"
                 android:fontFamily="@font/notosanscjkkr_regular"
@@ -452,6 +454,7 @@
                 android:paddingBottom="12dp"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView39"
                 app:layout_constraintTop_toBottomOf="@+id/textView41" />
@@ -535,34 +538,44 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
+    <ImageView
+        android:id="@+id/activity_profile_bottom_blur"
+        android:layout_width="0dp"
+        android:layout_height="123dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_gradient" />
 
+    <TextView
+        android:id="@+id/activity_profile_btn_next"
+        style="@android:style/ButtonBar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/btn_green"
+        android:gravity="center_vertical"
+        android:padding="15dp"
+        android:text="완료"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="RtlCompat" />
 
-        <TextView
-            android:id="@+id/activity_profile_btn_next"
-            style="@android:style/ButtonBar"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="@drawable/btn_green"
-            android:gravity="center_vertical"
-            android:padding="15dp"
-            android:text="완료"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="RtlCompat" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/activity_profile_top_blur"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topbar"
+        app:srcCompat="@drawable/top_blur" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
