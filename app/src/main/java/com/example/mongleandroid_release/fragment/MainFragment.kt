@@ -30,6 +30,21 @@ import retrofit2.Response
 
 class MainFragment : Fragment() {
 
+//    private var themeIdx : Int,
+//    private var theme : String,
+//    private var themeImg : String,
+//    private var themeImgIdx : Int,
+//    private var saves : Int,
+//    private var alreadyBookmarked : Boolean,
+//    private var sentenceNum : Int
+
+    private var themeIdx = 0
+    private var theme = ""
+    private var themeImg = ""
+    private var saves = 0
+    private var alreadyBookmarked = false
+    private var sentenceNum = 0
+
     lateinit var items: MutableList<MainThemes>
 
     val requestToServer = RequestToServer
@@ -180,9 +195,16 @@ class MainFragment : Fragment() {
                             override fun onClick(view: View, position: Int) {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
+                                    //var mainThemes = arrayListOf<MainThemes>()
                                     val intent = Intent(context, DetailThemeActivity::class.java)
                                     Log.d("ㅇㅇㅇㅇㅇ", "${response.body()!!.data[0].themeIdx}")
-                                    intent.putExtra("param", response.body()!!.data[0].themeIdx)
+
+//                                    for (i in 0..5) {
+//                                        intent.putExtra("param", response.body()!!.data[i].themeIdx)
+//                                    }
+                                    intent.putExtra("param", response.body()!!.data[position].themeIdx)
+                                    //intent.putExtra("param", position)
+                                    //intent.putParcelableArrayListExtra("mainThemes", mainThemes)
                                     startActivity(intent)
                                 }
 
@@ -220,6 +242,7 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, DetailThemeActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data[0].themeIdx)
                                     startActivity(intent)
                                 }
                             }
@@ -255,6 +278,7 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, DetailThemeActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data[0].themeIdx)
                                     startActivity(intent)
                                 }
                             }

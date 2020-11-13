@@ -26,7 +26,7 @@ class DetailThemeActivity : AppCompatActivity() {
     private var alreadyBookmarked = false
     private var sentenceNum = 0
 
-    //DataSentence 데이터
+    //DataSentence 데이터1
     private var sentenceIdx = 0
     private var sentence = ""
     private var likes = 0
@@ -73,6 +73,16 @@ class DetailThemeActivity : AppCompatActivity() {
                     response: Response<ResponseThemeDetailData>
                 ) {
                     if(response.isSuccessful) {
+                        //var themesData = intent.getParcelableArrayExtra("mainThemes")
+                        Log.d("아 제발","${themeIdx}번 리스트 선택")
+                        //tv_main_theme_title.text = themesData.get(1).toString()
+//                        for (i in 0..5) {
+//                            tv_main_theme_title.text = response.body()!!.data!!.theme[i].theme
+//                            tv_main_theme_author.text = response.body()!!.data!!.theme[i].writer
+//                            textView12.text = response.body()!!.data!!.theme[i].sentenceNum.toString()
+//                            textView11.text = response.body()!!.data!!.theme[i].saves.toString()
+//                        }
+                        //val themeIdx = intent.getIntExtra("param", 0)
                         tv_main_theme_title.text = response.body()!!.data!!.theme[0].theme
                         tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
                         textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
@@ -138,7 +148,7 @@ class DetailThemeActivity : AppCompatActivity() {
                 response: Response<ResponseThemeDetailData>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("테마 통신 성공", "${response.body()!!.data}")
+                    Log.d("테마 리사이클러뷰 통신 성공", "${response.body()!!.data}")
 
                 }
             }
