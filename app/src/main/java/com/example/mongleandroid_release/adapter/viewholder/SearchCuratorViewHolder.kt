@@ -9,19 +9,25 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.network.data.response.SearchCurator
 
 class SearchCuratorViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-    // val img = itemView.findViewById<ImageView>(R.id.search_curator_img_profile)
+    val img = itemView.findViewById<ImageView>(R.id.search_curator_img_profile)
     val name = itemView.findViewById<TextView>(R.id.search_curator_tv_name)
     val subscribe = itemView.findViewById<TextView>(R.id.search_curator_tv_subcount)
     val keyword = itemView.findViewById<TextView>(R.id.search_curator_tv_keyword)
     val alreadySubscribed = itemView.findViewById<CheckBox>(R.id.search_curator_btn_subscribe)
 
     fun bind(searchCurator: SearchCurator) {
+        if(searchCurator.img == null) {
+            Glide.with(itemView).load(R.drawable.detailview_img_profile).into(img)
+        } else {
+            Glide.with(itemView).load(searchCurator.img).into(img)
+        }
         subscribe.text = searchCurator.subscribe.toString()
         keyword.text = searchCurator.keyword
         alreadySubscribed.setOnClickListener {

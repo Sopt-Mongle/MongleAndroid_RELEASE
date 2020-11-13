@@ -21,8 +21,11 @@ class LibraryCuratorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
         itemView.findViewById<CheckBox>(R.id.library_curator_btn_subscribe_item)
 
     fun bind(libraryCuratorData: LibraryCuratorData) {
-        Glide.with(itemView).load(libraryCuratorData.library_curator_img_profile)
-            .into(library_curator_img_profile)
+        if(libraryCuratorData.library_curator_img_profile == null) {
+            Glide.with(itemView).load(R.drawable.detailview_img_profile).into(library_curator_img_profile)
+        } else {
+            Glide.with(itemView).load(libraryCuratorData.library_curator_img_profile).into(library_curator_img_profile)
+        }
         tv_library_curator_name.text = libraryCuratorData.tv_library_curator_name
         tv_library_curator_subcount.text = libraryCuratorData.tv_library_curator_name
         tv_library_curator_keyword.text = libraryCuratorData.tv_library_curator_keyword
