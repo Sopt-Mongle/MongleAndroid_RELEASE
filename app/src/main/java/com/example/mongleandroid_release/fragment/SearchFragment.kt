@@ -160,6 +160,7 @@ class SearchFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         fragment_search_et_search.setText("")
+        hideFocus()
     }
 
     private fun hideFocus() {
