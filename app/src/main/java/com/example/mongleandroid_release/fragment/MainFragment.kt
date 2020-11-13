@@ -122,6 +122,7 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data[position].sentenceIdx)
                                     startActivity(intent)
                                 }
                             }
@@ -155,6 +156,7 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, CuratorInfoActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data[position].curatorIdx)
                                     startActivity(intent)
                                 }
                             }
@@ -242,7 +244,8 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, DetailThemeActivity::class.java)
-                                    intent.putExtra("param", response.body()!!.data[0].themeIdx)
+                                    Log.d("문장을 기다리는 테마", "${response.body()!!.data[position].themeIdx}")
+                                    intent.putExtra("param", response.body()!!.data[position].themeIdx)
                                     startActivity(intent)
                                 }
                             }
@@ -278,7 +281,7 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, DetailThemeActivity::class.java)
-                                    intent.putExtra("param", response.body()!!.data[0].themeIdx)
+                                    intent.putExtra("param", response.body()!!.data[position].themeIdx)
                                     startActivity(intent)
                                 }
                             }
