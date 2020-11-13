@@ -16,7 +16,7 @@ class DetailThemeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
        tv_theme_sentence.text = dataSentence.sentence
        tv_theme_curator.text = dataSentence.writer
        tv_save_num.text = dataSentence.saves.toString()
-       tv_like_num.text = dataSentence.likes.toString()
+
    }
 
 }

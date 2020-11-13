@@ -25,7 +25,7 @@ data class DataTheme(
 data class DataSentence(
     val sentenceIdx : Int,
     val sentence : String,
-    val likes : Int,
+    val likes : Int = 0,
     val saves : Int,
     val writer : String,
     val writerImg : String,

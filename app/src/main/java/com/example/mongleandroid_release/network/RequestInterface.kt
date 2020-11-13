@@ -182,7 +182,7 @@ interface RequestInterface {
     ) : Call<ResponseUpdateProfileData>
 
     //문장 상세 조회
-    @GET("/detail/sentence/:sentenceIdx")
+    @GET("/detail/sentence/{sentenceIdx}")
     fun GetDetailSentence(
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
