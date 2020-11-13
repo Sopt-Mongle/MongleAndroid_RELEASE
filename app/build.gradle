@@ -26,6 +26,10 @@ android {
     dataBinding {
         enabled = true
     }
+    // @Parcelize
+    androidExtensions {
+        experimental = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -89,6 +93,9 @@ dependencies {
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
 
+    // kotlin serialization
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0" // JVM dependency
 
     // Kotlin
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
