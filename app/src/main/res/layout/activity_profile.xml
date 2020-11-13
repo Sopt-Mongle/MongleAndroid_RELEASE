@@ -526,7 +526,7 @@
                 android:paddingTop="12dp"
                 android:paddingEnd="12dp"
                 android:paddingBottom="12dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_et_introduce"
                 app:layout_constraintEnd_toEndOf="@+id/activity_profile_et_introduce"
                 app:layout_constraintTop_toTopOf="@+id/activity_profile_et_introduce"

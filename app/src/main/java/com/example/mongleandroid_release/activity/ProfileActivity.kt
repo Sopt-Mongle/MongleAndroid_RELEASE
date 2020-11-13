@@ -3,6 +3,7 @@ package com.example.mongleandroid_release.activity
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.UriPermission
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ShapeDrawable
@@ -18,6 +19,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
+import androidx.documentfile.provider.DocumentFile
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
@@ -45,19 +48,50 @@ class ProfileActivity : AppCompatActivity() {
 
     private val requestToServer = RequestToServer
     private val PICK_FROM_ALBUM = 100
-    lateinit private var fileUri : Uri
+    private var fileUri : Uri? = null
     private var keywordIndex : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        fileUri = SharedPreferenceController.getImage(this)?.toUri()
+
         // 이미지 둥글게
         activity_profile_img.background = ShapeDrawable(OvalShape())
         activity_profile_img.clipToOutline = true
 
-        // 키워드 선택 파라미터
-        var keywordIdx : Int = 0
+        // pref에서 받아오기
+        Glide.with(this).load(fileUri).into(activity_profile_img)
+        activity_profile_et_nickname.setText(SharedPreferenceController.getName(this))
+        when(SharedPreferenceController.getKeywordIdx(this)) {
+            "1" -> {
+                activity_profile_btn1.isChecked = true
+                keywordIndex = 1
+            }
+            "2" -> {
+                activity_profile_btn2.isChecked = true
+                keywordIndex = 2
+            }
+            "3" -> {
+                activity_profile_btn3.isChecked = true
+                keywordIndex = 3
+            }
+            "4" -> {
+                activity_profile_btn4.isChecked = true
+                keywordIndex = 4
+            }
+            "5" -> {
+                activity_profile_btn5.isChecked = true
+                keywordIndex = 5
+            }
+            "6" -> {
+                activity_profile_btn6.isChecked = true
+                keywordIndex = 6
+            }
+        }
+        activity_profile_et_introduce.setText(SharedPreferenceController.getIntroduce(this))
+
 
         activity_profile_btn1.setOnClickListener {
             activity_profile_btn2.isChecked = false
@@ -65,7 +99,7 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_btn4.isChecked = false
             activity_profile_btn5.isChecked = false
             activity_profile_btn6.isChecked = false
-            keywordIdx = 1
+            keywordIndex = 1
             remove_keyword_warning()
         }
 
@@ -75,7 +109,7 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_btn4.isChecked = false
             activity_profile_btn5.isChecked = false
             activity_profile_btn6.isChecked = false
-            keywordIdx = 2
+            keywordIndex = 2
             remove_keyword_warning()
         }
 
@@ -85,7 +119,7 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_btn4.isChecked = false
             activity_profile_btn5.isChecked = false
             activity_profile_btn6.isChecked = false
-            keywordIdx = 3
+            keywordIndex = 3
             remove_keyword_warning()
         }
 
@@ -95,7 +129,7 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_btn3.isChecked = false
             activity_profile_btn5.isChecked = false
             activity_profile_btn6.isChecked = false
-            keywordIdx = 4
+            keywordIndex = 4
             remove_keyword_warning()
         }
 
@@ -105,7 +139,7 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_btn3.isChecked = false
             activity_profile_btn4.isChecked = false
             activity_profile_btn6.isChecked = false
-            keywordIdx = 5
+            keywordIndex = 5
             remove_keyword_warning()
         }
 
@@ -115,7 +149,7 @@ class ProfileActivity : AppCompatActivity() {
             activity_profile_btn3.isChecked = false
             activity_profile_btn4.isChecked = false
             activity_profile_btn5.isChecked = false
-            keywordIdx = 6
+            keywordIndex = 6
             remove_keyword_warning()
         }
 
@@ -272,7 +306,7 @@ class ProfileActivity : AppCompatActivity() {
 
         // 다음버튼 눌렀을 때 비어있는 칸 경고문구 설정
         activity_profile_btn_next.setOnClickListener {
-            if(activity_profile_et_nickname.text.isEmpty()) {
+            if (activity_profile_et_nickname.text.isEmpty()) {
                 activity_profile_et_nickname.background = resources.getDrawable(
                     R.drawable.et_area_red, null
                 )
@@ -280,18 +314,43 @@ class ProfileActivity : AppCompatActivity() {
                 activity_profile_img_nickname_warning.setImageResource(R.drawable.ic_warning)
                 change_visible(activity_profile_tv_nickname_warning)
                 change_gone(activity_profile_tv_nickname_exist)
-            } else if(keywordIdx == 0) {
+            } else if (keywordIndex == 0) {
                 change_visible(activity_profile_img_keyword_warning)
                 change_visible(activity_profile_tv_keyword_warning)
-            } else if(activity_profile_et_introduce.text.isEmpty()) {
+            } else if (activity_profile_et_introduce.text.isEmpty()) {
                 activity_profile_et_introduce.background = resources.getDrawable(
                     R.drawable.et_area_red, null
                 )
                 change_visible(activity_profile_img_introduce_warning)
                 change_visible(activity_profile_tv_introduce_warning)
             } else {
-                keywordIndex = keywordIdx
-                settingDataMultiForm()
+                val permissionListener: PermissionListener = object : PermissionListener {
+                    override fun onPermissionGranted() {
+                        // 성공
+                        settingDataMultiForm()
+                    }
+
+                    override fun onPermissionDenied(deniedPermissions: ArrayList<String?>?) {
+                        // 권한 요청 실패
+                    }
+                }
+
+                TedPermission.with(this)
+                    .setPermissionListener(permissionListener)
+                    .setRationaleMessage(resources.getString(R.string.permission_2))
+                    .setDeniedMessage(resources.getString(R.string.permission_1))
+                    .setPermissions(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                    .check()
+
+
+                // pref에 저장
+                SharedPreferenceController.setName(this,
+                    activity_profile_et_nickname.text.toString())
+                SharedPreferenceController.setKeywordIdx(this, keywordIndex.toString())
+                SharedPreferenceController.setIntroduce(this,
+                    activity_profile_et_introduce.text.toString())
             }
 
         }
@@ -302,17 +361,25 @@ class ProfileActivity : AppCompatActivity() {
 
         // multipart로 변환
         val options = BitmapFactory.Options()
-        val inputStream: InputStream = contentResolver.openInputStream(fileUri)!!
-        val bitmap = BitmapFactory.decodeStream(inputStream,null,options)
+        val inputStream: InputStream = contentResolver.openInputStream(fileUri!!)!!
+        val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
         val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap!!.compress(Bitmap.CompressFormat.JPEG,20,byteArrayOutputStream)
-        val photoBody = RequestBody.create(MediaType.parse("image/jpeg"),byteArrayOutputStream.toByteArray())
-        val picture_rb = MultipartBody.Part.createFormData("img", File(fileUri.toString()).name,photoBody)
+        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
+        val photoBody = RequestBody.create(MediaType.parse("image/jpeg"),
+            byteArrayOutputStream.toByteArray())
+        val picture_rb = MultipartBody.Part.createFormData("img",
+            File(fileUri.toString()).name,
+            photoBody)
 
 
         val name = RequestBody.create(
             MediaType.parse("text/plain"),
             activity_profile_et_nickname.text.toString()
+        )
+
+        val keywordIdx = RequestBody.create(
+            MediaType.parse("text/plain"),
+            keywordIndex.toString()
         )
 
         val introduce = RequestBody.create(
@@ -324,7 +391,7 @@ class ProfileActivity : AppCompatActivity() {
             token = this.let { SharedPreferenceController.getAccessToken(it) },
             img = picture_rb,
             name = name,
-            keywordIdx = keywordIndex,
+            keywordIdx = keywordIdx,
             introduce = introduce
         ).enqueue(object : Callback<ResponseUpdateProfileData> {
             override fun onFailure(call: Call<ResponseUpdateProfileData>, t: Throwable) {
@@ -339,7 +406,7 @@ class ProfileActivity : AppCompatActivity() {
                     val customToast = layoutInflater.inflate(R.layout.toast_update_profile, null)
                     val toast = Toast(applicationContext)
                     toast.duration = Toast.LENGTH_SHORT
-                    toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL , 0, 0)
+                    toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
                     toast.view = customToast
                     toast.show()
                 }
@@ -364,8 +431,9 @@ class ProfileActivity : AppCompatActivity() {
     private fun tedPermission() {
         val permissionListener: PermissionListener = object : PermissionListener {
             override fun onPermissionGranted() {
+
                 // 권한 요청 성공 - 갤러리 이동
-                val intent = Intent(Intent.ACTION_PICK)
+                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
                 intent.type = MediaStore.Images.Media.CONTENT_TYPE
                 intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                 startActivityForResult(intent, PICK_FROM_ALBUM)
@@ -394,14 +462,9 @@ class ProfileActivity : AppCompatActivity() {
 
                 fileUri = data?.data!!
                 Glide.with(this).load(fileUri).into(activity_profile_img)
-
+                SharedPreferenceController.setImage(this, fileUri!!)
             }
-
-
         }
-
     }
-
-
 
 }
