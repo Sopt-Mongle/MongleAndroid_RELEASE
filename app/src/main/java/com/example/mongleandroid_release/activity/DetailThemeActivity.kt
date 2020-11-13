@@ -93,7 +93,7 @@ class DetailThemeActivity : AppCompatActivity() {
             }
         )
     }
-
+// 리사이클러뷰 통신
     private fun requestMainThemeData() {
 
         requestToServer.service.GetDetailTheme(
