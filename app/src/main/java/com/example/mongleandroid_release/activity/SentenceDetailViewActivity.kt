@@ -15,7 +15,20 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailOtherThemeData
+import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.back_btn
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.ccc
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.imageView18
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.imageView20
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.img_sentence_detail_view_edit_btn
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView19
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView20
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView35
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_author
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_publisher
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_theme
+import kotlinx.serialization.json.Json.Default.context
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,9 +43,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sentence_detail_view)
 
-        btn_go_to_theme.setOnClickListener {
-            val intent = Intent(this, DetailThemeActivity::class.java)
-            startActivity(intent)
+        // 뒤로 가기 버튼
+        back_btn.setOnClickListener {
+            finish()
         }
 
         requestSentenceDetail()
@@ -57,15 +70,27 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
 
                         Log.d("통신성공", response.body()!!.data.toString())
+                        //Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].).into(sentence_detail_img_theme)
                         tv_theme.text = response.body()!!.data[0].theme // 해당 테마 제목
                         textView19.text = response.body()!!.data[0].sentence // 해당 테마의 문장
-                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].writerImg).into(imageView18) // 문장 작성자 프사
+                        if(response.body()!!.data[0].writerImg == null) {
+                            Glide.with(this@SentenceDetailViewActivity).load(R.drawable.detailview_img_profile).into(imageView18) // 문장 작성자
+                        } else{
+                            Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].writerImg).into(imageView18) // 문장 작성자 프사
+                        }
                         //Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data?.thumbnail).into(imageView13) // 테마
                         textView20.text = response.body()!!.data[0].writer // 문장 작성자
                         Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].thumbnail).into(imageView20) // 해당 문장의 책 사진
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
+
+                        // 테마 보러 가기 버튼
+                        btn_go_to_theme.setOnClickListener {
+                            val intent = Intent(this@SentenceDetailViewActivity, DetailThemeActivity::class.java)
+                            intent.putExtra("param", response.body()!!.data[0].themeIdx)
+                            startActivity(intent)
+                        }
 
                             if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
                                 img_sentence_detail_view_edit_btn.setOnClickListener {
@@ -116,8 +141,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             detailSentenceAdapter.setItemClickListener(object : DetailSentenceAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS", "${position}번 리스트 선택")
-                                    //val intent = Intent(this@SentenceDetailViewActivity, )
-
+                                   val intent = Intent(this@SentenceDetailViewActivity, SentenceDetailNoThemeActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data[position].sentenceIdx)
+                                    startActivity(intent)
                                 }
                             })
 

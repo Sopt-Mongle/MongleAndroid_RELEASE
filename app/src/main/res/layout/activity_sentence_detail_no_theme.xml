@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SentenceDetailViewActivity">
+    tools:context=".activity.SentenceDetailNoThemeActivity">
 
     <ImageView
         android:id="@+id/sentence_detail_img_theme"
@@ -165,7 +165,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="55dp"
+                android:layout_marginBottom="146dp"
                 android:background="#f8f5ed"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView18">
@@ -302,68 +304,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/lineeeee" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <TextView
-                android:id="@+id/tv_theme_other_sentence"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="51dp"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:includeFontPadding="false"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="9sp"
-                android:text="이 테마의 다른 문장"
-                android:textColor="@color/black"
-                android:textSize="19sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_book_info" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_sentence_detail_view_theme_other_sentence"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:orientation="vertical"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_theme_other_sentence"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_theme_sentence" />
-
-            <View
-                android:id="@+id/btn_go_to_theme"
-                android:layout_width="0dp"
-                android:layout_height="46dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="150dp"
-                android:background="@drawable/background_sentence_detail_view_theme"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rv_sentence_detail_view_theme_other_sentence" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosanscjkkr_regular"
-                android:gravity="end"
-                android:includeFontPadding="false"
-                android:letterSpacing="-0.02"
-                android:lineSpacingExtra="11sp"
-                android:text="테마 보러 가기 >"
-                android:textColor="#8b8b8b"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_go_to_theme"
-                app:layout_constraintEnd_toEndOf="@+id/btn_go_to_theme"
-                app:layout_constraintStart_toStartOf="@+id/btn_go_to_theme"
-                app:layout_constraintTop_toTopOf="@+id/btn_go_to_theme" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
