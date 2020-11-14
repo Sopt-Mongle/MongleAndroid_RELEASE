@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailThemeAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -83,6 +84,7 @@ class DetailThemeActivity : AppCompatActivity() {
                             tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
+                            Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg).into(imageView5)
                         }
                         //tv_main_theme_title.text = themesData.get(1).toString()
 //                        for (i in 0..5) {
