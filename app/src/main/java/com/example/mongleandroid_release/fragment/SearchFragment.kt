@@ -37,6 +37,8 @@ class SearchFragment : Fragment() {
 
     private val requestToServer = RequestToServer
 
+    private var state = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,6 +49,17 @@ class SearchFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if(state == 1) {
+            fragment_search_et_search.setText(search_result)
+            hideFocus()
+        } else {
+            fragment_search_et_search.setText("")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -157,10 +170,14 @@ class SearchFragment : Fragment() {
 
     }
 
-    override fun onPause() {
-        super.onPause()
-        fragment_search_et_search.setText("")
-        hideFocus()
+    override fun onStop() {
+        super.onStop()
+        state = 1
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        state = 2
     }
 
     private fun hideFocus() {
