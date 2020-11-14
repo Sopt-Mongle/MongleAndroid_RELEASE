@@ -12,11 +12,11 @@ class DetailSentenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     val tv_save_num = itemView.findViewById<TextView>(R.id.tv_save_num)
     val tv_like_num = itemView.findViewById<TextView>(R.id.tv_like_num)
 
-    fun bind(sentenceDatailData: OtherSentence) {
-        tv_theme_sentence.text = sentenceDatailData.sentence
-        tv_theme_curator.text = sentenceDatailData.writer
-        tv_save_num.text = sentenceDatailData.saves.toString()
-        tv_like_num.text = sentenceDatailData.likes.toString()
+    fun bind(otherSentence: OtherSentence) {
+        tv_theme_sentence.text = otherSentence.sentence
+        tv_theme_curator.text = otherSentence.writer
+        tv_save_num.text = otherSentence.saves.toString()
+        tv_like_num.text = otherSentence.likes.toString()
     }
 
 }
