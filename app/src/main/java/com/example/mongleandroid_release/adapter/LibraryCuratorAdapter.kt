@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.LibraryCuratorViewHolder
 import com.example.mongleandroid_release.network.data.LibraryCuratorData
+import com.example.mongleandroid_release.network.data.response.LibraryCurator
 
-class LibraryCuratorAdapter(private val context: Context) :
+class LibraryCuratorAdapter(private val context: Context, var data_cu : List<LibraryCurator>) :
+//class LibraryCuratorAdapter(private val context: Context) :
     RecyclerView.Adapter<LibraryCuratorViewHolder>() {
-    var data_cu = mutableListOf<LibraryCuratorData>()
+    //    var data_cu = mutableListOf<LibraryCuratorData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibraryCuratorViewHolder {
         val view =
             LayoutInflater.from(context).inflate(R.layout.item_library_curator, parent, false)
