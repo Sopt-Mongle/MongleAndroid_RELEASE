@@ -42,11 +42,9 @@ class JoinStep2Activity : AppCompatActivity() {
 
         activity_join_step2_sv.setOnScrollChangeListener { _, _, scrollY, _, _ ->
             change_visible(activity_join_step2_top_blur)
-            change_visible(activity_join_step2_bottom_blur)
 
             if(scrollY == 0) {
                 change_gone(activity_join_step2_top_blur)
-                change_gone(activity_join_step2_bottom_blur)
             }
         }
 
