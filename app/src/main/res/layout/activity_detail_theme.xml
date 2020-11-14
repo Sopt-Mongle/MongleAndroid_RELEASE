@@ -9,12 +9,22 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="255dp"
         android:scaleType="centerCrop"
         android:src="@drawable/theme_img_backimg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView46"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/background_detail_theme_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView7" />
 
     <ImageView
         android:id="@+id/img_detail_theme_activity_back_btn"
@@ -30,13 +40,15 @@
 
     <TextView
         android:id="@+id/tv_main_theme_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="19dp"
+        android:layout_marginEnd="16dp"
         android:text="브랜딩이 어려울 때, 영감을 주는 문장"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="19sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_detail_theme_activity_back_btn" />
 
@@ -65,11 +77,10 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
         android:text="246"
         android:textColor="@color/white"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/tv_main_theme_title"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <TextView
@@ -106,23 +117,26 @@
         app:layout_constraintStart_toStartOf="@+id/textView12" />
 
     <ImageView
-        android:id="@+id/imageView46"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="22dp"
-        android:src="@drawable/background_detail_theme_rounded"
+        android:id="@+id/imageView51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingTop="22dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView7" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/theme_btn_more" />
 
     <ScrollView
         android:id="@+id/activity_join_step2_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5">
+        app:layout_constraintTop_toTopOf="@+id/imageView46">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -131,7 +145,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_activity_theme"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -146,16 +160,6 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/imageView45"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView46"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/top_blur" />
-
-    <ImageView
         android:id="@+id/imageView47"
         android:layout_width="0dp"
         android:layout_height="128dp"
@@ -164,11 +168,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/btn_gradient" />
 
+    <ImageView
+        android:id="@+id/imageView50"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView46"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_join_step2_sv"
+        app:srcCompat="@drawable/top_blur" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -178,7 +191,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/theme_info_btn_bookmark"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -189,9 +205,10 @@
             android:layout_marginStart="13dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/btn_green"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
         <TextView
             android:layout_width="wrap_content"
