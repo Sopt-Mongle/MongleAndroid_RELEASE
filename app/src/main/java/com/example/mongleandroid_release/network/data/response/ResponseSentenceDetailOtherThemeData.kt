@@ -1,17 +1,15 @@
 package com.example.mongleandroid_release.network.data.response
 
-data class ResponseSentenceDetailData(
+data class ResponseSentenceDetailOtherThemeData(
     val status : Int,
     val success : Boolean,
     val message : String,
-    val data : ArrayList<SentenceDetailData>
+    val data : List<OtherSentence>
 )
 
-data class SentenceDetailData(
+data class OtherSentence(
     val sentenceIdx : Int,
     val sentence : String,
-    val themeIdx : Int,
-    val theme : String,
     val likes : Int,
     val saves : Int,
     val writer : String,
@@ -19,8 +17,5 @@ data class SentenceDetailData(
     val title : String,
     val author : String,
     val publisher : String,
-    val thumbnail : String,
-    val timestamp : String,
-    val alreadyLiked : Boolean,
-    val alreadyBookmarked : Boolean
+    val timestamp : String
 )
