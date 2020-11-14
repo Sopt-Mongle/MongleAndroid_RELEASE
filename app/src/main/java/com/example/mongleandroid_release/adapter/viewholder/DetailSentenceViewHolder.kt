@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.network.data.response.SentenceDatailData
+import com.example.mongleandroid_release.network.data.response.OtherSentence
 
 class DetailSentenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     val tv_theme_sentence = itemView.findViewById<TextView>(R.id.tv_theme_sentence)
@@ -12,7 +12,7 @@ class DetailSentenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     val tv_save_num = itemView.findViewById<TextView>(R.id.tv_save_num)
     val tv_like_num = itemView.findViewById<TextView>(R.id.tv_like_num)
 
-    fun bind(sentenceDatailData : SentenceDatailData) {
+    fun bind(sentenceDatailData: OtherSentence) {
         tv_theme_sentence.text = sentenceDatailData.sentence
         tv_theme_curator.text = sentenceDatailData.writer
         tv_save_num.text = sentenceDatailData.saves.toString()
