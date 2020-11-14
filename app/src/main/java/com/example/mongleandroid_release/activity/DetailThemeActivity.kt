@@ -65,7 +65,7 @@ class DetailThemeActivity : AppCompatActivity() {
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
         ).enqueue(
-            object : retrofit2.Callback<ResponseThemeDetailData> {
+            object : Callback<ResponseThemeDetailData> {
                 override fun onFailure(call: Call<ResponseThemeDetailData>, t: Throwable) {
                     Log.e("통신 실패", t.toString())
                 }
@@ -132,7 +132,7 @@ class DetailThemeActivity : AppCompatActivity() {
                         detailThemeAdapter.setItemClickListener(object : DetailThemeAdapter.ItemClickListener{
                             override fun onClick(view: View, position: Int) {
                                 Log.d("SSS","${position}번 리스트 선택")
-                                val intent = Intent(this@DetailThemeActivity, SentenceDetailViewActivity::class.java)
+                                val intent = Intent(this@DetailThemeActivity, SentenceDetailNoThemeActivity::class.java)
                                 startActivity(intent)
                             }
                         })
