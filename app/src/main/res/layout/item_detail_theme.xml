@@ -83,12 +83,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_save_num"
-        app:layout_constraintEnd_toStartOf="@id/tv_bookmark_num"
+        app:layout_constraintEnd_toStartOf="@id/theme_sentence_tv_saves_num"
         app:layout_constraintTop_toTopOf="@+id/tv_save_num"
         android:src="@drawable/bookmark" />
 
     <TextView
-        android:id="@+id/tv_bookmark_num"
+        android:id="@+id/theme_sentence_tv_saves_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:letterSpacing="-0.02"
