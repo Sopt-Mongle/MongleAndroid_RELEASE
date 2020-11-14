@@ -8,6 +8,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
+import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -36,6 +37,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
         img_sentence_detail_view_edit_btn.setOnClickListener {
             change_visible(ccc) // 수정 & 삭제 컨테이너
         }
+
         requestSentenceDetail()
         requestSentenceTheme()
     }
@@ -56,6 +58,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                 ) {
                     if(response.isSuccessful) {
 
+
                         Log.d("통신성공", response.body()!!.data.toString())
                         tv_theme.text = response.body()!!.data[0].theme // 해당 테마 제목
                         textView19.text = response.body()!!.data[0].sentence // 해당 테마의 문장
@@ -66,6 +69,15 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
+
+                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
+
+                            } else {
+                                img_sentence_detail_view_edit_btn.setOnClickListener {
+                                    change_gone(img_sentence_detail_view_edit_btn)
+                                }
+                            }
+
 
                     }
                 }
