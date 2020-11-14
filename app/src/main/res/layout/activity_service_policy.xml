@@ -386,18 +386,16 @@
         android:id="@+id/activity_service_policy_top_blur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/activity_service_policy_btn_back"
+        app:layout_constraintTop_toTopOf="@+id/activity_service_policy_sv"
         app:srcCompat="@drawable/my_settings_service_box_blur_top" />
 
     <ImageView
         android:id="@+id/activity_service_policy_bottom_blur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

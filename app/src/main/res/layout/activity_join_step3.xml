@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_join_step3_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.JoinStep3Activity">
@@ -95,19 +96,23 @@
         app:layout_constraintTop_toTopOf="@+id/activity_join_step3_3_pgb_out" />
 
     <ScrollView
-        android:id="@+id/scrollView3"
+        android:id="@+id/activity_join_step3_sv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="26dp"
         android:layout_marginBottom="10dp"
         android:fillViewport="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:overScrollMode="never"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/activity_join_step3_btn_popup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_pgb">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_join_step3_cl_in"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -115,15 +120,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_pgb">
 
+            <View
+                android:id="@+id/view_empty1"
+                android:layout_width="0dp"
+                android:layout_height="77dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="75dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_empty1"
                 app:srcCompat="@drawable/join_step_3_img_mail" />
+
+            <View
+                android:id="@+id/view_empty2"
+                android:layout_width="0dp"
+                android:layout_height="72dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -140,14 +160,23 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                app:layout_constraintTop_toBottomOf="@+id/view_empty2" />
+
+            <View
+                android:id="@+id/view_empty3"
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginEnd="58dp"
                 android:fontFamily="@font/notosanscjkkr_demilight"
                 android:gravity="center_horizontal"
@@ -158,7 +187,15 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                app:layout_constraintTop_toBottomOf="@+id/view_empty3" />
+
+            <View
+                android:id="@+id/view_empty4"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
             <TextView
                 android:id="@+id/activity_join_step3_tv_timer"
@@ -174,7 +211,16 @@
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView26"
                 app:layout_constraintStart_toStartOf="@+id/textView26"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                app:layout_constraintTop_toBottomOf="@+id/view_empty4" />
+
+            <View
+                android:id="@+id/view_empty5"
+                android:layout_width="0dp"
+                android:layout_height="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_tv_timer" />
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code1"
@@ -184,6 +230,7 @@
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
+                android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:letterSpacing="-0.02"
@@ -196,10 +243,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_tv_timer">
-
-                <requestFocus />
-            </EditText>
+                app:layout_constraintTop_toBottomOf="@+id/view_empty5" />
 
             <EditText
                 android:id="@+id/activity_join_step3_et_code2"
@@ -209,12 +253,13 @@
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
+                android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="5sp"
                 android:maxLength="1"
-                android:nextFocusDown="@id/activity_join_step3_et_code3"
+                android:nextFocusRight="@id/activity_join_step3_et_code2"
                 android:textColor="@color/soft_green"
                 android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code3"
@@ -230,12 +275,12 @@
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
+                android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="5sp"
                 android:maxLength="1"
-                android:nextFocusDown="@id/activity_join_step3_et_code4"
                 android:textColor="@color/soft_green"
                 android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code4"
@@ -251,12 +296,12 @@
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
+                android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="5sp"
                 android:maxLength="1"
-                android:nextFocusDown="@id/activity_join_step3_et_code5"
                 android:textColor="@color/soft_green"
                 android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code5"
@@ -272,12 +317,12 @@
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
+                android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="5sp"
                 android:maxLength="1"
-                android:nextFocusDown="@id/activity_join_step3_et_code6"
                 android:textColor="@color/soft_green"
                 android:textSize="19sp"
                 app:layout_constraintEnd_toStartOf="@+id/activity_join_step3_et_code6"
@@ -293,6 +338,7 @@
                 android:background="@drawable/et_circle_join3_off"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="center"
+                android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="number"
                 android:letterSpacing="-0.02"
@@ -304,6 +350,33 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_et_code5"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step3_et_code5" />
+
+            <ImageView
+                android:id="@+id/activity_join_step3_ic_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step3_et_code1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_et_code1"
+                app:srcCompat="@drawable/ic_warning" />
+
+            <TextView
+                android:id="@+id/activity_join_step3_tv_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:text="잘못된 코드에요! 다시 입력해주세요!"
+                android:textColor="@color/reddish"
+                android:textSize="14sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_ic_error"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step3_ic_error"
+                app:layout_constraintTop_toTopOf="@+id/activity_join_step3_ic_error" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

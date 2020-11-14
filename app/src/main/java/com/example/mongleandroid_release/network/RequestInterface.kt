@@ -2,6 +2,8 @@ package com.example.mongleandroid_release.network
 
 import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -166,4 +168,29 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path ("themeIdx") params: Int
     ) : Call<ResponseThemeDetailData>
+
+    /* 설정 */
+    // 프로필 수정
+    @Multipart
+    @POST("/my/profile")
+    fun updateProfile(
+        @Header("token") token: String?,
+        @Part img: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("keywordIdx") keywordIdx: RequestBody,
+        @Part("introduce") introduce: RequestBody
+    ) : Call<ResponseUpdateProfileData>
+
+    //문장 상세 조회
+    @GET("/detail/sentence/{sentenceIdx}")
+    fun GetDetailSentence(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceDetailData>
+
+    //문장 상세 조회 - 이 테마의 다른 문장
+    @GET("/detail/sentence/{sentenceIdx}/other")
+    fun GetDetailSentenceOtherThemeSentence(
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceDetailOtherThemeData>
 }

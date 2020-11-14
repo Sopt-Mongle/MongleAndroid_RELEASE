@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import com.example.mongleandroid_release.dialog.DialogLogin
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.network.RequestToServer
@@ -25,6 +27,24 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        activity_login_tv_findid.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
+        }
+
+        activity_login_tv_findpass.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
+        }
+
         activity_login_btn_login.setOnClickListener {
             requestToServer.service.requestLogin(
                 RequestLoginData(
@@ -40,7 +60,10 @@ class LoginActivity : AppCompatActivity() {
                 onSuccess = {
                     if(it.status == 200) {
                         Log.e("토큰", " $it")
-                        SharedPreferenceController.setAccessToken(applicationContext, it.data.accessToken)
+                        SharedPreferenceController.setAccessToken(this, it.data.accessToken)
+                        SharedPreferenceController.setMail(this, activity_login_et_email.text.toString())
+                        SharedPreferenceController.setPasswd(this, activity_login_et_pass.text.toString())
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -55,4 +78,32 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+//    // 비회원 / 회원 구분
+//    if(SharedPreferenceController.getMail(this).isBlank() ||
+//    SharedPreferenceController.getPasswd(this).isBlank())
+//    {
+//        // 아이디, 비밀번호가 저장되어있지 않는 경우 = 비회원
+//        SharedPreferenceController.setAccessToken(this, "guest")
+//    } else {
+//        // 자동로그인 - 토큰 새로 얻음
+//
+//        Log.d("자동로그인", SharedPreferenceController.getAccessToken(this))
+//        requestToServer.service.requestLogin(
+//            RequestLoginData(
+//                email = SharedPreferenceController.getMail(this),
+//                password = SharedPreferenceController.getPasswd(this)
+//            )
+//        ).customEnqueue(
+//            onError = {
+//                Log.d("error", "에러")
+//            },
+//            onSuccess = {
+//                if(it.status == 200) {
+//                    Log.e("토큰 ", " $it")
+//                    SharedPreferenceController.setAccessToken(this, it.data.accessToken)
+//                }
+//            }
+//        )
+//    }
 }

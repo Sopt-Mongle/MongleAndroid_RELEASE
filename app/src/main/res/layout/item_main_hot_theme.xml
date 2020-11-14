@@ -23,15 +23,14 @@
         android:id="@+id/tv_main_hot_theme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="18dp"
         android:ellipsize="end"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="7sp"
-        android:maxLines="2"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
+        android:maxLines="2"
         android:text="브랜딩이 어려울 때 영감을 주는 문장"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -44,11 +43,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="9sp"
-        android:text="문장"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="9sp"
+        android:text="문장 "
         android:textColor="@color/white"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,29 +82,30 @@
         app:layout_constraintTop_toTopOf="@+id/tv_main_hot_theme_count" />
 
     <ImageView
+        android:id="@+id/imageView45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:src="@drawable/main_ic_bookmark_1"
-        app:layout_constraintBottom_toBottomOf="@+id/textView15"
-        app:layout_constraintEnd_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/textView15" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/themeSaves"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/themeSaves"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="17dp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="8sp"
         android:text="172"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:includeFontPadding="false"
         android:textColor="#ffffff"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView45"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView45" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

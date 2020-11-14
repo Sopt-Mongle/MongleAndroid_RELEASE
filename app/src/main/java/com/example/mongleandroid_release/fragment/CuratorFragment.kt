@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.CuratorKeywordActivity
 import com.example.mongleandroid_release.adapter.CuratorInThemeAdapter
 import com.example.mongleandroid_release.adapter.CuratorRecommendAdapter
@@ -86,12 +87,25 @@ class CuratorFragment : Fragment() {
                         call: Call<ResponseRecommendCuratorData>,
                         response: Response<ResponseRecommendCuratorData>
                     ) {
-                        Log.d("통신", response.body().toString())
                         if (response.isSuccessful) {
-                            Log.d("추천 큐레이터", "${response.body()}")
-                            curatorRecommendAdapter = CuratorRecommendAdapter(view!!.context, response.body()!!.data)
-                            fragment_curator_rv_recommend.adapter = curatorRecommendAdapter
-                            curatorRecommendAdapter.notifyDataSetChanged()
+                            if(response.body()!!.data.isNullOrEmpty()) {
+                                Log.d("통신결과", "null or empty")
+                            } else {
+                                Log.d("추천 큐레이터", "${response.body()}")
+                                curatorRecommendAdapter = CuratorRecommendAdapter(view!!.context, response.body()!!.data)
+                                fragment_curator_rv_recommend.adapter = curatorRecommendAdapter
+                                curatorRecommendAdapter.notifyDataSetChanged()
+
+                                curatorRecommendAdapter.setItemClickListener(object : CuratorRecommendAdapter.ItemClickListener{
+                                    override fun onClick(view: View, position: Int) {
+                                        val intent = Intent(view.context, CuratorInfoActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data[position].curatorIdx)
+                                        startActivity(intent)
+                                    }
+
+                                })
+                            }
+
                         }
 
                     }
@@ -149,10 +163,10 @@ class CuratorFragment : Fragment() {
                                 curatorInThemeAdapter2.notifyDataSetChanged()
 
                                 // 구독여부 통신
-                                fun subscribed(position : Int) {
+                                fun subscribed(num : Int, position : Int) {
                                     requestToServer.service.getFollowIdx(
                                         token = context?.let { SharedPreferenceController.getAccessToken(it) },
-                                        params = response.body()!!.data!!.theme[1].curators[position].curatorIdx
+                                        params = response.body()!!.data!!.theme[num].curators[position].curatorIdx
                                     ).enqueue(object : Callback<ResponseCuratorFollowedData> {
                                         override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
                                             Log.e("통신실패", t.toString())
@@ -177,10 +191,13 @@ class CuratorFragment : Fragment() {
                                 curatorInThemeAdapter.setItemClickListener(object : CuratorInThemeAdapter.ItemClickListener{
                                     override fun onClickItem(view: View, position: Int) {
                                         // 큐레이터 상세로 이동
+                                        val intent = Intent(view.context, CuratorInfoActivity::class.java)
+                                        intent.putExtra("param", body.data.theme[0].curators[position].curatorIdx)
+                                        startActivity(intent)
                                     }
 
                                     override fun onClickSubscribe(view: View, position: Int) {
-                                        subscribed(position)
+                                        subscribed(0, position)
                                     }
                                 })
 
@@ -188,10 +205,13 @@ class CuratorFragment : Fragment() {
                                 curatorInThemeAdapter2.setItemClickListener(object : CuratorInThemeAdapter.ItemClickListener{
                                     override fun onClickItem(view: View, position: Int) {
                                         // 큐레이터 상세로 이동
+                                        val intent = Intent(view.context, CuratorInfoActivity::class.java)
+                                        intent.putExtra("param", body.data.theme[1].curators[position].curatorIdx)
+                                        startActivity(intent)
                                     }
 
                                     override fun onClickSubscribe(view: View, position: Int) {
-                                        subscribed(position)
+                                        subscribed(1, position)
                                     }
                                 })
 

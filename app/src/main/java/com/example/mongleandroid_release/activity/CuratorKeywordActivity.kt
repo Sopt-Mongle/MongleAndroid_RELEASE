@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -71,7 +72,9 @@ class CuratorKeywordActivity : AppCompatActivity() {
 
                             curatorKeywordAdapter.setItemClickListener(object : CuratorKeywordAdapter.ItemClickListener{
                                 override fun onClickItem(view: View, position: Int) {
-                                    // 큐레이터 상세로 이동
+                                    val intent = Intent(applicationContext, CuratorInfoActivity::class.java)
+                                    intent.putExtra("param", body.data[position].curatorIdx)
+                                    startActivity(intent)
                                 }
 
                                 override fun onClickSubscribe(view: View, position: Int) {

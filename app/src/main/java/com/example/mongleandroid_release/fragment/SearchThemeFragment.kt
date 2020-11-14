@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.DetailThemeActivity
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -53,6 +55,15 @@ class SearchThemeFragment : Fragment() {
                         searchThemeAdapter = SearchThemeAdapter(view!!.context, body.data)
                         rv_search_theme.adapter = searchThemeAdapter
                         searchThemeAdapter.notifyDataSetChanged()
+
+                        searchThemeAdapter.setItemClickListener(object : SearchThemeAdapter.ItemClickListener{
+                            override fun onClick(view: View, position: Int) {
+                                val intent = Intent(context, DetailThemeActivity::class.java)
+                                intent.putExtra("param", body.data[position].themeIdx)
+                                startActivity(intent)
+                            }
+
+                        })
                     }
                 } else {
                     fragment_search_theme_cl_noresult.visibility = View.VISIBLE

@@ -1,6 +1,7 @@
 package com.example.mongleandroid_release.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchCuratorAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -56,6 +58,9 @@ class SearchCuratorFragment : Fragment() {
                         searchCuratorAdapter.setItemClickListener(object : SearchCuratorAdapter.ItemClickListener{
                             override fun onClickItem(view: View, position: Int) {
                                 // 큐레이터 상세로 이동
+                                val intent = Intent(context, CuratorInfoActivity::class.java)
+                                intent.putExtra("param", body.data[position].curatorIdx)
+                                startActivity(intent)
                             }
 
                             override fun onClickSubscribe(view: View, position: Int) {

@@ -20,9 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="27dp"
-            android:layout_marginBottom="267dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="58dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/login_img_marks" />
 
         <TextView
@@ -89,6 +89,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#b2f8f5ed"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -102,6 +104,7 @@
             android:layout_marginEnd="28dp"
             android:background="@drawable/et_area"
             android:ems="10"
+            android:nextFocusDown="@+id/activity_login_et_pass"
             android:fontFamily="@font/notosanscjkkr_demilight"
             android:hint="이메일을 입력해주세요."
             android:includeFontPadding="false"
@@ -112,6 +115,7 @@
             android:paddingTop="12dp"
             android:paddingRight="16dp"
             android:paddingBottom="12dp"
+            android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -138,6 +142,7 @@
             android:paddingTop="12dp"
             android:paddingRight="16dp"
             android:paddingBottom="12dp"
+            android:singleLine="true"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

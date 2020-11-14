@@ -23,6 +23,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
+    // @Parcelize
+    androidExtensions {
+        experimental = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -45,6 +52,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //ted permission 권한 요청 라이브러리
+    implementation "gun0912.ted:tedpermission:2.1.0"
     // 리사이클러뷰를 다루기 위한 라이브러리
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // material 디자인 라이브러리
@@ -84,6 +93,9 @@ dependencies {
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
 
+    // kotlin serialization
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0" // JVM dependency
 
     // Kotlin
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
