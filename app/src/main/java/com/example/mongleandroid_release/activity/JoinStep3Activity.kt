@@ -19,6 +19,7 @@ import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestCodeData
 import com.example.mongleandroid_release.network.data.request.RequestJoinData
@@ -365,6 +366,7 @@ class JoinStep3Activity : AppCompatActivity() {
                 Log.d("error", "singup 통신 실패")
             },
             onSuccess = {
+                SharedPreferenceController.setName(this, name)
                 val intent = Intent(this, JoinFinishActivity::class.java)
                 startActivity(intent)
                 // 화면 전환 시 애니메이션 없애는 코드
