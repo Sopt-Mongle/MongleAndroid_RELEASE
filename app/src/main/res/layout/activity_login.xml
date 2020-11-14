@@ -187,7 +187,7 @@
             android:textColor="@color/very_light_pink_two"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView15"
+            app:layout_constraintEnd_toStartOf="@+id/img_sentence_detail_likes"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -212,7 +212,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView16"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView15"
+            app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_likes"
             app:layout_constraintTop_toBottomOf="@+id/activity_login_btn_login" />
 
         <TextView
@@ -238,7 +238,7 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_login_btn_login" />
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/img_sentence_detail_likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/activity_login_tv_join"
