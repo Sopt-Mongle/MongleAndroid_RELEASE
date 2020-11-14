@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.SplashActivity"></activity>
+        <activity android:name=".activity.ChangePasswordActivity"></activity>
+        <activity android:name=".activity.AccountSettingActivity" />
+        <activity android:name=".activity.SplashActivity" />
         <activity android:name=".activity.OpenSourceActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.CuratorInfoActivity" />

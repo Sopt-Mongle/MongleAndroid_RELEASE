@@ -13,6 +13,12 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+        //계정 설정 눌렀을 떄 계정 설정 창 띄우기
+        setting_account.setOnClickListener {
+            val intent = Intent(this, AccountSettingActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // 1:1 문의하기 눌렀을 때 메일 보내기 창 뜨기
         tv_cs_one.setOnClickListener(View.OnClickListener {

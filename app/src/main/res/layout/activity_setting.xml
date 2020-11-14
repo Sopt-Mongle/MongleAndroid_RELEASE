@@ -11,7 +11,7 @@
         android:id="@+id/tv_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:letterSpacing="-0.04"
         android:text="설정"
         android:textColor="#292929"
@@ -25,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_back"
+        android:layout_marginLeft="1dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_setting"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -43,42 +44,94 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_setting" />
 
-    <TextView
-        android:id="@+id/tv_change_profile"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/profile_change"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="프로필 수정"
-        android:textColor="@color/black_two"
-        android:textSize="17sp"
+        android:orientation="horizontal"
         android:layout_marginTop="11dp"
-        android:letterSpacing="-0.04"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_personal_info"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/tv_setting_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="계정 설정"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
-        android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_change_profile"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/tv_change_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="프로필 수정"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"/>
 
-    <TextView
-        android:id="@+id/tv_setting_push"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_account"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="푸쉬 알림 설정"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_account"
-        app:layout_constraintLeft_toLeftOf="parent" />
-    
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/profile_change"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tv_setting_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="계정 설정"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_push"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="13dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_account"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tv_setting_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="푸쉬 알림 설정"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"/>
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/sb_setting_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:kswThumbColor="#ffffff"
+            app:kswBackRadius="20dp"
+            app:kswBackColor="@color/switch_button_state"
+            app:kswFadeBack="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_setting_push"
+            app:layout_constraintBottom_toBottomOf="@id/tv_setting_push"/>
+
+    </LinearLayout>
+
     <View
         android:id="@+id/view_setting_line_1"
         android:layout_width="match_parent"
@@ -87,7 +140,7 @@
         android:background="#e7e7e7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_push" />
+        app:layout_constraintTop_toBottomOf="@id/setting_push" />
 
     <TextView
         android:id="@+id/tv_cs"
@@ -101,27 +154,43 @@
         app:layout_constraintTop_toBottomOf="@id/view_setting_line_1"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_cs_one"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/cs_one"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1:1 문의하기"
-        android:textColor="@color/black_two"
-        android:textSize="17sp"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        android:letterSpacing="-0.04"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_cs"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tv_cs_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1:1 문의하기"
+            android:textColor="@color/black_two"
+            android:textSize="17sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
+
+    </LinearLayout>
+
 
     <View
         android:id="@+id/view_setting_line_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="31dp"
         android:background="#e7e7e7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_cs_one" />
+        app:layout_constraintTop_toBottomOf="@id/cs_one" />
 
     <TextView
         android:id="@+id/tv_setting_info_app"
@@ -135,164 +204,172 @@
         app:layout_constraintTop_toBottomOf="@id/view_setting_line_2"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_setting_info_version"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/setting_info_version"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="버전 정보"
-        android:textColor="@color/black_two"
-        android:textSize="17sp"
-        android:layout_marginTop="13dp"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
+        android:layout_marginTop="23dp"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_setting_info_app"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/tv_setting_info_developer"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_setting_info_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="버전 정보"
+            android:textColor="@color/black_two"
+            android:textSize="17sp"
+            android:letterSpacing="-0.04"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_info_developer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="개발자 정보"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_info_version"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_info_version"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/tv_setting_info_service"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_setting_info_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="개발자 정보"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"
+            android:letterSpacing="-0.04"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_info_service"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="서비스 운영정책"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_info_developer"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_info_developer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/tv_setting_privacy"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_setting_info_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="서비스 운영정책"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"
+            android:letterSpacing="-0.04"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_privacy"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="개인정보 이용약관"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_info_service"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_info_service"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/tv_setting_service_use"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_setting_privacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="개인정보 이용약관"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"
+            android:letterSpacing="-0.04"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_service_use"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="서비스 이용 약관"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_privacy"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_privacy"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <TextView
-        android:id="@+id/tv_setting_opensource"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_setting_service_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="서비스 이용 약관"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"
+            android:letterSpacing="-0.04"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_opensource"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="오픈소스 라이선스"
-        android:textSize="17sp"
-        android:textColor="@color/black_two"
-        android:letterSpacing="-0.04"
+        android:orientation="horizontal"
         android:layout_marginTop="13dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_setting_service_use"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/setting_service_use"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_change_profile"
-        app:layout_constraintBottom_toBottomOf="@id/tv_change_profile" />
+        <TextView
+            android:id="@+id/tv_setting_opensource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="오픈소스 라이선스"
+            android:textSize="17sp"
+            android:textColor="@color/black_two"
+            android:letterSpacing="-0.04"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_account"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_account" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_next" />
 
-    <com.kyleduo.switchbutton.SwitchButton
-        android:id="@+id/sb_setting_push"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:kswThumbColor="#ffffff"
-        app:kswBackRadius="20dp"
-        app:kswBackColor="@color/switch_button_state"
-        app:kswFadeBack="true"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_push"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_push"/>
-
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_cs_one"
-        app:layout_constraintBottom_toBottomOf="@id/tv_cs_one" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_info_version"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_info_version" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_info_developer"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_info_developer" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_info_service"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_info_service" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_privacy"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_privacy" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_service_use"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_service_use" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_next"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_opensource"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_opensource" />
-
-
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
