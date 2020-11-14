@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_theme_curator" />
 
     <TextView
-        android:id="@+id/textView141"
+        android:id="@+id/theme_sentence_tv_likes_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -79,11 +79,12 @@
         android:layout_height="10dp"
         android:layout_marginStart="10dp"
         android:src="@drawable/sentence_theme_o_ic_bookmark"
-        app:layout_constraintBottom_toBottomOf="@+id/textView141"
-        app:layout_constraintStart_toEndOf="@+id/textView141"
-        app:layout_constraintTop_toTopOf="@+id/textView141" />
+        app:layout_constraintBottom_toBottomOf="@+id/theme_sentence_tv_likes_num"
+        app:layout_constraintStart_toEndOf="@+id/theme_sentence_tv_likes_num"
+        app:layout_constraintTop_toTopOf="@+id/theme_sentence_tv_likes_num" />
 
     <TextView
+        android:id="@+id/theme_sentence_tv_saves_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

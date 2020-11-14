@@ -8,6 +8,8 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -32,6 +34,10 @@ class SentenceDetailViewActivity : AppCompatActivity() {
             val intent = Intent(this, DetailThemeActivity::class.java)
             startActivity(intent)
         }
+        img_sentence_detail_view_edit_btn.setOnClickListener {
+            change_visible(ccc) // 수정 & 삭제 컨테이너
+        }
+
         requestSentenceDetail()
         requestSentenceTheme()
     }
@@ -52,6 +58,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                 ) {
                     if(response.isSuccessful) {
 
+
                         Log.d("통신성공", response.body()!!.data.toString())
                         tv_theme.text = response.body()!!.data[0].theme // 해당 테마 제목
                         textView19.text = response.body()!!.data[0].sentence // 해당 테마의 문장
@@ -62,6 +69,15 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
+
+                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
+
+                            } else {
+                                img_sentence_detail_view_edit_btn.setOnClickListener {
+                                    change_gone(img_sentence_detail_view_edit_btn)
+                                }
+                            }
+
 
                     }
                 }
@@ -88,11 +104,13 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Log.d("테마 통신 성공", "${response.body()!!.data}")
 
-                        if (response.body()!!.data?.isNullOrEmpty()) {
+                        if (response.body()!!.data.isNullOrEmpty()) {
 
                         } else {
-                            Log.d("sdfsdf", "${response.body()!!.data[0].saves} ${response.body()!!.data[1].saves} ${response.body()!!.data[0].likes} ${response.body()!!.data[1].likes}" )
 
+                            if(response.body()!!.data[0].likes == 0) {
+                                Log.d("테스트", "0이어서 문제야")
+                            }
 
                             detailSentenceAdapter =
                                 DetailSentenceAdapter(response.body()!!.data, applicationContext)
@@ -103,8 +121,6 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             detailSentenceAdapter.setItemClickListener(object : DetailSentenceAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS", "${position}번 리스트 선택")
-                                    val intent = Intent(this@SentenceDetailViewActivity, SentenceDetailViewActivity::class.java)
-                                    startActivity(intent)
 
                                 }
                             })
