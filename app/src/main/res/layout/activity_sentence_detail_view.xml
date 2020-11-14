@@ -133,7 +133,6 @@
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="13dp"
                 android:src="@drawable/detailview_img_profile"
-
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/middle_line" />
 
@@ -172,64 +171,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="gone"
-                android:id="@+id/ccc"
-                android:layout_width="69dp"
-                android:layout_height="69dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/background_rectangle"
-                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_view_edit_btn">
-
-                <TextView
-                    android:id="@+id/edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="2dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="1sp"
-                    android:text="수정"
-                    android:textColor="#838383"
-                    android:textSize="14sp"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/lineeeee"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#f2f2f2"
-                    android:layout_marginTop="34.5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-
-                <TextView
-                    android:id="@+id/delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="삭제"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="3dp"
-                    android:layout_marginTop="7.5dp"
-                    android:textColor="#838383"
-                    android:textSize="14sp"
-                    android:textStyle="normal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lineeeee" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/imageView20"
