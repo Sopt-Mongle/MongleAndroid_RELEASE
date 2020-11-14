@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <TextView
-        android:id="@+id/tv_save_num"
+        android:id="@+id/tv_likes_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -74,7 +74,7 @@
         android:layout_marginEnd="4dp"
         android:src="@drawable/theme_ic_like_1"
         app:layout_constraintBottom_toBottomOf="@+id/tv_theme_curator"
-        app:layout_constraintEnd_toStartOf="@+id/tv_save_num"
+        app:layout_constraintEnd_toStartOf="@+id/tv_likes_num"
         app:layout_constraintTop_toTopOf="@+id/tv_theme_curator" />
 
     <ImageView
@@ -82,13 +82,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_save_num"
-        app:layout_constraintEnd_toStartOf="@id/tv_bookmark_num"
-        app:layout_constraintTop_toTopOf="@+id/tv_save_num"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_likes_num"
+        app:layout_constraintEnd_toStartOf="@id/tv_saves_num"
+        app:layout_constraintTop_toTopOf="@+id/tv_likes_num"
         android:src="@drawable/bookmark" />
 
     <TextView
-        android:id="@+id/tv_bookmark_num"
+        android:id="@+id/tv_saves_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:letterSpacing="-0.02"
