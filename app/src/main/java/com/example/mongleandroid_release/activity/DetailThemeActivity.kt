@@ -13,6 +13,7 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseThemeDetailData
 import kotlinx.android.synthetic.main.activity_detail_theme.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class DetailThemeActivity : AppCompatActivity() {
@@ -108,7 +109,7 @@ class DetailThemeActivity : AppCompatActivity() {
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
         ).enqueue(
-            object : retrofit2.Callback<ResponseThemeDetailData> {
+            object : Callback<ResponseThemeDetailData> {
 
 
                 override fun onFailure(call: Call<ResponseThemeDetailData>, t: Throwable) {
