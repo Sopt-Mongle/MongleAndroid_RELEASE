@@ -25,7 +25,9 @@ import com.example.mongleandroid_release.network.data.response.ResponseSearchRec
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
 import com.example.mongleandroid_release.showKeyboard
 import com.example.mongleandroid_release.unshowKeyboard
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -98,7 +100,7 @@ class SearchFragment : Fragment() {
 
         // 뒤로가기 버튼
         fragment_search_btn_back.setOnClickListener {
-
+            childFragmentManager.beginTransaction().replace(R.id.fragment_search_cl, MainFragment()).commit()
         }
 
         // 엔터 눌렀을 때 검색

@@ -8,7 +8,7 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
@@ -19,6 +19,7 @@ import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestCodeData
 import com.example.mongleandroid_release.network.data.request.RequestJoinData
@@ -57,9 +58,94 @@ class JoinStep3Activity : AppCompatActivity() {
             hideKeyboard()
         }
 
-
         // 인증번호 칸에 포커스
         activity_join_step3_et_code1.requestFocus()
+
+        // 옆칸으로 이동
+        activity_join_step3_et_code1.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 1) {
+                    activity_join_step3_et_code2.requestFocus()
+                }
+            }
+
+        })
+
+        activity_join_step3_et_code2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 1) {
+                    activity_join_step3_et_code3.requestFocus()
+                }
+            }
+
+        })
+
+        activity_join_step3_et_code3.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 1) {
+                    activity_join_step3_et_code4.requestFocus()
+                }
+            }
+
+        })
+
+        activity_join_step3_et_code4.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 1) {
+                    activity_join_step3_et_code5.requestFocus()
+                }
+            }
+
+        })
+
+        activity_join_step3_et_code5.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 1) {
+                    activity_join_step3_et_code6.requestFocus()
+                }
+            }
+
+        })
 
         if(activity_join_step3_et_code1.requestFocus()) {
             activity_join_step3_et_code1.background = resources.getDrawable(
@@ -69,7 +155,7 @@ class JoinStep3Activity : AppCompatActivity() {
             // 뷰 줄어듦
             Handler().postDelayed({
                 hideEmpty()
-            }, 900)
+            }, 400)
         }
 
         // 뒤로가기 버튼
@@ -196,7 +282,7 @@ class JoinStep3Activity : AppCompatActivity() {
                             signUpSuccess()
                         } else {
                             hideKeyboard()
-                            showErrorEsg()
+                            showErrorMsg()
                         }
                     }
                 }
@@ -280,6 +366,7 @@ class JoinStep3Activity : AppCompatActivity() {
                 Log.d("error", "singup 통신 실패")
             },
             onSuccess = {
+                SharedPreferenceController.setName(this, name)
                 val intent = Intent(this, JoinFinishActivity::class.java)
                 startActivity(intent)
                 // 화면 전환 시 애니메이션 없애는 코드
@@ -312,25 +399,62 @@ class JoinStep3Activity : AppCompatActivity() {
         }
     }
 
-    private fun showErrorEsg() {
-        activity_join_step3_et_code1.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
-        activity_join_step3_et_code2.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
-        activity_join_step3_et_code3.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
-        activity_join_step3_et_code4.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
-        activity_join_step3_et_code5.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
-        activity_join_step3_et_code6.background = resources.getDrawable(R.drawable.et_circle_join3_red, null)
+    private fun showErrorMsg() {
+        activity_join_step3_et_code1.background = resources.getDrawable(
+            R.drawable.et_circle_join3_red,
+            null
+        )
+        activity_join_step3_et_code2.background = resources.getDrawable(
+            R.drawable.et_circle_join3_red,
+            null
+        )
+        activity_join_step3_et_code3.background = resources.getDrawable(
+            R.drawable.et_circle_join3_red,
+            null
+        )
+        activity_join_step3_et_code4.background = resources.getDrawable(
+            R.drawable.et_circle_join3_red,
+            null
+        )
+        activity_join_step3_et_code5.background = resources.getDrawable(
+            R.drawable.et_circle_join3_red,
+            null
+        )
+        activity_join_step3_et_code6.background = resources.getDrawable(
+            R.drawable.et_circle_join3_red,
+            null
+        )
 
         change_visible(activity_join_step3_ic_error)
         change_visible(activity_join_step3_tv_error)
+        
     }
 
     private fun changeCodeBackGray() {
-        activity_join_step3_et_code1.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
-        activity_join_step3_et_code2.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
-        activity_join_step3_et_code3.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
-        activity_join_step3_et_code4.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
-        activity_join_step3_et_code5.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
-        activity_join_step3_et_code6.background = resources.getDrawable(R.drawable.et_circle_join3_off, null)
+        activity_join_step3_et_code1.background = resources.getDrawable(
+            R.drawable.et_circle_join3_off,
+            null
+        )
+        activity_join_step3_et_code2.background = resources.getDrawable(
+            R.drawable.et_circle_join3_off,
+            null
+        )
+        activity_join_step3_et_code3.background = resources.getDrawable(
+            R.drawable.et_circle_join3_off,
+            null
+        )
+        activity_join_step3_et_code4.background = resources.getDrawable(
+            R.drawable.et_circle_join3_off,
+            null
+        )
+        activity_join_step3_et_code5.background = resources.getDrawable(
+            R.drawable.et_circle_join3_off,
+            null
+        )
+        activity_join_step3_et_code6.background = resources.getDrawable(
+            R.drawable.et_circle_join3_off,
+            null
+        )
 
         change_gone(activity_join_step3_ic_error)
         change_gone(activity_join_step3_tv_error)
