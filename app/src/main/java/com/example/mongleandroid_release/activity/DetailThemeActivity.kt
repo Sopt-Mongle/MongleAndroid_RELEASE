@@ -65,7 +65,7 @@ class DetailThemeActivity : AppCompatActivity() {
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
         ).enqueue(
-            object : retrofit2.Callback<ResponseThemeDetailData> {
+            object : Callback<ResponseThemeDetailData> {
                 override fun onFailure(call: Call<ResponseThemeDetailData>, t: Throwable) {
                     Log.e("통신 실패", t.toString())
                 }

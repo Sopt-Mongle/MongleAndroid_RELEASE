@@ -34,9 +34,6 @@ class SentenceDetailViewActivity : AppCompatActivity() {
             val intent = Intent(this, DetailThemeActivity::class.java)
             startActivity(intent)
         }
-        img_sentence_detail_view_edit_btn.setOnClickListener {
-            change_visible(ccc) // 수정 & 삭제 컨테이너
-        }
 
         requestSentenceDetail()
         requestSentenceTheme()
@@ -71,11 +68,13 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
 
                             if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
-
-                            } else {
                                 img_sentence_detail_view_edit_btn.setOnClickListener {
-                                    change_gone(img_sentence_detail_view_edit_btn)
+                                    change_visible(ccc) // 수정 & 삭제 컨테이너
                                 }
+                            } else {
+
+                                    change_gone(img_sentence_detail_view_edit_btn)
+
                             }
 
 
@@ -108,10 +107,6 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
                         } else {
 
-                            if(response.body()!!.data[0].likes == 0) {
-                                Log.d("테스트", "0이어서 문제야")
-                            }
-
                             detailSentenceAdapter =
                                 DetailSentenceAdapter(response.body()!!.data, applicationContext)
                             rv_sentence_detail_view_theme_other_sentence.adapter =
@@ -121,6 +116,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             detailSentenceAdapter.setItemClickListener(object : DetailSentenceAdapter.ItemClickListener {
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS", "${position}번 리스트 선택")
+                                    //val intent = Intent(this@SentenceDetailViewActivity, )
 
                                 }
                             })
