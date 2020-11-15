@@ -53,7 +53,7 @@ class LibraryFragment : Fragment() {
             .enqueue(
                 object : Callback<ResponseMainLibraryData> {
                     override fun onFailure(call: Call<ResponseMainLibraryData>, t: Throwable) {
-                        Log.e("통신 실패", "${t}")
+                        Log.e("내 서재 통신 실패", "${t}")
                     }
 
                     override fun onResponse(

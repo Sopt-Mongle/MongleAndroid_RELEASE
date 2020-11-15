@@ -199,4 +199,11 @@ interface RequestInterface {
     fun GetDetailSentenceOtherThemeSentence(
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceDetailOtherThemeData>
+
+    //큐레이터 상세보기
+    @GET("/curator/{curatorIdx}")
+    fun CuratorInformation(
+        @Header("token") token: String?,
+        @Path("curatorIdx") params: Int
+    ) : Call<ResponseCuratorInformationData>
 }

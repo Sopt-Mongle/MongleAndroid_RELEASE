@@ -1,21 +1,36 @@
 package com.example.mongleandroid_release.activity
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.bumptech.glide.Glide
+import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
+import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
+import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
 import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
+import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
 import kotlinx.android.synthetic.main.activity_curator_info.*
+import kotlinx.android.synthetic.main.activity_detail_theme.*
+import kotlinx.android.synthetic.main.fragment_library_thema.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class CuratorInfoActivity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
 
-    private var data = mutableListOf<CuratorInfoThemaData>()
+    lateinit var curatorInfoPagerAdapter: CuratorInfoPagerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,11 +141,53 @@ class CuratorInfoActivity : AppCompatActivity() {
 
         }
 
+        //뒤로 가기 버튼 눌렀을 때 이전 화면으로 돌아가게 만들
+        img_back_curator_info.setOnClickListener {
+            finish()
+        }
+
+
+
     }
 
     private fun requestCuratorProfile() {
+        requestToServer.service.CuratorInformation(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+//            params = intent.getIntExtra("param", 0)
+            params = 13
 
+                ).enqueue(
+            object : Callback<ResponseCuratorInformationData> {
+                override fun onResponse(
+                    call: Call<ResponseCuratorInformationData>,
+                    response: Response<ResponseCuratorInformationData>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.e("큐레이터 상세보기 조회 성공", "${response.body()}")
+
+                        Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+                        tv_curator_username.text = response.body()!!.data!!.profile[0].name
+                        tx_curators_contents.text = response.body()!!.data!!.profile[0].introduce
+                        tx_curators_keyword.text = response.body()!!.data!!.profile[0].keyword
+
+//                        if (response.body()!!.data?.profile.isNullOrEmpty()) {
+//
+//                        } else {
+//                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+//
+//                        }
+
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseCuratorInformationData>, t: Throwable) {
+                    Log.e("큐레이터 상세보기 통신 실패", "${t}")
+                }
+
+            }
+        )
     }
+
 
 //    private fun loadDatas() {
 //        data.apply {
