@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/img_dialog_quit_mongle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="38dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/out_popup_img_mongle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_area"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_dialog_quit_mongle">
+
+        <TextView
+            android:id="@+id/tv_logout_q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="-1sp"
+            android:text="몽글을 탈퇴하시겠어요?"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="69dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:text="탈퇴 후에는 몽글을 이용할 수 없어요!"
+            android:textColor="#a7a7a7"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_logout_q"
+            app:layout_constraintStart_toStartOf="@+id/tv_logout_q"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logout_q" />
+
+        <TextView
+            android:id="@+id/tv_quit_yes"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/dialog_btn_yes"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:paddingLeft="38dp"
+            android:paddingTop="9dp"
+            android:paddingRight="39dp"
+            android:paddingBottom="8dp"
+            android:text="네"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/tv_quit_no"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logout"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_quit_no"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/dialog_btn_no"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="6sp"
+            android:paddingLeft="38dp"
+            android:paddingTop="9dp"
+            android:paddingRight="39dp"
+            android:paddingBottom="8dp"
+            android:text="아니요"
+            android:textColor="@color/soft_green"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_quit_yes"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logout"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
