@@ -1,6 +1,7 @@
 package com.example.mongleandroid.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +19,11 @@ class LibraryThemaAdapter(private val context: Context, var data_the_write : Lis
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibraryThemaViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_library_thema, parent, false)
         return LibraryThemaViewHolder(view)
+
     }
 
     override fun getItemCount(): Int {
+        Log.d("실험","데이터어쩌고"+data_the_write.size.toString())
         return data_the_write.size
     }
 

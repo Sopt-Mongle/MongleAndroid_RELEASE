@@ -135,6 +135,11 @@ interface RequestInterface {
     @GET("/post/themeImg")
     fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
 
+    /* 메인 */
+    //메인 - Editor's Pick
+    @GET("/main/editorsPick")
+    fun RequestEditorsPick() : Call<ResponseEditorsPickData>
+
     //메인 - 오늘의 문장 - 성공
     @GET("/main/sentences")
     fun RequestMainSentences(
@@ -205,7 +210,7 @@ interface RequestInterface {
     @GET("/curator/{curatorIdx}")
     fun CuratorInformation(
         @Header("token") token: String?,
-        @Path("curatorIdx") params: Int
+        @Path("curatorIdx") params: Int?
     ) : Call<ResponseCuratorInformationData>
 
     // 문장 좋아요 누르기
