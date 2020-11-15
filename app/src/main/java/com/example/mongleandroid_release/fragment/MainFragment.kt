@@ -68,7 +68,7 @@ class MainFragment : Fragment() {
         //뷰페이저 연결
         vp_main.adapter = MainPagerAdapter(childFragmentManager)
         vp_main.offscreenPageLimit = 2
-        tl_main.setupWithViewPager(vp_main)
+        main_dots_indicator.setViewPager(vp_main)
 
         requestTodaySentenceData() // 오늘의 문장 통신
         requestMainCurators() // 지금 인기있는 큐레이터 통신

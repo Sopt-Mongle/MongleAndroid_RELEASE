@@ -4,22 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="16dp"
     android:paddingBottom="0dp"
     tools:context=".fragment.LibraryFragment">
+
+    <ImageView
+        android:id="@+id/img_library_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:src="@drawable/my_theme_bookmark_setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.example.mongleandroid_release.util.NewScrollView
         android:id="@+id/main_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_library_setting"
         app:layout_constraintVertical_bias="0"
-        app:stickyHeader="@+id/titleLayout"
-        >
+        app:stickyHeader="@+id/titleLayout">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,8 +39,7 @@
             app:layout_constraintBottom_toBottomOf="@id/main_scroll_view"
             app:layout_constraintLeft_toLeftOf="@id/main_scroll_view"
             app:layout_constraintRight_toRightOf="@id/main_scroll_view"
-            app:layout_constraintTop_toTopOf="@id/main_scroll_view"
-            >
+            app:layout_constraintTop_toTopOf="@id/main_scroll_view">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/const1"
@@ -43,39 +52,28 @@
                 app:layout_constraintVertical_bias="0">
 
 
-                <ImageView
-                    android:id="@+id/img_library_setting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:src="@drawable/my_theme_bookmark_setting"
-                    app:layout_constraintHorizontal_bias="1"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_library_profile"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_marginTop="21dp"
                     android:src="@drawable/join_img_mongle"
                     app:layout_constraintBottom_toTopOf="@id/tx_library_username"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/img_library_setting" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tx_library_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="-2sp"
                     android:text="몽그리"
-                    android:fontFamily="@font/notosanscjkkr_regular"
-                    android:includeFontPadding="false"
                     android:textColor="#565656"
                     android:textSize="17sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -87,13 +85,13 @@
                     android:id="@+id/tx_library_contents"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/notosanscjkkr_regular"
                     android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="1sp"
                     android:text="감성자극"
-                    android:fontFamily="@font/notosanscjkkr_regular"
-                    android:includeFontPadding="false"
                     android:textColor="#a7a7a7"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -105,15 +103,17 @@
                     android:id="@+id/tx_library_keyword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="13dp"
+                    android:fontFamily="@font/notosanscjkkr_demilight"
                     android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="5sp"
-                    android:fontFamily="@font/notosanscjkkr_regular"
-                    android:includeFontPadding="false"
                     android:text="저는 몽글의 몽글몽글한 마스코트인  몽글이에요:):)"
                     android:textColor="#bcbcbc"
                     android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tx_library_contents" />
@@ -124,19 +124,16 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/titleLayout"
                 android:layout_width="match_parent"
-                android:layout_height="67dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="17dp"
-                app:tabMode="fixed"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="#00ffffff"
-                android:outlineAmbientShadowColor="#00ffffff"
-                app:tabRippleColor="#00ffffff"
+                android:layout_height="77dp"
                 app:layout_constraintBottom_toTopOf="@id/vp_library"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/const1"
-                app:layout_constraintVertical_bias="0">
+                app:layout_constraintVertical_bias="0"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="#00ffffff"
+                app:tabMode="fixed"
+                app:tabRippleColor="#00ffffff">
 
 
             </com.google.android.material.tabs.TabLayout>

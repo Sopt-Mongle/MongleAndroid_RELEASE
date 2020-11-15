@@ -65,6 +65,9 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+        activity_profile_btn_out.setOnClickListener {
+            finish()
+        }
 
 
         fileUri = SharedPreferenceController.getImage(this)?.toUri()
