@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#59bcbcbc"
-            app:layout_constraintTop_toTopOf="@id/cl_library_curator"
+            app:layout_constraintBottom_toBottomOf="@id/cl_library_curator"
             app:layout_constraintEnd_toEndOf="@id/cl_library_curator"
             app:layout_constraintStart_toStartOf="@id/cl_library_curator" />
 

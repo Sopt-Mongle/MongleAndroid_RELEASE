@@ -10,17 +10,20 @@ import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorInfoActivity.Companion.params
 import com.example.mongleandroid_release.activity.DetailThemeActivity
+import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
 import kotlinx.android.synthetic.main.fragment_curator_info_thema.*
+import kotlinx.android.synthetic.main.fragment_library_thema.*
+import kotlinx.android.synthetic.main.fragment_search_theme.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class CuratorInfoThemaFragment : Fragment() {
+class CuratorInfoThemaFragment() : Fragment() {
 
     val requestToServer = RequestToServer
 
@@ -36,7 +39,9 @@ class CuratorInfoThemaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+//        curatorInfoThemaAdapter = CuratorInfoThemaAdapter(view.context)
+//        rv_thema_cu_info.adapter = curatorInfoThemaAdapter
+//        loadDatas()
         requestCuratorInfoThemeData()
     }
 
@@ -82,4 +87,96 @@ class CuratorInfoThemaFragment : Fragment() {
 
         )
     }
+
+//    private fun loadDatas() {
+//        curatorInfoThemadatas.apply {
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게 \n" + "기대고만 싶을 때 보면 좋은 문장",
+//                    thema_num_library_cu_info = "123",
+//                    sentence_count_library_item_cu_info = "14"
+//                )
+//            )
+//
+//        }
+//        curatorInfoThemaAdapter.data_the_cu_info = curatorInfoThemadatas
+//        curatorInfoThemaAdapter.notifyDataSetChanged()
+//    }
 }

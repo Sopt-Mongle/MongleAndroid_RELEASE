@@ -1,18 +1,28 @@
 package com.example.mongleandroid_release.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
+import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
+import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
+import com.example.mongleandroid_release.adapter.LibraryTabAdapter
 import com.example.mongleandroid_release.fragment.CuratorInfoThemaFragment
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_curator_info.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +34,9 @@ class CuratorInfoActivity : AppCompatActivity() {
     val requestToServer = RequestToServer
 
     lateinit var curatorInfoPagerAdapter: CuratorInfoPagerAdapter
+
+    var data_sentence_num : Int = 0
+    var data_theme_num : Int = 0
 
     companion object {
         var params = 0
@@ -38,6 +51,8 @@ class CuratorInfoActivity : AppCompatActivity() {
         img_curator_profile.clipToOutline = true
 
         requestCuratorProfile()
+        requestCuratorInfoThemeData()
+        requestCuratorInfoSentenceData()
 
         vp_curator_info.adapter = CuratorInfoPagerAdapter(supportFragmentManager)
         vp_curator_info.offscreenPageLimit = 1
@@ -156,6 +171,8 @@ class CuratorInfoActivity : AppCompatActivity() {
         requestToServer.service.CuratorInformation(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
+//            params = 13
+
                 ).enqueue(
             object : Callback<ResponseCuratorInformationData> {
                 override fun onResponse(
@@ -170,6 +187,12 @@ class CuratorInfoActivity : AppCompatActivity() {
                         tx_curators_contents.text = response.body()!!.data!!.profile[0].introduce
                         tx_curators_keyword.text = response.body()!!.data!!.profile[0].keyword
 
+//                        if (response.body()!!.data?.profile.isNullOrEmpty()) {
+//
+//                        } else {
+//                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+//
+//                        }
 
                     }
                 }
@@ -182,6 +205,104 @@ class CuratorInfoActivity : AppCompatActivity() {
         )
     }
 
+    private fun requestCuratorInfoThemeData() {
+        requestToServer.service.CuratorInformation(
+            token = SharedPreferenceController.getAccessToken(this),
+            params = intent.getIntExtra("param", 0)
 
+        ).enqueue(
+            object : Callback<ResponseCuratorInformationData> {
+                override fun onFailure(call: Call<ResponseCuratorInformationData>, t: Throwable) {
+                    Log.d("통신실패", "${t}")
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCuratorInformationData>,
+                    response: Response<ResponseCuratorInformationData>
+                ) {
+                    if(response.isSuccessful) {
+                        Log.d("큐레이터 상세보기 테마 조회 성공", "${response.body()}")
+
+                        data_theme_num = response.body()!!.data!!.theme.size
+                        tv_thema_num_cu_info.setText(data_theme_num.toString())
+
+
+                        }
+
+                    }
+            }
+
+        )
+    }
+
+    private fun requestCuratorInfoSentenceData() {
+        requestToServer.service.CuratorInformation(
+            token = SharedPreferenceController.getAccessToken(this),
+//            params = 13
+            params = intent.getIntExtra("param", 0)
+
+        ).enqueue(
+            object : Callback<ResponseCuratorInformationData> {
+                override fun onFailure(call: Call<ResponseCuratorInformationData>, t: Throwable) {
+                    Log.d("통신실패", "${t}")
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCuratorInformationData>,
+                    response: Response<ResponseCuratorInformationData>
+                ) {
+                    if(response.isSuccessful) {
+                        Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
+
+                        data_sentence_num = response.body()!!.data!!.sentence.size
+                        tv_sentence_num_cu_info.setText(data_sentence_num.toString())
+
+                    }
+                }
+            }
+
+        )
+    }
+
+
+//    private fun loadDatas() {
+//        data.apply {
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔했던 봄을 생각하면 마음이 섬찟해지는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "개발이 잘 안될 때 심신안정을 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "509",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//        }
+//    }
 
 }
