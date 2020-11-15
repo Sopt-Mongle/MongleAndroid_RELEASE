@@ -181,6 +181,12 @@ interface RequestInterface {
         @Part("introduce") introduce: RequestBody
     ) : Call<ResponseUpdateProfileData>
 
+    // 비밀번호 변경
+    @PUT("/users/changePassword")
+    fun requestChangePassword(
+        @Header("token") token: String?,
+        @Body body: RequestChangePasswordData) : Call<ResponseChangePasswordData>
+
     //문장 상세 조회
     @GET("/detail/sentence/{sentenceIdx}")
     fun GetDetailSentence(

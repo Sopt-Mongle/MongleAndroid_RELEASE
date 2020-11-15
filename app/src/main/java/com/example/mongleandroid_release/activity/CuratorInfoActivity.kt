@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
+import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
 import kotlinx.android.synthetic.main.activity_curator_info.*
 
 
 class CuratorInfoActivity : AppCompatActivity() {
+
+    val requestToServer = RequestToServer
 
     private var data = mutableListOf<CuratorInfoThemaData>()
 
@@ -18,10 +21,12 @@ class CuratorInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_curator_info)
 
+        requestCuratorProfile()
+
         vp_curator_info.adapter = CuratorInfoPagerAdapter(supportFragmentManager)
         vp_curator_info.offscreenPageLimit = 1
 
-        loadDatas()
+//        loadDatas()
 
         //sticky header
         main_scroll_view_cura_info.run {
@@ -123,44 +128,48 @@ class CuratorInfoActivity : AppCompatActivity() {
 
     }
 
-    private fun loadDatas() {
-        data.apply {
-            add(
-                CuratorInfoThemaData(
-                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
-                    thema_num_library_cu_info = "107",
-                    sentence_count_library_item_cu_info = "15"
-                )
-            )
-            add(
-                CuratorInfoThemaData(
-                    thema_cu_info = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔했던 봄을 생각하면 마음이 섬찟해지는 문장",
-                    thema_num_library_cu_info = "107",
-                    sentence_count_library_item_cu_info = "15"
-                )
-            )
-            add(
-                CuratorInfoThemaData(
-                    thema_cu_info = "개발이 잘 안될 때 심신안정을 위해 봐야하는 문장",
-                    thema_num_library_cu_info = "509",
-                    sentence_count_library_item_cu_info = "15"
-                )
-            )
-            add(
-                CuratorInfoThemaData(
-                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
-                    thema_num_library_cu_info = "107",
-                    sentence_count_library_item_cu_info = "15"
-                )
-            )
-            add(
-                CuratorInfoThemaData(
-                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
-                    thema_num_library_cu_info = "107",
-                    sentence_count_library_item_cu_info = "15"
-                )
-            )
-        }
+    private fun requestCuratorProfile() {
+
     }
+
+//    private fun loadDatas() {
+//        data.apply {
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔했던 봄을 생각하면 마음이 섬찟해지는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "개발이 잘 안될 때 심신안정을 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "509",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//            add(
+//                CuratorInfoThemaData(
+//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
+//                    thema_num_library_cu_info = "107",
+//                    sentence_count_library_item_cu_info = "15"
+//                )
+//            )
+//        }
+//    }
 
 }

@@ -19,6 +19,17 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //버전 정보 눌렀을 떄 계정 설정 창 띄우기
+        setting_info_version.setOnClickListener {
+            val intent = Intent(this, SettingVersionInfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        //개발자 정보 눌렀을 떄 계정 설정 창 띄우기
+        setting_info_developer.setOnClickListener {
+            val intent = Intent(this, SettingDeveloperInfoActivity::class.java)
+            startActivity(intent)
+        }
 
         // 1:1 문의하기 눌렀을 때 메일 보내기 창 뜨기
         tv_cs_one.setOnClickListener(View.OnClickListener {

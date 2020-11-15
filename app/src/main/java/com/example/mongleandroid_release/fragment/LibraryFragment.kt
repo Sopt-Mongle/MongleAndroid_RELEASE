@@ -46,7 +46,7 @@ class LibraryFragment : Fragment() {
 
     fun requestMyProfile(){
         requestToServer.service.lookLibraryProfile(
-            token = SharedPreferenceController.getAccessToken(view!!.context)
+            token = SharedPreferenceController.getAccessToken(requireView().context)
 //            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjM2LCJuYW1lIjoi7ZWY7JiBMiIsImlhdCI6MTU5NDkxMTQzNiwiZXhwIjoxNTk1MDg0MjM2LCJpc3MiOiJtb25nbGUifQ.1QUSDWRk_C3bYxrR95qqD4AJNIKVz5P6EbAIhd58jsU"
         )
 
