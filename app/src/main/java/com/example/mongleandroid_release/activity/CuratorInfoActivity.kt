@@ -153,8 +153,8 @@ class CuratorInfoActivity : AppCompatActivity() {
     private fun requestCuratorProfile() {
         requestToServer.service.CuratorInformation(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-//            params = intent.getIntExtra("param", 0)
-            params = 13
+            params = intent.getIntExtra("param", 0)
+//            params = 13
 
                 ).enqueue(
             object : Callback<ResponseCuratorInformationData> {
