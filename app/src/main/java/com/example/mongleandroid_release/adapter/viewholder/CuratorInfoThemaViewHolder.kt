@@ -7,30 +7,14 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.network.data.response.CuratorTheme
 
 class CuratorInfoThemaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val tv_library_thema_cu_info = itemView.findViewById<TextView>(R.id.tv_library_thema_cu_info)
-    val tv_thema_num_library_cu_info = itemView.findViewById<TextView>(R.id.tv_thema_num_library_cu_info)
+    val tv_library_thema_cu_info = itemView.findViewById<TextView>(R.id.search_theme_tv_theme)
+    val tv_thema_num_library_cu_info = itemView.findViewById<TextView>(R.id.search_theme_tv_bookmark)
     val tv_sentence_count_library_item_cu_info =
-        itemView.findViewById<TextView>(R.id.tv_sentence_count_library_item_cu_info)
-//    val rdbtn_saved_thema = itemView.findViewById<RadioButton>(R.id.rdbtn_saved_thema)
-//    val rdbtn_making_thema = itemView.findViewById<RadioButton>(R.id.rdbtn_making_thema)
+        itemView.findViewById<TextView>(R.id.search_theme_tv_sentence_count)
 
     fun bind(curatorTheme: CuratorTheme) {
         tv_library_thema_cu_info.text = curatorTheme.theme
         tv_thema_num_library_cu_info.text = curatorTheme.saves.toString()
         tv_sentence_count_library_item_cu_info.text = curatorTheme.sentenceNum.toString()
-
-//        rdbtn_saved_thema.setOnClickListener {
-//            if (rdbtn_saved_thema.isChecked) {
-//                rdbtn_saved_thema.setTextColor(Color.WHITE)
-//            } else rdbtn_saved_thema.setTextColor(Color.LTGRAY)
-//
-//        }
-//
-//        rdbtn_making_thema.setOnClickListener {
-//            if (rdbtn_making_thema.isChecked) {
-//                rdbtn_making_thema.setTextColor(Color.LTGRAY)
-//            } else rdbtn_making_thema.setTextColor(Color.WHITE)
-//
-//        }
     }
 }

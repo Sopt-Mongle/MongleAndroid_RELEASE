@@ -357,7 +357,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="7dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/activity_join_step3_et_code1"
                 app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_et_code1"
                 app:srcCompat="@drawable/ic_warning" />
@@ -373,7 +373,7 @@
                 android:text="잘못된 코드에요! 다시 입력해주세요!"
                 android:textColor="@color/reddish"
                 android:textSize="14sp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_join_step3_ic_error"
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step3_ic_error"
                 app:layout_constraintTop_toTopOf="@+id/activity_join_step3_ic_error" />
