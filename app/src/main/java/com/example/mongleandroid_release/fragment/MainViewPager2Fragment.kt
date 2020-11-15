@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.DetailThemeActivity
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.data.response.ResponseEditorsPickData
 import kotlinx.android.synthetic.main.fragment_main_view_pager1.*
@@ -37,6 +38,14 @@ class MainViewPager2Fragment : Fragment() {
 
                         } else {
                             Glide.with(view!!).load(response.body()!!.data[1].illust).into(img_main_editor_pick_theme2)
+                            main2_sentence_num.text = "문장 " + response.body()!!.data[1].sentenceNum + "개"
+                            img_main_editor_pick_theme2.setOnClickListener {
+                                activity?.let {
+                                    val intent = Intent(context, DetailThemeActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data[1].themeIdx)
+                                    startActivity(intent)
+                                }
+                            }
                         }
                     }
                 }

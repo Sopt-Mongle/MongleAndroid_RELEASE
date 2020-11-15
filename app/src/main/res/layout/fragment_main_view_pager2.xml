@@ -17,5 +17,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/main_div_editor_theme"
+        app:layout_constraintBottom_toTopOf="@+id/main2_sentence_num"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/main2_sentence_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="190dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
+        android:text="문장 15개"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_main_editor_pick_theme2"
+        app:layout_constraintStart_toStartOf="@+id/imageView53" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
