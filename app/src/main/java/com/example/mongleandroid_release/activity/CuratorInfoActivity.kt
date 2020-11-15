@@ -9,12 +9,14 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
 import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
 import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
+import com.example.mongleandroid_release.adapter.LibraryTabAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
@@ -36,9 +38,6 @@ class CuratorInfoActivity : AppCompatActivity() {
 
     lateinit var curatorInfoPagerAdapter: CuratorInfoPagerAdapter
 
-    lateinit var txtUpper1 : TextView
-    lateinit var txtUpper2 : TextView
-
     var data_sentence_num : Int = 0
     var data_theme_num : Int = 0
 
@@ -56,22 +55,6 @@ class CuratorInfoActivity : AppCompatActivity() {
 
 //        loadDatas()
 
-        val curatorTabLayout = this.findViewById(R.id.cl_titleLayout) as TabLayout
-
-
-        val viewFirst : View = getLayoutInflater().inflate(R.layout.activity_curator_info, null)
-        val viewSecond : View = getLayoutInflater().inflate(R.layout.activity_curator_info, null)
-
-        txtUpper1 = viewFirst.findViewById(R.id.tv_thema_num_cu_info)
-        val txtDown1 : TextView = viewFirst.findViewById(R.id.library_tab)
-        txtUpper2 = viewSecond.findViewById(R.id.tv_sentence_num_cu_info)
-        val txtDown2 : TextView = viewSecond.findViewById(R.id.library_tab)
-
-        libraryViewPager.setAdapter(adapter)
-        curatorTabLayout.setupWithViewPager(libraryViewPager)
-
-        curatorTabLayout.getTabAt(0)!!.customView = viewFirst
-        curatorTabLayout.getTabAt(1)!!.customView = viewSecond
 
         //sticky header
         main_scroll_view_cura_info.run {
@@ -237,7 +220,7 @@ class CuratorInfoActivity : AppCompatActivity() {
                         Log.d("큐레이터 상세보기 테마 조회 성공", "${response.body()}")
 
                         data_theme_num = response.body()!!.data!!.theme.size
-                        txtUpper1.setText(data_theme_num.toString())
+                        tv_thema_num_cu_info.setText(data_theme_num.toString())
 
 
                         }
@@ -268,7 +251,7 @@ class CuratorInfoActivity : AppCompatActivity() {
                         Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
 
                         data_sentence_num = response.body()!!.data!!.sentence.size
-                        txtUpper2.setText(data_sentence_num.toString())
+                        tv_sentence_num_cu_info.setText(data_sentence_num.toString())
 
                     }
                 }
