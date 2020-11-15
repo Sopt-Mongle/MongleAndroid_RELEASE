@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.dialog.DialogChangePassword
+import com.example.mongleandroid_release.dialog.DialogLogout
+import com.example.mongleandroid_release.dialog.DialogQuitService
 import kotlinx.android.synthetic.main.activity_account_setting.*
 
 class AccountSettingActivity : AppCompatActivity() {
@@ -17,9 +20,23 @@ class AccountSettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //비밀번호 변경 아이콘 눌렀을 때 화면 전환
         password_change.setOnClickListener {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
         }
+
+        //로그 아웃 버튼 눌렀을 떄 dialog 띄우기
+        logout.setOnClickListener {
+            val dlg = DialogLogout(this)
+            dlg.start()
+        }
+
+        //서비스 탈퇴 버튼 눌렀을 때 dialog 띄우기
+        quit_service.setOnClickListener {
+            val dlg = DialogQuitService(this)
+            dlg.start()
+        }
+
     }
 }
