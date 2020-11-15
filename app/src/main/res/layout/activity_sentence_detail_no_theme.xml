@@ -327,7 +327,7 @@
             android:layout_marginBottom="34dp"
             android:background="@drawable/et_area_sentence_bottom"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
+            app:layout_constraintEnd_toStartOf="@+id/container_bookmark_num"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -362,7 +362,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout6"
+            android:id="@+id/container_bookmark_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

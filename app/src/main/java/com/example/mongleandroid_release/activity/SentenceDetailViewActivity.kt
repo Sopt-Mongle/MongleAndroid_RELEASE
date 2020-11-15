@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
@@ -13,6 +14,7 @@ import com.example.mongleandroid_release.change_visible
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailOtherThemeData
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
@@ -47,8 +49,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
             finish()
         }
 
-        requestSentenceDetail()
-        requestSentenceTheme()
+        requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
+        requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
+        requestSentenceLikeNum() // 문장 좋아요 누르기
     }
     // 문장 상세보기 데이터 서버 통신
     private fun requestSentenceDetail() {
@@ -101,9 +104,18 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                                     change_gone(img_sentence_detail_view_edit_btn)
 
                             }
-                        constraint_likes_num.setOnClickListener {
 
-                        }
+
+//                        constraint_likes_num.setOnClickListener {
+//                            if (constraint_likes_num.isChecked) {
+//                                img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_btn_btn_like_g)
+//                                val likes_num
+//                                val likes : Int = tv_sentence_likes_num
+//                                tv_sentence_likes_num.text = likes.toString()
+//                            } else {
+//                                img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_theme_o_ic_like)
+//                            }
+//                        }
 
 
                     }
@@ -158,4 +170,51 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
     }
 
+    // 문장 좋아요 누르기
+    private fun requestSentenceLikeNum() {
+        requestToServer.service.PutsentenceLikeNum(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+            params = intent.getIntExtra("param", 0)
+        ).enqueue(
+            object : Callback<ResponseSentenceLikeNumData> {
+                override fun onFailure(call: Call<ResponseSentenceLikeNumData>, t: Throwable) {
+                    Log.e("통신 실패", t.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseSentenceLikeNumData>,
+                    response: Response<ResponseSentenceLikeNumData>
+                ) {
+                    if(response.isSuccessful) {
+                        Log.d("통신 성공", "통신 성공")
+
+                        if(response.body()!!.data!!.isLike == null) {
+
+                        Log.d("islike == null", "null or empty")
+                        } else {
+
+                                // 좋아요 이미지 & 숫자 변경
+                                constraint_likes_num.setOnClickListener {
+                                    if (constraint_likes_num.isChecked) {
+                                        img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_btn_btn_like_g)
+                                        val a : Int = response.body()!!.data!!.likes
+                                        val result : Int = a
+                                        tv_sentence_likes_num.text = result.toString()
+                                    } else {
+                                        img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_theme_o_ic_like)
+                                    }
+                                }
+
+                            }
+                        }
+                }
+
+            }
+        )
+    }
+
+
+    // 문장 북마크 하기
+
 }
+

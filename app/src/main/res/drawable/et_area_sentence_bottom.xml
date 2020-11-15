@@ -3,6 +3,8 @@
 <!-- Drop Shadow Stack -->
 <!-- Background -->
 <item> <shape android:shape="rectangle">
+    <size android:width="166dp"
+        android:height="57dp"/>
     <solid
         android:color="#ffffff" />
     <stroke

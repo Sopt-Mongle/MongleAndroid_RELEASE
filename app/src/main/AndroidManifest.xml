@@ -21,6 +21,7 @@
         <activity android:name=".activity.OpenSourceActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.CuratorInfoActivity" />
+        <activity android:name=".activity.SentenceDetailNoThemeActivity"/>
         <activity android:name=".activity.ServiceTermsActivity" />
         <activity android:name=".activity.ServicePolicyActivity" />
         <activity android:name=".activity.SentenceDetailViewActivity" />
@@ -42,6 +43,7 @@
         <activity
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +52,10 @@
         </activity>
         <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity">
+
+
+        </activity>
     </application>
 
 </manifest>
