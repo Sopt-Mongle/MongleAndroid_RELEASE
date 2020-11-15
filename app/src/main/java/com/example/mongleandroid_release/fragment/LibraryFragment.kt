@@ -35,10 +35,11 @@ class LibraryFragment : Fragment() {
 
     lateinit var libraryPagerAdapter: LibraryPagerAdapter
 
-    var data_theme_num = mutableListOf<LibraryThemaData>()
-
     var data_theme_save_num : Int = 0  // = mutableListOf<LibraryThemeSave>()
     var data_theme_write_num : Int = 0 // = mutableListOf<LibraryThemeWrite>()
+
+    var data_theme_num : Int = 0 // = mutableListOf<LibraryThemeWrite>()
+    var data_sentence_num : Int = 0 // = mutableListOf<LibraryThemeWrite>()
 
     var data_sentence_save_num : Int = 0
     var data_sentence_write_num : Int = 0
@@ -105,9 +106,7 @@ class LibraryFragment : Fragment() {
 
         requestMyProfile()
         requestLibraryThemeData()
-        requestLibraryThemeClickData()
         requestLibrarySentenceData()
-        requestLibrarySentenceClickData()
         requestLibraryCuratorData()
 
         //sticky header
@@ -198,37 +197,37 @@ class LibraryFragment : Fragment() {
                     ) {
                         if(response.isSuccessful) {
                             Log.d("내서재 테마 조회", "${response.body()}")
-                            data_theme_save_num = response.body()!!.data!!.save.size + data_theme_write_num
-                            txtUpper1.setText(data_theme_save_num.toString())
+                            data_theme_num = response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
+                            txtUpper1.setText(data_theme_num.toString())
                         }
                     }
                 }
             )
     }
 
-    private fun requestLibraryThemeClickData() {
-        requestToServer.service.lookLibraryThema(
-            token = SharedPreferenceController.getAccessToken(requireView().context)
-        )
-            .enqueue(
-                object : Callback<ResponseLibraryThemeData> {
-                    override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
-                        Log.d("통신실패", "${t}")
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseLibraryThemeData>,
-                        response: Response<ResponseLibraryThemeData>
-                    ) {
-                        if(response.isSuccessful) {
-                            Log.d("내서재 테마 저장 조회", "${response.body()}")
-                            data_theme_write_num = response.body()!!.data!!.write.size + data_theme_save_num
-                            txtUpper1.setText(data_theme_write_num.toString())
-                        }
-                    }
-                }
-            )
-    }
+//    private fun requestLibraryThemeClickData() {
+//        requestToServer.service.lookLibraryThema(
+//            token = SharedPreferenceController.getAccessToken(requireView().context)
+//        )
+//            .enqueue(
+//                object : Callback<ResponseLibraryThemeData> {
+//                    override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
+//                        Log.d("통신실패", "${t}")
+//                    }
+//
+//                    override fun onResponse(
+//                        call: Call<ResponseLibraryThemeData>,
+//                        response: Response<ResponseLibraryThemeData>
+//                    ) {
+//                        if(response.isSuccessful) {
+//                            Log.d("내서재 테마 저장 조회", "${response.body()}")
+//                            data_theme_write_num = response.body()!!.data!!.write.size + data_theme_save_num
+//                            txtUpper1.setText(data_theme_write_num.toString())
+//                        }
+//                    }
+//                }
+//            )
+//    }
 
     private fun requestLibrarySentenceData() {
         requestToServer.service.lookLibrarySentence(
@@ -246,8 +245,9 @@ class LibraryFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 문장 조회", "${response.body()}")
-                            data_sentence_save_num = response.body()!!.data!!.save.size + data_sentence_write_num
-                            txtUpper2.setText(data_sentence_save_num.toString())
+                            data_sentence_num = response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
+                            txtUpper2.setText(data_sentence_num.toString())
+
 
                         }
 
@@ -256,31 +256,31 @@ class LibraryFragment : Fragment() {
             )
     }
 
-    private fun requestLibrarySentenceClickData() {
-        requestToServer.service.lookLibrarySentence(
-            token = SharedPreferenceController.getAccessToken(requireView().context)
-        )
-            .enqueue(
-                object : Callback<ResponseLibrarySentenceData> {
-                    override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
-                        Log.d("통신실패", "${t}")
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseLibrarySentenceData>,
-                        response: Response<ResponseLibrarySentenceData>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.d("내 서재 문장 클릭 조회", "${response.body()}")
-                            data_sentence_write_num = response.body()!!.data!!.write.size + data_sentence_save_num
-                            txtUpper2.setText(data_sentence_write_num.toString())
-
-                        }
-
-                    }
-                }
-            )
-    }
+//    private fun requestLibrarySentenceClickData() {
+//        requestToServer.service.lookLibrarySentence(
+//            token = SharedPreferenceController.getAccessToken(requireView().context)
+//        )
+//            .enqueue(
+//                object : Callback<ResponseLibrarySentenceData> {
+//                    override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
+//                        Log.d("통신실패", "${t}")
+//                    }
+//
+//                    override fun onResponse(
+//                        call: Call<ResponseLibrarySentenceData>,
+//                        response: Response<ResponseLibrarySentenceData>
+//                    ) {
+//                        if (response.isSuccessful) {
+//                            Log.d("내 서재 문장 클릭 조회", "${response.body()}")
+//                            data_sentence_write_num = response.body()!!.data!!.write.size + data_sentence_save_num
+//                            txtUpper2.setText(data_sentence_write_num.toString())
+//
+//                        }
+//
+//                    }
+//                }
+//            )
+//    }
 
     private fun requestLibraryCuratorData() {
         requestToServer.service.lookLibraryCurator(
@@ -301,7 +301,6 @@ class LibraryFragment : Fragment() {
                             data_curator_num = response.body()!!.data.size
                             txtUpper3.setText(data_curator_num.toString())
 
-//                        }
 
                         }
 

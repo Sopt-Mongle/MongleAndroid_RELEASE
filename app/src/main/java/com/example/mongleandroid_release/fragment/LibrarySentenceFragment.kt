@@ -15,6 +15,7 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.LibrarySentenceData
 import com.example.mongleandroid_release.network.data.response.ResponseLibrarySentenceData
 import kotlinx.android.synthetic.main.fragment_library_sentence.*
+import kotlinx.android.synthetic.main.item_library_sentence_click.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -73,6 +74,11 @@ class LibrarySentenceFragment : Fragment() {
             }
 
         }
+
+        //수정, 삭제 버튼 눌렀을 때
+//        library_sentence_more.setOnClickListener {
+//
+//        }
 
         //fragment 안에 있는 recyclerView안에 있는 item의 특정 ...버튼 누르면 EditSentenceActicity로 넘어가는
 //        library_sentence_more.setOnClickListener {
