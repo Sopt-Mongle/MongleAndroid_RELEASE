@@ -122,7 +122,6 @@
 
 
             <com.google.android.material.tabs.TabLayout
-                app:tabIndicator="@null"
                 android:id="@+id/titleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
@@ -131,6 +130,8 @@
                 app:tabMode="fixed"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="#00ffffff"
+                android:outlineAmbientShadowColor="#00ffffff"
+                app:tabRippleColor="#00ffffff"
                 app:layout_constraintBottom_toTopOf="@id/vp_library"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
