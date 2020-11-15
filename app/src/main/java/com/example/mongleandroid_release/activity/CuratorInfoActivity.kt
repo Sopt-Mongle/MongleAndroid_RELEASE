@@ -5,6 +5,8 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
@@ -17,8 +19,11 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_curator_info.*
 import kotlinx.android.synthetic.main.activity_detail_theme.*
+import kotlinx.android.synthetic.main.fragment_curator_info_sentence.*
+import kotlinx.android.synthetic.main.fragment_curator_info_thema.*
 import kotlinx.android.synthetic.main.fragment_library_thema.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,17 +36,42 @@ class CuratorInfoActivity : AppCompatActivity() {
 
     lateinit var curatorInfoPagerAdapter: CuratorInfoPagerAdapter
 
+    lateinit var txtUpper1 : TextView
+    lateinit var txtUpper2 : TextView
+
+    var data_sentence_num : Int = 0
+    var data_theme_num : Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_curator_info)
 
         requestCuratorProfile()
+        requestCuratorInfoThemeData()
+        requestCuratorInfoSentenceData()
 
         vp_curator_info.adapter = CuratorInfoPagerAdapter(supportFragmentManager)
         vp_curator_info.offscreenPageLimit = 1
 
 //        loadDatas()
+
+        val curatorTabLayout = this.findViewById(R.id.cl_titleLayout) as TabLayout
+
+
+        val viewFirst : View = getLayoutInflater().inflate(R.layout.activity_curator_info, null)
+        val viewSecond : View = getLayoutInflater().inflate(R.layout.activity_curator_info, null)
+
+        txtUpper1 = viewFirst.findViewById(R.id.tv_thema_num_cu_info)
+        val txtDown1 : TextView = viewFirst.findViewById(R.id.library_tab)
+        txtUpper2 = viewSecond.findViewById(R.id.tv_sentence_num_cu_info)
+        val txtDown2 : TextView = viewSecond.findViewById(R.id.library_tab)
+
+        libraryViewPager.setAdapter(adapter)
+        curatorTabLayout.setupWithViewPager(libraryViewPager)
+
+        curatorTabLayout.getTabAt(0)!!.customView = viewFirst
+        curatorTabLayout.getTabAt(1)!!.customView = viewSecond
 
         //sticky header
         main_scroll_view_cura_info.run {
@@ -185,6 +215,65 @@ class CuratorInfoActivity : AppCompatActivity() {
                 }
 
             }
+        )
+    }
+
+    private fun requestCuratorInfoThemeData() {
+        requestToServer.service.CuratorInformation(
+            token = SharedPreferenceController.getAccessToken(this),
+            params = intent.getIntExtra("param", 0)
+
+        ).enqueue(
+            object : Callback<ResponseCuratorInformationData> {
+                override fun onFailure(call: Call<ResponseCuratorInformationData>, t: Throwable) {
+                    Log.d("통신실패", "${t}")
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCuratorInformationData>,
+                    response: Response<ResponseCuratorInformationData>
+                ) {
+                    if(response.isSuccessful) {
+                        Log.d("큐레이터 상세보기 테마 조회 성공", "${response.body()}")
+
+                        data_theme_num = response.body()!!.data!!.theme.size
+                        txtUpper1.setText(data_theme_num.toString())
+
+
+                        }
+
+                    }
+            }
+
+        )
+    }
+
+    private fun requestCuratorInfoSentenceData() {
+        requestToServer.service.CuratorInformation(
+            token = SharedPreferenceController.getAccessToken(this),
+//            params = 13
+            params = intent.getIntExtra("param", 0)
+
+        ).enqueue(
+            object : Callback<ResponseCuratorInformationData> {
+                override fun onFailure(call: Call<ResponseCuratorInformationData>, t: Throwable) {
+                    Log.d("통신실패", "${t}")
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCuratorInformationData>,
+                    response: Response<ResponseCuratorInformationData>
+                ) {
+                    if(response.isSuccessful) {
+                        Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
+
+                        data_sentence_num = response.body()!!.data!!.sentence.size
+                        txtUpper2.setText(data_sentence_num.toString())
+
+                    }
+                }
+            }
+
         )
     }
 
