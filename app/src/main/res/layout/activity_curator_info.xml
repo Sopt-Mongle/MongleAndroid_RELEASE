@@ -56,7 +56,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="76dp"
-                    android:background="@color/soft_green"
+                    android:src="@drawable/join_img_mongle"
                     app:layout_constraintBottom_toTopOf="@id/tv_curator_username"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
