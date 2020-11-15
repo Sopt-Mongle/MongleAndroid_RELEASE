@@ -50,11 +50,11 @@ class DetailThemeActivity : AppCompatActivity() {
         img_detail_theme_activity_back_btn.setOnClickListener {
             finish()
         }
-
-//        img_writing_sentence_in_theme_btn.setOnClickListener {
-//            val intent = Intent(this, ThemeWritingSentenceActivity::class.java)
-//            startActivity(intent)
-//        }
+        img_writing_sentence_in_theme_btn.setOnClickListener {
+            val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+            intent.putExtra("param", tv_main_theme_title.text)
+            startActivity(intent)
+        }
 
         requestThemeData()
         requestMainThemeData()
@@ -86,6 +86,12 @@ class DetailThemeActivity : AppCompatActivity() {
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
                             Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg).into(imageView5)
+
+                            // 테마에 문장 쓰러 가기
+//                            img_writing_sentence_in_theme_btn.setOnClickListener {
+//                                val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+//                                intent.putExtra("param", response.body()!!.data!!.theme[0].themeIdx)
+//                            }
                         }
                         //tv_main_theme_title.text = themesData.get(1).toString()
 //                        for (i in 0..5) {
