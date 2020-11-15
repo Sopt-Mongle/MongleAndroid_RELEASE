@@ -261,7 +261,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/setting_info_service"
+        android:id="@+id/setting_service_policy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -289,13 +289,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/setting_privacy"
+        android:id="@+id/setting_privacy_terms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="13dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/setting_info_service"
+        app:layout_constraintTop_toBottomOf="@id/setting_service_policy"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
@@ -317,13 +317,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/setting_service_use"
+        android:id="@+id/setting_service_terms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="13dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/setting_privacy"
+        app:layout_constraintTop_toBottomOf="@id/setting_privacy_terms"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
@@ -351,7 +351,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="13dp"
         android:gravity="center_vertical"
-        app:layout_constraintTop_toBottomOf="@id/setting_service_use"
+        app:layout_constraintTop_toBottomOf="@id/setting_service_terms"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
