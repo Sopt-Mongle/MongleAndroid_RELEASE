@@ -38,7 +38,6 @@ class MainViewPager2Fragment : Fragment() {
 
                         } else {
                             Glide.with(view!!).load(response.body()!!.data[1].illust).into(img_main_editor_pick_theme2)
-                            main2_sentence_num.text = "문장 " + response.body()!!.data[1].sentenceNum + "개"
                             img_main_editor_pick_theme2.setOnClickListener {
                                 activity?.let {
                                     val intent = Intent(context, DetailThemeActivity::class.java)
