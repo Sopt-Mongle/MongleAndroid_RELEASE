@@ -15,7 +15,7 @@ class CuratorInfoThemaAdapter(private val context: Context, var data_the_cu_info
     private lateinit var itemClickListener : ItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CuratorInfoThemaViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_cu_info_thema, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_search_theme, parent, false)
         return CuratorInfoThemaViewHolder(view)
     }
 

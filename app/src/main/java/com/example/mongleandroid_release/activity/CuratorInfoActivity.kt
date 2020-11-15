@@ -2,6 +2,8 @@ package com.example.mongleandroid_release.activity
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,22 +13,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
-import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
 import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
 import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
 import com.example.mongleandroid_release.adapter.LibraryTabAdapter
+import com.example.mongleandroid_release.fragment.CuratorInfoThemaFragment
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_curator_info.*
-import kotlinx.android.synthetic.main.activity_detail_theme.*
-import kotlinx.android.synthetic.main.fragment_curator_info_sentence.*
-import kotlinx.android.synthetic.main.fragment_curator_info_thema.*
-import kotlinx.android.synthetic.main.fragment_library_thema.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,10 +38,17 @@ class CuratorInfoActivity : AppCompatActivity() {
     var data_sentence_num : Int = 0
     var data_theme_num : Int = 0
 
+    companion object {
+        var params = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_curator_info)
+
+        // 이미지 둥글게
+        img_curator_profile.background = ShapeDrawable(OvalShape())
+        img_curator_profile.clipToOutline = true
 
         requestCuratorProfile()
         requestCuratorInfoThemeData()
@@ -54,7 +58,6 @@ class CuratorInfoActivity : AppCompatActivity() {
         vp_curator_info.offscreenPageLimit = 1
 
 //        loadDatas()
-
 
         //sticky header
         main_scroll_view_cura_info.run {
@@ -164,6 +167,7 @@ class CuratorInfoActivity : AppCompatActivity() {
     }
 
     private fun requestCuratorProfile() {
+        params = intent.getIntExtra("param", 0)
         requestToServer.service.CuratorInformation(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
@@ -176,7 +180,7 @@ class CuratorInfoActivity : AppCompatActivity() {
                     response: Response<ResponseCuratorInformationData>
                 ) {
                     if (response.isSuccessful) {
-                        Log.e("큐레이터 상세보기 조회 성공", "${response.body()}")
+                        Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
 
                         Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
                         tv_curator_username.text = response.body()!!.data!!.profile[0].name
