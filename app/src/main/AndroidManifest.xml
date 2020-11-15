@@ -15,13 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ChangePasswordActivity"></activity>
+        <activity android:name=".activity.WritingSentenceInThemeActivity"></activity>
+        <activity android:name=".activity.ChangePasswordActivity" />
         <activity android:name=".activity.AccountSettingActivity" />
         <activity android:name=".activity.SplashActivity" />
         <activity android:name=".activity.OpenSourceActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.CuratorInfoActivity" />
-        <activity android:name=".activity.SentenceDetailNoThemeActivity"/>
+        <activity android:name=".activity.SentenceDetailNoThemeActivity" />
         <activity android:name=".activity.ServiceTermsActivity" />
         <activity android:name=".activity.ServicePolicyActivity" />
         <activity android:name=".activity.SentenceDetailViewActivity" />
@@ -42,13 +43,10 @@
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
         <activity android:name=".activity.MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
