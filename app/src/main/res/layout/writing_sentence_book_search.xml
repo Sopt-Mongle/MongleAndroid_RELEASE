@@ -59,16 +59,18 @@
         android:id="@+id/writing_sentence_book_search_et_search"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:background="@drawable/et_area"
         android:layout_marginTop="75dp"
+        android:background="@drawable/et_area"
+        android:hint="책 제목을 검색해주세요."
+        android:maxLength="40"
+        android:maxLines="1"
         android:paddingStart="15dp"
         android:paddingEnd="51dp"
-        android:maxLines="1"
-        android:maxLength="40"
-        android:hint="책 제목을 검색해주세요."
-        app:layout_constraintTop_toTopOf="parent"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintEnd_toEndOf="@id/gl_right">
+        app:layout_constraintTop_toTopOf="parent">
+
         <requestFocus />
     </EditText>
 

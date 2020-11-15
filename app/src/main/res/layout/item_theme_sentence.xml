@@ -11,11 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="5sp"
         android:maxLines="2"
-        android:fontFamily="@font/notosanscjkkr_demilight"
-        android:includeFontPadding="false"
         android:text="영 영앤 리치 남자를 만나자\n감 감사하자"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -37,62 +37,66 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/notosanscjkkr_demilight"
+        android:includeFontPadding="false"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="0sp"
         android:text="몽글이 몽글몽글"
-        android:fontFamily="@font/notosanscjkkr_demilight"
-        android:includeFontPadding="false"
         android:textColor="#a7a7a7"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/tv_theme_sentence" />
 
-    <TextView
-        android:id="@+id/tv_save_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="17dp"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="1sp"
-        android:text="100"
-        android:textColor="#a7a7a7"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageView45"
         android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/sentence_theme_o_ic_sentence_bookmark_1"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_save_num"
-        app:layout_constraintEnd_toStartOf="@+id/tv_save_num"
-        app:layout_constraintTop_toTopOf="@+id/tv_save_num" />
+        android:layout_height="10dp"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/sentence_theme_o_ic_sentence_like_1"
+        app:layout_constraintStart_toEndOf="@+id/tv_theme_curator"
+        app:layout_constraintTop_toTopOf="@+id/tv_theme_curator" />
 
     <TextView
-        android:id="@+id/tv_like_num"
+        android:id="@+id/theme_sentence_tv_likes_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="68dp"
-        android:letterSpacing="-0.02"
-        android:lineSpacingExtra="1sp"
+        android:layout_marginStart="5dp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="2sp"
         android:text="100"
         android:textColor="#a7a7a7"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView45"
+        app:layout_constraintStart_toEndOf="@+id/imageView45"
+        app:layout_constraintTop_toTopOf="@+id/imageView45" />
+
 
     <ImageView
-        android:layout_width="13dp"
-        android:layout_height="13dp"
-        android:layout_marginEnd="4dp"
-        android:src="@drawable/sentence_theme_o_ic_sentence_like_1"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_like_num"
-        app:layout_constraintEnd_toStartOf="@+id/tv_like_num"
-        app:layout_constraintTop_toTopOf="@+id/tv_like_num" />
+        android:id="@+id/imageView52"
+        android:layout_width="9dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/sentence_theme_o_ic_bookmark"
+        app:layout_constraintBottom_toBottomOf="@+id/theme_sentence_tv_likes_num"
+        app:layout_constraintStart_toEndOf="@+id/theme_sentence_tv_likes_num"
+        app:layout_constraintTop_toTopOf="@+id/theme_sentence_tv_likes_num" />
+
+    <TextView
+        android:id="@+id/theme_sentence_tv_saves_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="2sp"
+        android:text="30"
+        android:textColor="#a7a7a7"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView52"
+        app:layout_constraintStart_toEndOf="@+id/imageView52"
+        app:layout_constraintTop_toTopOf="@+id/imageView52" />
 
     <View
         android:layout_width="match_parent"
@@ -102,8 +106,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

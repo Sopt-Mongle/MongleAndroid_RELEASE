@@ -25,7 +25,9 @@ import com.example.mongleandroid_release.network.data.response.ResponseSearchRec
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
 import com.example.mongleandroid_release.showKeyboard
 import com.example.mongleandroid_release.unshowKeyboard
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,6 +39,8 @@ class SearchFragment : Fragment() {
 
     private val requestToServer = RequestToServer
 
+    private var state = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,6 +51,17 @@ class SearchFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if(state == 1) {
+            fragment_search_et_search.setText(search_result)
+            hideFocus()
+        } else {
+            fragment_search_et_search.setText("")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,7 +100,7 @@ class SearchFragment : Fragment() {
 
         // 뒤로가기 버튼
         fragment_search_btn_back.setOnClickListener {
-
+            childFragmentManager.beginTransaction().replace(R.id.fragment_search_cl, MainFragment()).commit()
         }
 
         // 엔터 눌렀을 때 검색
@@ -157,10 +172,14 @@ class SearchFragment : Fragment() {
 
     }
 
-    override fun onPause() {
-        super.onPause()
-        fragment_search_et_search.setText("")
-        hideFocus()
+    override fun onStop() {
+        super.onStop()
+        state = 1
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        state = 2
     }
 
     private fun hideFocus() {

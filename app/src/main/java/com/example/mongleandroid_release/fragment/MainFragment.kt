@@ -244,7 +244,7 @@ class MainFragment : Fragment() {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 activity?.let{
                                     val intent = Intent(context, DetailThemeActivity::class.java)
-                                    Log.d("문장을 기다리는 테마", "${response.body()!!.data[position].themeIdx}")
+//                                    Log.d("문장을 기다리는 테마", "${response.body()!!.data[position].themeIdx}")
                                     intent.putExtra("param", response.body()!!.data[position].themeIdx)
                                     startActivity(intent)
                                 }

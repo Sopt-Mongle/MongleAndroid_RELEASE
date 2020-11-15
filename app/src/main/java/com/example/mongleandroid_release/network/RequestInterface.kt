@@ -193,4 +193,10 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceDetailData>
+
+    //문장 상세 조회 - 이 테마의 다른 문장
+    @GET("/detail/sentence/{sentenceIdx}/other")
+    fun GetDetailSentenceOtherThemeSentence(
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceDetailOtherThemeData>
 }

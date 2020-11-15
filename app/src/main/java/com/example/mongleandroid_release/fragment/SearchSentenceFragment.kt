@@ -52,9 +52,11 @@ class SearchSentenceFragment : Fragment() {
 
                         searchSentenceAdapter.setItemClickListener(object : SearchSentenceAdapter.ItemClickListener{
                             override fun onClick(view: View, position: Int) {
-                                val intent = Intent(context, SentenceDetailViewActivity::class.java)
-                                intent.putExtra("param", body.data[position].sentenceIdx)
-                                startActivity(intent)
+                                activity?.let {
+                                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                    intent.putExtra("param", body.data[position].sentenceIdx)
+                                    startActivity(intent)
+                                }
                             }
 
                         })
