@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
+import com.example.mongleandroid_release.network.data.response.CuratorTheme
 
 class CuratorInfoThemaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tv_library_thema_cu_info = itemView.findViewById<TextView>(R.id.tv_library_thema_cu_info)
@@ -14,10 +14,10 @@ class CuratorInfoThemaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
 //    val rdbtn_saved_thema = itemView.findViewById<RadioButton>(R.id.rdbtn_saved_thema)
 //    val rdbtn_making_thema = itemView.findViewById<RadioButton>(R.id.rdbtn_making_thema)
 
-    fun bind(curatorInfoThemaData: CuratorInfoThemaData) {
-        tv_library_thema_cu_info.text = curatorInfoThemaData.thema_cu_info
-        tv_thema_num_library_cu_info.text = curatorInfoThemaData.thema_num_library_cu_info
-        tv_sentence_count_library_item_cu_info.text = curatorInfoThemaData.sentence_count_library_item_cu_info
+    fun bind(curatorTheme: CuratorTheme) {
+        tv_library_thema_cu_info.text = curatorTheme.theme
+        tv_thema_num_library_cu_info.text = curatorTheme.saves.toString()
+        tv_sentence_count_library_item_cu_info.text = curatorTheme.sentenceNum.toString()
 
 //        rdbtn_saved_thema.setOnClickListener {
 //            if (rdbtn_saved_thema.isChecked) {

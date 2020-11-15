@@ -28,7 +28,6 @@ import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView35
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_author
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_publisher
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_theme
-import kotlinx.serialization.json.Json.Default.context
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -84,7 +83,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
-
+                        tv_sentence_likes_num.text = response.body()!!.data[0].likes.toString() // 좋아요 수
+                        tv_sentence_bookmark_num.text = response.body()!!.data[0].saves.toString() // 북마크 수
                         // 테마 보러 가기 버튼
                         btn_go_to_theme.setOnClickListener {
                             val intent = Intent(this@SentenceDetailViewActivity, DetailThemeActivity::class.java)
@@ -101,6 +101,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                                     change_gone(img_sentence_detail_view_edit_btn)
 
                             }
+                        constraint_likes_num.setOnClickListener {
+
+                        }
 
 
                     }

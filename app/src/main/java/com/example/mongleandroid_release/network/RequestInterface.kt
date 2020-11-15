@@ -186,6 +186,12 @@ interface RequestInterface {
         @Part("introduce") introduce: RequestBody
     ) : Call<ResponseUpdateProfileData>
 
+    // 비밀번호 변경
+    @PUT("/users/changePassword")
+    fun requestChangePassword(
+        @Header("token") token: String?,
+        @Body body: RequestChangePasswordData) : Call<ResponseChangePasswordData>
+
     //문장 상세 조회
     @GET("/detail/sentence/{sentenceIdx}")
     fun GetDetailSentence(
@@ -198,4 +204,11 @@ interface RequestInterface {
     fun GetDetailSentenceOtherThemeSentence(
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceDetailOtherThemeData>
+
+    //큐레이터 상세보기
+    @GET("/curator/{curatorIdx}")
+    fun CuratorInformation(
+        @Header("token") token: String?,
+        @Path("curatorIdx") params: Int
+    ) : Call<ResponseCuratorInformationData>
 }

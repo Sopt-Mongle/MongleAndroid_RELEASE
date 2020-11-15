@@ -5,16 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.LibrarySentenceViewHolder
 import com.example.mongleandroid_release.network.data.LibrarySentenceData
+import com.example.mongleandroid_release.network.data.response.LibrarySentenceSave
 
-class LibrarySentenceAdapter(private val context: Context) :
+class LibrarySentenceAdapter(private val context: Context, var data_sen:List<LibrarySentenceSave>) :
+//class LibrarySentenceAdapter(private val context: Context) :
     RecyclerView.Adapter<LibrarySentenceViewHolder>() {
 
     private lateinit var itemClickListener : LibraryThemaAdapter.ItemClickListener
 
-    var data_sen = mutableListOf<LibrarySentenceData>()
+//    var data_sen = mutableListOf<LibrarySentenceData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibrarySentenceViewHolder {
         val view =
