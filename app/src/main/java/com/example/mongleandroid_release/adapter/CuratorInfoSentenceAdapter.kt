@@ -15,7 +15,7 @@ class CuratorInfoSentenceAdapter(private val context: Context, var data_sen_cu_i
     private lateinit var itemClickListener : ItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CuratorInfoSentenceViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_cu_info_sentence, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_search_sentence, parent, false)
         return CuratorInfoSentenceViewHolder(view)
     }
 

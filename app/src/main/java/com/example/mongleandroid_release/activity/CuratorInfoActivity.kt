@@ -1,25 +1,19 @@
 package com.example.mongleandroid_release.activity
 
-import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
-import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
-import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
-import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
+import com.example.mongleandroid_release.fragment.CuratorInfoThemaFragment
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.CuratorInfoThemaData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
 import kotlinx.android.synthetic.main.activity_curator_info.*
-import kotlinx.android.synthetic.main.activity_detail_theme.*
-import kotlinx.android.synthetic.main.fragment_library_thema.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,10 +25,17 @@ class CuratorInfoActivity : AppCompatActivity() {
 
     lateinit var curatorInfoPagerAdapter: CuratorInfoPagerAdapter
 
+    companion object {
+        var params = 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_curator_info)
+
+        // 이미지 둥글게
+        img_curator_profile.background = ShapeDrawable(OvalShape())
+        img_curator_profile.clipToOutline = true
 
         requestCuratorProfile()
 
@@ -151,11 +152,10 @@ class CuratorInfoActivity : AppCompatActivity() {
     }
 
     private fun requestCuratorProfile() {
+        params = intent.getIntExtra("param", 0)
         requestToServer.service.CuratorInformation(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
-//            params = 13
-
                 ).enqueue(
             object : Callback<ResponseCuratorInformationData> {
                 override fun onResponse(
@@ -163,19 +163,13 @@ class CuratorInfoActivity : AppCompatActivity() {
                     response: Response<ResponseCuratorInformationData>
                 ) {
                     if (response.isSuccessful) {
-                        Log.e("큐레이터 상세보기 조회 성공", "${response.body()}")
+                        Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
 
                         Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
                         tv_curator_username.text = response.body()!!.data!!.profile[0].name
                         tx_curators_contents.text = response.body()!!.data!!.profile[0].introduce
                         tx_curators_keyword.text = response.body()!!.data!!.profile[0].keyword
 
-//                        if (response.body()!!.data?.profile.isNullOrEmpty()) {
-//
-//                        } else {
-//                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
-//
-//                        }
 
                     }
                 }
@@ -189,44 +183,5 @@ class CuratorInfoActivity : AppCompatActivity() {
     }
 
 
-//    private fun loadDatas() {
-//        data.apply {
-//            add(
-//                CuratorInfoThemaData(
-//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
-//                    thema_num_library_cu_info = "107",
-//                    sentence_count_library_item_cu_info = "15"
-//                )
-//            )
-//            add(
-//                CuratorInfoThemaData(
-//                    thema_cu_info = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔했던 봄을 생각하면 마음이 섬찟해지는 문장",
-//                    thema_num_library_cu_info = "107",
-//                    sentence_count_library_item_cu_info = "15"
-//                )
-//            )
-//            add(
-//                CuratorInfoThemaData(
-//                    thema_cu_info = "개발이 잘 안될 때 심신안정을 위해 봐야하는 문장",
-//                    thema_num_library_cu_info = "509",
-//                    sentence_count_library_item_cu_info = "15"
-//                )
-//            )
-//            add(
-//                CuratorInfoThemaData(
-//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
-//                    thema_num_library_cu_info = "107",
-//                    sentence_count_library_item_cu_info = "15"
-//                )
-//            )
-//            add(
-//                CuratorInfoThemaData(
-//                    thema_cu_info = "번아웃을 극복하기 위해 봐야하는 문장",
-//                    thema_num_library_cu_info = "107",
-//                    sentence_count_library_item_cu_info = "15"
-//                )
-//            )
-//        }
-//    }
 
 }

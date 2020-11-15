@@ -209,6 +209,6 @@ interface RequestInterface {
     @GET("/curator/{curatorIdx}")
     fun CuratorInformation(
         @Header("token") token: String?,
-        @Path("curatorIdx") params: Int
+        @Path("curatorIdx") params: Int?
     ) : Call<ResponseCuratorInformationData>
 }
