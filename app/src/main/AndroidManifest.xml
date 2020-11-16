@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ThemeWritingSentenceBookActivity"></activity>
+        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity"></activity>
+        <activity android:name=".activity.ThemeWritingSentenceBookActivity" />
         <activity android:name=".activity.WritingSentenceInThemeActivity" />
         <activity android:name=".activity.ChangePasswordActivity" />
         <activity android:name=".activity.AccountSettingActivity" />

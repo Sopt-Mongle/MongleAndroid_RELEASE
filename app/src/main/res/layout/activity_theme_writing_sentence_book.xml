@@ -121,15 +121,16 @@
             android:textColor="@color/veryLightPink2"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_title"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gl_left22"
             app:layout_constraintTop_toTopOf="@+id/activity_theme_writing_sentence_book_tv_title" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_search"
+            android:layout_marginRight="15dp"
             app:layout_constraintBottom_toBottomOf="@id/activity_theme_writing_sentence_book_tv_title"
-            app:layout_constraintEnd_toEndOf="@id/activity_theme_writing_sentence_book_tv_title"
+            app:layout_constraintEnd_toEndOf="@id/gl_right22"
             app:layout_constraintTop_toTopOf="@id/activity_theme_writing_sentence_book_tv_title" />
 
         <ImageView
