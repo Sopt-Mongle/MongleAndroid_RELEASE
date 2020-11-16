@@ -154,7 +154,7 @@
             android:textColor="#cbcbcb"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@+id/activity_theme_writing_sentence_tv_cnt"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
             app:layout_constraintTop_toTopOf="@+id/activity_theme_writing_sentence_tv_cnt" />
 
         <LinearLayout
@@ -192,12 +192,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_begin="18dp"
+            android:orientation="vertical"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_right22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_end="19dp"
+            android:orientation="vertical"/>
+
 
         <TextView
             android:id="@+id/activity_theme_writing_sentence_btn_next"
             style="@android:style/ButtonBar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="58dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/btn_green"
             android:gravity="center_vertical"
             android:text="다음"
@@ -206,25 +221,8 @@
             android:textSize="19sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="RtlCompat" />
-
-        <TextView
-            android:id="@+id/activity_theme_writing_sentence_btn_upload"
-            style="@android:style/ButtonBar"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="@drawable/btn_green"
-            android:gravity="center_vertical"
-            android:text="등록하기"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="19sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_right22"
+            app:layout_constraintStart_toStartOf="@id/gl_left22"
             tools:ignore="RtlCompat" />
 
 
