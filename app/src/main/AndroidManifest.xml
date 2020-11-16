@@ -15,10 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.WritingSentenceInThemeActivity"></activity>
+        <activity android:name=".activity.OnBoardingActivity" />
+        <activity android:name=".activity.WritingSentenceInThemeActivity"/>
         <activity android:name=".activity.ChangePasswordActivity" />
         <activity android:name=".activity.AccountSettingActivity" />
-        <activity android:name=".activity.SplashActivity" />
+        <activity android:name=".activity.SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.OpenSourceActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.CuratorInfoActivity" />
@@ -47,11 +54,7 @@
         <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

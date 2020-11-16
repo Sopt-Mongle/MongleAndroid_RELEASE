@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -12,6 +13,10 @@ import com.example.mongleandroid_release.fragment.CuratorFragment
 import com.example.mongleandroid_release.fragment.LibraryFragment
 import com.example.mongleandroid_release.fragment.MainFragment
 import com.example.mongleandroid_release.fragment.SearchFragment
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.customEnqueue
+import com.example.mongleandroid_release.network.data.request.RequestLoginData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,10 +38,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var curatorFragment: CuratorFragment
     lateinit var libraryFragment: LibraryFragment
 
+    private val requestToServer = RequestToServer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         main_activity_FAB_st.visibility = View.GONE
         main_activity_FAB_tm.visibility = View.GONE
         fab_open = AnimationUtils.loadAnimation(this,
@@ -74,6 +81,34 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        // 자동로그인 && 토큰갱신
+        // 비회원 / 회원 구분
+        if(SharedPreferenceController.getMail(this)!!.isBlank() ||
+                SharedPreferenceController.getPasswd(this)!!.isBlank())
+        {
+            // 아이디, 비밀번호가 저장되어있지 않는 경우 = 비회원
+            SharedPreferenceController.setAccessToken(this, "guest")
+        } else {
+            // 자동로그인 - 토큰 새로 얻음
+
+            Log.d("자동로그인", SharedPreferenceController.getAccessToken(this))
+            requestToServer.service.requestLogin(
+                    RequestLoginData(
+                            email = SharedPreferenceController.getMail(this).toString(),
+                            password = SharedPreferenceController.getPasswd(this).toString()
+                    )
+            ).customEnqueue(
+                    onError = {
+                        Log.d("error", "에러")
+                    },
+                    onSuccess = {
+                        if(it.status == 200) {
+                            Log.e("토큰 ", " $it")
+                            SharedPreferenceController.setAccessToken(this, it.data.accessToken)
+                        }
+                    }
+            )
+        }
 
     }
     private fun toggleFab() {
