@@ -40,6 +40,10 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
 //                startActivity(intent)
             }
         }
+
+        activity_theme_writing_sentence_book_btn_upload.setOnClickListener {
+
+        }
     }
 
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
