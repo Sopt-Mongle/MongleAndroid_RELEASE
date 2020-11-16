@@ -9,10 +9,16 @@ import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import kotlinx.android.synthetic.main.activity_detail_theme.*
 import kotlinx.android.synthetic.main.activity_writing_sentence_in_theme.*
 
 class WritingSentenceInThemeActivity : AppCompatActivity() {
+
+    companion object{
+        var writingSentenceInThemeData: RequestWritingSentenceData = RequestWritingSentenceData()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_writing_sentence_in_theme)

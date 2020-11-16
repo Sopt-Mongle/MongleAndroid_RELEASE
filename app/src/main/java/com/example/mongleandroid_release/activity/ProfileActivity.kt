@@ -3,7 +3,6 @@ package com.example.mongleandroid_release.activity
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.UriPermission
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ShapeDrawable
@@ -20,7 +19,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
-import androidx.documentfile.provider.DocumentFile
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone

@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorKeywordAdapter
-import com.example.mongleandroid_release.adapter.SearchCuratorAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData

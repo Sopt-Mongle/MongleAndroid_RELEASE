@@ -15,11 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.ThemeWritingSentenceFinishActivity"></activity>
         <activity android:name=".activity.OnBoardingActivity" />
-        <activity android:name=".activity.WritingSentenceInThemeActivity"/>
+        <activity android:name=".activity.WritingSentenceInThemeActivity" />
         <activity android:name=".activity.ChangePasswordActivity" />
         <activity android:name=".activity.AccountSettingActivity" />
-        <activity android:name=".activity.SplashActivity" >
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,12 +53,12 @@
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.WritingSentenceActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceBookActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
-        <activity android:name=".activity.MainActivity">
-
-        </activity>
+        <activity android:name=".activity.MainActivity"></activity>
     </application>
 
 </manifest>

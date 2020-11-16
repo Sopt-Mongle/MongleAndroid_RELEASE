@@ -10,7 +10,6 @@ import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
-import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.ccc
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
@@ -22,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.tv_author
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.tv_publisher
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.tv_theme
-import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

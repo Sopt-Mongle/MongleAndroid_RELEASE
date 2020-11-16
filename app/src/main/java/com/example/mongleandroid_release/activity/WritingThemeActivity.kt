@@ -7,10 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.WritingThemeImgAdapter
 import com.example.mongleandroid_release.network.RequestToServer

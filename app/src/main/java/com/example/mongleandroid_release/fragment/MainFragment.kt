@@ -112,21 +112,28 @@ class MainFragment : Fragment() {
                     response: Response<ResponseTodaySentenceData>
                 ) {
                     if (response.isSuccessful) {
-                        todaySentenceAdapter = TodaySentenceAdapter(response.body()!!.data, view!!.context)
-                        main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
-                        todaySentenceAdapter.notifyDataSetChanged()
 
-                        //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
-                        todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
-                            override fun onClick(view: View, position: Int) {
-                                Log.d("SSS","${position}번 리스트 선택")
-                                activity?.let{
-                                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
-                                    intent.putExtra("param", response.body()!!.data[position].sentenceIdx)
-                                    startActivity(intent)
+                        if(response.body()!!.data?.isNullOrEmpty()) {
+
+                        } else {
+
+                            todaySentenceAdapter = TodaySentenceAdapter(response.body()!!.data, view!!.context)
+                            main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
+                            todaySentenceAdapter.notifyDataSetChanged()
+
+                            //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
+                            todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
+                                override fun onClick(view: View, position: Int) {
+                                    Log.d("SSS","${position}번 리스트 선택")
+                                    activity?.let{
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
                                 }
-                            }
-                        })
+                            })
+                        }
+
                     }
                 }
 

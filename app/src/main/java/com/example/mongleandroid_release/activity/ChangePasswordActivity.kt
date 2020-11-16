@@ -18,8 +18,6 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestChangePasswordData
 import kotlinx.android.synthetic.main.activity_change_password.*
-import kotlinx.android.synthetic.main.activity_join_step2.*
-import kotlinx.serialization.json.Json.Default.context
 import java.util.regex.Pattern
 
 class ChangePasswordActivity : AppCompatActivity() {
