@@ -1,9 +1,11 @@
 package com.example.mongleandroid_release.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.example.mongleandroid_release.R
@@ -23,20 +25,18 @@ class WritingSentenceInThemeActivity : AppCompatActivity() {
             finish()
         }
 
-        // 다음 버튼 눌렀을 때 책검색 화면 넘어가기
-        activity_theme_writing_sentence_btn_next.setOnClickListener {
-
-        }
-
         // editText칸 안이 비어있을 때 경고
         activity_theme_writing_sentence_btn_next.setOnClickListener {
             if(activity_theme_writing_sentence_et_sentence.text.isEmpty()) {
                 writing_sentence_step1_ll_warning.visibility = View.VISIBLE
                 activity_theme_writing_sentence_et_sentence.setBackgroundResource(R.drawable.et_area_red)
             } else { // 다음 액티비티로 넘어가기
-
+                Log.d("다음 버튼 누름!!!!!!!!!1", "다음다음다음다음")
+                val intent = Intent(this,ThemeWritingSentenceBookActivity::class.java)
+                startActivity(intent)
             }
         }
+        // 문장 글자수 카운팅
         activity_theme_writing_sentence_et_sentence.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
