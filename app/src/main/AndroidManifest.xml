@@ -38,6 +38,9 @@
         <activity android:name=".activity.LibraryActivity" />
         <activity android:name=".activity.JoinFinishActivity" />
         <activity android:name=".activity.PrivacyTermsActivity" />
+        <activity android:name=".activity.OnBoardingActivity">
+
+        </activity>
         <activity android:name=".activity.JoinStep2Activity" />
         <activity android:name=".activity.JoinStep1Activity" />
         <activity
@@ -47,16 +50,17 @@
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="adjustResize" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
         <activity android:name=".activity.MainActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

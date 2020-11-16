@@ -76,7 +76,7 @@
     </EditText>
 
     <ImageView
-        android:id="@+id/writing_sentence_book_search_btn_search"
+        android:id="@+id/theme_writing_sentence_book_search_btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_search"
@@ -87,13 +87,13 @@
         />
 
     <ImageView
-        android:id="@+id/writing_sentence_book_search_btn_delete"
+        android:id="@+id/theme_writing_sentence_book_search_btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingHorizontal="8dp"
         android:paddingVertical="14dp"
         android:src="@drawable/writing_sentence_theme_6_error_btn_erase"
-        app:layout_constraintEnd_toStartOf="@id/writing_sentence_book_search_btn_search"
+        app:layout_constraintEnd_toStartOf="@id/theme_writing_sentence_book_search_btn_search"
         app:layout_constraintTop_toTopOf="@id/theme_writing_sentence_book_search_et_search"
         app:layout_constraintBottom_toBottomOf="@id/theme_writing_sentence_book_search_et_search"/>
 
@@ -193,8 +193,6 @@
                 android:text="다른 키워드로 검색해보세요!"
                 android:textColor="@color/very_light_pink_two"
                 android:textSize="16sp" />
-
-
 
         </LinearLayout>
 
