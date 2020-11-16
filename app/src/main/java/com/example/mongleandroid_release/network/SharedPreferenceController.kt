@@ -87,30 +87,6 @@ object SharedPreferenceController {
         return prefs.getString("NAME", "")
     }
 
-    fun setKeywordIdx(context: Context, input: String) {
-        val prefs = context.getSharedPreferences(MY_PROFILE, Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        editor.putString("KEYWORD", input)
-        editor.apply()
-    }
-
-    fun getKeywordIdx(context: Context) : String? {
-        val prefs = context.getSharedPreferences(MY_PROFILE, Context.MODE_PRIVATE)
-        return prefs.getString("KEYWORD", "")
-    }
-
-    fun setIntroduce(context: Context, input: String) {
-        val prefs = context.getSharedPreferences(MY_PROFILE, Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        editor.putString("INTRODUCE", input)
-        editor.apply()
-    }
-
-    fun getIntroduce(context: Context) : String? {
-        val prefs = context.getSharedPreferences(MY_PROFILE, Context.MODE_PRIVATE)
-        return prefs.getString("INTRODUCE", "")
-    }
-
     // 온보딩 한번 체크
     fun setOnBoarding(context: Context, input: String) {
         val prefs = context.getSharedPreferences(ON_BOARDING, Context.MODE_PRIVATE)
