@@ -8,6 +8,7 @@ object SharedPreferenceController {
     private val TOKEN = "TOKEN"
     private val MY_ACCOUNT = "MY_ACCOUNT"
     private val MY_PROFILE = "MY_PROFILE"
+    private val ON_BOARDING = "ON_BOARDING"
 
     // 토큰
     fun setAccessToken(context: Context, authorization: String?) {
@@ -108,6 +109,19 @@ object SharedPreferenceController {
     fun getIntroduce(context: Context) : String? {
         val prefs = context.getSharedPreferences(MY_PROFILE, Context.MODE_PRIVATE)
         return prefs.getString("INTRODUCE", "")
+    }
+
+    // 온보딩 한번 체크
+    fun setOnBoarding(context: Context, input: String) {
+        val prefs = context.getSharedPreferences(ON_BOARDING, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putString("ON_BOARDING", input)
+        editor.apply()
+    }
+
+    fun getOnBoarding(context: Context) : String? {
+        val prefs = context.getSharedPreferences(ON_BOARDING, Context.MODE_PRIVATE)
+        return prefs.getString("ON_BOARDING", "")
     }
 
 

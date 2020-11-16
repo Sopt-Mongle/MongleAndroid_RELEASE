@@ -10,6 +10,7 @@ import com.example.mongleandroid_release.fragment.OnBoardingStep1Fragment
 import com.example.mongleandroid_release.fragment.OnBoardingStep2Fragment
 import com.example.mongleandroid_release.fragment.OnBoardingStep3Fragment
 import com.example.mongleandroid_release.fragment.OnBoardingStep4Fragment
+import com.example.mongleandroid_release.network.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_on_boarding.*
 import kotlinx.android.synthetic.main.onboarding_step2.*
 
@@ -17,6 +18,8 @@ class OnBoardingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_boarding)
+
+
 
         // viewPagerAdapter 연결
         onboarding_vp.adapter = OnBoardingViewPagerAdapter(supportFragmentManager)
