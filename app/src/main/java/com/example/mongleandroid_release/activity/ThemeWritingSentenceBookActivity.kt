@@ -58,7 +58,6 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                     activity_theme_writing_sentence_book_v_author.setText(author)
                     activity_theme_writing_sentence_book_v_publisher.setText(publisher)
 
-                    activity_theme_writing_sentence_book_tv_hint.visibility = View.GONE
                 }
             }
         }

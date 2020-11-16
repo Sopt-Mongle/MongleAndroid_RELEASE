@@ -13,6 +13,10 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+        img_back_setting.setOnClickListener {
+            finish()
+        }
+
         //프로필 수정 눌렀을 떄 계정 설정 창 띄우기
         profile_change.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
