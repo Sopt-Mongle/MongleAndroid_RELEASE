@@ -1,6 +1,5 @@
 package com.example.mongleandroid.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,7 +13,6 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.LibraryThemaData
 import com.example.mongleandroid_release.network.data.response.ResponseLibraryThemeData
-import kotlinx.android.synthetic.main.fragment_library_sentence.*
 import kotlinx.android.synthetic.main.fragment_library_thema.*
 import retrofit2.Call
 import retrofit2.Callback

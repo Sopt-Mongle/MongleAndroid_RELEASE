@@ -15,7 +15,6 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.LibrarySentenceData
 import com.example.mongleandroid_release.network.data.response.ResponseLibrarySentenceData
 import kotlinx.android.synthetic.main.fragment_library_sentence.*
-import kotlinx.android.synthetic.main.item_library_sentence_click.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

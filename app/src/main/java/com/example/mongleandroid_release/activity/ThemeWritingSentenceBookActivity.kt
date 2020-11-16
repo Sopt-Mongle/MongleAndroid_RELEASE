@@ -1,13 +1,28 @@
 package com.example.mongleandroid_release.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
+import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceData
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_book.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.http.Body
 
 class ThemeWritingSentenceBookActivity : AppCompatActivity() {
+
+    val requestToServer = RequestToServer
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_book)
@@ -36,12 +51,23 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 activity_theme_writing_sentence_book_tv_title.background = getResources().getDrawable(R.drawable.et_area)
                 activity_theme_writing_sentence_book_img_warning.visibility = View.GONE
                 activity_theme_writing_sentence_book_tv_warning.visibility = View.GONE
-//                val intent = Intent(this, WritingSentenceInThemeFinishActivity::class.java )
-//                startActivity(intent)
+
             }
         }
 
+        // 다음 버튼 : 테마에 문장쓰기 업로드
         activity_theme_writing_sentence_book_btn_upload.setOnClickListener {
+            // 빈칸 경고
+            if(activity_theme_writing_sentence_book_tv_title.text.isNullOrEmpty()) {
+                activity_theme_writing_sentence_book_img_warning.visibility = View.VISIBLE
+                activity_theme_writing_sentence_book_tv_warning.visibility = View.VISIBLE
+            } else{
+                // 서버 통신
+                sentenceInThemePost()
+
+                val intent = Intent(this, ThemeWritingSentenceFinishActivity::class.java )
+                startActivity(intent)
+            }
 
         }
     }
@@ -61,4 +87,29 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 }
             }
         }
+
+    private fun sentenceInThemePost() {
+        requestToServer.service.RequestWritingSentence(
+                token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+                body = WritingSentenceInThemeActivity.writingSentenceInThemeData)
+        .enqueue(object : Callback<ResponseWritingSentenceData> {
+            @SuppressLint("LongLogTag")
+            override fun onFailure(call: Call<ResponseWritingSentenceData>, t: Throwable) {
+                Log.e("ResponseWritingSentenceData 통신실패",t.toString())
+            }
+            @SuppressLint("LongLogTag")
+            override fun onResponse(
+                    call: Call<ResponseWritingSentenceData>,
+                    response: Response<ResponseWritingSentenceData>
+            ) {
+                if (response.isSuccessful){
+                    response.body().let { body ->
+                        Log.e("ResponseWritingSentenceData 통신응답바디", "status: ${body!!.status} message : ${body.message} data : ${body.data}\"")
+                    }
+                }
+
+            }
+
+        })
+    }
 }
