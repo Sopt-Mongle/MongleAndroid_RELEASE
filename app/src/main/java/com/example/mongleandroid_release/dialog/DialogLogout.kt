@@ -16,6 +16,7 @@ class DialogLogout(context : Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
     private lateinit var dialog_logout_yes : TextView
     private lateinit var dialog_logout_no : TextView
+    private lateinit var listener : MyDialogOKClickedListener
 
     fun start() {
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)   //타이틀바 제거
@@ -25,11 +26,8 @@ class DialogLogout(context : Context) {
 
         dialog_logout_yes = dlg.findViewById(R.id.tv_logout_yes)
         dialog_logout_yes.setOnClickListener {
-
-            //로그아웃 시키고 loginActivity로 이동
-            val intent = Intent(it.context, LoginActivity::class.java)
-            it.context.startActivity(intent)
-            dlg.dismiss()
+            listener.onOKClicked("로그아웃")
+           dlg.dismiss()
         }
 
         dialog_logout_no = dlg.findViewById(R.id.tv_logout_no)
@@ -40,6 +38,20 @@ class DialogLogout(context : Context) {
 
         dlg.show()
         
+    }
+
+    fun setOnClickListener(listener: (String) -> Unit) {
+        this.listener = object:
+                MyDialogOKClickedListener {
+            override fun onOKClicked(content: String) {
+                listener(content)
+            }
+        }
+    }
+
+
+    interface MyDialogOKClickedListener {
+        fun onOKClicked(content : String)
     }
 
 

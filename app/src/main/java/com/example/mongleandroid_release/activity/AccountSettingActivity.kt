@@ -3,6 +3,7 @@ package com.example.mongleandroid_release.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.dialog.DialogChangePassword
 import com.example.mongleandroid_release.dialog.DialogLogout
@@ -16,8 +17,7 @@ class AccountSettingActivity : AppCompatActivity() {
 
         //뒤로 가기 아이콘 눌렀을 때 화면 전환
         img_back_setting_account.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
-            startActivity(intent)
+            finish()
         }
 
         //비밀번호 변경 아이콘 눌렀을 때 화면 전환
@@ -30,6 +30,13 @@ class AccountSettingActivity : AppCompatActivity() {
         logout.setOnClickListener {
             val dlg = DialogLogout(this)
             dlg.start()
+            dlg.setOnClickListener { content ->
+                if(content == "로그아웃") {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    ActivityCompat.finishAffinity(this)
+                }
+            }
         }
 
         //서비스 탈퇴 버튼 눌렀을 때 dialog 띄우기
