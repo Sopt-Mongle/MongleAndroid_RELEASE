@@ -50,9 +50,10 @@ class DetailThemeActivity : AppCompatActivity() {
         img_detail_theme_activity_back_btn.setOnClickListener {
             finish()
         }
+        // 테마에 문장쓰기 액티비티로 전환하면서 해당테마의 이름 전달해주기
         img_writing_sentence_in_theme_btn.setOnClickListener {
             val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
-            intent.putExtra("param", tv_main_theme_title.text)
+            intent.putExtra("param", tv_main_theme_title.text.toString())
             startActivity(intent)
         }
 
