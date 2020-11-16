@@ -33,6 +33,8 @@
         <activity android:name=".activity.ServiceTermsActivity" />
         <activity android:name=".activity.ServicePolicyActivity" />
         <activity android:name=".activity.SentenceDetailViewActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceBookActivity"/>
+        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity"/>
         <activity
             android:name=".activity.DetailThemeActivity"
             android:label="@string/title_activity_detail_theme" />

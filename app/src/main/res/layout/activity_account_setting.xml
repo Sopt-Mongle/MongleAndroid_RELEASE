@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="16dp"
     tools:context=".activity.AccountSettingActivity">
 
     <TextView
@@ -25,6 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/btn_back"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingStart="17dp"
+        android:paddingEnd="23dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_setting_account"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -38,6 +41,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="39dp"
         android:gravity="center_vertical"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/tv_setting_account"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -65,6 +69,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/password_change"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -92,6 +97,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/logout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">

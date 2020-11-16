@@ -20,14 +20,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/dialog_area"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_dialog_logout_mongle">
 
         <TextView
             android:id="@+id/tv_logout_q"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="69dp"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center_horizontal"
@@ -37,7 +38,6 @@
             android:text="계정을 로그아웃 하시겠어요?"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:layout_marginHorizontal="69dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
         <TextView
             android:id="@+id/tv_logout"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/notosanscjkkr_demilight"
             android:gravity="center_horizontal"
@@ -60,8 +60,9 @@
 
         <TextView
             android:id="@+id/tv_logout_yes"
-            android:layout_width="127dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/dialog_btn_yes"
@@ -70,41 +71,42 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="6sp"
-            android:paddingLeft="38dp"
+            android:paddingStart="58dp"
             android:paddingTop="9dp"
-            android:paddingRight="39dp"
+            android:paddingEnd="57dp"
             android:paddingBottom="8dp"
             android:text="네"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/tv_logout_no"
-            app:layout_constraintTop_toBottomOf="@+id/tv_logout"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_logout_no"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logout" />
 
         <TextView
             android:id="@+id/tv_logout_no"
-            android:layout_width="127dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="25dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/dialog_btn_no"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="6sp"
-            android:paddingLeft="38dp"
+            android:paddingStart="45dp"
             android:paddingTop="9dp"
-            android:paddingRight="39dp"
+            android:paddingEnd="44dp"
             android:paddingBottom="8dp"
             android:text="아니요"
             android:textColor="@color/soft_green"
             android:textSize="14sp"
-            app:layout_constraintLeft_toRightOf="@id/tv_logout_yes"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_logout"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="@+id/tv_logout_yes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_logout_yes"
+            app:layout_constraintTop_toTopOf="@+id/tv_logout_yes" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
