@@ -148,6 +148,7 @@
             android:clipToPadding="false"
             android:orientation="vertical"
             android:layout_marginTop="32dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_writing_sentence_book_result" />
@@ -180,6 +181,7 @@
                 android:src="@drawable/ic_search_empty2"/>
 
             <TextView
+                android:id="@+id/empty_tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -188,6 +190,7 @@
                 android:textSize="19sp" />
 
             <TextView
+                android:id="@+id/empty_tv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="다른 키워드로 검색해보세요!"

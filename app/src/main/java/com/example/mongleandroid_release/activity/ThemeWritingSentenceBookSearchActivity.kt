@@ -1,6 +1,7 @@
 package com.example.mongleandroid_release.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -11,12 +12,16 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
 import com.example.mongleandroid_release.fragment.WritingSentenceBookSearchFragmentDirections
+import com.example.mongleandroid_release.goNextPage
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceBookSearchData
 import com.example.mongleandroid_release.showKeyboard
+import com.example.mongleandroid_release.unshowKeyboard
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_book_search.*
+import kotlinx.android.synthetic.main.item_writing_sentence_book_result.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,9 +35,18 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
     private var author :String = ""
     private var publisher :String = ""
 
+    companion object {
+        var theme_book_result = ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_book_search)
+
+        writing_sentence_book_search_cl_before.visibility = View.VISIBLE
+        writing_sentence_book_search_cl_after.visibility = View.GONE
+        writing_sentence_book_search_rv.visibility = View.GONE
+        writing_sentence_book_search_cl_no.visibility = View.GONE
 
         // X 버튼 눌렀을 때 나가기
         theme_writing_sentence_book_search_btn_out.setOnClickListener {
@@ -67,21 +81,32 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
         })
 
-        // 검색 버튼
+        //rv 동작
+        writingSentenceBookSearchAdapter = WritingSentenceBookSearchAdapter(this)
+        writing_sentence_book_search_rv.adapter = writingSentenceBookSearchAdapter
+        writing_sentence_book_search_rv.addItemDecoration(ItemDecoration())
+
+        // 검색 버튼 눌렀을 때
         theme_writing_sentence_book_search_btn_search.setOnClickListener {
 
-            keyword = theme_writing_sentence_book_search_et_search.text.toString()
-            if (keyword.isNullOrBlank()) {
+            //키보드 제어
+            theme_writing_sentence_book_search_et_search.unshowKeyboard()
 
-            } else {
-                val bookSearchWord = theme_writing_sentence_book_search_et_search.text.toString()
+            //검색 결과가 있으면
+            goNextPage(writing_sentence_book_search_cl_before, writing_sentence_book_search_cl_after)
+            writing_sentence_book_search_rv.visibility = View.VISIBLE
 
-            }
+            //서버 데이타를 넣어줌
+            val bookSearchWord = theme_writing_sentence_book_search_et_search.text.toString()
+            theme_book_result = bookSearchWord.trim()
+            requestData(bookSearchWord)
+
         }
+
 
     }
 
-    private fun bookSearch(keyword: String, view: View) {
+    private fun requestData(keyword: String) {
         val call: Call<ResponseWritingSentenceBookSearchData> = RequestToServer.service.RequestWritingSentenceBookSearch(keyword = keyword)
         call.enqueue(object : Callback<ResponseWritingSentenceBookSearchData> {
             @SuppressLint("LongLogTag")
@@ -94,44 +119,39 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                     response.body().let { body ->
                         Log.e(
                                 "ResponseWritingSentenceBookSearchData 통신응답바디",
-                                "status: ${body!!.staus} data : ${body.message}"
+                                "status: ${body!!.staus} data : ${body!!.message}"
                         )
 
                         if(body.data.isNullOrEmpty()){
                             //if 서버 통신 성공 && 결과 없음
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.GONE
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_no).visibility = View.VISIBLE
+                            writing_sentence_book_search_cl_before.visibility = View.GONE
+                            writing_sentence_book_search_cl_after.visibility = View.GONE
+                            writing_sentence_book_search_cl_no.visibility = View.VISIBLE
 
                         }else{
                             // rv 동작 게시
                             writingSentenceBookSearchAdapter.datas = body.data
                             writingSentenceBookSearchAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.VISIBLE
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_no).visibility = View.GONE
-                            // user reaction : 검색 결과 키워드 변경
-                            view.findViewById<TextView>(R.id.writing_sentence_book_search_tv_keyword).text = keyword
-                            // user reaction : 검색 결과 건 수
-                            view.findViewById<TextView>(R.id.writing_sentence_book_search_cnt).text = "총 " + body.data.size.toString() + "건"
+//                            empty_tv1.visibility = View.GONE
+//                            empty_tv2.visibility = View.GONE
+                            writing_sentence_book_search_cl_before.visibility = View.GONE
+                            writing_sentence_book_search_cl_after.visibility = View.VISIBLE
+                            writing_sentence_book_search_cl_no.visibility = View.GONE
+                            writing_sentence_book_search_tv_keyword.text = keyword
+                            writing_sentence_book_search_cnt.text = "총 " + body.data.size.toString() + "건"
 
                             //리사이클러뷰 아이템 클릭리스너 등록
                             writingSentenceBookSearchAdapter.setItemClickListener(object : WritingSentenceBookSearchAdapter.ItemClickListener{
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS","${position}번 리스트 선택")
-                                    title = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_title).text.toString()
-                                    author = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_author).text.toString()
-                                    publisher = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_publisher).text.toString()
 
-                                    // (/post/sentence) req data init (2/6):: thumbnail
-                                    WritingSentenceActivity.writingSentenceData.thumbnail = view.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail).text.toString()
-
-
-                                    // 아이템을 선택했다면 step2로 이동
-                                    val action = WritingSentenceBookSearchFragmentDirections.
-                                    actionWritingSentenceBookSearchFragmentToWritingSentenceStep2Fragment(title, author, publisher)
-                                    view.findNavController().navigate(action)
+                                    val intent = Intent(this@ThemeWritingSentenceBookSearchActivity, ThemeWritingSentenceBookActivity::class.java)
+                                    intent.putExtra("title",item_writing_sentence_book_result_tv_title.text.toString())
+                                    intent.putExtra("author", item_writing_sentence_book_result_tv_author.text.toString())
+                                    intent.putExtra("publisher", item_writing_sentence_book_result_tv_publisher.text.toString())
+                                    setResult(1, intent)
+                                    finish()
                                 }
                             })
                         }
