@@ -83,11 +83,10 @@
             android:id="@+id/activity_theme_writing_sentence_book_tv_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:text="한 문장"
             android:textColor="@color/soft_green"
             android:textSize="19sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gl_left22"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -101,45 +100,61 @@
             app:layout_constraintTop_toTopOf="@id/activity_theme_writing_sentence_book_tv_5" />
 
         <TextView
-            android:id="@+id/activity_theme_writing_sentence_book_tv_title"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/et_area"
-            app:layout_constraintStart_toStartOf="@id/gl_left22"
-            app:layout_constraintEnd_toEndOf="@id/gl_right22"
-            app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_5" />
-
-        <TextView
-            android:id="@+id/activity_theme_writing_sentence_book_tv_hint"
+            android:id="@+id/textView42"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="9sp"
-            android:text="책 제목을 검색해주세요."
-            android:textColor="@color/veryLightPink2"
+            android:layout_marginTop="24dp"
+            android:text="책 제목"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_title"
+            android:textColor="@color/greyish_brown"
+            android:letterSpacing="-0.02"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="@+id/gl_left22"
+            app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_6" />
+
+        <TextView
+            android:id="@+id/activity_theme_writing_sentence_book_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/et_area"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:hint="책 제목을 검색해주세요."
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:paddingStart="15dp"
+            android:paddingTop="11dp"
+            android:paddingEnd="40dp"
+            android:paddingBottom="11dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/gl_right22"
             app:layout_constraintStart_toStartOf="@id/gl_left22"
-            app:layout_constraintTop_toTopOf="@+id/activity_theme_writing_sentence_book_tv_title" />
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingStart="7dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="13dp"
             android:src="@drawable/btn_search"
-            android:layout_marginRight="15dp"
             app:layout_constraintBottom_toBottomOf="@id/activity_theme_writing_sentence_book_tv_title"
-            app:layout_constraintEnd_toEndOf="@id/gl_right22"
+            app:layout_constraintEnd_toStartOf="@+id/gl_right22"
             app:layout_constraintTop_toTopOf="@id/activity_theme_writing_sentence_book_tv_title" />
 
         <ImageView
             android:id="@+id/activity_theme_writing_sentence_book_img_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginTop="13dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/activity_theme_writing_sentence_book_tv_title"
             app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_title"
             app:srcCompat="@drawable/ic_warning" />
 
@@ -162,12 +177,14 @@
             android:id="@+id/activity_theme_writing_sentence_book_tv_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="40dp"
             android:text="작가/옮긴이"
-            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
             android:textColor="@color/greyish_brown"
-            android:textSize="19sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:letterSpacing="-0.02"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="@+id/gl_left22"
             app:layout_constraintTop_toBottomOf="@id/activity_theme_writing_sentence_book_tv_title" />
 
         <TextView
@@ -176,8 +193,19 @@
             android:layout_height="46dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/et_area_grey"
-            app:layout_constraintStart_toStartOf="@id/gl_left22"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:letterSpacing="-0.02"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:ellipsize="end"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="@id/gl_right22"
+            app:layout_constraintStart_toStartOf="@+id/gl_left22"
             app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_7" />
 
 
@@ -185,22 +213,35 @@
             android:id="@+id/activity_theme_writing_sentence_book_tv_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
             android:text="출판사"
-            android:layout_marginLeft="15dp"
             android:textColor="@color/greyish_brown"
-            android:textSize="19sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/gl_left22"
             app:layout_constraintTop_toBottomOf="@id/activity_theme_writing_sentence_book_v_author" />
 
         <TextView
             android:id="@+id/activity_theme_writing_sentence_book_v_publisher"
             android:layout_width="0dp"
             android:layout_height="46dp"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/et_area_grey"
-            app:layout_constraintStart_toStartOf="@id/gl_left22"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="12dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:letterSpacing="-0.02"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:ellipsize="end"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="@id/gl_right22"
+            app:layout_constraintStart_toStartOf="@id/gl_left22"
             app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_book_tv_8" />
 
 
