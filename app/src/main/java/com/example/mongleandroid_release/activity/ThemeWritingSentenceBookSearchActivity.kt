@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.ItemDecoration
+import com.example.mongleandroid_release.adapter.ThemeSentenceBookSearchAdapter
 import com.example.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
 import com.example.mongleandroid_release.fragment.WritingSentenceBookSearchFragmentDirections
 import com.example.mongleandroid_release.goNextPage
@@ -28,7 +29,7 @@ import retrofit2.Response
 
 class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
-    lateinit var writingSentenceBookSearchAdapter: WritingSentenceBookSearchAdapter
+    lateinit var themeSentenceBookSearchAdapter : ThemeSentenceBookSearchAdapter
 
     private var keyword :String = ""
     private var title :String = ""
@@ -82,8 +83,8 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         })
 
         //rv 동작
-        writingSentenceBookSearchAdapter = WritingSentenceBookSearchAdapter(this)
-        writing_sentence_book_search_rv.adapter = writingSentenceBookSearchAdapter
+        themeSentenceBookSearchAdapter = ThemeSentenceBookSearchAdapter(this)
+        writing_sentence_book_search_rv.adapter = themeSentenceBookSearchAdapter
         writing_sentence_book_search_rv.addItemDecoration(ItemDecoration())
 
         // 검색 버튼 눌렀을 때
@@ -130,8 +131,8 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
                         }else{
                             // rv 동작 게시
-                            writingSentenceBookSearchAdapter.datas = body.data
-                            writingSentenceBookSearchAdapter.notifyDataSetChanged()
+                            themeSentenceBookSearchAdapter.datas = body.data
+                            themeSentenceBookSearchAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
 //                            empty_tv1.visibility = View.GONE
 //                            empty_tv2.visibility = View.GONE
@@ -142,7 +143,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                             writing_sentence_book_search_cnt.text = "총 " + body.data.size.toString() + "건"
 
                             //리사이클러뷰 아이템 클릭리스너 등록
-                            writingSentenceBookSearchAdapter.setItemClickListener(object : WritingSentenceBookSearchAdapter.ItemClickListener{
+                            themeSentenceBookSearchAdapter.setItemClickListener(object : ThemeSentenceBookSearchAdapter.ItemClickListener{
                                 override fun onClick(view: View, position: Int) {
                                     Log.d("SSS","${position}번 리스트 선택")
 
