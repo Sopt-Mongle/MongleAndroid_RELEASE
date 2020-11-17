@@ -9,6 +9,9 @@ data class ResponseWritingThemeImgData(
 
 data class ThemeImg(
     val themeImgIdx: Int, // 이미지 인덱스
-    val img: String // 이미지 url
+    val img: String, // 이미지 url
+
+    // single selection impl :: #90 구현을 위해 추가함
+    var imgChked: Boolean = false // 테마 체크 표현
 
 )
