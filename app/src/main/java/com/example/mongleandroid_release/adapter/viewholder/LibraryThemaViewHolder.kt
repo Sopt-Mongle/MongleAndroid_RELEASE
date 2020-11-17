@@ -1,10 +1,10 @@
-package com.example.mongleandroid_release.adapter.viewholder
+package com.example.mongleandroid.adapter.viewholder
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.network.data.LibraryThemaData
+import com.example.mongleandroid_release.network.data.response.LibraryThemeSave
 
 class LibraryThemaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tv_library_thema = itemView.findViewById<TextView>(R.id.tv_library_thema)
@@ -14,15 +14,15 @@ class LibraryThemaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 //    val rdbtn_saved_thema = itemView.findViewById<RadioButton>(R.id.rdbtn_saved_thema)
 //    val rdbtn_making_thema = itemView.findViewById<RadioButton>(R.id.rdbtn_making_thema)
 
-//    fun bind(libraryThemeSave: LibraryThemeSave) {
-//            tv_library_thema.text = libraryThemeSave.theme
-//            tv_thema_num_library.text = libraryThemeSave.saves.toString()
-//            tv_sentence_count_library_item.text = libraryThemeSave.sentenceNum.toString()
+    fun bind(libraryThemeSave: LibraryThemeSave) {
+        tv_library_thema.text = libraryThemeSave.theme
+        tv_thema_num_library.text = libraryThemeSave.saves.toString()
+        tv_sentence_count_library_item.text = libraryThemeSave.sentenceNum.toString()
 
-    fun bind(libraryThemaData: LibraryThemaData) {
-        tv_library_thema.text = libraryThemaData.tv_library_thema
-        tv_thema_num_library.text = libraryThemaData.tv_thema_num_library
-        tv_sentence_count_library_item.text = libraryThemaData.tv_sentence_count_library_item
+//    fun bind(libraryThemaData: LibraryThemaData) {
+//        tv_library_thema.text = libraryThemaData.tv_library_thema
+//        tv_thema_num_library.text = libraryThemaData.tv_thema_num_library
+//        tv_sentence_count_library_item.text = libraryThemaData.tv_sentence_count_library_item
 
 //        rdbtn_saved_thema.setOnClickListener {
 //            if (rdbtn_saved_thema.isChecked) {

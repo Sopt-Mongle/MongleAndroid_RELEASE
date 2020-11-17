@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.network
 
+import com.example.mongleandroid_release.network.data.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
 import okhttp3.MultipartBody
@@ -134,6 +135,11 @@ interface RequestInterface {
     @GET("/post/themeImg")
     fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
 
+    /* 메인 */
+    //메인 - Editor's Pick
+    @GET("/main/editorsPick")
+    fun RequestEditorsPick() : Call<ResponseEditorsPickData>
+
     //메인 - 오늘의 문장 - 성공
     @GET("/main/sentences")
     fun RequestMainSentences(
@@ -181,6 +187,12 @@ interface RequestInterface {
         @Part("introduce") introduce: RequestBody
     ) : Call<ResponseUpdateProfileData>
 
+    // 비밀번호 변경
+    @PUT("/users/changePassword")
+    fun requestChangePassword(
+        @Header("token") token: String?,
+        @Body body: RequestChangePasswordData) : Call<ResponseChangePasswordData>
+
     //문장 상세 조회
     @GET("/detail/sentence/{sentenceIdx}")
     fun GetDetailSentence(
@@ -193,4 +205,18 @@ interface RequestInterface {
     fun GetDetailSentenceOtherThemeSentence(
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceDetailOtherThemeData>
+
+    //큐레이터 상세보기
+    @GET("/curator/{curatorIdx}")
+    fun CuratorInformation(
+        @Header("token") token: String?,
+        @Path("curatorIdx") params: Int?
+    ) : Call<ResponseCuratorInformationData>
+
+    // 문장 좋아요 누르기
+    @PUT("/detail/sentence/{sentenceIdx}/like")
+    fun PutsentenceLikeNum(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceLikeNumData>
 }

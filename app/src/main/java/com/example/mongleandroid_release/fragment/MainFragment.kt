@@ -68,7 +68,7 @@ class MainFragment : Fragment() {
         //뷰페이저 연결
         vp_main.adapter = MainPagerAdapter(childFragmentManager)
         vp_main.offscreenPageLimit = 2
-        tl_main.setupWithViewPager(vp_main)
+        main_dots_indicator.setViewPager(vp_main)
 
         requestTodaySentenceData() // 오늘의 문장 통신
         requestMainCurators() // 지금 인기있는 큐레이터 통신
@@ -112,21 +112,28 @@ class MainFragment : Fragment() {
                     response: Response<ResponseTodaySentenceData>
                 ) {
                     if (response.isSuccessful) {
-                        todaySentenceAdapter = TodaySentenceAdapter(response.body()!!.data, view!!.context)
-                        main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
-                        todaySentenceAdapter.notifyDataSetChanged()
 
-                        //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
-                        todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
-                            override fun onClick(view: View, position: Int) {
-                                Log.d("SSS","${position}번 리스트 선택")
-                                activity?.let{
-                                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
-                                    intent.putExtra("param", response.body()!!.data[position].sentenceIdx)
-                                    startActivity(intent)
+                        if(response.body()!!.data?.isNullOrEmpty()) {
+
+                        } else {
+
+                            todaySentenceAdapter = TodaySentenceAdapter(response.body()!!.data, view!!.context)
+                            main_fragment_rv_today_sentence.adapter = todaySentenceAdapter
+                            todaySentenceAdapter.notifyDataSetChanged()
+
+                            //오늘의 문장 리사이클러뷰 아이템 클릭리스너 등록
+                            todaySentenceAdapter.setItemClickListener(object : TodaySentenceAdapter.ItemClickListener{
+                                override fun onClick(view: View, position: Int) {
+                                    Log.d("SSS","${position}번 리스트 선택")
+                                    activity?.let{
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
                                 }
-                            }
-                        })
+                            })
+                        }
+
                     }
                 }
 

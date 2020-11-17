@@ -15,14 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.SentenceDetailNoThemeActivity"></activity>
-        <activity android:name=".activity.SplashActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceFinishActivity"></activity>
+        <activity android:name=".activity.OnBoardingActivity" />
+        <activity android:name=".activity.WritingSentenceInThemeActivity" />
+        <activity android:name=".activity.ChangePasswordActivity" />
+        <activity android:name=".activity.AccountSettingActivity" />
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.OpenSourceActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.CuratorInfoActivity" />
+        <activity android:name=".activity.SentenceDetailNoThemeActivity" />
         <activity android:name=".activity.ServiceTermsActivity" />
         <activity android:name=".activity.ServicePolicyActivity" />
         <activity android:name=".activity.SentenceDetailViewActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceBookActivity"/>
+        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity"/>
         <activity
             android:name=".activity.DetailThemeActivity"
             android:label="@string/title_activity_detail_theme" />
@@ -40,16 +53,12 @@
             android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.WritingSentenceActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceBookActivity" />
+        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
-        <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.MainActivity"></activity>
     </application>
 
 </manifest>

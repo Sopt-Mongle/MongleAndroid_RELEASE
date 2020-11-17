@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,16 +24,10 @@ import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchAdapter
 import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchFirstAdapter
-import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchFirstViewHolder
-import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchViewHolder
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchFirstData
-import com.example.mongleandroid_release.network.data.response.FirstThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchThemeData
-import com.example.mongleandroid_release.network.data.response.SearchTheme
-import kotlinx.android.synthetic.main.item_writing_sentence_theme_result.*
 import kotlinx.android.synthetic.main.writing_sentence_theme_search.*
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ThemeWritingSentenceFinishActivity">
+
+    <ImageView
+        android:layout_width="260dp"
+        android:layout_height="212dp"
+        android:src="@drawable/theme_writing_sentence_finish_img_sentence"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="108dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="354dp"
+        android:text="문장이 등록되었습니다!"
+        android:textColor="@color/black"
+        android:textStyle=""
+        android:textSize="19sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="몽글이님의 문장으로\n몽글이 더욱 풍부해졌어요!"
+        android:gravity="center"
+        android:textColor="@color/very_light_pink_two"
+        android:textSize="16sp"
+        android:layout_marginTop="392dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/theme_writing_sentence_finish_btn_sentence"
+        android:layout_width="240dp"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_green"
+        android:gravity="center"
+        android:text="문장 확인하러가기"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="476dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/theme_writing_sentence_finish_btn_main"
+        android:layout_width="240dp"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_white"
+        android:gravity="center"
+        android:text="메인으로 돌아가기"
+        android:textColor="@color/soft_green"
+        android:textSize="16sp"
+        android:layout_marginTop="535dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

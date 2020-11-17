@@ -11,63 +11,64 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#59bcbcbc"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_library_item_sentence"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/line_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
 
         <TextView
             android:id="@+id/tv_library_sentence_themename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="2sp"
             android:textColor="#bcbcbc"
             android:textSize="13sp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
+            app:layout_constraintBottom_toTopOf="@id/tv_library_sentence_sentence"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/cl_library_item_sentence"
             app:layout_constraintTop_toTopOf="@id/cl_library_item_sentence"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintBottom_toTopOf="@id/tv_library_sentence_sentence"
             tools:text="번아웃을 극복하고 싶을 때 봐야하는 문장" />
 
         <TextView
             android:id="@+id/tv_library_sentence_sentence"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="6sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:maxLines="2"
             android:text="결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. "
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/img_item_library_sentence_usermark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_library_sentence_themename"
-            app:layout_constraintTop_toBottomOf="@id/tv_library_sentence_themename"
-            app:layout_constraintBottom_toTopOf="@id/img_item_library_sentence_usermark" />
+            app:layout_constraintTop_toBottomOf="@id/tv_library_sentence_themename" />
 
         <ImageView
             android:id="@+id/img_item_library_sentence_usermark"
             android:layout_width="11dp"
             android:layout_height="11dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/bookmark"
-            android:layout_marginBottom="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="22dp"
+            android:src="@drawable/search_result_sentence_ic_curator"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/tv_library_sentence_themename"
             app:layout_constraintRight_toLeftOf="@id/tv_item_library_sentence_username"
@@ -77,18 +78,17 @@
             android:id="@+id/tv_item_library_sentence_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="2sp"
             android:text="예스리"
             android:textColor="#bcbcbc"
             android:textSize="13sp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="2sp"
-            android:fontFamily="@font/notosanscjkkr_regular"
-            android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@id/img_item_library_sentence_usermark"
             app:layout_constraintStart_toEndOf="@id/img_item_library_sentence_usermark"
             app:layout_constraintTop_toTopOf="@id/img_item_library_sentence_usermark" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

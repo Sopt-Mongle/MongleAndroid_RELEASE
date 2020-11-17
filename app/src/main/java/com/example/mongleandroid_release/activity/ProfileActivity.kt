@@ -3,7 +3,6 @@ package com.example.mongleandroid_release.activity
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.content.UriPermission
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ShapeDrawable
@@ -20,7 +19,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
-import androidx.documentfile.provider.DocumentFile
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
@@ -29,6 +27,7 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestDuplicateData
 import com.example.mongleandroid_release.network.data.response.ResponseDuplicateData
+import com.example.mongleandroid_release.network.data.response.ResponseMainLibraryData
 import com.example.mongleandroid_release.network.data.response.ResponseUpdateProfileData
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -50,6 +49,7 @@ class ProfileActivity : AppCompatActivity() {
     private val PICK_FROM_ALBUM = 100
     private var fileUri : Uri? = null
     private var keywordIndex : Int = 0
+    private lateinit var profile_name : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +65,9 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
+        activity_profile_btn_out.setOnClickListener {
+            finish()
+        }
 
 
         fileUri = SharedPreferenceController.getImage(this)?.toUri()
@@ -73,36 +76,73 @@ class ProfileActivity : AppCompatActivity() {
         activity_profile_img.background = ShapeDrawable(OvalShape())
         activity_profile_img.clipToOutline = true
 
-        // pref에서 받아오기
-        Glide.with(this).load(fileUri).into(activity_profile_img)
-        activity_profile_et_nickname.setText(SharedPreferenceController.getName(this))
-        when(SharedPreferenceController.getKeywordIdx(this)) {
-            "1" -> {
-                activity_profile_btn1.isChecked = true
-                keywordIndex = 1
+        requestToServer.service.lookLibraryProfile(
+                token = SharedPreferenceController.getAccessToken(this)
+        ).enqueue(object : Callback<ResponseMainLibraryData> {
+            override fun onResponse(call: Call<ResponseMainLibraryData>, response: Response<ResponseMainLibraryData>) {
+                if(response.isSuccessful) {
+                    if(response.body()!!.data.isNullOrEmpty()) {
+
+                    } else {
+                        Glide.with(this@ProfileActivity).load(response.body()!!.data[0].img).into(activity_profile_img)
+
+                        activity_profile_et_nickname.setText(response.body()!!.data[0].name)
+                        profile_name = response.body()!!.data[0].name
+
+                        when(response.body()!!.data[0].keyword) {
+                            "감성자극" -> {
+                                activity_profile_btn1.isChecked = true
+                                keywordIndex = 1
+                            }
+                            "동기부여" -> {
+                                activity_profile_btn2.isChecked = true
+                                keywordIndex = 2
+                            }
+                            "자기계발" -> {
+                                activity_profile_btn3.isChecked = true
+                                keywordIndex = 3
+                            }
+                            "깊은생각" -> {
+                                activity_profile_btn4.isChecked = true
+                                keywordIndex = 4
+                            }
+                            "독서기록" -> {
+                                activity_profile_btn5.isChecked = true
+                                keywordIndex = 5
+                            }
+                            "일상문장" -> {
+                                activity_profile_btn6.isChecked = true
+                                keywordIndex = 6
+                            }
+                        }
+
+                        activity_profile_et_introduce.setText(response.body()!!.data[0].introduce)
+
+                        // 포커스 해제
+                        activity_profile_et_nickname.background = resources.getDrawable(
+                                R.drawable.et_area,
+                                null
+                        )
+                        change_gone(activity_profile_btn_nickname_erase)
+                        change_gone(activity_profile_tv_nickname_cnt)
+                        change_gone(activity_profile_tv_nickname_cnt_max)
+
+                        activity_profile_et_introduce.background = resources.getDrawable(
+                                R.drawable.et_area,
+                                null
+                        )
+                        change_gone(activity_profile_btn_introduce_erase)
+                        change_gone(activity_profile_tv_introduce_cnt)
+                        change_gone(activity_profile_tv_introduce_cnt_max)
+                    }
+                }
             }
-            "2" -> {
-                activity_profile_btn2.isChecked = true
-                keywordIndex = 2
+
+            override fun onFailure(call: Call<ResponseMainLibraryData>, t: Throwable) {
+                Log.d("프로필 받아오기 실패", "$t")
             }
-            "3" -> {
-                activity_profile_btn3.isChecked = true
-                keywordIndex = 3
-            }
-            "4" -> {
-                activity_profile_btn4.isChecked = true
-                keywordIndex = 4
-            }
-            "5" -> {
-                activity_profile_btn5.isChecked = true
-                keywordIndex = 5
-            }
-            "6" -> {
-                activity_profile_btn6.isChecked = true
-                keywordIndex = 6
-            }
-        }
-        activity_profile_et_introduce.setText(SharedPreferenceController.getIntroduce(this))
+
+        })
 
 
         activity_profile_btn1.setOnClickListener {
@@ -221,38 +261,43 @@ class ProfileActivity : AppCompatActivity() {
                 )
                 change_gone(activity_profile_btn_nickname_erase)
 
-                // 닉네임 중복체크
-                requestToServer.service.requestDuplicate(
-                    RequestDuplicateData(
-                        email = "닉네임만체크함",
-                        name = activity_profile_et_nickname.text.toString()
-                    )
-                ).enqueue(object : Callback<ResponseDuplicateData> {
-                    override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
-                        Log.d("error", "duplicate / $t")
-                    }
+                if(profile_name == activity_profile_et_nickname.text.toString()) {
 
-                    override fun onResponse(
-                        call: Call<ResponseDuplicateData>,
-                        response: Response<ResponseDuplicateData>
-                    ) {
-                        if (response.isSuccessful) {
-                            if (response.body()!!.data.duplicate == "name") {
-                                activity_profile_et_nickname.background = resources.getDrawable(
-                                    R.drawable.et_area_red,
-                                    null
-                                )
-                                change_visible(activity_profile_img_nickname_warning)
-                                activity_profile_img_nickname_warning.setImageResource(R.drawable.ic_warning)
-                                change_visible(activity_profile_tv_nickname_exist)
-                            } else {
-                                change_visible(activity_profile_img_nickname_warning)
-                                activity_profile_img_nickname_warning.setImageResource(R.drawable.ic_possible)
-                                change_visible(activity_profile_tv_nickname_possible)
+                } else {
+                    // 닉네임 중복체크
+                    requestToServer.service.requestDuplicate(
+                            RequestDuplicateData(
+                                    email = "닉네임만체크함",
+                                    name = activity_profile_et_nickname.text.toString()
+                            )
+                    ).enqueue(object : Callback<ResponseDuplicateData> {
+                        override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
+                            Log.d("error", "duplicate / $t")
+                        }
+
+                        override fun onResponse(
+                                call: Call<ResponseDuplicateData>,
+                                response: Response<ResponseDuplicateData>
+                        ) {
+                            if (response.isSuccessful) {
+                                if (response.body()!!.data.duplicate == "name") {
+                                    activity_profile_et_nickname.background = resources.getDrawable(
+                                            R.drawable.et_area_red,
+                                            null
+                                    )
+                                    change_visible(activity_profile_img_nickname_warning)
+                                    activity_profile_img_nickname_warning.setImageResource(R.drawable.ic_warning)
+                                    change_visible(activity_profile_tv_nickname_exist)
+                                } else {
+                                    change_visible(activity_profile_img_nickname_warning)
+                                    activity_profile_img_nickname_warning.setImageResource(R.drawable.ic_possible)
+                                    change_visible(activity_profile_tv_nickname_possible)
+                                }
                             }
                         }
-                    }
-                })
+                    })
+                }
+
             }
         }
 
@@ -360,9 +405,7 @@ class ProfileActivity : AppCompatActivity() {
                 // pref에 저장
                 SharedPreferenceController.setName(this,
                     activity_profile_et_nickname.text.toString())
-                SharedPreferenceController.setKeywordIdx(this, keywordIndex.toString())
-                SharedPreferenceController.setIntroduce(this,
-                    activity_profile_et_introduce.text.toString())
+
             }
 
         }

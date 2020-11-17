@@ -50,11 +50,12 @@ class DetailThemeActivity : AppCompatActivity() {
         img_detail_theme_activity_back_btn.setOnClickListener {
             finish()
         }
-
-//        img_writing_sentence_in_theme_btn.setOnClickListener {
-//            val intent = Intent(this, ThemeWritingSentenceActivity::class.java)
-//            startActivity(intent)
-//        }
+        // 테마에 문장쓰기 액티비티로 전환하면서 해당테마의 이름 전달해주기
+        img_writing_sentence_in_theme_btn.setOnClickListener {
+            val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+            intent.putExtra("param", tv_main_theme_title.text.toString())
+            startActivity(intent)
+        }
 
         requestThemeData()
         requestMainThemeData()
@@ -86,6 +87,12 @@ class DetailThemeActivity : AppCompatActivity() {
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
                             Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg).into(imageView5)
+
+                            // 테마에 문장 쓰러 가기
+//                            img_writing_sentence_in_theme_btn.setOnClickListener {
+//                                val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+//                                intent.putExtra("param", response.body()!!.data!!.theme[0].themeIdx)
+//                            }
                         }
                         //tv_main_theme_title.text = themesData.get(1).toString()
 //                        for (i in 0..5) {
@@ -133,6 +140,7 @@ class DetailThemeActivity : AppCompatActivity() {
                             override fun onClick(view: View, position: Int) {
                                 Log.d("SSS","${position}번 리스트 선택")
                                 val intent = Intent(this@DetailThemeActivity, SentenceDetailNoThemeActivity::class.java)
+                                intent.putExtra("param", response.body()!!.data!!.sentence[position].sentenceIdx)
                                 startActivity(intent)
                             }
                         })
