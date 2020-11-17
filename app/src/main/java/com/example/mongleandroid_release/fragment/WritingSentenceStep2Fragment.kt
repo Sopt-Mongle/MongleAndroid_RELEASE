@@ -93,7 +93,7 @@ class WritingSentenceStep2Fragment : Fragment() {
 
 
         // 책 검색 버튼
-        view.findViewById<ImageView>(R.id.writing_sentence_step2_tv_title).setOnClickListener{
+        view.findViewById<TextView>(R.id.writing_sentence_step2_tv_title).setOnClickListener{
             it.findNavController().navigate(R.id.action_writing_sentence_step2_fragment_to_writing_sentence_book_search_fragment)
 
         }
