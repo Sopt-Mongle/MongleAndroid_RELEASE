@@ -2,6 +2,7 @@ package com.example.mongleandroid_release.adapter
 
 import android.content.Context
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
 
     override fun onBindViewHolder(holderFirst: WritingSentenceThemeSearchFirstViewHolder, position: Int) {
         holderFirst.bind(datas[position])
+        holderFirst.setIsRecyclable(false)
 
 
         val displayMetrics = DisplayMetrics()
@@ -37,7 +39,6 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
 
         //recycler view item의 크기를 동적으로
         val deviceWidth = (displayMetrics.widthPixels / 2.3).toInt()
-//        val deviceHeight = deviceWidth
 
         holderFirst.itemView.layoutParams.width = deviceWidth
         holderFirst.itemView.layoutParams.height = holderFirst.itemView.layoutParams.width
@@ -45,15 +46,22 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
 
         //view에 onClickListener를 달고, 그 안에서 직접 만든 itemClickListener를 연결시킨다
         holderFirst.itemView.setOnClickListener {
-            itemClickListener.onClick(it,position)
+            itemClickListener.onClick(it,position,datas[position], datas)
+            holderFirst.bind(datas[position])
+
         }
+
+
+
+
     }
 
 
 
     //클릭 인터페이스 정의
     interface ItemClickListener{
-        fun onClick(view: View, position: Int)
+        fun onClick(view: View, position: Int, data: FirstThemeData, datas: MutableList<FirstThemeData>)
+
     }
 
     //클릭리스너 선언
@@ -61,6 +69,7 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
 
     //클릭리스너 등록 메소드
     fun setItemClickListener(itemClickListener: ItemClickListener) {
+
         this.itemClickListener = itemClickListener
     }
 

@@ -16,5 +16,8 @@ data class FirstThemeData(
     val saves : Int, // 필요없음
     val writer: String, // 필요없음
     val writerImg : String, // 필요없음
-    val alreadyBookmarked : Boolean // 필요없음
+    val alreadyBookmarked : Boolean, // 필요없음
+
+    // 추가함
+    var themeChked: Boolean = false // 테마 체크 표현
 )
