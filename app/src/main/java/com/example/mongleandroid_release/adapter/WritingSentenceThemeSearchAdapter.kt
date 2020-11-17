@@ -30,6 +30,7 @@ class WritingSentenceThemeSearchAdapter(private val context : Context) : Recycle
 
     override fun onBindViewHolder(holder: WritingSentenceThemeSearchViewHolder, position: Int) {
         holder.bind(datas[position])
+        holder.setIsRecyclable(false)
 
 
         val displayMetrics = DisplayMetrics()

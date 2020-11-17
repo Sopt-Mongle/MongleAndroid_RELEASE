@@ -41,8 +41,6 @@ class WritingSentenceThemeSearchFragment : Fragment() {
     lateinit var wrtingSentenceThemeSearchAdapter: WritingSentenceThemeSearchAdapter
     private var keyword: String = ""
     private var theme: String = ""
-    private var img: String = ""
-
     private var imgChk : Boolean = false
     private var imgChked : Int = -1
 
@@ -122,11 +120,10 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 keyword =
                     view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).text.toString()
 
-//            if(!keyword.isNullOrBlank()) requestData("",keyword, view)
                 if (keyword.isNullOrBlank()) {
 
                 } else {
-//                    themeSearch(keyword, view)
+                    themeSearch(keyword, view)
                     MainActivity.search_result = keyword.trim()
 
 
@@ -138,23 +135,22 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         view.findViewById<TextView>(R.id.writing_sentence_theme_search_btn_next)
             .setOnClickListener {
 
-//                if(imgChk){
-//                    // user reaction : 테마를 선택해주세요 !
-//                    view.findViewById<TextView>(R.id.writing_sentence_theme_search_cl_warning).visibility =
-//                        View.GONE
-//                    // 아이템을 선택했다면 step3로 이동
+                if(imgChk){ // 테마를 선택함
+
+                    // user reaction : 테마를 선택해주세요 ! 취소
+                    view.findViewById<TextView>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
+
+                    // step3로 이동
                     val action =
                         WritingSentenceThemeSearchFragmentDirections.actionWritingSentenceThemeSearchFragmentToWritingSentenceStep3Fragment(
                             theme
                         )
                     view.findNavController().navigate(action)
 
-
-//                }else{
-//                    // 아니라면
-//                    // user reaction : 테마를 선택하세요!
-//                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.VISIBLE
-//                }
+                }else{
+                    // user reaction : 테마를 선택하세요!
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.VISIBLE
+                }
 
 
             }
