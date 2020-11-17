@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchViewHolder
 import com.example.mongleandroid_release.adapter.viewholder.WritingThemeImgViewHolder
+import com.example.mongleandroid_release.network.data.response.FirstThemeData
 import com.example.mongleandroid_release.network.data.response.SearchTheme
 import com.example.mongleandroid_release.network.data.response.ThemeImg
 
@@ -24,17 +25,19 @@ class WritingThemeImgAdapter(private val context: Context) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: WritingThemeImgViewHolder, position: Int) {
         holder.bind(datas[position])
+        holder.setIsRecyclable(false)
 
 
         //view에 onClickListener를 달고, 그 안에서 직접 만든 itemClickListener를 연결시킨다
         holder.itemView.setOnClickListener {
-            itemClickListener.onClick(it,position)
+            itemClickListener.onClick(it,position,datas[position], datas)
+            holder.bind(datas[position])
         }
     }
 
     //클릭 인터페이스 정의
     interface ItemClickListener{
-        fun onClick(view: View, position: Int)
+        fun onClick(view: View, position: Int, data: ThemeImg, datas: MutableList<ThemeImg>)
     }
 
     //클릭리스너 선언
