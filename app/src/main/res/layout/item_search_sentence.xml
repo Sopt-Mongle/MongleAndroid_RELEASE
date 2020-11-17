@@ -15,16 +15,19 @@
 
         <TextView
             android:id="@+id/search_sentence_tv_themename"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="13dp"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="2sp"
+            android:ellipsize="end"
             android:fontFamily="@font/notosanscjkkr_demilight"
             android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="2sp"
+            android:singleLine="true"
             android:textColor="#bcbcbc"
             android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@+id/search_sentence_guide_right"
             app:layout_constraintStart_toStartOf="@id/cl_search_sentence"
             app:layout_constraintTop_toTopOf="@id/cl_search_sentence"
             tools:text="번아웃을 극복하고 싶을 때 봐야하는 문장" />

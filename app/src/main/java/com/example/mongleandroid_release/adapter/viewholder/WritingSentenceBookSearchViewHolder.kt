@@ -26,7 +26,7 @@ class WritingSentenceBookSearchViewHolder(itemView: View) : RecyclerView.ViewHol
         item_search_book_tv_author.text = bookData.authors[0]
         item_search_book_tv_publisher.text = bookData.publisher
 
-        val inputString = ThemeWritingSentenceBookSearchActivity.theme_book_result
+        val inputString = MainActivity.book_result
 
         val sb = StringBuilder(inputString)
         val startWord = sb[0]
