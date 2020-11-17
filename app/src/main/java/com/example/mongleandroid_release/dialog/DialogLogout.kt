@@ -39,7 +39,7 @@ class DialogLogout(context : Context) {
         }
 
         dlg.show()
-        
+
     }
 
 
