@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchViewHolder
+import com.example.mongleandroid_release.network.data.response.FirstThemeData
 import com.example.mongleandroid_release.network.data.response.SearchTheme
 
 class WritingSentenceThemeSearchAdapter(private val context : Context) : RecyclerView.Adapter<WritingSentenceThemeSearchViewHolder>() {
@@ -44,14 +45,14 @@ class WritingSentenceThemeSearchAdapter(private val context : Context) : Recycle
 
         //view에 onClickListener를 달고, 그 안에서 직접 만든 itemClickListener를 연결시킨다
         holder.itemView.setOnClickListener {
-            itemClickListener.onClick(it,position)
+            itemClickListener.onClick(it,position,datas[position], datas)
         }
     }
 
 
     //클릭 인터페이스 정의
     interface ItemClickListener{
-        fun onClick(view: View, position: Int)
+        fun onClick(view: View, position: Int, data: SearchTheme, datas: MutableList<SearchTheme>)
     }
 
     //클릭리스너 선언

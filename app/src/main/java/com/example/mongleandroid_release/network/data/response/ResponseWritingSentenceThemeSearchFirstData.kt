@@ -18,6 +18,6 @@ data class FirstThemeData(
     val writerImg : String, // 필요없음
     val alreadyBookmarked : Boolean, // 필요없음
 
-    // 추가함
+    // single selection impl :: #90 구현을 위해 추가함
     var themeChked: Boolean = false // 테마 체크 표현
 )

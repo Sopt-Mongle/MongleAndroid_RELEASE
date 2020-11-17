@@ -26,8 +26,10 @@ import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchAdapt
 import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchFirstAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.FirstThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchFirstData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchThemeData
+import com.example.mongleandroid_release.network.data.response.SearchTheme
 import kotlinx.android.synthetic.main.writing_sentence_theme_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -212,7 +214,12 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                             // 리사이클러뷰 클릭 리스너
                             wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object :
                                 WritingSentenceThemeSearchFirstAdapter.ItemClickListener {
-                                override fun onClick(view: View, position: Int, data: FirstThemeData, datas: MutableList<FirstThemeData>) {
+                                override fun onClick(
+                                    view: View,
+                                    position: Int,
+                                    data: FirstThemeData,
+                                    datas: MutableList<FirstThemeData>
+                                ) {
                                     Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
 
 //                                  선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
@@ -247,98 +254,103 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         })
     }
 
-//    private fun themeSearch(keyword: String, view: View) {
-//
-//        val call: Call<ResponseSearchThemeData> =
-//            RequestToServer.service.requestSearchTheme(token = context?.let {
-//                SharedPreferenceController.getAccessToken(it)
-//            }, words = keyword)
-//
-//        call.enqueue(object : Callback<ResponseSearchThemeData> {
-//            @SuppressLint("LongLogTag")
-//            override fun onFailure(call: Call<ResponseSearchThemeData>, t: Throwable) {
-//                Log.e("ResponseSearchThemeData 통신실패", t.toString())
-//            }
-//
-//            @SuppressLint("LongLogTag")
-//            override fun onResponse(
-//                call: Call<ResponseSearchThemeData>,
-//                response: Response<ResponseSearchThemeData>
-//            ) {
-//                if (response.isSuccessful) {
-//                    response.body().let { body ->
-//                        Log.e(
-//                            "ResponseSearchThemeData 통신응답바디",
-//                            "status: ${body!!.status} data : ${body.message}"
-//                        )
-//
-//                        if (body.data.isNullOrEmpty()) {
-//                            //if 서버 통신 성공 && 결과 없음
-//                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
-//                                View.GONE
-//                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
-//                                View.VISIBLE
-//
-//                        } else {
-//                            // rv 동작 게시
-//                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).adapter =
-//                                wrtingSentenceThemeSearchAdapter
-//                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv)
-//                                .addItemDecoration(ItemDecoration())
-//                            wrtingSentenceThemeSearchAdapter.datas = body.data
-//                            wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
-//                            //if 서버 통신 성공 && 결과 있음
-//                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
-//                                View.VISIBLE
-//                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
-//                                View.GONE
-//                            // user reaction : 검색 결과 키워드 변경
-//                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_tv_keyword).text =
-//                                keyword
-//                            // user reaction : 검색 결과 건 수
-//                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt).text =
-//                                "총 " + body.data.size.toString() + "건"
-//                            // 위 두 가지 동작을 보이게 함
-//                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_yes).visibility = View.VISIBLE
-//
-//                            // 리사이클러뷰 클릭 리스너
-//                            wrtingSentenceThemeSearchAdapter.setItemClickListener(object :
-//                                WritingSentenceThemeSearchAdapter.ItemClickListener {
-//                                override fun onClick(view: View, position: Int) {
-//                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
-//
-//                                    //선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
-//                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
-//
-//                                    // (/post/sentence) req data init (6/6):: themeIdx
-//                                    WritingSentenceActivity.writingSentenceData.themeIdx =
-//                                        Integer.parseInt(
-//                                            view.findViewById<TextView>(
-//                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
-//                                            ).text.toString()
-//                                        )
-//
-//                                    // single selection impl
-//                                    for(data in datas){
-//                                        data.themeChked = false
-//                                    }
-//                                    datas[position].themeChked = true
-//                                    wrtingSentenceThemeSearchFirstAdapter.datas = datas
-//                                    wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
-//
-//                                }
-//
-//                            })
-//                        }
-//                    }
-//                } else {
-//                    //if 서버 통신 실패
-//                    Log.d("서버 통신", "서버 통신 실패")
-//                }
-//
-//            }
-//        })
-//    }
+    private fun themeSearch(keyword: String, view: View) {
+
+        val call: Call<ResponseSearchThemeData> =
+            RequestToServer.service.requestSearchTheme(token = context?.let {
+                SharedPreferenceController.getAccessToken(it)
+            }, words = keyword)
+
+        call.enqueue(object : Callback<ResponseSearchThemeData> {
+            @SuppressLint("LongLogTag")
+            override fun onFailure(call: Call<ResponseSearchThemeData>, t: Throwable) {
+                Log.e("ResponseSearchThemeData 통신실패", t.toString())
+            }
+
+            @SuppressLint("LongLogTag")
+            override fun onResponse(
+                call: Call<ResponseSearchThemeData>,
+                response: Response<ResponseSearchThemeData>
+            ) {
+                if (response.isSuccessful) {
+                    response.body().let { body ->
+                        Log.e(
+                            "ResponseSearchThemeData 통신응답바디",
+                            "status: ${body!!.status} data : ${body.message}"
+                        )
+
+                        if (body.data.isNullOrEmpty()) {
+                            //if 서버 통신 성공 && 결과 없음
+                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                                View.GONE
+                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                                View.VISIBLE
+
+                        } else {
+                            // rv 동작 게시
+                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).adapter =
+                                wrtingSentenceThemeSearchAdapter
+                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv)
+                                .addItemDecoration(ItemDecoration())
+                            wrtingSentenceThemeSearchAdapter.datas = body.data
+                            wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
+                            //if 서버 통신 성공 && 결과 있음
+                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                                View.VISIBLE
+                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                                View.GONE
+                            // user reaction : 검색 결과 키워드 변경
+                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_tv_keyword).text =
+                                keyword
+                            // user reaction : 검색 결과 건 수
+                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt).text =
+                                "총 " + body.data.size.toString() + "건"
+                            // 위 두 가지 동작을 보이게 함
+                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_yes).visibility = View.VISIBLE
+
+                            // 리사이클러뷰 클릭 리스너
+                            wrtingSentenceThemeSearchAdapter.setItemClickListener(object :
+                                WritingSentenceThemeSearchAdapter.ItemClickListener {
+                                override fun onClick(
+                                    view: View,
+                                    position: Int,
+                                    data: SearchTheme,
+                                    datas: MutableList<SearchTheme>
+                                ) {
+                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
+
+                                    //선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
+                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
+
+                                    // (/post/sentence) req data init (6/6):: themeIdx
+                                    WritingSentenceActivity.writingSentenceData.themeIdx =
+                                        Integer.parseInt(
+                                            view.findViewById<TextView>(
+                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
+                                            ).text.toString()
+                                        )
+
+                                    // single selection impl
+                                    for(data in datas){
+                                        data.themeChked = false
+                                    }
+                                    datas[position].themeChked = true
+                                    wrtingSentenceThemeSearchAdapter.datas = datas
+                                    wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
+
+                                }
+
+                            })
+                        }
+                    }
+                } else {
+                    //if 서버 통신 실패
+                    Log.d("서버 통신", "서버 통신 실패")
+                }
+
+            }
+        })
+    }
 
 
 }

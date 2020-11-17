@@ -1,6 +1,5 @@
 package com.example.mongleandroid_release.adapter.viewholder
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,17 +15,11 @@ class WritingSentenceThemeSearchFirstViewHolder(itemView: View) : RecyclerView.V
     var themeChked = itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk)
 
 
-    fun bind(FirstThemeData : FirstThemeData){
-        theme.text = FirstThemeData.theme
-        themeIdx.text = FirstThemeData.themeIdx.toString()
-
-        Glide.with(itemView).load(FirstThemeData.themeImg).into(themeImg)
-//        if(FirstThemeData.themeChked){
-        themeChked.visibility = if (FirstThemeData.themeChked) View.VISIBLE  else View.GONE
-        Log.d("SSS", "업데이트 됨! ${theme.text} ${themeChked.visibility}}")
-//        }
-
-
+    fun bind(firstThemeData : FirstThemeData){
+        theme.text = firstThemeData.theme
+        themeIdx.text = firstThemeData.themeIdx.toString()
+        Glide.with(itemView).load(firstThemeData.themeImg).into(themeImg)
+        themeChked.visibility = if (firstThemeData.themeChked) View.VISIBLE  else View.GONE
     }
 
 
