@@ -171,8 +171,11 @@ class CuratorInfoActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
-
-                        Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+                        if(response.body()!!.data!!.profile[0].img == null) {
+                            Glide.with(this@CuratorInfoActivity).load(R.drawable.my_settings_profile_img_profile).into(img_curator_profile)
+                        } else {
+                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+                        }
                         tv_curator_username.text = response.body()!!.data!!.profile[0].name
                         tx_curators_contents.text = response.body()!!.data!!.profile[0].introduce
                         tx_curators_keyword.text = response.body()!!.data!!.profile[0].keyword
