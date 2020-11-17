@@ -14,6 +14,7 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingThemeImgData
+import com.example.mongleandroid_release.network.data.response.ThemeImg
 import com.example.mongleandroid_release.util.DialogMakethemeCheck
 import kotlinx.android.synthetic.main.item_writing_theme_img.*
 import kotlinx.android.synthetic.main.writing_theme_step1.*
@@ -135,11 +136,25 @@ class WritingThemeActivity : AppCompatActivity() {
                             //리사이클러뷰 아이템 클릭리스너 등록
                             writingThemeImgAdapter.setItemClickListener(object :
                                 WritingThemeImgAdapter.ItemClickListener {
-                                override fun onClick(view: View, position: Int) {
+                                override fun onClick(
+                                    view: View,
+                                    position: Int,
+                                    data: ThemeImg,
+                                    datas: MutableList<ThemeImg>
+                                ) {
                                     Log.d("SSS", "${position}번 리스트 선택")
+
                                     writing_theme_step1_et_sentence.clearFocus()
                                     writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
                                     writing_theme_step1_ll_warning2.visibility = View.GONE
+
+                                    // single selection impl
+                                    for(data in datas){
+                                        data.imgChked = false
+                                    }
+                                    datas[position].imgChked = true
+                                    writingThemeImgAdapter.datas = datas
+                                    writingThemeImgAdapter.notifyDataSetChanged()
 
                                 }
                             })
