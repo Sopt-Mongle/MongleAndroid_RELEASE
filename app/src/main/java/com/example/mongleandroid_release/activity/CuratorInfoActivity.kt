@@ -70,7 +70,7 @@ class CuratorInfoActivity : AppCompatActivity() {
 
 
 
-        tv_thema_num_cu_info.setOnClickListener {
+        cl_curator_theme.setOnClickListener {
             tv_thema_num_cu_info.setTextColor(Color.parseColor("#73c088"))
             tv_thema_cu_info.setTextColor(Color.parseColor("#73c088"))
             tv_sentence_num_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
@@ -84,32 +84,32 @@ class CuratorInfoActivity : AppCompatActivity() {
 
             }
             else{
-//                vp_curator_info.setCurrentItem(current-1, false)
+                vp_curator_info.setCurrentItem(current-1, false)
 
             }
 
         }
 
-        tv_thema_cu_info.setOnClickListener {
-            tv_thema_num_cu_info.setTextColor(Color.parseColor("#73c088"))
-            tv_thema_cu_info.setTextColor(Color.parseColor("#73c088"))
-            tv_sentence_num_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
-            tv_sentence_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
-
-            //버튼 클릭 시 페이지 넘김
-            var current = vp_curator_info.currentItem
-            current = 0
-            if (current == 0){
-                vp_curator_info.setCurrentItem(0, false)
-            }
-            else{
+//        cl_curator_theme.setOnClickListener {
+//            tv_thema_num_cu_info.setTextColor(Color.parseColor("#73c088"))
+//            tv_thema_cu_info.setTextColor(Color.parseColor("#73c088"))
+//            tv_sentence_num_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
+//            tv_sentence_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
+//
+//            //버튼 클릭 시 페이지 넘김
+//            var current = vp_curator_info.currentItem
+//            current = 0
+//            if (current == 0){
+//                vp_curator_info.setCurrentItem(0, false)
+//            }
+//            else{
 //                vp_curator_info.setCurrentItem(current-1, false)
+//
+//            }
+//
+//        }
 
-            }
-
-        }
-
-        tv_sentence_num_cu_info.setOnClickListener {
+        cl_curator_sentence.setOnClickListener {
             tv_sentence_num_cu_info.setTextColor(Color.parseColor("#73c088"))
             tv_sentence_cu_info.setTextColor(Color.parseColor("#73c088"))
             tv_thema_num_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
@@ -122,30 +122,30 @@ class CuratorInfoActivity : AppCompatActivity() {
                 vp_curator_info.setCurrentItem(current-1, false)
             }
             else{
-//                vp_curator_info.setCurrentItem(current-1, false)
-
-            }
-
-        }
-
-        tv_sentence_cu_info.setOnClickListener {
-            tv_sentence_num_cu_info.setTextColor(Color.parseColor("#73c088"))
-            tv_sentence_cu_info.setTextColor(Color.parseColor("#73c088"))
-            tv_thema_num_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
-            tv_thema_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
-
-            //버튼 클릭 시 페이지 넘김
-            var current = vp_curator_info.currentItem
-            current = 10
-            if (current == 10){
                 vp_curator_info.setCurrentItem(current-1, false)
-            }
-            else{
-//                vp_curator_info.setCurrentItem(current-1, false)
 
             }
 
         }
+
+//        cl_curator_sentence.setOnClickListener {
+//            tv_sentence_num_cu_info.setTextColor(Color.parseColor("#73c088"))
+//            tv_sentence_cu_info.setTextColor(Color.parseColor("#73c088"))
+//            tv_thema_num_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
+//            tv_thema_cu_info.setTextColor(Color.parseColor("#bcbcbc"))
+//
+//            //버튼 클릭 시 페이지 넘김
+//            var current = vp_curator_info.currentItem
+//            current = 10
+//            if (current == 10){
+//                vp_curator_info.setCurrentItem(current-1, false)
+//            }
+//            else{
+//                vp_curator_info.setCurrentItem(current-1, false)
+//
+//            }
+//
+//        }
 
         //뒤로 가기 버튼 눌렀을 때 이전 화면으로 돌아가게 만들
         img_back_curator_info.setOnClickListener {

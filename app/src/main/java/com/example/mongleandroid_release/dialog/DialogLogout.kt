@@ -37,7 +37,7 @@ class DialogLogout(context : Context) {
         }
 
         dlg.show()
-        
+
     }
 
     fun setOnClickListener(listener: (String) -> Unit) {
