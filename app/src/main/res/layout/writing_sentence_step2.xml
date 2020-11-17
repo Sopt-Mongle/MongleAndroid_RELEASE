@@ -144,31 +144,30 @@
         />
 
     <TextView
+        android:id="@+id/textView45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintBottom_toTopOf="@id/writing_sentence_step2_tv_title"
-        android:layout_marginBottom="12dp"
         android:text="책 제목"
-        android:textStyle="bold"
+        android:textColor="@color/greyish_brown"
         android:textSize="15sp"
-        android:textColor="@color/greyish_brown"/>
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        tools:layout_editor_absoluteY="188dp" />
 
     <TextView
         android:id="@+id/writing_sentence_step2_tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
         android:background="@drawable/et_area"
-        android:maxLength="40"
         android:gravity="start"
-        android:layout_marginTop="220dp"
-        android:padding="16dp"
         android:hint="책 제목을 검색해주세요."
+        android:maxLength="40"
+        android:padding="16dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
-        />
+        app:layout_constraintStart_toStartOf="@+id/gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
     <ImageView
         android:id="@+id/writing_sentence_step2_btn_book_search"
@@ -185,77 +184,78 @@
         android:id="@+id/writing_sentence_step2_ll_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintTop_toBottomOf="@id/writing_sentence_step2_tv_title"
         android:layout_marginTop="10dp"
-        android:visibility="gone">
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@id/writing_sentence_step2_tv_title">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_warning"
             android:layout_marginVertical="3dp"
-            />
+            android:src="@drawable/ic_warning" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="책 제목을 검색해주세요!"
             android:layout_marginStart="3dp"
-            android:textColor="@color/reddish"/>
+            android:text="책 제목을 검색해주세요!"
+            android:textColor="@color/reddish" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView43"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintBottom_toTopOf="@id/writing_sentence_step2_tv_author"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="42dp"
         android:text="작가/옮긴이"
-        android:textStyle="bold"
+        android:textColor="@color/greyish_brown"
         android:textSize="15sp"
-        android:textColor="@color/greyish_brown"/>
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/writing_sentence_step2_tv_title" />
 
     <TextView
         android:id="@+id/writing_sentence_step2_tv_author"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:background="@drawable/et_area_grey"
-        android:maxLength="40"
         android:gravity="start"
-        android:layout_marginTop="345dp"
+        android:maxLength="40"
         android:padding="16dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
-        />
+        app:layout_constraintStart_toStartOf="@+id/gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
     <TextView
+        android:id="@+id/textView44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintBottom_toTopOf="@id/writing_sentence_step2_tv_publisher"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="16dp"
         android:text="출판사"
-        android:textStyle="bold"
+        android:textColor="@color/greyish_brown"
         android:textSize="15sp"
-        android:textColor="@color/greyish_brown"/>
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/writing_sentence_step2_tv_author" />
 
     <TextView
         android:id="@+id/writing_sentence_step2_tv_publisher"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:background="@drawable/et_area_grey"
-        android:maxLength="40"
         android:gravity="start"
-        android:layout_marginTop="440dp"
+        android:maxLength="40"
         android:padding="16dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_left"
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
-        />
+        app:layout_constraintStart_toStartOf="@+id/gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
 
 

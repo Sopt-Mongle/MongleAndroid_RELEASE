@@ -27,13 +27,15 @@
 
         <TextView
             android:id="@+id/tv_library_sentence_themename"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:ellipsize="end"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="2sp"
+            android:singleLine="true"
             android:textColor="#bcbcbc"
             android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@id/tv_library_sentence_sentence"

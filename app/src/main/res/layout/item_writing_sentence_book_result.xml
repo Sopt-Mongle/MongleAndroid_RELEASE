@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:layout_marginBottom="17dp"
 xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -16,65 +17,88 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     app:layout_constraintStart_toStartOf="parent"
     />
 
-<ImageView
-    android:id="@+id/item_writing_sentence_book_result_img"
-    android:layout_width="60dp"
-    android:layout_height="80dp"
-    android:src="@color/soft_green"
-    android:layout_marginTop="17dp"
-    android:layout_marginStart="22dp"
-    app:layout_constraintTop_toBottomOf="@+id/view"
-    app:layout_constraintStart_toStartOf="parent"/>
+    <ImageView
+        android:id="@+id/item_writing_sentence_book_result_img"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="5dp"
+        android:src="@color/soft_green"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="17.4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/item_writing_sentence_book_result_img"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/item_writing_sentence_book_result_tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="해리포터"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/item_writing_sentence_book_result_tv_author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
 
         <TextView
             android:id="@+id/item_writing_sentence_book_result_tv_author"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:singleLine="true"
             android:text="김해리/박현주"
+            android:textColor="@color/brown_grey"
             android:textSize="14sp"
-            android:textColor="@color/brown_grey" />
+            app:layout_constraintBottom_toTopOf="@+id/item_writing_sentence_book_result_tv_publisher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_writing_sentence_book_result_tv_title" />
 
         <TextView
             android:id="@+id/item_writing_sentence_book_result_tv_publisher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:singleLine="true"
             android:text="TTP"
             android:textColor="@color/brown_grey_three"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_writing_sentence_book_result_tv_author" />
 
 
         <TextView
             android:id="@+id/item_writing_sentence_book_result_tv_thumbnail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
             android:text="TTP"
             android:textColor="@color/brown_grey_three"
             android:textSize="14sp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/item_writing_sentence_book_result_tv_title"
+            app:layout_constraintEnd_toStartOf="@+id/item_writing_sentence_book_result_tv_title"
+            app:layout_constraintStart_toStartOf="@+id/item_writing_sentence_book_result_tv_title"
+            app:layout_constraintTop_toTopOf="@+id/item_writing_sentence_book_result_tv_title" />
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
