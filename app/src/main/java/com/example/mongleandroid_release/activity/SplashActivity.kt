@@ -7,6 +7,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.network.SharedPreferenceController
 
@@ -16,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
-        Glide.with(this).load(R.drawable.splash).into(load)
+        Glide.with(this).load(R.raw.splash).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(load)
 
         startLoading()
 
