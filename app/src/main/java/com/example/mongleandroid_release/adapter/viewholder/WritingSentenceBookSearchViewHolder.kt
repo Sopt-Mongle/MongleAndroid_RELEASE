@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.network.data.response.BookData
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
+import com.example.mongleandroid_release.activity.ThemeWritingSentenceBookSearchActivity
 
 
 class WritingSentenceBookSearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

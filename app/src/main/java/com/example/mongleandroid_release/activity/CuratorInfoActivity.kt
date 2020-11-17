@@ -1,28 +1,18 @@
 package com.example.mongleandroid_release.activity
 
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
-import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
-import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
-import com.example.mongleandroid_release.adapter.LibraryTabAdapter
-import com.example.mongleandroid_release.fragment.CuratorInfoThemaFragment
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
-import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_curator_info.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -181,11 +171,21 @@ class CuratorInfoActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         Log.d("큐레이터 상세보기 조회 성공", "${response.body()}")
-
-                        Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+                        if(response.body()!!.data!!.profile[0].img == null) {
+                            Glide.with(this@CuratorInfoActivity).load(R.drawable.my_settings_profile_img_profile).into(img_curator_profile)
+                        } else {
+                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
+                        }
                         tv_curator_username.text = response.body()!!.data!!.profile[0].name
                         tx_curators_contents.text = response.body()!!.data!!.profile[0].introduce
                         tx_curators_keyword.text = response.body()!!.data!!.profile[0].keyword
+                        cb_curator_subs_info.isChecked = response.body()!!.data!!.profile[0].alreadySubscribed
+                        if(cb_curator_subs_info.isChecked) {
+                            cb_curator_subs_info.text = "구독중"
+                        } else {
+                            cb_curator_subs_info.text = "구독"
+                        }
+
 
 //                        if (response.body()!!.data?.profile.isNullOrEmpty()) {
 //
@@ -193,6 +193,34 @@ class CuratorInfoActivity : AppCompatActivity() {
 //                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
 //
 //                        }
+
+                        // 구독여부 통신
+                        cb_curator_subs_info.setOnClickListener {
+                            requestToServer.service.getFollowIdx(
+                                token = SharedPreferenceController.getAccessToken(applicationContext),
+                                params = response.body()!!.data!!.profile[0].curatorIdx
+                            ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                    Log.e("통신실패", t.toString())
+                                }
+
+                                override fun onResponse(
+                                    call: Call<ResponseCuratorFollowedData>,
+                                    response: Response<ResponseCuratorFollowedData>
+                                ) {
+                                    if (response.isSuccessful) {
+                                        if(response.body()!!.data) {
+                                            Log.d("구독", "구독")
+                                            cb_curator_subs_info.text = "구독중"
+                                        } else {
+                                            Log.d("구독", "구독취소")
+                                            cb_curator_subs_info.text = "구독"
+                                        }
+                                    }
+
+                                }
+                            })
+                        }
 
                     }
                 }

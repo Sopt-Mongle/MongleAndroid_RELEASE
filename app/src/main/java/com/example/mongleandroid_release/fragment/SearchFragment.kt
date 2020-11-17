@@ -12,6 +12,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.mongleandroid_release.R
@@ -25,9 +26,7 @@ import com.example.mongleandroid_release.network.data.response.ResponseSearchRec
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
 import com.example.mongleandroid_release.showKeyboard
 import com.example.mongleandroid_release.unshowKeyboard
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -100,7 +99,8 @@ class SearchFragment : Fragment() {
 
         // 뒤로가기 버튼
         fragment_search_btn_back.setOnClickListener {
-            childFragmentManager.beginTransaction().replace(R.id.fragment_search_cl, MainFragment()).commit()
+            replaceFragment(MainFragment())
+            fragment_search_et_search.unshowKeyboard()
         }
 
         // 엔터 눌렀을 때 검색
@@ -180,6 +180,13 @@ class SearchFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         state = 2
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+        transaction.replace(R.id.main_activity_fg, fragment)
+        transaction.commit()
+
     }
 
     private fun hideFocus() {

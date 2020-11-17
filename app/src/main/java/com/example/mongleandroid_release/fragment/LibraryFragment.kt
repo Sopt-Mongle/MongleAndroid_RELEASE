@@ -10,21 +10,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
-import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.SettingActivity
 import com.example.mongleandroid_release.adapter.*
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.LibraryCuratorData
-import com.example.mongleandroid_release.network.data.LibrarySentenceData
-import com.example.mongleandroid_release.network.data.LibraryThemaData
 import com.example.mongleandroid_release.network.data.response.*
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_library.*
-import kotlinx.android.synthetic.main.fragment_library_curator.*
-import kotlinx.android.synthetic.main.fragment_library_sentence.*
-import kotlinx.android.synthetic.main.fragment_library_thema.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -86,9 +79,11 @@ class LibraryFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.e("내 서재 프로필 조회 성공", "${response.body()}")
-
-//                            Glide.with(img_library_profile).load(MainLibrary.) = response.body()!!.data[0].img
-                            Glide.with(view!!.context).load(response.body()!!.data[0].img).into(img_library_profile)
+                            if(response.body()!!.data[0].img == null) {
+                                Glide.with(view!!.context).load(R.drawable.my_settings_profile_img_profile).into(img_library_profile)
+                            } else {
+                                Glide.with(view!!.context).load(response.body()!!.data[0].img).into(img_library_profile)
+                            }
                             tx_library_username.text = response.body()!!.data[0].name
                             tx_library_contents.text = response.body()!!.data[0].keyword
                             tx_library_keyword.text = response.body()!!.data[0].introduce

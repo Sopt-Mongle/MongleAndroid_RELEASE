@@ -7,18 +7,20 @@
 
     <TextView
         android:id="@+id/tv_theme_sentence"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
         android:fontFamily="@font/notosanscjkkr_demilight"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:lineSpacingExtra="5sp"
         android:maxLines="2"
         android:text="영 영앤 리치 남자를 만나자\n감 감사하자"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +29,9 @@
         android:layout_width="14dp"
         android:layout_height="14dp"
         android:layout_marginTop="14dp"
+        android:layout_marginBottom="18dp"
         android:src="@drawable/theme_ic_book_1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_theme_sentence"
         app:layout_constraintTop_toBottomOf="@+id/tv_theme_sentence" />
 
@@ -36,7 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/notosanscjkkr_demilight"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
@@ -44,24 +47,25 @@
         android:text="몽글이 몽글몽글"
         android:textColor="#a7a7a7"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/tv_theme_sentence" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <ImageView
         android:id="@+id/imageView45"
         android:layout_width="12dp"
         android:layout_height="10dp"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/sentence_theme_o_ic_sentence_like_1"
-        app:layout_constraintStart_toEndOf="@+id/tv_theme_curator"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_theme_curator"
+        app:layout_constraintEnd_toStartOf="@+id/theme_sentence_tv_likes_num"
         app:layout_constraintTop_toTopOf="@+id/tv_theme_curator" />
 
     <TextView
         android:id="@+id/theme_sentence_tv_likes_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="2sp"
         android:text="100"
@@ -69,7 +73,7 @@
         android:textSize="13sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView45"
-        app:layout_constraintStart_toEndOf="@+id/imageView45"
+        app:layout_constraintEnd_toStartOf="@+id/imageView52"
         app:layout_constraintTop_toTopOf="@+id/imageView45" />
 
 
@@ -77,17 +81,17 @@
         android:id="@+id/imageView52"
         android:layout_width="9dp"
         android:layout_height="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/sentence_theme_o_ic_bookmark"
         app:layout_constraintBottom_toBottomOf="@+id/theme_sentence_tv_likes_num"
-        app:layout_constraintStart_toEndOf="@+id/theme_sentence_tv_likes_num"
+        app:layout_constraintEnd_toStartOf="@+id/theme_sentence_tv_saves_num"
         app:layout_constraintTop_toTopOf="@+id/theme_sentence_tv_likes_num" />
 
     <TextView
         android:id="@+id/theme_sentence_tv_saves_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginEnd="16dp"
         android:letterSpacing="0.02"
         android:lineSpacingExtra="2sp"
         android:text="30"
@@ -95,13 +99,13 @@
         android:textSize="13sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView52"
-        app:layout_constraintStart_toEndOf="@+id/imageView52"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView52" />
 
     <View
+        android:id="@+id/view17"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="28dp"
         android:background="#e7e7e7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

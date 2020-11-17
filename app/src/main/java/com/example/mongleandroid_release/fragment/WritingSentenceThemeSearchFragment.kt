@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,16 +24,12 @@ import com.example.mongleandroid_release.activity.WritingSentenceActivity
 import com.example.mongleandroid_release.adapter.ItemDecoration
 import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchAdapter
 import com.example.mongleandroid_release.adapter.WritingSentenceThemeSearchFirstAdapter
-import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchFirstViewHolder
-import com.example.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchViewHolder
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
-import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchFirstData
 import com.example.mongleandroid_release.network.data.response.FirstThemeData
+import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchFirstData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchThemeData
 import com.example.mongleandroid_release.network.data.response.SearchTheme
-import kotlinx.android.synthetic.main.item_writing_sentence_theme_result.*
 import kotlinx.android.synthetic.main.writing_sentence_theme_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,8 +41,6 @@ class WritingSentenceThemeSearchFragment : Fragment() {
     lateinit var wrtingSentenceThemeSearchAdapter: WritingSentenceThemeSearchAdapter
     private var keyword: String = ""
     private var theme: String = ""
-    private var img: String = ""
-
     private var imgChk : Boolean = false
     private var imgChked : Int = -1
 
@@ -127,7 +120,6 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 keyword =
                     view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).text.toString()
 
-//            if(!keyword.isNullOrBlank()) requestData("",keyword, view)
                 if (keyword.isNullOrBlank()) {
 
                 } else {
@@ -143,23 +135,22 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         view.findViewById<TextView>(R.id.writing_sentence_theme_search_btn_next)
             .setOnClickListener {
 
-//                if(imgChk){
-//                    // user reaction : 테마를 선택해주세요 !
-//                    view.findViewById<TextView>(R.id.writing_sentence_theme_search_cl_warning).visibility =
-//                        View.GONE
-//                    // 아이템을 선택했다면 step3로 이동
+                if(imgChk){ // 테마를 선택함
+
+                    // user reaction : 테마를 선택해주세요 ! 취소
+                    view.findViewById<TextView>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
+
+                    // step3로 이동
                     val action =
                         WritingSentenceThemeSearchFragmentDirections.actionWritingSentenceThemeSearchFragmentToWritingSentenceStep3Fragment(
                             theme
                         )
                     view.findNavController().navigate(action)
 
-
-//                }else{
-//                    // 아니라면
-//                    // user reaction : 테마를 선택하세요!
-//                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.VISIBLE
-//                }
+                }else{
+                    // user reaction : 테마를 선택하세요!
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.VISIBLE
+                }
 
 
             }
@@ -217,54 +208,34 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
 
                             // 리사이클러뷰 클릭 리스너
-                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).addOnItemTouchListener(object :
-                                RecyclerView.OnItemTouchListener {
-                                override fun onInterceptTouchEvent(
-                                    rv: RecyclerView,
-                                    e: MotionEvent
-                                ): Boolean {
-                                    if(e.action == MotionEvent.ACTION_MOVE) {
+                            wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object :
+                                WritingSentenceThemeSearchFirstAdapter.ItemClickListener {
+                                override fun onClick(
+                                    view: View,
+                                    position: Int,
+                                    data: FirstThemeData,
+                                    datas: MutableList<FirstThemeData>
+                                ) {
+                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
 
-                                    } else {
-                                        val child = writing_sentence_theme_search_rv.findChildViewUnder(e.x, e.y)
-                                        if(child != null) {
-                                            wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object :
-                                            WritingSentenceThemeSearchFirstAdapter.ItemClickListener {
-                                                override fun onClick(view: View, position: Int) {
-                                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
-                                                    view.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk).visibility = View.VISIBLE
-//                                                     선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
-                                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
-                                                    // (/post/sentence) req data init (6/6):: themeIdx
-                                                    WritingSentenceActivity.writingSentenceData.themeIdx =
-                                                        Integer.parseInt(
-                                                            view.findViewById<TextView>(
-                                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
-                                                            ).text.toString()
-                                                        )
-                                                    for(i in 0..writing_sentence_theme_search_rv.adapter!!.itemCount) {
-                                                        val otherView = writing_sentence_theme_search_rv.layoutManager?.findViewByPosition(i)
-                                                        if(otherView != view) {
-                                                            otherView?.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk)?.visibility = View.GONE
-                                                        }
-                                                    }
+//                                  선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
+                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
 
-                                                }
+                                    // (/post/sentence) req data init (6/6):: themeIdx
+                                    WritingSentenceActivity.writingSentenceData.themeIdx =
+                                        Integer.parseInt(
+                                            view.findViewById<TextView>(
+                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
+                                            ).text.toString()
+                                        )
 
-                                            })
-
-                                        }
+                                    // single selection impl
+                                    for(data in datas){
+                                        data.themeChked = false
                                     }
-
-                                    return false
-                                }
-
-                                override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-
-                                }
-
-                                override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-
+                                    datas[position].themeChked = true
+                                    wrtingSentenceThemeSearchFirstAdapter.datas = datas
+                                    wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
                                 }
 
                             })
@@ -334,54 +305,34 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                             view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_yes).visibility = View.VISIBLE
 
                             // 리사이클러뷰 클릭 리스너
-                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).addOnItemTouchListener(object :
-                                RecyclerView.OnItemTouchListener {
-                                override fun onInterceptTouchEvent(
-                                    rv: RecyclerView,
-                                    e: MotionEvent
-                                ): Boolean {
-                                    if(e.action == MotionEvent.ACTION_MOVE) {
+                            wrtingSentenceThemeSearchAdapter.setItemClickListener(object :
+                                WritingSentenceThemeSearchAdapter.ItemClickListener {
+                                override fun onClick(
+                                    view: View,
+                                    position: Int,
+                                    data: SearchTheme,
+                                    datas: MutableList<SearchTheme>
+                                ) {
+                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
 
-                                    } else {
-                                        val child = writing_sentence_theme_search_rv.findChildViewUnder(e.x, e.y)
-                                        if(child != null) {
-                                            wrtingSentenceThemeSearchAdapter.setItemClickListener(object :
-                                                WritingSentenceThemeSearchAdapter.ItemClickListener {
-                                                override fun onClick(view: View, position: Int) {
-                                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
-                                                    view.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk).visibility = View.VISIBLE
-                                                    //선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
-                                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
+                                    //선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
+                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
 
-                                                    // (/post/sentence) req data init (6/6):: themeIdx
-                                                    WritingSentenceActivity.writingSentenceData.themeIdx =
-                                                        Integer.parseInt(
-                                                            view.findViewById<TextView>(
-                                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
-                                                            ).text.toString()
-                                                        )
-                                                    for(i in 0..writing_sentence_theme_search_rv.adapter!!.itemCount) {
-                                                        val otherView = writing_sentence_theme_search_rv.layoutManager?.findViewByPosition(i)
-                                                        if(otherView != view) {
-                                                            otherView?.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk)?.visibility = View.GONE
-                                                        }
-                                                    }
+                                    // (/post/sentence) req data init (6/6):: themeIdx
+                                    WritingSentenceActivity.writingSentenceData.themeIdx =
+                                        Integer.parseInt(
+                                            view.findViewById<TextView>(
+                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
+                                            ).text.toString()
+                                        )
 
-                                                }
-
-                                            })
-
-                                        }
+                                    // single selection impl
+                                    for(data in datas){
+                                        data.themeChked = false
                                     }
-
-                                    return false
-                                }
-
-                                override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-
-                                }
-
-                                override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+                                    datas[position].themeChked = true
+                                    wrtingSentenceThemeSearchAdapter.datas = datas
+                                    wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
 
                                 }
 

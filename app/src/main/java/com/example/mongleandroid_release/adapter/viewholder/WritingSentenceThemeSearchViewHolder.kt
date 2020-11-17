@@ -19,10 +19,12 @@ class WritingSentenceThemeSearchViewHolder(itemView: View) : RecyclerView.ViewHo
     val themeIdx =
         itemView.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_themeIdx)
     val themeImg = itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img)
+    var themeChked = itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk)
 
     fun bind(searchTheme: SearchTheme) {
         themeIdx.text = searchTheme.themeIdx.toString()
         Glide.with(itemView).load(searchTheme.themeImg).into(themeImg)
+        themeChked.visibility = if (searchTheme.themeChked) View.VISIBLE  else View.GONE
 
         val inputString = MainActivity.search_result
 

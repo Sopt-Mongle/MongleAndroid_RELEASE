@@ -11,6 +11,7 @@ import android.view.Window
 import android.widget.TextView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
+import com.example.mongleandroid_release.activity.ThemeWritingSentenceBookActivity
 import com.example.mongleandroid_release.activity.WritingThemeActivity
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -67,8 +68,7 @@ class DialogMakethemeCheck(context : Context) {
             }
             // 이 테마에 문장 쓰기
             act.writing_theme_finish_btn_write.setOnClickListener {
-                //나중에 themeWriting 만들어지면 수정해야함 !
-                val intent = Intent(it.context , MainActivity::class.java)
+                val intent = Intent(it.context , ThemeWritingSentenceBookActivity::class.java)
                 it.context.startActivity(intent)
                 act.finish()
             }

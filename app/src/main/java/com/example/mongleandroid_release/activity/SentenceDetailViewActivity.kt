@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
@@ -17,7 +16,6 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailOtherThemeData
-import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.ccc

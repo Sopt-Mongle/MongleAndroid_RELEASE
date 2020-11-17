@@ -8,13 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.CuratorInfoActivity.Companion.params
-import com.example.mongleandroid_release.activity.DetailThemeActivity
 import com.example.mongleandroid_release.activity.SentenceDetailNoThemeActivity
-import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.CuratorInfoSentenceAdapter
-import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData

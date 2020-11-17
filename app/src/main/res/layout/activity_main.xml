@@ -22,7 +22,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/very_light_pink_two"
+        android:background="@color/very_light_pink_five"
         app:layout_constraintBottom_toTopOf="@+id/main_activity_FL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

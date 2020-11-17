@@ -10,14 +10,11 @@ import androidx.fragment.app.Fragment
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorInfoActivity.Companion.params
 import com.example.mongleandroid_release.activity.DetailThemeActivity
-import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.adapter.CuratorInfoThemaAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
 import kotlinx.android.synthetic.main.fragment_curator_info_thema.*
-import kotlinx.android.synthetic.main.fragment_library_thema.*
-import kotlinx.android.synthetic.main.fragment_search_theme.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

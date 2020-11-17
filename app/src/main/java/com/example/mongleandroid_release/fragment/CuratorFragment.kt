@@ -1,7 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
 import android.content.Intent
-import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
