@@ -148,9 +148,10 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                                     Log.d("SSS","${position}번 리스트 선택")
 
                                     val intent = Intent(this@ThemeWritingSentenceBookSearchActivity, ThemeWritingSentenceBookActivity::class.java)
-                                    intent.putExtra("title",item_writing_sentence_book_result_tv_title.text.toString())
-                                    intent.putExtra("author", item_writing_sentence_book_result_tv_author.text.toString())
-                                    intent.putExtra("publisher", item_writing_sentence_book_result_tv_publisher.text.toString())
+                                    intent.putExtra("title",response.body()!!.data[position].title)
+                                    intent.putExtra("author", response.body()!!.data[position].authors[position])
+                                    intent.putExtra("publisher", response.body()!!.data[position].publisher)
+                                    DetailThemeActivity.writingSentenceInThemeData.thumbnail = item_writing_sentence_book_result_img.toString()
                                     setResult(1, intent)
                                     finish()
                                 }

@@ -10,6 +10,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailThemeAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import com.example.mongleandroid_release.network.data.response.ResponseThemeDetailData
 import kotlinx.android.synthetic.main.activity_detail_theme.*
 import retrofit2.Call
@@ -18,8 +19,12 @@ import retrofit2.Response
 
 class DetailThemeActivity : AppCompatActivity() {
 
+    companion object{
+        var writingSentenceInThemeData: RequestWritingSentenceData = RequestWritingSentenceData()
+    }
+
     //DataTheme 데이터
-    private var themeIdx = 0
+    //private var themeIdx = 0
     private var theme = ""
     private var themeImg = ""
     private var saves = 0
@@ -40,6 +45,7 @@ class DetailThemeActivity : AppCompatActivity() {
 
 
     val requestToServer = RequestToServer
+
 
     private lateinit var detailThemeAdapter: DetailThemeAdapter
 
@@ -77,7 +83,7 @@ class DetailThemeActivity : AppCompatActivity() {
                 ) {
                     if(response.isSuccessful) {
                         //var themesData = intent.getParcelableArrayExtra("mainThemes")
-                        Log.d("아 제발","${themeIdx}번 리스트 선택")
+                        Log.d("아 제발","${response.body()!!.data!!.theme[0]}번 리스트 선택")
 
                         if (response.body()!!.data?.theme.isNullOrEmpty()) {
 
@@ -87,6 +93,7 @@ class DetailThemeActivity : AppCompatActivity() {
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
                             Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg).into(imageView5)
+                            writingSentenceInThemeData.themeIdx = response.body()!!.data!!.theme[0].themeIdx
 
                             // 테마에 문장 쓰러 가기
 //                            img_writing_sentence_in_theme_btn.setOnClickListener {
