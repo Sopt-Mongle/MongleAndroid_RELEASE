@@ -55,18 +55,63 @@
             app:layout_constraintStart_toStartOf="@id/tv_library_sentence_themename"
             app:layout_constraintTop_toBottomOf="@id/tv_library_sentence_themename" />
 
-        <ImageView
-            android:id="@+id/library_sentence_more"
+        <CheckBox
+            android:id="@+id/cb_library_sentence_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:paddingHorizontal="18dp"
-            android:paddingVertical="16dp"
-            android:src="@drawable/more_1"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:button="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="@id/tv_library_sentence_sentence"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_library_sentence_sentence" />
+
+        <ImageView
+            android:id="@+id/library_sentence_more"
+            android:layout_width="16dp"
+            android:layout_height="8dp"
+            android:src="@drawable/more_1"
+            android:layout_marginRight="23dp"
+            app:layout_constraintBottom_toBottomOf="@id/cb_library_sentence_more"
+            app:layout_constraintRight_toRightOf="@id/cb_library_sentence_more"
+            app:layout_constraintTop_toTopOf="@id/cb_library_sentence_more" />
+
+        <LinearLayout
+            android:id="@+id/library_sentence_more_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/library_sentence_more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@id/library_sentence_more"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/tv_modify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수정"
+                android:textSize="14sp"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/background_rectangle"/>
+
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="삭제"
+                android:textSize="14sp"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/background_rectangle"/>
+
+
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/img_item_library_sentence_usermark"

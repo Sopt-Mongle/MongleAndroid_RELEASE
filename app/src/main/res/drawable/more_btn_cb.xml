@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 체크박스 선택상태 -->
+    <item android:drawable="@drawable/more_1" android:state_checked="true" />
+    <!-- 체크박스 기본상태, 해제상태 -->
+    <item android:drawable="@drawable/more_1" android:state_checked="false"/>
+</selector>

@@ -17,6 +17,8 @@ class LibrarySentenceAdapter(private val context: Context, var data_sen:List<Lib
 
     private lateinit var itemClickListener : ItemClickListener
 
+//    var data_sen = mutableListOf<LibrarySentenceData>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibrarySentenceViewHolder {
         val view =
             LayoutInflater.from(context).inflate(R.layout.item_library_sentence, parent, false)
@@ -47,7 +49,7 @@ class LibrarySentenceAdapter(private val context: Context, var data_sen:List<Lib
 
     //클릭 리스너 등록 메소드
     fun setItemClickListener(itemClickListener: ItemClickListener) {
-       this.itemClickListener = itemClickListener
+//        this.itemClickListener = itemClickListener
     }
 
 }

@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.LibrarySentenceClickViewHolder
+import com.example.mongleandroid_release.change_visible
+import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 import com.example.mongleandroid_release.network.data.response.LibrarySentenceWrite
+import kotlinx.android.synthetic.main.item_library_sentence_click.*
+import kotlinx.android.synthetic.main.item_library_sentence_click.view.*
 
 class LibrarySentenceClickAdapter(private val context: Context, var data_sen_click: List<LibrarySentenceWrite>) :
     RecyclerView.Adapter<LibrarySentenceClickViewHolder>() {
@@ -17,9 +21,7 @@ class LibrarySentenceClickAdapter(private val context: Context, var data_sen_cli
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibrarySentenceClickViewHolder {
         val view_click_sen =
             LayoutInflater.from(context).inflate(R.layout.item_library_sentence_click, parent, false)
-        return LibrarySentenceClickViewHolder(
-            view_click_sen
-        )
+        return LibrarySentenceClickViewHolder(view_click_sen)
     }
 
     override fun getItemCount(): Int {
@@ -33,12 +35,28 @@ class LibrarySentenceClickAdapter(private val context: Context, var data_sen_cli
         holder.itemView.setOnClickListener {
             itemClickListener.onClick(it,position)
         }
+
+        holder.itemView.cb_library_sentence_more.setOnClickListener {
+            itemClickListener.onClickMore(it, position)
+        }
+
+        holder.itemView.tv_modify.setOnClickListener {
+            itemClickListener.onClickModify(it, position)
+        }
+
+        holder.itemView.tv_delete.setOnClickListener {
+            itemClickListener.onClickDelete(it, position)
+        }
     }
 
 
     //클릭 인터페이스 정의
     interface ItemClickListener{
         fun onClick(view: View, position: Int)
+        fun onClickMore(view: View, position: Int)
+        fun onClickModify(view: View, position: Int)
+        fun onClickDelete(view: View, position: Int)
+
     }
     //클릭리스너 선언
 
