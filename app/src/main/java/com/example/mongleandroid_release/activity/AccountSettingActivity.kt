@@ -43,6 +43,14 @@ class AccountSettingActivity : AppCompatActivity() {
         quit_service.setOnClickListener {
             val dlg = DialogQuitService(this)
             dlg.start()
+            dlg.setOnClickListener { content ->
+                if(content == "탈퇴하") {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    //현 액티비티 완전 종료
+                    ActivityCompat.finishAffinity(this)
+                }
+            }
         }
 
     }

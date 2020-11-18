@@ -15,7 +15,7 @@ class LibrarySentenceAdapter(private val context: Context, var data_sen:List<Lib
 //class LibrarySentenceAdapter(private val context: Context) :
     RecyclerView.Adapter<LibrarySentenceViewHolder>() {
 
-    private lateinit var itemClickListener : LibraryThemaAdapter.ItemClickListener
+    private lateinit var itemClickListener : ItemClickListener
 
 //    var data_sen = mutableListOf<LibrarySentenceData>()
 

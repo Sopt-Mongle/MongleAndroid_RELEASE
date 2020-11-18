@@ -16,6 +16,8 @@ class DialogQuitService(context : Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
     private lateinit var dialog_quit_yes : TextView
     private lateinit var dialog_quit_no : TextView
+    private lateinit var listener : MyDialogOKClickedListener
+
 
 
     fun start() {
@@ -40,6 +42,20 @@ class DialogQuitService(context : Context) {
             dlg.dismiss()
         }
         dlg.show()
+    }
+
+    fun setOnClickListener(listener: (String) -> Unit) {
+        this.listener = object:
+            MyDialogOKClickedListener {
+            override fun onOKClicked(content: String) {
+                listener(content)
+            }
+        }
+    }
+
+
+    interface MyDialogOKClickedListener {
+        fun onOKClicked(content : String)
     }
 
 

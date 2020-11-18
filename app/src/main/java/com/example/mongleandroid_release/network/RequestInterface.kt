@@ -219,4 +219,13 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceLikeNumData>
+
+    //내가 쓴 문장 수정
+
+    //내가 쓴 문장 삭제
+    @DELETE("/my/{sentenceIdx}")
+    fun DeleteSentenceWritten(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseDeleteSentenceWritten>
 }
