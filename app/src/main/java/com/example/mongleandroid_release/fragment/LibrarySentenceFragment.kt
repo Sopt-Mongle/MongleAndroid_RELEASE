@@ -1,6 +1,5 @@
 package com.example.mongleandroid_release.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
+import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.DetailThemeActivity
+import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
 import com.example.mongleandroid_release.change_visible
@@ -78,28 +80,18 @@ class LibrarySentenceFragment : Fragment() {
 
         }
 
-        //...버튼 눌렀을 때 수정 삭제 버튼 띄우기
+        //수정, 삭제 버튼 눌렀을 때
 //        library_sentence_more.setOnClickListener {
-//            change_visible(library_sentence_more_box)
-//        }
-
-        //수정 버튼 눌렀을 때 해당 수정 뷰로 넘어가기
-//        tv_modify.setOnClickListener {
 //
 //        }
 
-        //삭제 버튼 눌렀을 때 해당 아이템 지우기
-//        tv_delete.setOnClickListener {
-//
-//        }
-
-//        fragment 안에 있는 recyclerView안에 있는 item의 특정 ...버튼 누르면 EditSentenceActicity로 넘어가는
+        //fragment 안에 있는 recyclerView안에 있는 item의 특정 ...버튼 누르면 EditSentenceActicity로 넘어가는
 //        library_sentence_more.setOnClickListener {
-
+//
 //            activity?.let {
 //                val intent = Intent(context, EditSentenceActivity::class.java)
 //                startActivity(intent) }
-
+//
 //        }
 
 
@@ -213,9 +205,17 @@ class LibrarySentenceFragment : Fragment() {
                             librarySentenceAdapter = LibrarySentenceAdapter(view!!.context, response.body()!!.data!!.save)
                             rv_library_sentence.adapter = librarySentenceAdapter
                             librarySentenceAdapter.notifyDataSetChanged()
-//                        response.body().let { body->
-//
-//                        }
+
+                            librarySentenceAdapter.setItemClickListener(object : LibrarySentenceAdapter.ItemClickListener{
+
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data!!.save[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
+                                }
+                            })
 
                         }
 
@@ -242,9 +242,17 @@ class LibrarySentenceFragment : Fragment() {
                             librarySentenceClickAdapter = LibrarySentenceClickAdapter(view!!.context, response.body()!!.data!!.write)
                             rv_library_sentence.adapter = librarySentenceClickAdapter
                             librarySentenceClickAdapter.notifyDataSetChanged()
-//                        response.body().let { body->
-//
-//                        }
+
+                            librarySentenceClickAdapter.setItemClickListener(object : LibrarySentenceClickAdapter.ItemClickListener{
+
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
+                                }
+                            })
 
                         }
 
