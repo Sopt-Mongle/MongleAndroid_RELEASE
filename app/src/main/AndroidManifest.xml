@@ -10,7 +10,6 @@
 
     <application
         android:allowBackup="false"
-        tools:replace="android:allowBackup"
         android:fullBackupContent="false"
         android:fullBackupOnly="false"
         android:icon="@mipmap/ic_appicon"
@@ -18,8 +17,10 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ModifyLibraryWrittenSentenceActivity"></activity>
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity android:name=".activity.LibraryWrittenSentenceDeleteActivity"></activity>
+        <activity android:name=".activity.ModifyLibraryWrittenSentenceActivity" />
         <activity android:name=".activity.ThemeWritingSentenceFinishActivity" />
         <activity android:name=".activity.OnBoardingActivity" />
         <activity android:name=".activity.WritingSentenceInThemeActivity" />

@@ -100,7 +100,7 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                         dlg.setOnClickListener { content ->
                             if(content == "확인") {
                                 finish() //액티비티 종료하고
-                                refreshActivitiy()
+//                                refreshActivitiy()
 
                             }
                         }
