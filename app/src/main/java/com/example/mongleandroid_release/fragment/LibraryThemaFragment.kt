@@ -1,5 +1,6 @@
 package com.example.mongleandroid.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.DetailThemeActivity
 import com.example.mongleandroid_release.adapter.LibraryThemaClickAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -69,140 +71,7 @@ class LibraryThemaFragment : Fragment() {
 
         }
 
-        //테마 없는 문장
-//        tx_non_thema.setOnClickListener {
-//            activity?.let {
-//                val intent = Intent(context, NoThemeActivity::class.java)
-//                startActivity(intent)
-//            }
-//        }
-
-
-
     }
-
-
-//    private fun loadDatas() {
-//        libraryThemaDatas.apply {
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//            add(
-//                LibraryThemaData(
-//                    tv_library_thema = "삶에 지쳐 위태롭고 비틀거릴 때, 누군가에게\n" +
-//                            "기대고만 싶을 때 보면 좋은 문장",
-//                    tv_thema_num_library = "107",
-//                    tv_sentence_count_library_item = "15"
-//                )
-//            )
-//
-//
-//        }
-////        rv_library_thema.adapter = libraryThemaAdapter
-//        libraryThemaAdapter.data_the_write = libraryThemaDatas
-//        libraryThemaAdapter.notifyDataSetChanged()
-//    }
 
 
     private fun requestLibraryThemeData() {
@@ -230,8 +99,9 @@ class LibraryThemaFragment : Fragment() {
 
                                 override fun onClick(view: View, position: Int) {
                                     activity?.let {
-//                                        val intent = Intent(context, NoThemeActivity::class.java)
-//                                        startActivity(intent)
+                                        val intent = Intent(context, DetailThemeActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data!!.save[position].themeIdx)
+                                        startActivity(intent)
                                     }
                                 }
                             })
@@ -261,6 +131,17 @@ class LibraryThemaFragment : Fragment() {
                             libraryThemaClickAdapter = LibraryThemaClickAdapter(view!!.context, response.body()!!.data!!.write)
                             rv_library_thema.adapter = libraryThemaClickAdapter
                             libraryThemaClickAdapter.notifyDataSetChanged()
+
+                            libraryThemaClickAdapter.setItemClickListener(object : LibraryThemaClickAdapter.ItemClickListener{
+
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent = Intent(context, DetailThemeActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data!!.write[position].themeIdx)
+                                        startActivity(intent)
+                                    }
+                                }
+                            })
                         }
                     }
                 }

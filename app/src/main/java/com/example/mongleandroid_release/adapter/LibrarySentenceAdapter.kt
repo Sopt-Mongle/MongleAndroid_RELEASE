@@ -15,9 +15,7 @@ class LibrarySentenceAdapter(private val context: Context, var data_sen:List<Lib
 //class LibrarySentenceAdapter(private val context: Context) :
     RecyclerView.Adapter<LibrarySentenceViewHolder>() {
 
-    private lateinit var itemClickListener : LibraryThemaAdapter.ItemClickListener
-
-//    var data_sen = mutableListOf<LibrarySentenceData>()
+    private lateinit var itemClickListener : ItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibrarySentenceViewHolder {
         val view =
@@ -49,7 +47,7 @@ class LibrarySentenceAdapter(private val context: Context, var data_sen:List<Lib
 
     //클릭 리스너 등록 메소드
     fun setItemClickListener(itemClickListener: ItemClickListener) {
-//        this.itemClickListener = itemClickListener
+       this.itemClickListener = itemClickListener
     }
 
 }

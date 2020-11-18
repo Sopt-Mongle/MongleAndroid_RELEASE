@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentTransaction
+import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.DetailThemeActivity
+import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -92,94 +96,6 @@ class LibrarySentenceFragment : Fragment() {
     }
 
 
-    //SearchFragment로 이동
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-        transaction.replace(R.id.main_activity_fg, fragment)
-        transaction.commit()
-
-    }
-
-
-
-
-
-
-//    private fun loadDatas() {
-//        librarySentenceData.apply {
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//
-//
-//        }
-//
-//
-//
-//        librarySentenceAdapter.data_sen = librarySentenceData
-//        librarySentenceAdapter.notifyDataSetChanged()
-//    }
-
     private fun requestLibrarySentenceData() {
         requestToServer.service.lookLibrarySentence(
             token = SharedPreferenceController.getAccessToken(requireView().context)
@@ -199,9 +115,17 @@ class LibrarySentenceFragment : Fragment() {
                             librarySentenceAdapter = LibrarySentenceAdapter(view!!.context, response.body()!!.data!!.save)
                             rv_library_sentence.adapter = librarySentenceAdapter
                             librarySentenceAdapter.notifyDataSetChanged()
-//                        response.body().let { body->
-//
-//                        }
+
+                            librarySentenceAdapter.setItemClickListener(object : LibrarySentenceAdapter.ItemClickListener{
+
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data!!.save[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
+                                }
+                            })
 
                         }
 
@@ -228,9 +152,17 @@ class LibrarySentenceFragment : Fragment() {
                             librarySentenceClickAdapter = LibrarySentenceClickAdapter(view!!.context, response.body()!!.data!!.write)
                             rv_library_sentence.adapter = librarySentenceClickAdapter
                             librarySentenceClickAdapter.notifyDataSetChanged()
-//                        response.body().let { body->
-//
-//                        }
+
+                            librarySentenceClickAdapter.setItemClickListener(object : LibrarySentenceClickAdapter.ItemClickListener{
+
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
+                                }
+                            })
 
                         }
 
