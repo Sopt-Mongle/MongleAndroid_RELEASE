@@ -20,4 +20,6 @@ class LibrarySentenceClickViewHolder(itemView: View) : RecyclerView.ViewHolder(i
         tv_item_library_sentence_username.text =
             librarySentenceWrite.writer
     }
+
+
 }

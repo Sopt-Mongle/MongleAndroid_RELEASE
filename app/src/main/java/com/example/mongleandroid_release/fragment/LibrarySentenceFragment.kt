@@ -1,25 +1,33 @@
 package com.example.mongleandroid_release.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.DetailThemeActivity
+import com.example.mongleandroid_release.activity.MainActivity
+import com.example.mongleandroid_release.activity.ModifyActivity
 import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
+import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
+import com.example.mongleandroid_release.dialog.DialogDeleteSentence
+import com.example.mongleandroid_release.dialog.DialogQuitService
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.LibrarySentenceData
 import com.example.mongleandroid_release.network.data.response.ResponseLibrarySentenceData
 import kotlinx.android.synthetic.main.fragment_library_sentence.*
 import kotlinx.android.synthetic.main.item_library_sentence_click.*
+import kotlinx.serialization.json.Json
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -206,23 +214,27 @@ class LibrarySentenceFragment : Fragment() {
                             rv_library_sentence.adapter = librarySentenceAdapter
                             librarySentenceAdapter.notifyDataSetChanged()
 
-                            librarySentenceAdapter.setItemClickListener(object : LibrarySentenceAdapter.ItemClickListener{
+                            librarySentenceAdapter.setItemClickListener(object : LibrarySentenceAdapter.ItemClickListener {
 
                                 override fun onClick(view: View, position: Int) {
                                     activity?.let {
-                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
-                                        intent.putExtra("param", response.body()!!.data!!.save[position].sentenceIdx)
+                                        val intent =
+                                            Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra(
+                                            "param",
+                                            response.body()!!.data!!.save[position].sentenceIdx
+                                        )
                                         startActivity(intent)
                                     }
                                 }
                             })
-
                         }
 
                     }
                 }
             )
     }
+
     private fun requestLibrarySentenceClickData() {
         requestToServer.service.lookLibrarySentence(
             token = SharedPreferenceController.getAccessToken(requireView().context)
@@ -250,9 +262,33 @@ class LibrarySentenceFragment : Fragment() {
                                         val intent = Intent(context, SentenceDetailViewActivity::class.java)
                                         intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
                                         startActivity(intent)
+                                        change_visible(library_sentence_more_box)
+                                    }
+                                }
+
+                                override fun onClickMore(view: View, position: Int) {
+                                        if(cb_library_sentence_more.isChecked) {
+                                            change_visible(library_sentence_more_box)
+                                        } else change_gone(library_sentence_more_box)
+                                }
+
+                                override fun onClickModify(view: View, position: Int) {
+                                    val intent = Intent(context, ModifyActivity::class.java)
+                                    startActivity(intent)
+
+                                    //정보 같이 넘겨주기
+                                }
+
+                                override fun onClickDelete(view: View, position: Int) {
+                                    val dlg = DialogDeleteSentence(view.context)
+                                    dlg.start()
+                                    dlg.setOnClickListener { content ->
+                                        //DialogDeleteSentence에서 삭제하도록 처리
                                     }
                                 }
                             })
+
+
 
                         }
 
