@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.activity.LibraryWrittenSentenceDeleteActivity
 import com.example.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity
 import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
@@ -289,11 +290,18 @@ class LibrarySentenceFragment : Fragment() {
                                 override fun onClickDelete(view: View, position: Int) {
                                     change_gone(library_sentence_more_box)
 
-                                    val dlg = DialogDeleteSentence(view.context)
-                                    dlg.start()
-                                    dlg.setOnClickListener { content ->
-                                        //DialogDeleteSentence에서 삭제하도록 처리
-                                    }
+                                    val intent = Intent(context, LibraryWrittenSentenceDeleteActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
+                                    intent.putExtra("sentence", response.body()!!.data!!.write[position].sentence)
+                                    startActivity(intent)
+
+
+
+//                                    val dlg = DialogDeleteSentence(view.context)
+//                                    dlg.start()
+//                                    dlg.setOnClickListener { content ->
+//                                        //DialogDeleteSentence에서 삭제하도록 처리
+//                                    }
                                 }
                             })
 
