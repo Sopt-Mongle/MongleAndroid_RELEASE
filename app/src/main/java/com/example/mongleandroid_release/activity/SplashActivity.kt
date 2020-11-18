@@ -21,13 +21,20 @@ class SplashActivity : AppCompatActivity() {
 
         startLoading()
 
+
+
     }
 
     private fun startLoading() {
 
         if(SharedPreferenceController.getOnBoarding(this) == "true") {
             // 한번 실행했으면 true => 메인으로 이동
-            startMain()
+            if(SharedPreferenceController.getAccessToken(this) == "logout") {
+                // 로그아웃한 사람
+                startLogin()
+            } else {
+                startMain()
+            }
         } else {
             startOnBoarding()
             // 온보딩 한번 실행 -> change true
@@ -44,6 +51,14 @@ class SplashActivity : AppCompatActivity() {
         }, 4000)
     }
 
+    private fun startLogin() {
+        val handler = Handler()
+        handler.postDelayed({
+            val intent = Intent(baseContext, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 4000)
+    }
 
     private fun startOnBoarding() {
         val handler = Handler()
