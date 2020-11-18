@@ -15,6 +15,7 @@ import com.example.mongleandroid_release.dialog.DialogModifySentence
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestChangePasswordData
+import com.example.mongleandroid_release.network.data.request.RequestModifySentenceData
 import com.example.mongleandroid_release.network.data.response.*
 import kotlinx.android.synthetic.main.activity_change_password.*
 import kotlinx.android.synthetic.main.activity_modify.*
@@ -39,39 +40,39 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
         }
 
         //기존 문장 editText 받아오기
-        requestToServer.service.lookLibrarySentence(
-            token = SharedPreferenceController.getAccessToken(this)
-        ).enqueue(object : Callback<ResponseLibrarySentenceData> {
+        et_sentence_modify.setText(intent.getStringExtra("sentence"))
 
-            override fun onResponse(
-                call: Call<ResponseLibrarySentenceData>,
-                response: Response<ResponseLibrarySentenceData>
-            ) {
-                if(response.isSuccessful) {
-                    Log.e("내 서재 문장 수정 성공", " ")
-
-                    et_sentence_modify.setText(response.body()!!.data!!.write[0].sentence)
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
-                Log.d("내 서재 문장 수정 실패", "$t")
-            }
-
-        })
+//        //기존 문장 editText 받아오기
+//        requestToServer.service.lookLibrarySentence(
+//            token = SharedPreferenceController.getAccessToken(this)
+//        ).enqueue(object : Callback<ResponseLibrarySentenceData> {
+//
+//            override fun onResponse(
+//                call: Call<ResponseLibrarySentenceData>,
+//                response: Response<ResponseLibrarySentenceData>
+//            ) {
+//                if(response.isSuccessful) {
+//                    Log.e("내 서재 문장 수정 성공", " ")
+//
+//                    et_sentence_modify.setText(response.body()!!.data!!.write[0].sentence)
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
+//                Log.d("내 서재 문장 수정 실패", "$t")
+//            }
+//
+//        })
 
         //수정하기 버튼 눌렀을 때
         tv_modify_done.setOnClickListener {
 
-            val sentence_new = RequestBody.create(
-                MediaType.parse("text/plain"),
-                et_sentence_modify.text.toString()
-            )
-
             requestToServer.service.ModifySentenceWritten(
                 token = this.let { SharedPreferenceController.getAccessToken(it) },
                 params = intent.getIntExtra("param", 0),
-                sentence = sentence_new
+                body = RequestModifySentenceData(
+                    sentence = et_sentence_modify.text.toString()
+                )
             ).enqueue(object : Callback<ResponseModifySentenceWrittenData> {
                 override fun onFailure(call: Call<ResponseModifySentenceWrittenData>, t: Throwable) {
                     Log.d("내 서재 문장 수정 내용 보내기 통신 실패", "$t")
@@ -84,19 +85,21 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Log.d("내 서재 문장 수정 내용 보내기 통신 성공", " ")
 
+                        // 성공하면 다이얼로그 띄우고 확인 누르면 종료 시키기
+                        val dlg = DialogModifySentence(this@ModifyLibraryWrittenSentenceActivity)
+                        dlg.start()
+                        dlg.setOnClickListener { content ->
+                            if(content == "확인") {
+                                finish() //액티비티 종료하고
+                            }
+                        }
+
                     }
                 }
 
             })
 
-            //다이얼로그 띄우고 확인 누르면 종료 시키기
-            val dlg = DialogModifySentence(this)
-            dlg.start()
-            dlg.setOnClickListener { content ->
-                if(content == "확인") {
-                    finish() //액티비티 종료하고
-                }
-            }
+
 
 
         }

@@ -273,6 +273,8 @@ class LibrarySentenceFragment : Fragment() {
 
                                 override fun onClickModify(view: View, position: Int) {
                                     val intent = Intent(context, ModifyLibraryWrittenSentenceActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
+                                    intent.putExtra("sentence", response.body()!!.data!!.write[position].sentence)
                                     startActivity(intent)
 
                                     change_gone(library_sentence_more_box)

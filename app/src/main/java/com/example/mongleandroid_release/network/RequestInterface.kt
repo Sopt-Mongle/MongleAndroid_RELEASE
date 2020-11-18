@@ -225,7 +225,7 @@ interface RequestInterface {
     fun ModifySentenceWritten(
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int,
-        @Part ("sentence") sentence: RequestBody
+        @Body body: RequestModifySentenceData
     ) : Call<ResponseModifySentenceWrittenData>
 
     //내가 쓴 문장 삭제
