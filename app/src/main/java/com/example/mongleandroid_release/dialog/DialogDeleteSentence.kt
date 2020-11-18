@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.JoinStep1Activity
 import com.example.mongleandroid_release.activity.LoginActivity
+import com.example.mongleandroid_release.network.RequestToServer
+import com.example.mongleandroid_release.network.SharedPreferenceController
 
 class DialogDeleteSentence(context : Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
@@ -18,6 +20,7 @@ class DialogDeleteSentence(context : Context) {
     private lateinit var dialog_delete_no : TextView
     private lateinit var listener : MyDialogOKClickedListener
 
+    val requestToServer = RequestToServer
 
 
     fun start() {
@@ -32,6 +35,13 @@ class DialogDeleteSentence(context : Context) {
             //삭제하는 기능 넣기
 //            val intent = Intent(it.context, JoinStep1Activity::class.java)
 //            it.context.startActivity(intent)
+
+//            requestToServer.service.DeleteSentenceWritten(
+//                token = this.let {SharedPreferenceController.getAccessToken() },
+//                params = intent.getIntExtra("param", 0)
+//            ).enqueue(
+//
+//            )
 
             dlg.dismiss()
         }
