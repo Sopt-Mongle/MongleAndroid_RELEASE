@@ -60,6 +60,7 @@ class DetailThemeActivity : AppCompatActivity() {
         img_writing_sentence_in_theme_btn.setOnClickListener {
             val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
             intent.putExtra("param", tv_main_theme_title.text.toString())
+
             startActivity(intent)
         }
 
@@ -93,6 +94,7 @@ class DetailThemeActivity : AppCompatActivity() {
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
                             Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg).into(imageView5)
+                            // 해당 테마 인덱스 저장
                             writingSentenceInThemeData.themeIdx = response.body()!!.data!!.theme[0].themeIdx
 
                             // 테마에 문장 쓰러 가기
