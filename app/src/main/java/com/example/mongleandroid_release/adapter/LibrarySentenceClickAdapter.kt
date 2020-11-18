@@ -46,6 +46,7 @@ class LibrarySentenceClickAdapter(private val context: Context, var data_sen_cli
 
         holder.itemView.tv_modify.setOnClickListener {
             itemClickListener.onClickModify(it, position)
+
         }
 
         holder.itemView.tv_delete.setOnClickListener {

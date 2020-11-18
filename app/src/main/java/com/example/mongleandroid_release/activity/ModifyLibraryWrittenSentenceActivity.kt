@@ -7,11 +7,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 import com.example.mongleandroid_release.dialog.DialogModifySentence
+import com.example.mongleandroid_release.fragment.LibrarySentenceFragment
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestChangePasswordData
@@ -20,6 +25,8 @@ import com.example.mongleandroid_release.network.data.response.*
 import kotlinx.android.synthetic.main.activity_change_password.*
 import kotlinx.android.synthetic.main.activity_modify.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.fragment_library_sentence.*
+import kotlinx.android.synthetic.main.item_library_sentence_click.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -30,6 +37,7 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
 
     private val requestToServer = RequestToServer
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modify)
@@ -38,6 +46,7 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
         img_back_sentence_modify.setOnClickListener {
             finish()
         }
+
 
         //기존 문장 editText 받아오기
         et_sentence_modify.setText(intent.getStringExtra("sentence"))
@@ -91,6 +100,8 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                         dlg.setOnClickListener { content ->
                             if(content == "확인") {
                                 finish() //액티비티 종료하고
+                                refreshActivitiy()
+
                             }
                         }
 
@@ -121,5 +132,14 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
             }
 
         })
+
+
     }
+
+
+    fun refreshActivitiy(){
+
+    }
+
+
 }

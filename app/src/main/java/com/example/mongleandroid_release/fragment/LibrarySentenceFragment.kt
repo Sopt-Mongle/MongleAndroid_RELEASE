@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
@@ -53,6 +54,7 @@ class LibrarySentenceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
 //        librarySentenceAdapter = LibrarySentenceAdapter(view.context)
 //        rv_library_sentence.adapter = librarySentenceAdapter
         //        loadDatas()
@@ -80,6 +82,8 @@ class LibrarySentenceFragment : Fragment() {
             if (rdbtn_making_sentence.isChecked) {
 //                rv_library_sentence.adapter = librarySentenceClickAdapter
                 requestLibrarySentenceClickData()
+
+
             } else {
 
 
@@ -277,6 +281,7 @@ class LibrarySentenceFragment : Fragment() {
                                     intent.putExtra("sentence", response.body()!!.data!!.write[position].sentence)
                                     startActivity(intent)
 
+
                                     change_gone(library_sentence_more_box)
                                     //정보 같이 넘겨주기
                                 }
@@ -313,6 +318,12 @@ class LibrarySentenceFragment : Fragment() {
 //
 //    interface MoreBtnOnClickedListener {
 //        fun onOKClicked(content : String)
+//    }
+
+    //프래그먼트 새로 고침
+//    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
+//        var ft: FragmentTransaction = fragmentManager.beginTransaction()
+//        ft.detach(fragment).attach(fragment).commit()
 //    }
 
 }
