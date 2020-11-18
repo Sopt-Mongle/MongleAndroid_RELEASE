@@ -53,6 +53,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 DetailThemeActivity.writingSentenceInThemeData.title = activity_theme_writing_sentence_book_tv_title.text.toString()
                 DetailThemeActivity.writingSentenceInThemeData.author = activity_theme_writing_sentence_book_v_author.text.toString()
                 DetailThemeActivity.writingSentenceInThemeData.publisher = activity_theme_writing_sentence_book_v_publisher.text.toString()
+                //DetailThemeActivity.writingSentenceInThemeData.thumbnail =
 
                 activity_theme_writing_sentence_book_tv_title.background = getResources().getDrawable(R.drawable.et_area)
                 activity_theme_writing_sentence_book_img_warning.visibility = View.GONE
