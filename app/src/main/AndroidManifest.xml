@@ -55,8 +55,6 @@
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.WritingSentenceActivity" />
-        <activity android:name=".activity.ThemeWritingSentenceBookActivity" />
-        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
         <activity android:name=".activity.MainActivity"></activity>
     </application>
