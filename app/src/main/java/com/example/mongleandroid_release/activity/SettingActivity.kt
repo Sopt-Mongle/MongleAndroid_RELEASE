@@ -2,7 +2,9 @@ package com.example.mongleandroid_release.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
 import kotlinx.android.synthetic.main.activity_setting.*
@@ -29,6 +31,15 @@ class SettingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        sb_setting_push.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
+        }
+
         //버전 정보 눌렀을 떄 계정 설정 창 띄우기
         setting_info_version.setOnClickListener {
             val intent = Intent(this, SettingVersionInfoActivity::class.java)
@@ -48,8 +59,12 @@ class SettingActivity : AppCompatActivity() {
             val address =
                 arrayOf("mongle.official@gmail.com")
             email.putExtra(Intent.EXTRA_EMAIL, address)
-            email.putExtra(Intent.EXTRA_SUBJECT, "test@test")
-            email.putExtra(Intent.EXTRA_TEXT, "내용 미리보기 (미리적을 수 있음)")
+            email.putExtra(Intent.EXTRA_SUBJECT, "[문의]")
+            email.putExtra(Intent.EXTRA_TEXT, "*몽글팀이 빠르게 처리할 수 있게 메일 제목에 간단하게 어떤 문의인지 적어주세요!\n" +
+                    "\n" +
+                    "1. 문의 유형(문의/신고/버그제보/기타) : \n" +
+                    "2. 회원 아이디 (필요시 기입) : \n" +
+                    "3. 문의 내용 :")
             startActivity(email)
         })
 
