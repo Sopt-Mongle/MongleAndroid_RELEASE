@@ -17,13 +17,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.Body
+import kotlin.properties.Delegates
 
 class ThemeWritingSentenceBookActivity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
 
     var sentenceIdx : Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,24 +51,21 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 // 있는 경우
                 // 다음 액티비티로 이동 (문장 등록 끝)
 
-                DetailThemeActivity.writingSentenceInThemeData.title = activity_theme_writing_sentence_book_tv_title.text.toString()
-                DetailThemeActivity.writingSentenceInThemeData.author = activity_theme_writing_sentence_book_v_author.text.toString()
-                DetailThemeActivity.writingSentenceInThemeData.publisher = activity_theme_writing_sentence_book_v_publisher.text.toString()
+                writingSentenceInThemeData.title = activity_theme_writing_sentence_book_tv_title.text.toString()
+                writingSentenceInThemeData.author = activity_theme_writing_sentence_book_v_author.text.toString()
+                writingSentenceInThemeData.publisher = activity_theme_writing_sentence_book_v_publisher.text.toString()
                 //DetailThemeActivity.writingSentenceInThemeData.thumbnail =
 
                 activity_theme_writing_sentence_book_tv_title.background = getResources().getDrawable(R.drawable.et_area)
                 activity_theme_writing_sentence_book_img_warning.visibility = View.GONE
                 activity_theme_writing_sentence_book_tv_warning.visibility = View.GONE
                 sentenceInThemePost() // 통신
-                Log.d("테마에 문장쓰기 :: ", "${DetailThemeActivity.writingSentenceInThemeData.sentence} \n" +
-                        " ${DetailThemeActivity.writingSentenceInThemeData.author} \n" +
-                        " ${DetailThemeActivity.writingSentenceInThemeData.publisher} \n" +
-                        " ${DetailThemeActivity.writingSentenceInThemeData.themeIdx} \n" +
-                        " ${DetailThemeActivity.writingSentenceInThemeData.title} \n"
+                Log.d("테마에 문장쓰기 :: ", "${writingSentenceInThemeData.sentence} \n" +
+                        " ${writingSentenceInThemeData.author} \n" +
+                        " ${writingSentenceInThemeData.publisher} \n" +
+                        " ${writingSentenceInThemeData.themeIdx} \n" +
+                        " ${writingSentenceInThemeData.title} \n"
                 )
-                val intent = Intent(this, ThemeWritingSentenceFinishActivity::class.java )
-                intent.putExtra("sentenceIdx", sentenceIdx)
-                startActivity(intent)
 
             }
         }
@@ -126,9 +123,10 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     response.body().let { body ->
                         Log.e("ResponseWritingSentenceData 통신응답바디", "status: ${body!!.status} message : ${body.message} data : ${body.data}\"")
-
+                        val intent = Intent(applicationContext, ThemeWritingSentenceFinishActivity::class.java)
+                        intent.putExtra("sentenceIdx", response.body()!!.data)
+                        startActivity(intent)
                     }
-                    sentenceIdx = response.body()!!.data
 
                 }
 
