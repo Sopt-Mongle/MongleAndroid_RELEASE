@@ -67,7 +67,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                         " ${DetailThemeActivity.writingSentenceInThemeData.title} \n"
                 )
                 val intent = Intent(this, ThemeWritingSentenceFinishActivity::class.java )
-                intent.putExtra("param", sentenceIdx)
+                intent.putExtra("sentenceIdx", sentenceIdx)
                 startActivity(intent)
 
             }

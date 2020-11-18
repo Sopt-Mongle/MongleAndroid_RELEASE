@@ -13,12 +13,12 @@ class ThemeWritingSentenceFinishActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_finish)
 
-//        val sentenceIdx = intent.getIntExtra("param",0)
+        val sentenceIdx = intent.getIntExtra("sentenceIdx",0)
 
         // 문장 보러가기
         theme_writing_sentence_finish_btn_sentence.setOnClickListener {
             val intent = Intent(this,SentenceDetailNoThemeActivity::class.java)
-            intent.putExtra("param", intent.getIntExtra("param",0))
+            intent.putExtra("param", sentenceIdx)
             startActivity(intent)
         }
         // 메인으로 돌아가기
