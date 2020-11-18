@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.network.data.response.ResponseWritingSentenceData
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_finish.*
@@ -14,7 +15,7 @@ class ThemeWritingSentenceFinishActivity : AppCompatActivity() {
         setContentView(R.layout.activity_theme_writing_sentence_finish)
 
         val sentenceIdx = intent.getIntExtra("sentenceIdx",0)
-
+        Log.d("통신 응답바디 sentenceIdx ", sentenceIdx.toString())
         // 문장 보러가기
         theme_writing_sentence_finish_btn_sentence.setOnClickListener {
             val intent = Intent(this,SentenceDetailNoThemeActivity::class.java)
