@@ -495,8 +495,6 @@ class ProfileActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, temp.trim().split(" ").toTypedArray(), 1)
         } else {
             // 모두 허용 상태
-            Toast.makeText(this, "권한을 모두 허용", Toast.LENGTH_SHORT).show()
-            // 허용상태
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
             intent.type = MediaStore.Images.Media.CONTENT_TYPE
             intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -527,7 +525,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "설정에서 권한 허용", Toast.LENGTH_SHORT).show()
+
         }
     }
 

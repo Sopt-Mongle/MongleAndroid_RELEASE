@@ -18,6 +18,8 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestLoginData
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -80,6 +82,12 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        val now = System.currentTimeMillis()
+        val mDate = Date(now)
+        val simpleData = SimpleDateFormat("hhmmss")
+        val nowTime = simpleData.format(mDate).toInt()
+
+        Log.d("시간테스트 현재시간", nowTime.toString())
 
         // 자동로그인 && 토큰갱신
         // 비회원 / 회원 구분
@@ -89,28 +97,44 @@ class MainActivity : AppCompatActivity() {
             // 아이디, 비밀번호가 저장되어있지 않는 경우 = 비회원
             SharedPreferenceController.setAccessToken(this, "guest")
         } else {
-            // 자동로그인 - 토큰 새로 얻음
+            // 아이디, 비밀번호가 저장되어 있는 경우 = 자동로그인
+            // 현재시간 - pref 시간 = 3시간이상 이면 토큰 갱신
+            if(SharedPreferenceController.getCurrentTime(this) == "") {
+                // 로그인
+                login()
+                SharedPreferenceController.setCurrentTime(this, nowTime.toString())
+            } else {
+                val lastTime = SharedPreferenceController.getCurrentTime(this)!!.toInt()
+                if(nowTime - lastTime > 30000) {
+                    // 갱신
+                    SharedPreferenceController.setCurrentTime(this, nowTime.toString())
+                    login()
+                }
+            }
 
-            Log.d("자동로그인", SharedPreferenceController.getAccessToken(this))
-            requestToServer.service.requestLogin(
-                    RequestLoginData(
-                            email = SharedPreferenceController.getMail(this).toString(),
-                            password = SharedPreferenceController.getPasswd(this).toString()
-                    )
-            ).customEnqueue(
-                    onError = {
-                        Log.d("error", "에러")
-                    },
-                    onSuccess = {
-                        if(it.status == 200) {
-                            Log.e("토큰 ", " $it")
-                            SharedPreferenceController.setAccessToken(this, it.data.accessToken)
-                        }
-                    }
-            )
+
         }
 
     }
+
+    private fun login() {
+        requestToServer.service.requestLogin(
+            RequestLoginData(
+                email = SharedPreferenceController.getMail(this).toString(),
+                password = SharedPreferenceController.getPasswd(this).toString()
+            )
+        ).customEnqueue(
+            onError = {
+                Log.d("error", "에러")
+            },
+            onSuccess = {
+                if(it.status == 200) {
+                    SharedPreferenceController.setAccessToken(this, it.data.accessToken)
+                }
+            }
+        )
+    }
+
     private fun toggleFab() {
         if (isFabOpen) {
             main_activity_FAB_tm.startAnimation(fab_close)
