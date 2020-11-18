@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.viewholder.LibrarySentenceClickViewHolder
+import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
-import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 import com.example.mongleandroid_release.network.data.response.LibrarySentenceWrite
-import kotlinx.android.synthetic.main.item_library_sentence_click.*
 import kotlinx.android.synthetic.main.item_library_sentence_click.view.*
 
 class LibrarySentenceClickAdapter(private val context: Context, var data_sen_click: List<LibrarySentenceWrite>) :
@@ -36,8 +35,13 @@ class LibrarySentenceClickAdapter(private val context: Context, var data_sen_cli
             itemClickListener.onClick(it,position)
         }
 
-        holder.itemView.cb_library_sentence_more.setOnClickListener {
-            itemClickListener.onClickMore(it, position)
+        holder.itemView.cb_library_sentence_more.setOnCheckedChangeListener { view, _ ->
+            itemClickListener.onClickMore(view, position)
+
+            if(holder.itemView.cb_library_sentence_more.isChecked) {
+                change_visible(holder.itemView.library_sentence_more_box)
+            } else change_gone(holder.itemView.library_sentence_more_box)
+
         }
 
         holder.itemView.tv_modify.setOnClickListener {
