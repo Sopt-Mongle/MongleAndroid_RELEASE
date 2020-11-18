@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ModifyActivity"></activity>
+        <activity android:name=".activity.ModifyLibraryWrittenSentenceActivity"></activity>
         <activity android:name=".activity.ThemeWritingSentenceFinishActivity" />
         <activity android:name=".activity.OnBoardingActivity" />
         <activity android:name=".activity.WritingSentenceInThemeActivity" />

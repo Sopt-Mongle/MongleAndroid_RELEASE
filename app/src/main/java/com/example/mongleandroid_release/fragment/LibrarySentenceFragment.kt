@@ -7,14 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentTransaction
+import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.activity.ModifyActivity
+import com.example.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity
 import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogDeleteSentence
+import com.example.mongleandroid_release.dialog.DialogQuitService
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.LibrarySentenceData
@@ -268,7 +272,7 @@ class LibrarySentenceFragment : Fragment() {
                                 }
 
                                 override fun onClickModify(view: View, position: Int) {
-                                    val intent = Intent(context, ModifyActivity::class.java)
+                                    val intent = Intent(context, ModifyLibraryWrittenSentenceActivity::class.java)
                                     startActivity(intent)
 
                                     change_gone(library_sentence_more_box)
