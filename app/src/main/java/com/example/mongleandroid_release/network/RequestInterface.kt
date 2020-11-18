@@ -1,6 +1,5 @@
 package com.example.mongleandroid_release.network
 
-import com.example.mongleandroid_release.activity.ModifyActivity
 import com.example.mongleandroid_release.network.data.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
@@ -23,7 +22,7 @@ interface RequestInterface {
         @Header("token") token: String?
     ) : Call<ResponseLibraryThemeData>
 
-    //내서재 테마 조회
+    //내서재 문장 조회
     @GET("/my/sentence")
     fun lookLibrarySentence(
         @Header("token") token: String?
@@ -226,8 +225,8 @@ interface RequestInterface {
     fun ModifySentenceWritten(
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int,
-        @Body Body: ResponseModifySentenceWritten
-    ) : Call<ResponseDeleteSentenceWritten>
+        @Part ("sentence") sentence: RequestBody
+    ) : Call<ResponseModifySentenceWrittenData>
 
     //내가 쓴 문장 삭제
     @DELETE("/my/{sentenceIdx}")
