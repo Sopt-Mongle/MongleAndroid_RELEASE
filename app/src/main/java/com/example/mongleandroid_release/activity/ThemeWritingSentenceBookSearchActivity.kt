@@ -149,7 +149,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
                                     val intent = Intent(this@ThemeWritingSentenceBookSearchActivity, ThemeWritingSentenceBookActivity::class.java)
                                     intent.putExtra("title",response.body()!!.data[position].title)
-                                    intent.putExtra("author", response.body()!!.data[position].authors[position])
+                                    intent.putExtra("author", response.body()!!.data[position].authors[0])
                                     intent.putExtra("publisher", response.body()!!.data[position].publisher)
                                     DetailThemeActivity.writingSentenceInThemeData.thumbnail = item_writing_sentence_book_result_img.toString()
                                     setResult(1, intent)
