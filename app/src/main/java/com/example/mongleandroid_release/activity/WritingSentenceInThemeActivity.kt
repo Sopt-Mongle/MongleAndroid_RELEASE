@@ -15,9 +15,6 @@ import kotlinx.android.synthetic.main.activity_writing_sentence_in_theme.*
 
 class WritingSentenceInThemeActivity : AppCompatActivity() {
 
-    companion object{
-        var writingSentenceInThemeData: RequestWritingSentenceData = RequestWritingSentenceData()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +36,8 @@ class WritingSentenceInThemeActivity : AppCompatActivity() {
             } else { // 다음 액티비티로 넘어가기
                 Log.d("다음 버튼 누름!!!!!!!!!1", "다음다음다음다음")
                 val intent = Intent(this,ThemeWritingSentenceBookActivity::class.java)
+                DetailThemeActivity.writingSentenceInThemeData.sentence = activity_theme_writing_sentence_et_sentence.text.toString()
+//                intent.putExtra("sentence", activity_theme_writing_sentence_et_sentence.text.toString())
                 startActivity(intent)
             }
         }

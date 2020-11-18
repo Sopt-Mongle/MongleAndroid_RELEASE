@@ -8,6 +8,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.dialog.DialogChangePassword
 import com.example.mongleandroid_release.dialog.DialogLogout
 import com.example.mongleandroid_release.dialog.DialogQuitService
+import com.example.mongleandroid_release.network.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_account_setting.*
 
 class AccountSettingActivity : AppCompatActivity() {
@@ -28,6 +29,7 @@ class AccountSettingActivity : AppCompatActivity() {
 
         //로그 아웃 버튼 눌렀을 떄 dialog 띄우기
         logout.setOnClickListener {
+            SharedPreferenceController.setAccessToken(this, "logout")
             val dlg = DialogLogout(this)
             dlg.start()
             dlg.setOnClickListener { content ->
