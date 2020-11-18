@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.example.mongleandroid_release"
         minSdkVersion 23
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -51,9 +51,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    //ted permission 권한 요청 라이브러리
-    implementation "gun0912.ted:tedpermission:2.1.0"
+    
     // 리사이클러뷰를 다루기 위한 라이브러리
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // material 디자인 라이브러리

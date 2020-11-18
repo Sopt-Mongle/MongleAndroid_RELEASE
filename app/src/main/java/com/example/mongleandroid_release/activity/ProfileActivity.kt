@@ -3,6 +3,7 @@ package com.example.mongleandroid_release.activity
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.ShapeDrawable
@@ -11,6 +12,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
@@ -18,6 +20,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
@@ -77,19 +81,24 @@ class ProfileActivity : AppCompatActivity() {
         activity_profile_img.clipToOutline = true
 
         requestToServer.service.lookLibraryProfile(
-                token = SharedPreferenceController.getAccessToken(this)
+            token = SharedPreferenceController.getAccessToken(this)
         ).enqueue(object : Callback<ResponseMainLibraryData> {
-            override fun onResponse(call: Call<ResponseMainLibraryData>, response: Response<ResponseMainLibraryData>) {
-                if(response.isSuccessful) {
-                    if(response.body()!!.data.isNullOrEmpty()) {
+            override fun onResponse(
+                call: Call<ResponseMainLibraryData>,
+                response: Response<ResponseMainLibraryData>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.data.isNullOrEmpty()) {
 
                     } else {
-                        Glide.with(this@ProfileActivity).load(response.body()!!.data[0].img).into(activity_profile_img)
+                        Glide.with(this@ProfileActivity).load(response.body()!!.data[0].img).into(
+                            activity_profile_img
+                        )
 
                         activity_profile_et_nickname.setText(response.body()!!.data[0].name)
                         profile_name = response.body()!!.data[0].name
 
-                        when(response.body()!!.data[0].keyword) {
+                        when (response.body()!!.data[0].keyword) {
                             "감성자극" -> {
                                 activity_profile_btn1.isChecked = true
                                 keywordIndex = 1
@@ -120,16 +129,16 @@ class ProfileActivity : AppCompatActivity() {
 
                         // 포커스 해제
                         activity_profile_et_nickname.background = resources.getDrawable(
-                                R.drawable.et_area,
-                                null
+                            R.drawable.et_area,
+                            null
                         )
                         change_gone(activity_profile_btn_nickname_erase)
                         change_gone(activity_profile_tv_nickname_cnt)
                         change_gone(activity_profile_tv_nickname_cnt_max)
 
                         activity_profile_et_introduce.background = resources.getDrawable(
-                                R.drawable.et_area,
-                                null
+                            R.drawable.et_area,
+                            null
                         )
                         change_gone(activity_profile_btn_introduce_erase)
                         change_gone(activity_profile_tv_introduce_cnt)
@@ -266,24 +275,24 @@ class ProfileActivity : AppCompatActivity() {
                 } else {
                     // 닉네임 중복체크
                     requestToServer.service.requestDuplicate(
-                            RequestDuplicateData(
-                                    email = "닉네임만체크함",
-                                    name = activity_profile_et_nickname.text.toString()
-                            )
+                        RequestDuplicateData(
+                            email = "닉네임만체크함",
+                            name = activity_profile_et_nickname.text.toString()
+                        )
                     ).enqueue(object : Callback<ResponseDuplicateData> {
                         override fun onFailure(call: Call<ResponseDuplicateData>, t: Throwable) {
                             Log.d("error", "duplicate / $t")
                         }
 
                         override fun onResponse(
-                                call: Call<ResponseDuplicateData>,
-                                response: Response<ResponseDuplicateData>
+                            call: Call<ResponseDuplicateData>,
+                            response: Response<ResponseDuplicateData>
                         ) {
                             if (response.isSuccessful) {
                                 if (response.body()!!.data.duplicate == "name") {
                                     activity_profile_et_nickname.background = resources.getDrawable(
-                                            R.drawable.et_area_red,
-                                            null
+                                        R.drawable.et_area_red,
+                                        null
                                     )
                                     change_visible(activity_profile_img_nickname_warning)
                                     activity_profile_img_nickname_warning.setImageResource(R.drawable.ic_warning)
@@ -356,7 +365,7 @@ class ProfileActivity : AppCompatActivity() {
 
         activity_profile_btn_camera.setOnClickListener {
             // 권한 요청
-            tedPermission()
+            checkPermission()
         }
 
 
@@ -381,30 +390,14 @@ class ProfileActivity : AppCompatActivity() {
                 change_visible(activity_profile_img_introduce_warning)
                 change_visible(activity_profile_tv_introduce_warning)
             } else {
-                val permissionListener: PermissionListener = object : PermissionListener {
-                    override fun onPermissionGranted() {
-                        // 성공
-                        settingDataMultiForm()
-                    }
 
-                    override fun onPermissionDenied(deniedPermissions: ArrayList<String?>?) {
-                        // 권한 요청 실패
-                    }
-                }
-
-                TedPermission.with(this)
-                    .setPermissionListener(permissionListener)
-                    .setRationaleMessage(resources.getString(R.string.permission_2))
-                    .setDeniedMessage(resources.getString(R.string.permission_1))
-                    .setPermissions(
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    )
-                    .check()
-
+                settingDataMultiForm()
 
                 // pref에 저장
-                SharedPreferenceController.setName(this,
-                    activity_profile_et_nickname.text.toString())
+                SharedPreferenceController.setName(
+                    this,
+                    activity_profile_et_nickname.text.toString()
+                )
 
             }
 
@@ -420,11 +413,15 @@ class ProfileActivity : AppCompatActivity() {
         val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
         val byteArrayOutputStream = ByteArrayOutputStream()
         bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
-        val photoBody = RequestBody.create(MediaType.parse("image/jpeg"),
-            byteArrayOutputStream.toByteArray())
-        val picture_rb = MultipartBody.Part.createFormData("img",
+        val photoBody = RequestBody.create(
+            MediaType.parse("image/jpeg"),
+            byteArrayOutputStream.toByteArray()
+        )
+        val picture_rb = MultipartBody.Part.createFormData(
+            "img",
             File(fileUri.toString()).name,
-            photoBody)
+            photoBody
+        )
 
 
         val name = RequestBody.create(
@@ -483,30 +480,57 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun tedPermission() {
-        val permissionListener: PermissionListener = object : PermissionListener {
-            override fun onPermissionGranted() {
-
-                // 권한 요청 성공 - 갤러리 이동
-                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-                intent.type = MediaStore.Images.Media.CONTENT_TYPE
-                intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                startActivityForResult(intent, PICK_FROM_ALBUM)
-            }
-
-            override fun onPermissionDenied(deniedPermissions: ArrayList<String?>?) {
-                // 권한 요청 실패
-            }
+    private fun checkPermission() {
+        var temp : String = ""
+        if(ContextCompat.checkSelfPermission
+                (this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            temp += Manifest.permission.READ_EXTERNAL_STORAGE + " "
         }
 
-        TedPermission.with(this)
-            .setPermissionListener(permissionListener)
-            .setRationaleMessage(resources.getString(R.string.permission_2))
-            .setDeniedMessage(resources.getString(R.string.permission_1))
-            .setPermissions(
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            .check()
+        if(ContextCompat.checkSelfPermission
+                (this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            temp += Manifest.permission.WRITE_EXTERNAL_STORAGE + " "
+        }
+
+        if(!TextUtils.isEmpty(temp)) {
+            // 권한 요청
+            ActivityCompat.requestPermissions(this, temp.trim().split(" ").toTypedArray(), 1)
+        } else {
+            // 모두 허용 상태
+            Toast.makeText(this, "권한을 모두 허용", Toast.LENGTH_SHORT).show()
+            // 허용상태
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intent.type = MediaStore.Images.Media.CONTENT_TYPE
+            intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            startActivityForResult(intent, PICK_FROM_ALBUM)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+
+        if(requestCode == 1) {
+            // 권한을 허용했을 경우
+            var length = permissions.size
+            for(i in 0 until length) {
+                if(grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("권한 허용 : ", permissions[i])
+
+                    // 권한 요청 성공 - 갤러리 이동
+                    val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                    startActivityForResult(intent, PICK_FROM_ALBUM)
+                }
+            }
+        } else {
+            Toast.makeText(this, "설정에서 권한 허용", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
