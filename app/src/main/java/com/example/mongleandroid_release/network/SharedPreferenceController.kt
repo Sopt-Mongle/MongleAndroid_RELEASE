@@ -9,6 +9,7 @@ object SharedPreferenceController {
     private val MY_ACCOUNT = "MY_ACCOUNT"
     private val MY_PROFILE = "MY_PROFILE"
     private val ON_BOARDING = "ON_BOARDING"
+    private val CURRENT_TIME = "CURRENT_TIME"
 
     // 토큰
     fun setAccessToken(context: Context, authorization: String?) {
@@ -60,6 +61,19 @@ object SharedPreferenceController {
         val editor = prefs.edit()
         editor.clear()
         editor.apply()
+    }
+
+    // 현재 시간 저장 - 토큰 갱신
+    fun setCurrentTime(context: Context, input: String) {
+        val prefs = context.getSharedPreferences(CURRENT_TIME, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putString("CURRENT_TIME", input)
+        editor.apply()
+    }
+
+    fun getCurrentTime(context: Context) : String? {
+        val prefs = context.getSharedPreferences(CURRENT_TIME, Context.MODE_PRIVATE)
+        return prefs.getString("CURRENT_TIME", "")
     }
 
     // 프로필 수정
