@@ -22,6 +22,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
 
+    var sentenceIdx : Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
             //이거 아마 startActivityForResult로 바꿔야 함!!
         }
 
-        // 책 제목 text가 없는 경우 경고창
+        // 다음 버튼 : !!!!!!!!       책 제목 text가 없는 경우 경고창
         activity_theme_writing_sentence_book_btn_upload.setOnClickListener {
             if (activity_theme_writing_sentence_book_tv_title.text.toString().isEmpty()) {
                 activity_theme_writing_sentence_book_tv_title.background = getResources().getDrawable(R.drawable.et_area_red)
@@ -58,7 +59,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 activity_theme_writing_sentence_book_tv_title.background = getResources().getDrawable(R.drawable.et_area)
                 activity_theme_writing_sentence_book_img_warning.visibility = View.GONE
                 activity_theme_writing_sentence_book_tv_warning.visibility = View.GONE
-                sentenceInThemePost()
+                sentenceInThemePost() // 통신
                 Log.d("테마에 문장쓰기 :: ", "${DetailThemeActivity.writingSentenceInThemeData.sentence} \n" +
                         " ${DetailThemeActivity.writingSentenceInThemeData.author} \n" +
                         " ${DetailThemeActivity.writingSentenceInThemeData.publisher} \n" +
@@ -66,6 +67,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                         " ${DetailThemeActivity.writingSentenceInThemeData.title} \n"
                 )
                 val intent = Intent(this, ThemeWritingSentenceFinishActivity::class.java )
+                intent.putExtra("sentenceIdx", sentenceIdx)
                 startActivity(intent)
 
             }
@@ -124,7 +126,10 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     response.body().let { body ->
                         Log.e("ResponseWritingSentenceData 통신응답바디", "status: ${body!!.status} message : ${body.message} data : ${body.data}\"")
+
                     }
+                    sentenceIdx = response.body()!!.data
+
                 }
 
             }
