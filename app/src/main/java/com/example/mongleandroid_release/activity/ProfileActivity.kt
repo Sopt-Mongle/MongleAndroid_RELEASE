@@ -33,8 +33,6 @@ import com.example.mongleandroid_release.network.data.request.RequestDuplicateDa
 import com.example.mongleandroid_release.network.data.response.ResponseDuplicateData
 import com.example.mongleandroid_release.network.data.response.ResponseMainLibraryData
 import com.example.mongleandroid_release.network.data.response.ResponseUpdateProfileData
-import com.gun0912.tedpermission.PermissionListener
-import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.activity_profile.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
