@@ -31,18 +31,7 @@ class DialogDeleteSentence(context : Context) {
 
         dialog_delete_yes = dlg.findViewById(R.id.tv_delete_yes)
         dialog_delete_yes.setOnClickListener {
-
-            //삭제하는 기능 넣기
-//            val intent = Intent(it.context, JoinStep1Activity::class.java)
-//            it.context.startActivity(intent)
-
-//            requestToServer.service.DeleteSentenceWritten(
-//                token = this.let {SharedPreferenceController.getAccessToken() },
-//                params = intent.getIntExtra("param", 0)
-//            ).enqueue(
-//
-//            )
-
+            listener.onOKClicked("삭제")
             dlg.dismiss()
         }
 

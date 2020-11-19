@@ -7,12 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.example.mongleandroid.adapter.LibraryThemaAdapter
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.activity.LibraryWrittenSentenceDeleteActivity
 import com.example.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity
 import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.adapter.LibrarySentenceAdapter
@@ -20,15 +15,13 @@ import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogDeleteSentence
-import com.example.mongleandroid_release.dialog.DialogQuitService
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.LibrarySentenceData
-import com.example.mongleandroid_release.network.data.response.LibrarySentenceWrite
+import com.example.mongleandroid_release.network.data.response.ResponseDeleteSentenceWritten
 import com.example.mongleandroid_release.network.data.response.ResponseLibrarySentenceData
 import kotlinx.android.synthetic.main.fragment_library_sentence.*
 import kotlinx.android.synthetic.main.item_library_sentence_click.*
-import kotlinx.android.synthetic.main.item_library_sentence_click.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -266,8 +259,8 @@ class LibrarySentenceFragment : Fragment() {
                                         val intent = Intent(context, SentenceDetailViewActivity::class.java)
                                         intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
                                         startActivity(intent)
-                                        change_visible(library_sentence_more_box)
                                     }
+                                    change_gone(library_sentence_more_box)
                                 }
 
                                 override fun onClickMore(view: View, position: Int) {
@@ -282,7 +275,6 @@ class LibrarySentenceFragment : Fragment() {
                                     intent.putExtra("sentence", response.body()!!.data!!.write[position].sentence)
                                     startActivity(intent)
 
-
                                     change_gone(library_sentence_more_box)
                                     //정보 같이 넘겨주기
                                 }
@@ -290,18 +282,35 @@ class LibrarySentenceFragment : Fragment() {
                                 override fun onClickDelete(view: View, position: Int) {
                                     change_gone(library_sentence_more_box)
 
-                                    val intent = Intent(context, LibraryWrittenSentenceDeleteActivity::class.java)
-                                    intent.putExtra("param", response.body()!!.data!!.write[position].sentenceIdx)
-                                    intent.putExtra("sentence", response.body()!!.data!!.write[position].sentence)
-                                    startActivity(intent)
+                                    val dlg = DialogDeleteSentence(view.context)
+                                    dlg.start()
+                                    dlg.setOnClickListener { content ->
+                                        if(content == "삭제") {
+                                            requestToServer.service.DeleteSentenceWritten(
+                                                token = SharedPreferenceController.getAccessToken(view.context),
+                                                params = response.body()!!.data!!.write[position].sentenceIdx
 
+                                            ).enqueue(
+                                                object : Callback<ResponseDeleteSentenceWritten> {
+                                                    override fun onResponse(
+                                                        call: Call<ResponseDeleteSentenceWritten>,
+                                                        response: Response<ResponseDeleteSentenceWritten>
+                                                    ) {
+                                                        if (response.isSuccessful) {
 
+                                                        }
+                                                    }
 
-//                                    val dlg = DialogDeleteSentence(view.context)
-//                                    dlg.start()
-//                                    dlg.setOnClickListener { content ->
-//                                        //DialogDeleteSentence에서 삭제하도록 처리
-//                                    }
+                                                    override fun onFailure(call: Call<ResponseDeleteSentenceWritten>, t: Throwable) {
+                                                        Log.d("내 서재 쓴 문장 삭제 통신 실패", "$t")
+
+                                                    }
+
+                                                }
+                                            )
+                                        }
+
+                                    }
                                 }
                             })
 
