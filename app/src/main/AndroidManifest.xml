@@ -19,7 +19,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.LibraryWrittenSentenceDeleteActivity"></activity>
         <activity android:name=".activity.ModifyLibraryWrittenSentenceActivity" />
         <activity android:name=".activity.ThemeWritingSentenceFinishActivity" />
         <activity android:name=".activity.OnBoardingActivity" />

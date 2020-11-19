@@ -51,28 +51,6 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
         //기존 문장 editText 받아오기
         et_sentence_modify.setText(intent.getStringExtra("sentence"))
 
-//        //기존 문장 editText 받아오기
-//        requestToServer.service.lookLibrarySentence(
-//            token = SharedPreferenceController.getAccessToken(this)
-//        ).enqueue(object : Callback<ResponseLibrarySentenceData> {
-//
-//            override fun onResponse(
-//                call: Call<ResponseLibrarySentenceData>,
-//                response: Response<ResponseLibrarySentenceData>
-//            ) {
-//                if(response.isSuccessful) {
-//                    Log.e("내 서재 문장 수정 성공", " ")
-//
-//                    et_sentence_modify.setText(response.body()!!.data!!.write[0].sentence)
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
-//                Log.d("내 서재 문장 수정 실패", "$t")
-//            }
-//
-//        })
-
         //수정하기 버튼 눌렀을 때
         tv_modify_done.setOnClickListener {
 
@@ -100,8 +78,6 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                         dlg.setOnClickListener { content ->
                             if(content == "확인") {
                                 finish() //액티비티 종료하고
-//                                refreshActivitiy()
-
                             }
                         }
 

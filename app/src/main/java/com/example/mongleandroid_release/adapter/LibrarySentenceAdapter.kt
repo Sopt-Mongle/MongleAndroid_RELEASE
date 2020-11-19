@@ -49,7 +49,7 @@ class LibrarySentenceAdapter(private val context: Context, var data_sen:List<Lib
 
     //클릭 리스너 등록 메소드
     fun setItemClickListener(itemClickListener: ItemClickListener) {
-//        this.itemClickListener = itemClickListener
+        this.itemClickListener = itemClickListener
     }
 
 }
