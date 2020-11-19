@@ -90,21 +90,32 @@ class LibraryThemaFragment : Fragment() {
                     ) {
                         if(response.isSuccessful) {
                             Log.d("내서재 테마 조회", "${response.body()}")
+                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
+                                Log.d("내 서재 테마 null", "${response.body()}")
+                            } else {
+                                libraryThemaAdapter = LibraryThemaAdapter(
+                                    view!!.context,
+                                    response.body()!!.data!!.save
+                                )
+                                rv_library_thema.adapter = libraryThemaAdapter
+                                libraryThemaAdapter.notifyDataSetChanged()
 
-                            libraryThemaAdapter = LibraryThemaAdapter(view!!.context, response.body()!!.data!!.save)
-                            rv_library_thema.adapter = libraryThemaAdapter
-                            libraryThemaAdapter.notifyDataSetChanged()
+                                libraryThemaAdapter.setItemClickListener(object :
+                                    LibraryThemaAdapter.ItemClickListener {
 
-                            libraryThemaAdapter.setItemClickListener(object : LibraryThemaAdapter.ItemClickListener{
-
-                                override fun onClick(view: View, position: Int) {
-                                    activity?.let {
-                                        val intent = Intent(context, DetailThemeActivity::class.java)
-                                        intent.putExtra("param", response.body()!!.data!!.save[position].themeIdx)
-                                        startActivity(intent)
+                                    override fun onClick(view: View, position: Int) {
+                                        activity?.let {
+                                            val intent =
+                                                Intent(context, DetailThemeActivity::class.java)
+                                            intent.putExtra(
+                                                "param",
+                                                response.body()!!.data!!.save[position].themeIdx
+                                            )
+                                            startActivity(intent)
+                                        }
                                     }
-                                }
-                            })
+                                })
+                            }
                         }
                     }
                 }
@@ -127,21 +138,32 @@ class LibraryThemaFragment : Fragment() {
                     ) {
                         if(response.isSuccessful) {
                             Log.d("내서재 테마 저장 조회", "${response.body()}")
+                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
+                                Log.d("내 서재 테마 저장 null", "${response.body()}")
+                            } else {
+                                libraryThemaClickAdapter = LibraryThemaClickAdapter(
+                                    view!!.context,
+                                    response.body()!!.data!!.write
+                                )
+                                rv_library_thema.adapter = libraryThemaClickAdapter
+                                libraryThemaClickAdapter.notifyDataSetChanged()
 
-                            libraryThemaClickAdapter = LibraryThemaClickAdapter(view!!.context, response.body()!!.data!!.write)
-                            rv_library_thema.adapter = libraryThemaClickAdapter
-                            libraryThemaClickAdapter.notifyDataSetChanged()
+                                libraryThemaClickAdapter.setItemClickListener(object :
+                                    LibraryThemaClickAdapter.ItemClickListener {
 
-                            libraryThemaClickAdapter.setItemClickListener(object : LibraryThemaClickAdapter.ItemClickListener{
-
-                                override fun onClick(view: View, position: Int) {
-                                    activity?.let {
-                                        val intent = Intent(context, DetailThemeActivity::class.java)
-                                        intent.putExtra("param", response.body()!!.data!!.write[position].themeIdx)
-                                        startActivity(intent)
+                                    override fun onClick(view: View, position: Int) {
+                                        activity?.let {
+                                            val intent =
+                                                Intent(context, DetailThemeActivity::class.java)
+                                            intent.putExtra(
+                                                "param",
+                                                response.body()!!.data!!.write[position].themeIdx
+                                            )
+                                            startActivity(intent)
+                                        }
                                     }
-                                }
-                            })
+                                })
+                            }
                         }
                     }
                 }

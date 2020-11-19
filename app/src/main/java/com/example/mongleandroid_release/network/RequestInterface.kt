@@ -234,4 +234,16 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseDeleteSentenceWritten>
+
+    //회원 탈퇴
+    //위와 같이 @DELETE 어쩌구의 형식으로 가지고 가면
+    // Non-body HTTP method cannot contain @Body or @TypedOutput
+    // 이러한 오류가 난다 그래서
+    // @HTTP(method = "DELETE", path = "/job/deletejob", hasBody = true)
+    // 이렇게 사용해야 함
+    @HTTP(method = "DELETE", path = "/users/withdraw", hasBody = true)
+    fun QuitUser(
+        @Header("token") token: String?,
+        @Body body : RequestQuitUserData
+    ) : Call<ResponseQuitUserData>
 }
