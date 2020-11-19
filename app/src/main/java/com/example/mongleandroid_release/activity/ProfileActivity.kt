@@ -96,32 +96,37 @@ class ProfileActivity : AppCompatActivity() {
                         activity_profile_et_nickname.setText(response.body()!!.data[0].name)
                         profile_name = response.body()!!.data[0].name
 
-                        when (response.body()!!.data[0].keyword) {
-                            "감성자극" -> {
-                                activity_profile_btn1.isChecked = true
-                                keywordIndex = 1
-                            }
-                            "동기부여" -> {
-                                activity_profile_btn2.isChecked = true
-                                keywordIndex = 2
-                            }
-                            "자기계발" -> {
-                                activity_profile_btn3.isChecked = true
-                                keywordIndex = 3
-                            }
-                            "깊은생각" -> {
-                                activity_profile_btn4.isChecked = true
-                                keywordIndex = 4
-                            }
-                            "독서기록" -> {
-                                activity_profile_btn5.isChecked = true
-                                keywordIndex = 5
-                            }
-                            "일상문장" -> {
-                                activity_profile_btn6.isChecked = true
-                                keywordIndex = 6
+                        if(response.body()!!.data[0].keyword == null) {
+
+                        } else {
+                            when (response.body()!!.data[0].keyword) {
+                                "감성자극" -> {
+                                    activity_profile_btn1.isChecked = true
+                                    keywordIndex = 1
+                                }
+                                "동기부여" -> {
+                                    activity_profile_btn2.isChecked = true
+                                    keywordIndex = 2
+                                }
+                                "자기계발" -> {
+                                    activity_profile_btn3.isChecked = true
+                                    keywordIndex = 3
+                                }
+                                "깊은생각" -> {
+                                    activity_profile_btn4.isChecked = true
+                                    keywordIndex = 4
+                                }
+                                "독서기록" -> {
+                                    activity_profile_btn5.isChecked = true
+                                    keywordIndex = 5
+                                }
+                                "일상문장" -> {
+                                    activity_profile_btn6.isChecked = true
+                                    keywordIndex = 6
+                                }
                             }
                         }
+
 
                         activity_profile_et_introduce.setText(response.body()!!.data[0].introduce)
 

@@ -366,7 +366,10 @@ class JoinStep3Activity : AppCompatActivity() {
                 Log.d("error", "singup 통신 실패")
             },
             onSuccess = {
+                SharedPreferenceController.setMail(this, email)
+                SharedPreferenceController.setPasswd(this, password)
                 SharedPreferenceController.setName(this, name)
+                SharedPreferenceController.setAccessToken(this, it.data.accessToken)
                 val intent = Intent(this, JoinFinishActivity::class.java)
                 startActivity(intent)
                 // 화면 전환 시 애니메이션 없애는 코드
