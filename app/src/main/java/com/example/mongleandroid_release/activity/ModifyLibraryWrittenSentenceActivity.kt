@@ -1,34 +1,21 @@
 package com.example.mongleandroid_release.activity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.Gravity
-import android.view.View
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.mongleandroid_release.R
-import com.example.mongleandroid_release.adapter.LibrarySentenceClickAdapter
-import com.example.mongleandroid_release.change_gone
-import com.example.mongleandroid_release.change_visible
-import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 import com.example.mongleandroid_release.dialog.DialogModifySentence
-import com.example.mongleandroid_release.fragment.LibrarySentenceFragment
+import com.example.mongleandroid_release.fragment.LibraryFragment
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.request.RequestChangePasswordData
 import com.example.mongleandroid_release.network.data.request.RequestModifySentenceData
-import com.example.mongleandroid_release.network.data.response.*
-import kotlinx.android.synthetic.main.activity_change_password.*
+import com.example.mongleandroid_release.network.data.response.ResponseModifySentenceWrittenData
 import kotlinx.android.synthetic.main.activity_modify.*
-import kotlinx.android.synthetic.main.activity_profile.*
-import kotlinx.android.synthetic.main.fragment_library_sentence.*
-import kotlinx.android.synthetic.main.item_library_sentence_click.*
-import okhttp3.MediaType
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,7 +50,10 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                     sentence = et_sentence_modify.text.toString()
                 )
             ).enqueue(object : Callback<ResponseModifySentenceWrittenData> {
-                override fun onFailure(call: Call<ResponseModifySentenceWrittenData>, t: Throwable) {
+                override fun onFailure(
+                    call: Call<ResponseModifySentenceWrittenData>,
+                    t: Throwable
+                ) {
                     Log.d("내 서재 문장 수정 내용 보내기 통신 실패", "$t")
                 }
 
@@ -74,12 +64,25 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Log.d("내 서재 문장 수정 내용 보내기 통신 성공", " ")
 
+
+
+
                         // 성공하면 다이얼로그 띄우고 확인 누르면 종료 시키기
                         val dlg = DialogModifySentence(this@ModifyLibraryWrittenSentenceActivity)
                         dlg.start()
                         dlg.setOnClickListener { content ->
-                            if(content == "확인") {
+                            if (content == "확인") {
                                 finish() //액티비티 종료하고
+                                // 프래그먼트 갱신
+                                var fmReload : Fragment? = supportFragmentManager.findFragmentById(R.id.fragment_library_view)
+                                val ft : FragmentTransaction = supportFragmentManager.beginTransaction()
+//                                    ft.replace(R.id.fragment_library_view, LibraryFragment())
+                                if (fmReload != null) {
+                                    ft.detach(fmReload)
+                                    ft.attach(fmReload)
+
+                                }
+                                    ft.commit()
                             }
                         }
 
@@ -113,11 +116,5 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
 
 
     }
-
-
-    fun refreshActivitiy(){
-
-    }
-
 
 }

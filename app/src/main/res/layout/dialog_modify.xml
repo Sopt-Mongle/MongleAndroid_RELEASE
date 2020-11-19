@@ -13,7 +13,7 @@
         android:layout_marginLeft="38dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/writing_theme_popup_btn_mongle" />
+        app:srcCompat="@drawable/mongle_smile" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout7"
