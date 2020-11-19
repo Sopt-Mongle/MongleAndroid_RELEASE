@@ -149,7 +149,6 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView18" />
 
             <ImageView
-                android:id="@+id/img_sentence_detail_view_edit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:paddingStart="18dp"
@@ -159,6 +158,15 @@
                 android:src="@drawable/more_1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/middle_line" />
+
+            <CheckBox
+                android:id="@+id/checkbox_more_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="#00000000"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/middle_line"
+                android:button="@null" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_book_info"
@@ -306,6 +314,63 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lineeeee" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_no_theme_report"
+                android:layout_width="151dp"
+                android:layout_height="69dp"
+                android:layout_marginTop="41dp"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/background_rectangle"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/middle_line">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="1sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="2dp"
+                    android:text="허위 내용 신고"
+                    android:textColor="#838383"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/report_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="34.5dp"
+                    android:background="#f2f2f2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/report_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7.5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="3dp"
+                    android:text="부적절한 내용 신고"
+                    android:textColor="#838383"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/report_line" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

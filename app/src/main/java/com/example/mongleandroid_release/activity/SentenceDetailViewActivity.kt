@@ -110,15 +110,32 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             startActivity(intent)
                         }
 
+                        // 수정, 삭제, 신고 기능
+                        edit.setOnClickListener {  // 수정 눌렀을 때 -> 문장 수정하기 액틸비티로 이동
+                            val intent = Intent(this@SentenceDetailViewActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            startActivity(intent)
+                        }
+
+//                        more_btn_checkbox.setOnCheckedChangeListener()
+                        if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
+                            Log.d("체크체크첵첵첵스초코", "체크 되는거임???????????")
                             if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
-                                img_sentence_detail_view_edit_btn.setOnClickListener {
-                                    change_visible(ccc) // 수정 & 삭제 컨테이너
-                                }
-                            } else {
-
-                                    change_gone(img_sentence_detail_view_edit_btn)
-
+                                change_visible(ccc)
+                                //change_gone(cl_report)
+                            } else { // 내가 쓴 글이 아닐 때 -> 신고 뷰 띄우기
+                                change_visible(cl_report)
                             }
+                        }
+//                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
+//                                more_btn_checkbox. { // 더보기를 눌렀을 때 내가 쓴 글이면 수정/삭제 뷰 보이게 하기
+//                                    change_visible(ccc) // 수정 & 삭제 컨테이너
+//
+//                                }
+//                            } else {
+//
+//                                    change_visible(cl_report)
+//
+//                            }
 
 
 //                        constraint_likes_num.setOnClickListener {
