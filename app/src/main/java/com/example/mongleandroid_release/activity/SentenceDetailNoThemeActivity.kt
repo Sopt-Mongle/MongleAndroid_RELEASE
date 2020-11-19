@@ -9,7 +9,9 @@ import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.data.response.ResponseSentenceBookmarkNumData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
+import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
@@ -39,6 +41,8 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         }
 
         requestSentenceData() // 문장 상세보기 뷰 통신
+        requestSentenceLikeNum() // 문장 좋아요 통신
+        requestSentenceBookmarkNum() // 문장 북마크 통신
     }
 
     // 문장 상세보기 뷰 통신
@@ -115,4 +119,72 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
             }
         )
     }
+
+    // 문장 좋아요 누르기
+    private fun requestSentenceLikeNum() {
+        requestToServer.service.PutsentenceLikeNum(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+            params = intent.getIntExtra("param", 0)
+        ).enqueue(
+            object : Callback<ResponseSentenceLikeNumData> {
+                override fun onFailure(call: Call<ResponseSentenceLikeNumData>, t: Throwable) {
+                    Log.e("통신 실패", t.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseSentenceLikeNumData>,
+                    response: Response<ResponseSentenceLikeNumData>
+                ) {
+                    if(response.isSuccessful) {
+                        Log.d("통신 성공", "통신 성공")
+
+                        if(response.body()!!.data!!.isLike) {
+                            img_sentence_detail_no_theme_likes.setImageResource(R.drawable.sentence_btn_btn_like_g)
+                            val result : Int = response.body()!!.data!!.likes
+                            tv_sentence_detail_no_theme_likes.text = result.toString()
+                        } else {
+                            img_sentence_detail_no_theme_likes.setImageResource(R.drawable.sentence_theme_o_ic_like)
+                            val result : Int = response.body()!!.data!!.likes
+                            tv_sentence_detail_no_theme_likes.text = result.toString()
+                        }
+                    }
+                }
+
+            }
+        )
+    }
+
+
+    // 문장 북마크 하기
+    private fun requestSentenceBookmarkNum() {
+        requestToServer.service.PutsentenceBookmarkNum(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+            params = intent.getIntExtra("param", 0)
+        ).enqueue(
+            object : Callback<ResponseSentenceBookmarkNumData> {
+                override fun onResponse(
+                    call: Call<ResponseSentenceBookmarkNumData>,
+                    response: Response<ResponseSentenceBookmarkNumData>
+                ) {
+                    if(response.isSuccessful) {
+                        if(response.body()!!.data!!.isSave) {
+                            img_sentence_detail_no_theme_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                            val result : Int = response.body()!!.data!!.saves
+                            tv_sentence_detail_no_theme_bookmark_num.text = result.toString()
+                        } else {
+                            img_sentence_detail_no_theme_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                            val result : Int = response.body()!!.data!!.saves
+                            tv_sentence_detail_no_theme_bookmark_num.text = result.toString()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseSentenceBookmarkNumData>, t: Throwable) {
+                    Log.e("통신 실패", t.toString())
+                }
+
+            }
+        )
+    }
+
 }
