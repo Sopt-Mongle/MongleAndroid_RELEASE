@@ -14,6 +14,7 @@ import com.example.mongleandroid_release.network.data.response.ResponseSentenceD
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
+import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.ccc
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView20
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView19
@@ -41,8 +42,15 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         }
 
         requestSentenceData() // 문장 상세보기 뷰 통신
-        requestSentenceLikeNum() // 문장 좋아요 통신
-        requestSentenceBookmarkNum() // 문장 북마크 통신
+
+        constraint_sentence_like_num_notheme.setOnClickListener {
+            requestSentenceLike()
+        }
+
+        container_bookmark_num_notheme.setOnClickListener {
+            requestSentenceBookmark()
+        }
+
     }
 
     // 문장 상세보기 뷰 통신
@@ -87,30 +95,30 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
-                        tv_sentence_detail_no_theme_likes.text = response.body()!!.data[0].likes.toString() // 좋아요 수
-                        tv_sentence_detail_no_theme_bookmark_num.text = response.body()!!.data[0].saves.toString() // 북마크 수
 
+                        tv_sentence_detail_likes_notheme.text = response.body()!!.data[0].likes.toString()
                         if(response.body()!!.data[0].alreadyLiked) { // 좋아요 여부
-                            img_sentence_detail_no_theme_likes.setImageResource(R.drawable.sentence_btn_btn_like_g)
+                            img_sentence_detail_likes_notheme.setImageResource(R.drawable.sentence_btn_btn_like_g)
                         } else {
-                            img_sentence_detail_no_theme_likes.setImageResource(R.drawable.sentence_theme_o_ic_like)
+                            img_sentence_detail_likes_notheme.setImageResource(R.drawable.sentence_theme_o_ic_like)
                         }
 
+                        tv_sentence_detail_bookmark_num_notheme.text = response.body()!!.data[0].saves.toString()
                         if(response.body()!!.data[0].alreadyBookmarked) { // 북마크 여부
-                            img_sentence_detail_no_theme_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
                         } else {
-                            img_sentence_detail_no_theme_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
                         }
 
-//                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
-//                            checkbox_more_btn.setOnClickListener {
-//                                change_visible(ccc) // 수정 & 삭제 컨테이너
-//                            }
-//                        } else {
-//
-//                            change_gone()
-//
-//                        }
+                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
+                            img_sentence_detail_view_edit_btn.setOnClickListener {
+                                change_visible(ccc) // 수정 & 삭제 컨테이너
+                            }
+                        } else {
+
+                            change_gone(img_sentence_detail_view_edit_btn)
+
+                        }
 
 
                     }
@@ -120,8 +128,8 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         )
     }
 
-    // 문장 좋아요 누르기
-    private fun requestSentenceLikeNum() {
+    // 좋아요 통신
+    private fun requestSentenceLike() {
         requestToServer.service.PutsentenceLikeNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
@@ -139,13 +147,13 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                         Log.d("통신 성공", "통신 성공")
 
                         if(response.body()!!.data!!.isLike) {
-                            img_sentence_detail_no_theme_likes.setImageResource(R.drawable.sentence_btn_btn_like_g)
+                            img_sentence_detail_likes_notheme.setImageResource(R.drawable.sentence_btn_btn_like_g)
                             val result : Int = response.body()!!.data!!.likes
-                            tv_sentence_detail_no_theme_likes.text = result.toString()
+                            tv_sentence_detail_likes_notheme.text = result.toString()
                         } else {
-                            img_sentence_detail_no_theme_likes.setImageResource(R.drawable.sentence_theme_o_ic_like)
+                            img_sentence_detail_likes_notheme.setImageResource(R.drawable.sentence_theme_o_ic_like)
                             val result : Int = response.body()!!.data!!.likes
-                            tv_sentence_detail_no_theme_likes.text = result.toString()
+                            tv_sentence_detail_likes_notheme.text = result.toString()
                         }
                     }
                 }
@@ -154,9 +162,8 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         )
     }
 
-
     // 문장 북마크 하기
-    private fun requestSentenceBookmarkNum() {
+    private fun requestSentenceBookmark() {
         requestToServer.service.PutsentenceBookmarkNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
@@ -168,13 +175,13 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                 ) {
                     if(response.isSuccessful) {
                         if(response.body()!!.data!!.isSave) {
-                            img_sentence_detail_no_theme_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
                             val result : Int = response.body()!!.data!!.saves
-                            tv_sentence_detail_no_theme_bookmark_num.text = result.toString()
+                            tv_sentence_detail_bookmark_num_notheme.text = result.toString()
                         } else {
-                            img_sentence_detail_no_theme_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
                             val result : Int = response.body()!!.data!!.saves
-                            tv_sentence_detail_no_theme_bookmark_num.text = result.toString()
+                            tv_sentence_detail_bookmark_num_notheme.text = result.toString()
                         }
                     }
                 }

@@ -7,7 +7,7 @@
     tools:context=".activity.SentenceDetailNoThemeActivity">
 
     <ImageView
-        android:id="@+id/sentence_detail_img_theme"
+        android:id="@+id/sentence_detail_img_notheme"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -389,50 +389,52 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_sentence_like_num"
-            android:layout_width="wrap_content"
+            android:id="@+id/constraint_sentence_like_num_notheme"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="34dp"
             android:background="@drawable/et_area_sentence_bottom"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/container_bookmark_num"
+            app:layout_constraintEnd_toStartOf="@+id/container_bookmark_num_notheme"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:id="@+id/img_sentence_detail_no_theme_likes"
+                android:id="@+id/img_sentence_detail_likes_notheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
                 android:layout_marginTop="21dp"
                 android:layout_marginBottom="21dp"
                 android:src="@drawable/sentence_theme_o_ic_like"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_sentence_detail_likes_notheme"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_sentence_detail_no_theme_likes"
+                android:id="@+id/tv_sentence_detail_likes_notheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
-                android:layout_marginEnd="57dp"
                 android:fontFamily="@font/notosanscjkkr_demilight"
                 android:includeFontPadding="false"
                 android:lineSpacingExtra="8sp"
                 android:text="502"
                 android:textColor="@color/very_light_pink_two"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_no_theme_likes"
+                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_likes_notheme"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_no_theme_likes"
-                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_no_theme_likes" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_likes_notheme"
+                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_likes_notheme" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_bookmark_num"
-            android:layout_width="wrap_content"
+            android:id="@+id/container_bookmark_num_notheme"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -441,36 +443,38 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/constraint_sentence_like_num">
+            app:layout_constraintStart_toEndOf="@+id/constraint_sentence_like_num_notheme">
 
             <ImageView
-                android:id="@+id/img_sentence_detail_no_theme_bookmark_num"
+                android:id="@+id/img_sentence_detail_bookmark_notheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="59dp"
                 android:layout_marginTop="21dp"
                 android:layout_marginBottom="21dp"
                 android:src="@drawable/sentence_theme_o_ic_bookmark"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_sentence_detail_bookmark_num_notheme"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_sentence_detail_no_theme_bookmark_num"
+                android:id="@+id/tv_sentence_detail_bookmark_num_notheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
-                android:layout_marginEnd="60dp"
                 android:fontFamily="@font/notosanscjkkr_demilight"
                 android:includeFontPadding="false"
                 android:lineSpacingExtra="8sp"
                 android:text="247"
                 android:textColor="@color/very_light_pink_two"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_no_theme_bookmark_num"
+                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_bookmark_notheme"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_no_theme_bookmark_num"
-                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_no_theme_bookmark_num" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_bookmark_notheme"
+                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_bookmark_notheme" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
