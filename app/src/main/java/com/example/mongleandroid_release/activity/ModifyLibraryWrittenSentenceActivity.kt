@@ -50,6 +50,8 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
 
         //기존 문장 editText 받아오기
         et_sentence_modify.setText(intent.getStringExtra("sentence"))
+        val sentenceSize = et_sentence_modify.text.length.toString()
+        tv_sentence_modify_words.setText(sentenceSize)
 
         //수정하기 버튼 눌렀을 때
         tv_modify_done.setOnClickListener {
