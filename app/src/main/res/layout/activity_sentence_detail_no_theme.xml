@@ -401,7 +401,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:id="@+id/img_sentence_detail_likes"
+                android:id="@+id/img_sentence_detail_no_theme_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="57dp"
@@ -413,7 +413,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_sentence_detail_likes"
+                android:id="@+id/tv_sentence_detail_no_theme_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
@@ -424,10 +424,10 @@
                 android:text="502"
                 android:textColor="@color/very_light_pink_two"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_likes"
+                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_no_theme_likes"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_likes"
-                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_likes" />
+                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_no_theme_likes"
+                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_no_theme_likes" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -444,7 +444,7 @@
             app:layout_constraintStart_toEndOf="@+id/constraint_sentence_like_num">
 
             <ImageView
-                android:id="@+id/img_sentence_detail_bookmark_num"
+                android:id="@+id/img_sentence_detail_no_theme_bookmark_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="59dp"
@@ -456,7 +456,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_sentence_detail_bookmark_num"
+                android:id="@+id/tv_sentence_detail_no_theme_bookmark_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
@@ -467,10 +467,10 @@
                 android:text="247"
                 android:textColor="@color/very_light_pink_two"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_bookmark_num"
+                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_no_theme_bookmark_num"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_bookmark_num"
-                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_bookmark_num" />
+                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_no_theme_bookmark_num"
+                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_no_theme_bookmark_num" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
