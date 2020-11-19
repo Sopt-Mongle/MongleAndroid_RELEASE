@@ -11,32 +11,45 @@
         android:id="@+id/img_back_sentence_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="16dp"
         android:src="@drawable/btn_back"
-        android:layout_marginTop="20.5dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_sentence_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="문장 수정하기"
-        android:textSize="19sp"
         android:textColor="@color/black_two"
-        android:layout_marginTop="14dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back_sentence_modify"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_back_sentence_modify" />
 
     <EditText
         android:id="@+id/et_sentence_modify"
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:background="@drawable/et_state_focused"
         android:layout_marginTop="34dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_sentence_modify"
+        android:textSize="16sp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
+        android:background="@drawable/et_state_focused"
+        android:gravity="start"
+        android:maxLength="280"
+        android:paddingStart="14dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="9dp"
+        android:paddingBottom="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_sentence_modify" />
 
     <TextView
         android:id="@+id/tv_sentence_modify_words"
