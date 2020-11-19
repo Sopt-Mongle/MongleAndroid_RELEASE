@@ -14,13 +14,14 @@ import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.ccc
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView20
-import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.img_sentence_detail_view_edit_btn
+import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.checkbox_more_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView19
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView20
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView35
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.tv_author
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.tv_publisher
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.tv_theme
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -84,15 +85,15 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
 
-                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
-                            img_sentence_detail_view_edit_btn.setOnClickListener {
-                                change_visible(ccc) // 수정 & 삭제 컨테이너
-                            }
-                        } else {
-
-                            change_gone(img_sentence_detail_view_edit_btn)
-
-                        }
+//                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
+//                            checkbox_more_btn.setOnClickListener {
+//                                change_visible(ccc) // 수정 & 삭제 컨테이너
+//                            }
+//                        } else {
+//
+//                            change_gone()
+//
+//                        }
 
 
                     }

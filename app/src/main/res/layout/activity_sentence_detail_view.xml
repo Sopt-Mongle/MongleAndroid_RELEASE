@@ -148,14 +148,26 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView18"
                 app:layout_constraintTop_toTopOf="@+id/imageView18" />
 
-            <CheckBox
+            <ImageView
                 android:id="@+id/img_sentence_detail_view_edit_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:button="@null"
-                android:background="@drawable/more_1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingStart="18dp"
+                android:paddingTop="23dp"
+                android:paddingEnd="13dp"
+                android:paddingBottom="21dp"
+                android:src="@drawable/more_1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/middle_line" />
+
+            <CheckBox
+                android:id="@+id/more_btn_checkbox"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="#00000000"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/middle_line"
+                android:button="@null" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_book_info"
@@ -243,10 +255,11 @@
                     app:layout_constraintStart_toEndOf="@+id/imageView22"
                     app:layout_constraintTop_toTopOf="@+id/imageView22" />
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="visible"
+                android:visibility="gone"
                 android:id="@+id/ccc"
                 android:layout_width="69dp"
                 android:layout_height="69dp"
@@ -305,7 +318,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="visible"
+                android:visibility="gone"
                 android:id="@+id/cl_report"
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="28dp"
