@@ -1,6 +1,6 @@
 package com.example.mongleandroid_release.network
 
-import com.example.mongleandroid_release.network.data.ResponseSentenceLikeNumData
+import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
 import okhttp3.MultipartBody
@@ -219,6 +219,13 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceLikeNumData>
+
+    // 문장 좋아요 누르기
+    @PUT("/detail/sentence/{sentenceIdx}/bookmark")
+    fun PutsentenceBookmarkNum(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceBookmarkNumData>
 
     //내가 쓴 문장 수정
     @PUT("/my/{sentenceIdx}")

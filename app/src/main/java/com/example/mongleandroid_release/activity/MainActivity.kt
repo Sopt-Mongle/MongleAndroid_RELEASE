@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+
         val now = System.currentTimeMillis()
         val mDate = Date(now)
         val simpleData = SimpleDateFormat("ddkkmmss")
@@ -91,29 +92,32 @@ class MainActivity : AppCompatActivity() {
 
         // 자동로그인 && 토큰갱신
         // 비회원 / 회원 구분
-        if(SharedPreferenceController.getMail(this)!!.isBlank() ||
-                SharedPreferenceController.getPasswd(this)!!.isBlank())
+
+        if(SharedPreferenceController.getMail(this).isNullOrBlank())
         {
             // 아이디, 비밀번호가 저장되어있지 않는 경우 = 비회원
             SharedPreferenceController.setAccessToken(this, "guest")
         } else {
+            login()
+            Log.d("토큰", SharedPreferenceController.getAccessToken(this))
             // 아이디, 비밀번호가 저장되어 있는 경우 = 자동로그인
             // 현재시간 - pref 시간 = 3시간이상 이면 토큰 갱신
-            if(SharedPreferenceController.getCurrentTime(this) == "") {
-                // 로그인
-                login()
-                SharedPreferenceController.setCurrentTime(this, nowTime.toString())
-            } else {
-                val lastTime = SharedPreferenceController.getCurrentTime(this)!!.toInt()
-                Log.d("시간테스트 now - last", "${nowTime - lastTime}")
-                Log.d("시간테스트 lastTime", lastTime.toString())
-                if(nowTime - lastTime < 0 || nowTime - lastTime > 30000) {
-                    // 갱신
-                    Log.d("시간테스트", "갱신")
-                    SharedPreferenceController.setCurrentTime(this, nowTime.toString())
-                    login()
-                }
-            }
+//            if(SharedPreferenceController.getCurrentTime(this) == "") {
+//                // 로그인
+//                login()
+//                SharedPreferenceController.setCurrentTime(this, nowTime.toString())
+//            } else {
+//                val lastTime = SharedPreferenceController.getCurrentTime(this)!!.toInt()
+//                Log.d("시간테스트 now - last", "${nowTime - lastTime}")
+//                Log.d("시간테스트 lastTime", lastTime.toString())
+//                Log.d("시간테스트 원래토큰", SharedPreferenceController.getAccessToken(this))
+//                if(nowTime - lastTime > 30000) {
+//                    // 갱신
+//                    Log.d("시간테스트", "갱신")
+//                    SharedPreferenceController.setCurrentTime(this, nowTime.toString())
+//                    login()
+//                }
+//            }
 
 
         }

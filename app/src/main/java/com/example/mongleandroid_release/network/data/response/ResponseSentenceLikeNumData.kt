@@ -1,4 +1,4 @@
-package com.example.mongleandroid_release.network.data
+package com.example.mongleandroid_release.network.data.response
 
 data class ResponseSentenceLikeNumData(
     val status : Int,

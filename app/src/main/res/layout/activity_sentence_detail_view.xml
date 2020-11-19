@@ -450,31 +450,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <CheckBox
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_likes_num"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="34dp"
             android:background="@drawable/et_area_sentence_bottom"
-            android:button="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/container_bookmark_num"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/constraint_likes_num"
-            app:layout_constraintEnd_toEndOf="@+id/constraint_likes_num"
-            app:layout_constraintStart_toStartOf="@+id/constraint_likes_num"
-            app:layout_constraintTop_toTopOf="@+id/constraint_likes_num">
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:id="@+id/img_sentence_detail_likes_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:layout_marginBottom="21dp"
                 android:src="@drawable/sentence_theme_o_ic_like"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tv_sentence_likes_num"
@@ -506,7 +500,6 @@
             android:id="@+id/container_bookmark_num"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="34dp"
             android:background="@drawable/et_area_sentence_bottom"
@@ -516,7 +509,7 @@
             app:layout_constraintStart_toEndOf="@+id/constraint_likes_num">
 
             <ImageView
-                android:id="@+id/imageView16"
+                android:id="@+id/img_sentence_detail_bookmark_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
@@ -540,11 +533,11 @@
                 android:text="247"
                 android:textColor="@color/very_light_pink_two"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+                app:layout_constraintBottom_toBottomOf="@+id/img_sentence_detail_bookmark_num"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imageView16"
-                app:layout_constraintTop_toTopOf="@+id/imageView16" />
+                app:layout_constraintStart_toEndOf="@+id/img_sentence_detail_bookmark_num"
+                app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_bookmark_num" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
