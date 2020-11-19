@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
@@ -192,8 +194,13 @@ class LibraryFragment : Fragment() {
                     ) {
                         if(response.isSuccessful) {
                             Log.d("내서재 테마 조회", "${response.body()}")
-                            data_theme_num = response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
-                            txtUpper1.setText(data_theme_num.toString())
+                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
+                                Log.d("내 서재 테마 null", "${response.body()}")
+                            } else {
+                                data_theme_num =
+                                    response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
+                                txtUpper1.setText(data_theme_num.toString())
+                            }
                         }
                     }
                 }
@@ -303,6 +310,24 @@ class LibraryFragment : Fragment() {
                 }
             )
     }
+
+//    private fun loadFragment(fragment: Fragment){
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.replace(R.id.fragment_library_view, fragment)
+//        transaction.disallowAddToBackStack()
+//        transaction.commit()
+//    }
+
+
+
+    // Fragment 새로고침
+//    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
+//        var ft: FragmentTransaction = fragmentManager.beginTransaction()
+//        ft.detach(fragment).attach(fragment).commit()
+//    }
+
+    // Fragment 클래스에서 사용 시
+//    refreshFragment(this, getFragmentManager())
 
 
 }

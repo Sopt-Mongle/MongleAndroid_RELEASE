@@ -58,34 +58,50 @@ class LibraryCuratorFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 큐레이터 조회", "${response.body()}")
-                            libraryCuratorAdapter = LibraryCuratorAdapter(view!!.context, response.body()!!.data)
+                            if (response.body()!!.data.isNullOrEmpty()) {
+                                Log.d("내 서재 테마 null", "${response.body()}")
+                            } else {
+                            libraryCuratorAdapter =
+                                LibraryCuratorAdapter(view!!.context, response.body()!!.data)
                             rv_library_curator.adapter = libraryCuratorAdapter
                             libraryCuratorAdapter.notifyDataSetChanged()
 
-                            libraryCuratorAdapter.setItemClickListener(object : LibraryCuratorAdapter.ItemClickListener{
+                            libraryCuratorAdapter.setItemClickListener(object :
+                                LibraryCuratorAdapter.ItemClickListener {
                                 override fun onClickItem(view: View, position: Int) {
                                     // 큐레이터 상세로 이동
                                     val intent = Intent(context, CuratorInfoActivity::class.java)
-                                    intent.putExtra("param", response.body()!!.data[position].curatorIdx)
+                                    intent.putExtra(
+                                        "param",
+                                        response.body()!!.data[position].curatorIdx
+                                    )
                                     startActivity(intent)
                                 }
 
                                 override fun onClickSubscribe(view: View, position: Int) {
                                     // 구독 클릭했을 때
                                     requestToServer.service.getFollowIdx(
-                                            token = context?.let { SharedPreferenceController.getAccessToken(it) },
-                                            params = response.body()!!.data[position].curatorIdx
+                                        token = context?.let {
+                                            SharedPreferenceController.getAccessToken(
+                                                it
+                                            )
+                                        },
+                                        params = response.body()!!.data[position].curatorIdx
                                     ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                        override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                        override fun onFailure(
+                                            call: Call<ResponseCuratorFollowedData>,
+                                            t: Throwable
+                                        ) {
                                             Log.e("통신실패", t.toString())
                                         }
 
                                         override fun onResponse(
-                                                call: Call<ResponseCuratorFollowedData>,
-                                                response: Response<ResponseCuratorFollowedData>
+                                            call: Call<ResponseCuratorFollowedData>,
+                                            response: Response<ResponseCuratorFollowedData>
                                         ) {
                                             if (response.isSuccessful) {
-                                                if(response.body()!!.data) {
+
+                                                if (response.body()!!.data) {
                                                     Log.d("구독", "구독")
                                                 } else {
                                                     Log.d("구독", "구독취소")
@@ -97,6 +113,7 @@ class LibraryCuratorFragment : Fragment() {
                                 }
 
                             })
+                        }
 
                         }
 

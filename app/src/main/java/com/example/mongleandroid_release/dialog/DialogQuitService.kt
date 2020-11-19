@@ -28,12 +28,14 @@ class DialogQuitService(context : Context) {
 
         dialog_quit_yes = dlg.findViewById(R.id.tv_quit_yes)
         dialog_quit_yes.setOnClickListener {
+            listener.onOKClicked("탈퇴하기")
+            dlg.dismiss()
 
             //탈퇴하는 기능 넣기
-            val intent = Intent(it.context, JoinStep1Activity::class.java)
+            val intent = Intent(it.context, LoginActivity::class.java)
             it.context.startActivity(intent)
 
-            dlg.dismiss()
+
         }
 
         dialog_quit_no = dlg.findViewById(R.id.tv_quit_no)
