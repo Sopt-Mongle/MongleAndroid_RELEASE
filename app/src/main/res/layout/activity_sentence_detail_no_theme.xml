@@ -7,7 +7,7 @@
     tools:context=".activity.SentenceDetailNoThemeActivity">
 
     <ImageView
-        android:id="@+id/sentence_detail_img_theme"
+        android:id="@+id/sentence_detail_img_notheme"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
