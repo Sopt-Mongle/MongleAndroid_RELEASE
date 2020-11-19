@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         val now = System.currentTimeMillis()
         val mDate = Date(now)
-        val simpleData = SimpleDateFormat("hhmmss")
+        val simpleData = SimpleDateFormat("ddkkmmss")
         val nowTime = simpleData.format(mDate).toInt()
 
         Log.d("시간테스트 현재시간", nowTime.toString())
@@ -105,8 +105,11 @@ class MainActivity : AppCompatActivity() {
                 SharedPreferenceController.setCurrentTime(this, nowTime.toString())
             } else {
                 val lastTime = SharedPreferenceController.getCurrentTime(this)!!.toInt()
-                if(nowTime - lastTime > 30000) {
+                Log.d("시간테스트 now - last", "${nowTime - lastTime}")
+                Log.d("시간테스트 lastTime", lastTime.toString())
+                if(nowTime - lastTime < 0 || nowTime - lastTime > 30000) {
                     // 갱신
+                    Log.d("시간테스트", "갱신")
                     SharedPreferenceController.setCurrentTime(this, nowTime.toString())
                     login()
                 }
