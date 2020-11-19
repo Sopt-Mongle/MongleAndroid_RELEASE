@@ -62,7 +62,7 @@ class AccountSettingActivity : AppCompatActivity() {
                 if(content == "탈퇴하기") {
 
                     requestToServer.service.QuitUser(
-                        token = this.let { SharedPreferenceController.getAccessToken(it) },
+                        token =  SharedPreferenceController.getAccessToken(this),
                         body = RequestQuitUserData(
                             email = this.let { SharedPreferenceController.getMail(it).toString() },
                             password = this.let {SharedPreferenceController.getPasswd(it).toString()}
