@@ -93,13 +93,19 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             startActivity(intent)
                         }
 
+                        edit.setOnClickListener {  // 수정 눌렀을 때 -> 문장 수정하기 액틸비티로 이동
+                            val intent = Intent(this@SentenceDetailViewActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            startActivity(intent)
+                        }
+
                             if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
-                                img_sentence_detail_view_edit_btn.setOnClickListener {
+                                img_sentence_detail_view_edit_btn.setOnClickListener { // 더보기를 눌렀을 때 내가 쓴 글이면 수정/삭제 뷰 보이게 하기
                                     change_visible(ccc) // 수정 & 삭제 컨테이너
+
                                 }
                             } else {
 
-                                    change_gone(img_sentence_detail_view_edit_btn)
+                                    //change_gone(img_sentence_detail_view_edit_btn)
 
                             }
 
