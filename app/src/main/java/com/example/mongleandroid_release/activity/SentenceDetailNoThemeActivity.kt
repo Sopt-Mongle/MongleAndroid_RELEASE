@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.ccc
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView20
-import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.img_sentence_detail_view_edit_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView19
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView20
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView35
