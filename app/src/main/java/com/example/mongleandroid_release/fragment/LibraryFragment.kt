@@ -247,9 +247,14 @@ class LibraryFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 문장 조회", "${response.body()}")
+                            if(response.body()!!.data!!.save.isNullOrEmpty() || response.body()!!.data!!.write.isNullOrEmpty()){
+                                Log.d("내 서재 문장 조회 null", "${response.body()}")
+
+                            }
+                            else{
                             data_sentence_num = response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
                             txtUpper2.setText(data_sentence_num.toString())
-
+                        }
 
                         }
 
@@ -300,10 +305,15 @@ class LibraryFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 큐레이터 숫자", "${response.body()}")
-                            data_curator_num = response.body()!!.data.size
-                            txtUpper3.setText(data_curator_num.toString())
+                            if(response.body()!!.data.isNullOrEmpty()){
+                                Log.d("내 서재 큐레이터 조회 null", "${response.body()}")
 
+                            }
+                            else {
+                                data_curator_num = response.body()!!.data.size
+                                txtUpper3.setText(data_curator_num.toString())
 
+                            }
                         }
 
                     }
