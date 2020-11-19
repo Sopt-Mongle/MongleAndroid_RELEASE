@@ -105,7 +105,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                                 }
                             } else {
 
-                                    //change_gone(img_sentence_detail_view_edit_btn)
+                                    change_visible(cl_report)
 
                             }
 
