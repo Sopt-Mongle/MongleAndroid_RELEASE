@@ -13,7 +13,8 @@ import com.example.mongleandroid_release.change_visible
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.ResponseSentenceLikeNumData
+import com.example.mongleandroid_release.network.data.response.ResponseSentenceBookmarkNumData
+import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailOtherThemeData
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
@@ -49,7 +50,12 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
         requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
         requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
-        requestSentenceLikeNum() // 문장 좋아요 누르기
+        constraint_likes_num.setOnClickListener {
+            requestSentenceLikeNum() // 문장 좋아요 누르기
+        }
+        container_bookmark_num.setOnClickListener {
+            requestSentenceBookmarkNum() // 문장 북마크 누르기
+        }
     }
     // 문장 상세보기 데이터 서버 통신
     private fun requestSentenceDetail() {
@@ -85,7 +91,18 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
                         tv_sentence_likes_num.text = response.body()!!.data[0].likes.toString() // 좋아요 수
+                        if(response.body()!!.data[0].alreadyLiked) { // 좋아요 여부
+                            img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_btn_btn_like_g)
+                        } else {
+                            img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_theme_o_ic_like)
+                        }
                         tv_sentence_bookmark_num.text = response.body()!!.data[0].saves.toString() // 북마크 수
+                        if(response.body()!!.data[0].alreadyBookmarked) { // 북마크 여부
+                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                        } else {
+                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                        }
+
                         // 테마 보러 가기 버튼
                         btn_go_to_theme.setOnClickListener {
                             val intent = Intent(this@SentenceDetailViewActivity, DetailThemeActivity::class.java)
@@ -186,25 +203,16 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                     if(response.isSuccessful) {
                         Log.d("통신 성공", "통신 성공")
 
-                        if(response.body()!!.data!!.isLike == null) {
-
-                        Log.d("islike == null", "null or empty")
+                        if(response.body()!!.data!!.isLike) {
+                            img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_btn_btn_like_g)
+                            val result : Int = response.body()!!.data!!.likes
+                            tv_sentence_likes_num.text = result.toString()
                         } else {
-
-                                // 좋아요 이미지 & 숫자 변경
-                                constraint_likes_num.setOnClickListener {
-                                    if (constraint_likes_num.isChecked) {
-                                        img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_btn_btn_like_g)
-                                        val a : Int = response.body()!!.data!!.likes
-                                        val result : Int = a
-                                        tv_sentence_likes_num.text = result.toString()
-                                    } else {
-                                        img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_theme_o_ic_like)
-                                    }
-                                }
-
-                            }
+                            img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_theme_o_ic_like)
+                            val result : Int = response.body()!!.data!!.likes
+                            tv_sentence_likes_num.text = result.toString()
                         }
+                    }
                 }
 
             }
@@ -213,6 +221,36 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
 
     // 문장 북마크 하기
+    private fun requestSentenceBookmarkNum() {
+        requestToServer.service.PutsentenceBookmarkNum(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+            params = intent.getIntExtra("param", 0)
+        ).enqueue(
+            object : Callback<ResponseSentenceBookmarkNumData> {
+                override fun onResponse(
+                    call: Call<ResponseSentenceBookmarkNumData>,
+                    response: Response<ResponseSentenceBookmarkNumData>
+                ) {
+                    if(response.isSuccessful) {
+                        if(response.body()!!.data!!.isSave) {
+                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                            val result : Int = response.body()!!.data!!.saves
+                            tv_sentence_bookmark_num.text = result.toString()
+                        } else {
+                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                            val result : Int = response.body()!!.data!!.saves
+                            tv_sentence_bookmark_num.text = result.toString()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseSentenceBookmarkNumData>, t: Throwable) {
+                    Log.e("통신 실패", t.toString())
+                }
+
+            }
+        )
+    }
 
 }
 
