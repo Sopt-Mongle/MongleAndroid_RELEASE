@@ -194,13 +194,15 @@ class LibraryFragment : Fragment() {
                     ) {
                         if(response.isSuccessful) {
                             Log.d("내서재 테마 조회", "${response.body()}")
-                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
-                                Log.d("내 서재 테마 null", "${response.body()}")
-                            } else {
+                            //size 를 탭에 보내서 text로 받는 거는 null을 할 필요가 없음. 오히려 하면 동작 안함. 어쩌면 내 코드 문제 일지도 그러네 내 코드 문제네
+                            //size이기 떄문에 null값을 가질때 0인데 null로 처리됨.
+//                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
+//                                Log.d("내 서재 테마 null", "${response.body()}")
+//                            } else {
                                 data_theme_num =
                                     response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
                                 txtUpper1.setText(data_theme_num.toString())
-                            }
+//                            }
                         }
                     }
                 }
@@ -247,14 +249,14 @@ class LibraryFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 문장 조회", "${response.body()}")
-                            if(response.body()!!.data!!.save.isNullOrEmpty() || response.body()!!.data!!.write.isNullOrEmpty()){
-                                Log.d("내 서재 문장 조회 null", "${response.body()}")
-
-                            }
-                            else{
+//                            if(response.body()!!.data!!.save.isNullOrEmpty() || response.body()!!.data!!.write.isNullOrEmpty()){
+//                                Log.d("내 서재 문장 조회 null", "${response.body()}")
+//
+//                            }
+//                            else{
                             data_sentence_num = response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
                             txtUpper2.setText(data_sentence_num.toString())
-                        }
+//                        }
 
                         }
 
