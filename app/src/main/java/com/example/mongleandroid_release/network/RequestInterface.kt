@@ -213,6 +213,13 @@ interface RequestInterface {
         @Path("curatorIdx") params: Int?
     ) : Call<ResponseCuratorInformationData>
 
+    // 테마 북마크
+    @PUT("/detail/theme/{themeIdx}/bookmark")
+    fun putThemeBookmarkNum(
+        @Header("token") token: String?,
+        @Path("themeIdx") params: Int
+    ) : Call<ResponseThemeBookmarkNumData>
+
     // 문장 좋아요 누르기
     @PUT("/detail/sentence/{sentenceIdx}/like")
     fun PutsentenceLikeNum(
@@ -220,7 +227,7 @@ interface RequestInterface {
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceLikeNumData>
 
-    // 문장 좋아요 누르기
+    // 문장 북마크 누르기
     @PUT("/detail/sentence/{sentenceIdx}/bookmark")
     fun PutsentenceBookmarkNum(
         @Header("token") token: String?,

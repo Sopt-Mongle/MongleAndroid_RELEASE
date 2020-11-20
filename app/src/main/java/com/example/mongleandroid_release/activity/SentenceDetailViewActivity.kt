@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
-import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -17,12 +19,12 @@ import com.example.mongleandroid_release.network.data.response.ResponseSentenceB
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailOtherThemeData
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.ccc
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.imageView18
-import kotlinx.android.synthetic.main.activity_sentence_detail_view.imageView20
-import kotlinx.android.synthetic.main.activity_sentence_detail_view.img_sentence_detail_view_edit_btn
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.img_book_thumnail
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView19
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView20
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView35
@@ -76,7 +78,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
 
                         Log.d("통신성공", response.body()!!.data.toString())
-                        //Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].).into(sentence_detail_img_theme)
+                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].themeImg)
+                            .apply(RequestOptions.bitmapTransform(BlurTransformation(7, 3))).into(sentence_detail_img_theme) // 테마이미지
                         tv_theme.text = response.body()!!.data[0].theme // 해당 테마 제목
                         textView19.text = response.body()!!.data[0].sentence // 해당 테마의 문장
                         if(response.body()!!.data[0].writerImg == null) {
@@ -84,9 +87,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         } else{
                             Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].writerImg).into(imageView18) // 문장 작성자 프사
                         }
-                        //Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data?.thumbnail).into(imageView13) // 테마
                         textView20.text = response.body()!!.data[0].writer // 문장 작성자
-                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].thumbnail).into(imageView20) // 해당 문장의 책 사진
+                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].thumbnail).into(img_book_thumnail) // 해당 문장의 책 사진
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
@@ -253,6 +255,13 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
                             val result : Int = response.body()!!.data!!.saves
                             tv_sentence_bookmark_num.text = result.toString()
+
+                            val customToast = layoutInflater.inflate(R.layout.toast_sentence_bookmark, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
                         } else {
                             img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
                             val result : Int = response.body()!!.data!!.saves

@@ -1,18 +1,26 @@
 package com.example.mongleandroid_release.activity
 
 import android.content.Intent
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.OvalShape
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailThemeAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
+import com.example.mongleandroid_release.network.data.response.ResponseThemeBookmarkNumData
 import com.example.mongleandroid_release.network.data.response.ResponseThemeDetailData
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_detail_theme.*
+import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,6 +74,11 @@ class DetailThemeActivity : AppCompatActivity() {
 
         requestThemeData()
         requestMainThemeData()
+
+        // 테마 북마크
+        btn_detail_theme_bookmark_box.setOnClickListener {
+            requestThemeBookmark()
+        }
     }
 
     private fun requestThemeData() {
@@ -89,11 +102,23 @@ class DetailThemeActivity : AppCompatActivity() {
                         if (response.body()!!.data?.theme.isNullOrEmpty()) {
 
                         } else {
+                            // 이미지 둥글게
+                            img_detail_theme_writerimg.background = ShapeDrawable(OvalShape())
+                            img_detail_theme_writerimg.clipToOutline = true
+
+                            Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].writerImg).into(img_detail_theme_writerimg)
                             tv_main_theme_title.text = response.body()!!.data!!.theme[0].theme
                             tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
-                            Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg).into(imageView5)
+                            Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg)
+                                .apply(RequestOptions.bitmapTransform(BlurTransformation(7, 3))).into(imageView5)
+                            if (response.body()!!.data!!.theme[0].alreadyBookmarked) {
+                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
+                            } else {
+                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
+                            }
+
                             // 해당 테마 인덱스 저장
                             writingSentenceInThemeData.themeIdx = response.body()!!.data!!.theme[0].themeIdx
 
@@ -177,6 +202,40 @@ class DetailThemeActivity : AppCompatActivity() {
                     Log.d("테마 리사이클러뷰 통신 성공", "${response.body()!!.data}")
 
                 }
+            }
+
+        })
+    }
+
+    private fun requestThemeBookmark() {
+        requestToServer.service.putThemeBookmarkNum(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
+            params = intent.getIntExtra("param", 0)
+        ).enqueue(object : Callback<ResponseThemeBookmarkNumData> {
+            override fun onResponse(
+                call: Call<ResponseThemeBookmarkNumData>,
+                response: Response<ResponseThemeBookmarkNumData>
+            ) {
+                if(response.isSuccessful) {
+                    if(response.body()!!.data!!.isSave) {
+                        img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
+                        textView11.text = response.body()!!.data!!.saves.toString()
+
+                        val customToast = layoutInflater.inflate(R.layout.toast_theme_bookmark, null)
+                        val toast = Toast(applicationContext)
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                        toast.view = customToast
+                        toast.show()
+                    } else {
+                        img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
+                        textView11.text = response.body()!!.data!!.saves.toString()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseThemeBookmarkNumData>, t: Throwable) {
+                Log.e("통신 실패", t.toString())
             }
 
         })

@@ -305,6 +305,7 @@ class JoinStep3Activity : AppCompatActivity() {
             runOnUiThread {
                 var timer = String.format("%02d:%02d", minute, second)
                 activity_join_step3_tv_timer.text = timer
+                Log.d("타이머", "$minute : $second")
             }
 
             if(second == 0 && minute == 0) {
@@ -350,6 +351,9 @@ class JoinStep3Activity : AppCompatActivity() {
     }
 
     private fun signUpSuccess() {
+
+        timerTask?.cancel()
+
         val intent = intent
         val email = intent.getStringExtra("email")
         val password = intent.getStringExtra("password")
