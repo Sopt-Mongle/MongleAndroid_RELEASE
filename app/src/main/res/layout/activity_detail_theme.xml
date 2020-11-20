@@ -17,17 +17,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView46"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="22dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/background_detail_theme_rounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_detail_theme_writerimg" />
-
-    <ImageView
         android:id="@+id/img_detail_theme_activity_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,10 +35,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="16dp"
-        android:letterSpacing="-0.04"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
-        android:text="브랜딩이 어려울 때, 영감을 주는 문장"
+        android:letterSpacing="-0.04"
+        android:text="  "
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +61,7 @@
         android:layout_marginStart="6dp"
         android:fontFamily="@font/notosanscjkkr_demilight"
         android:includeFontPadding="false"
-        android:text="몽글찡"
+        android:text="  "
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/img_detail_theme_writerimg"
@@ -86,7 +75,7 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="246"
+        android:text="0"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/textView46"
@@ -100,7 +89,7 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="14"
+        android:text="0"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/textView140"
@@ -146,11 +135,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/theme_btn_more" />
 
+    <ImageView
+        android:id="@+id/imageView46"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="22dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_detail_theme_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_detail_theme_writerimg" />
+
     <ScrollView
         android:id="@+id/activity_join_step2_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
