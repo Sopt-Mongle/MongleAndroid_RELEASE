@@ -3,6 +3,8 @@ package com.example.mongleandroid_release.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
@@ -14,7 +16,7 @@ import com.example.mongleandroid_release.network.data.response.ResponseSentenceD
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
-import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.ccc
+import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.ccc_noTheme
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView20
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.textView19
@@ -110,15 +112,47 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                             img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
                         }
 
-                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
-                            img_sentence_detail_view_edit_btn.setOnClickListener {
-                                change_visible(ccc) // 수정 & 삭제 컨테이너
-                            }
-                        } else {
+                        tv_report_no_theme_111.setOnClickListener { // 허위 내용 신고 눌렀을 때!!!
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
 
-                            change_gone(img_sentence_detail_view_edit_btn)
-
+                            change_gone(cl_no_theme_report)
                         }
+
+                        tv_report_no_theme_222.setOnClickListener {
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            change_gone(cl_no_theme_report)
+                        }
+
+                        checkbox_more_btn.setOnClickListener {
+                            if(checkbox_more_btn.isChecked) {
+                                if(response.body()!!.data[0].writer == SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
+                                    change_visible(ccc_noTheme)
+                                } else {
+                                    change_visible(cl_no_theme_report)
+                                }
+                            }
+                        }
+
+//                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
+//                            img_sentence_detail_view_edit_btn.setOnClickListener {
+//                                change_visible(ccc) // 수정 & 삭제 컨테이너
+//                            }
+//                        } else {
+//
+//                            change_gone(img_sentence_detail_view_edit_btn)
+//
+//                        }
 
 
                     }

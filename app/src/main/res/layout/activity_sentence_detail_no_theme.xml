@@ -260,7 +260,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:visibility="gone"
-                android:id="@+id/ccc"
+                android:id="@+id/ccc_noTheme"
                 android:layout_width="69dp"
                 android:layout_height="69dp"
                 android:layout_marginTop="41dp"
@@ -329,6 +329,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
                 <TextView
+                    android:id="@+id/tv_report_no_theme_111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -357,7 +358,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/report_delete"
+                    android:id="@+id/tv_report_no_theme_222"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7.5dp"
