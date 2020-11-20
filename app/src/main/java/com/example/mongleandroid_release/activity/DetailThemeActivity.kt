@@ -106,7 +106,11 @@ class DetailThemeActivity : AppCompatActivity() {
                             img_detail_theme_writerimg.background = ShapeDrawable(OvalShape())
                             img_detail_theme_writerimg.clipToOutline = true
 
-                            Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].writerImg).into(img_detail_theme_writerimg)
+                            if(response.body()!!.data!!.theme[0].writerImg == null) {
+                                Glide.with(this@DetailThemeActivity).load(R.drawable.theme_img_profile).into(img_detail_theme_writerimg)
+                            } else {
+                                Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].writerImg).into(img_detail_theme_writerimg)
+                            }
                             tv_main_theme_title.text = response.body()!!.data!!.theme[0].theme
                             tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()

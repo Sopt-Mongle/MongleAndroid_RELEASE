@@ -10,27 +10,29 @@
         android:id="@+id/tv_developer_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginHorizontal="16dp"
         android:letterSpacing="-0.04"
         android:text="개발자 정보"
         android:textColor="#292929"
         android:textSize="19sp"
-        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back_setting_developer_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/img_back_setting_developer_info" />
 
     <ImageView
         android:id="@+id/img_back_setting_developer_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingStart="17dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="16dp"
         android:src="@drawable/btn_back"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_developer_info"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tv_developer_info"
-        app:layout_constraintTop_toTopOf="@id/tv_developer_info" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_setting_ground_developer_info"
@@ -55,16 +57,16 @@
         android:id="@+id/tv_info_plan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Plan"
-        android:textSize="15sp"
-        android:textColor="@color/soft_green"
+        android:layout_marginTop="71dp"
         android:background="@drawable/tv_shape"
-        android:paddingVertical="5dp"
         android:paddingHorizontal="12dp"
-        android:layout_marginTop="66dp"
+        android:paddingVertical="5dp"
+        android:text="Plan"
+        android:textColor="@color/soft_green"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_developer_info"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_developer_info" />
 
     <TextView
         android:id="@+id/tv_lys"
