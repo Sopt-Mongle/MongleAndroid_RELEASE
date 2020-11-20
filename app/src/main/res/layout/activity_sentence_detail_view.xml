@@ -329,6 +329,7 @@
                 android:layout_height="69dp">
 
                 <TextView
+                    android:id="@+id/tv_report1111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="허위 내용 신고"
@@ -357,7 +358,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/report_delete"
+                    android:id="@+id/tv_report2222"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="부적절한 내용 신고"
