@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.network
 
+import com.example.mongleandroid_release.network.data.ResponseReportSentence
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
@@ -248,6 +249,14 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseDeleteSentenceWritten>
+
+    // 문장 신고하기
+    @POST("/detail/report")
+    fun ReportSentence(
+        @Header("token") token: String?,
+        @Body body: RequestReportSentence
+    ) : Call<ResponseReportSentence>
+
 
     //회원 탈퇴
     //위와 같이 @DELETE 어쩌구의 형식으로 가지고 가면
