@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
+import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
