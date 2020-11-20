@@ -80,12 +80,12 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                         textView20.text = response.body()!!.data[0].writer // 문장 작성자
 
                         if(response.body()!!.data[0].thumbnail.isNullOrEmpty()) {
-                            Glide.with(this@SentenceDetailNoThemeActivity).load(R.drawable.sentence_theme_o_img_book).into(imageView18) // 문장 작성자
+                            Glide.with(this@SentenceDetailNoThemeActivity).load(R.drawable.sentence_theme_o_img_book).into(img_book_thumnail_notheme) // 문장 작성자
                         } else{
-                            Glide.with(this@SentenceDetailNoThemeActivity).load(response.body()!!.data[0].thumbnail).into(imageView18) // 문장 작성자 프사
+                            Glide.with(this@SentenceDetailNoThemeActivity).load(response.body()!!.data[0].thumbnail).into(img_book_thumnail_notheme) // 문장 작성자 프사
                         }
 
-                        Glide.with(this@SentenceDetailNoThemeActivity).load(response.body()!!.data[0].thumbnail).into(img_book_thumnail_notheme) // 해당 문장의 책 사진
+                        //Glide.with(this@SentenceDetailNoThemeActivity).load(response.body()!!.data[0].thumbnail).into(img_book_thumnail_notheme) // 해당 문장의 책 사진
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사

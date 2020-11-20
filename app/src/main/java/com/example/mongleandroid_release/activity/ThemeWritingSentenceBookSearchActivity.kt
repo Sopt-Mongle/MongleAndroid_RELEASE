@@ -151,6 +151,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                                     intent.putExtra("title",response.body()!!.data[position].title)
                                     intent.putExtra("author", response.body()!!.data[position].authors[0])
                                     intent.putExtra("publisher", response.body()!!.data[position].publisher)
+                                    intent.putExtra("thumbnail", response.body()!!.data[position].thumbnail)
                                     DetailThemeActivity.writingSentenceInThemeData.thumbnail = item_writing_sentence_book_result_img.toString()
                                     setResult(1, intent)
                                     finish()
