@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/soft_green"
                 android:textSize="14sp"
-                android:text="'세란'" />
+                android:text="''" />
 
             <TextView
                 android:layout_width="wrap_content"

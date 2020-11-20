@@ -83,64 +83,15 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val now = System.currentTimeMillis()
-        val mDate = Date(now)
-        val simpleData = SimpleDateFormat("ddkkmmss")
-        val nowTime = simpleData.format(mDate).toInt()
-
-        Log.d("시간테스트 현재시간", nowTime.toString())
-
-        // 자동로그인 && 토큰갱신
-        // 비회원 / 회원 구분
-
+        // 둘러보기로 넘어왔을 때 mail이 저장되어있지 않는 경우 = 비회원
         if(SharedPreferenceController.getMail(this).isNullOrBlank())
         {
-            // 아이디, 비밀번호가 저장되어있지 않는 경우 = 비회원
+            // guest로 넘겨준다.
             SharedPreferenceController.setAccessToken(this, "guest")
-        } else {
-            login()
-            Log.d("토큰", SharedPreferenceController.getAccessToken(this))
-            // 아이디, 비밀번호가 저장되어 있는 경우 = 자동로그인
-            // 현재시간 - pref 시간 = 3시간이상 이면 토큰 갱신
-//            if(SharedPreferenceController.getCurrentTime(this) == "") {
-//                // 로그인
-//                login()
-//                SharedPreferenceController.setCurrentTime(this, nowTime.toString())
-//            } else {
-//                val lastTime = SharedPreferenceController.getCurrentTime(this)!!.toInt()
-//                Log.d("시간테스트 now - last", "${nowTime - lastTime}")
-//                Log.d("시간테스트 lastTime", lastTime.toString())
-//                Log.d("시간테스트 원래토큰", SharedPreferenceController.getAccessToken(this))
-//                if(nowTime - lastTime > 30000) {
-//                    // 갱신
-//                    Log.d("시간테스트", "갱신")
-//                    SharedPreferenceController.setCurrentTime(this, nowTime.toString())
-//                    login()
-//                }
-//            }
-
-
         }
-
     }
 
-    private fun login() {
-        requestToServer.service.requestLogin(
-            RequestLoginData(
-                email = SharedPreferenceController.getMail(this).toString(),
-                password = SharedPreferenceController.getPasswd(this).toString()
-            )
-        ).customEnqueue(
-            onError = {
-                Log.d("error", "에러")
-            },
-            onSuccess = {
-                if(it.status == 200) {
-                    SharedPreferenceController.setAccessToken(this, it.data.accessToken)
-                }
-            }
-        )
-    }
+
 
     private fun toggleFab() {
         if (isFabOpen) {

@@ -54,7 +54,7 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                 writingSentenceInThemeData.title = activity_theme_writing_sentence_book_tv_title.text.toString()
                 writingSentenceInThemeData.author = activity_theme_writing_sentence_book_v_author.text.toString()
                 writingSentenceInThemeData.publisher = activity_theme_writing_sentence_book_v_publisher.text.toString()
-                //DetailThemeActivity.writingSentenceInThemeData.thumbnail =
+                writingSentenceInThemeData.thumbnail = img_thumbnail.text.toString()
 
                 activity_theme_writing_sentence_book_tv_title.background = getResources().getDrawable(R.drawable.et_area)
                 activity_theme_writing_sentence_book_img_warning.visibility = View.GONE
@@ -97,10 +97,12 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
                     val title = data!!.getStringExtra("title")
                     val author = data!!.getStringExtra("author")
                     val publisher = data!!.getStringExtra("publisher")
+                    val thumbnail = data!!.getStringExtra("thumbnail")
 
                     activity_theme_writing_sentence_book_tv_title.setText(title)
                     activity_theme_writing_sentence_book_v_author.setText(author)
                     activity_theme_writing_sentence_book_v_publisher.setText(publisher)
+                    img_thumbnail.setText(thumbnail)
 
                 }
             }
