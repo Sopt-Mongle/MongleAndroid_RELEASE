@@ -181,7 +181,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView18">
 
                 <ImageView
-                    android:id="@+id/imageView20"
                     android:layout_width="75dp"
                     android:layout_height="102dp"
                     android:layout_marginStart="28dp"
