@@ -138,7 +138,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 if(imgChk){ // 테마를 선택함
 
                     // user reaction : 테마를 선택해주세요 ! 취소
-                    view.findViewById<TextView>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
 
                     // step3로 이동
                     val action =
@@ -233,6 +233,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                     for(data in datas){
                                         data.themeChked = false
                                     }
+                                    imgChk = true
                                     datas[position].themeChked = true
                                     wrtingSentenceThemeSearchFirstAdapter.datas = datas
                                     wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
@@ -330,6 +331,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                     for(data in datas){
                                         data.themeChked = false
                                     }
+                                    imgChk = true
                                     datas[position].themeChked = true
                                     wrtingSentenceThemeSearchAdapter.datas = datas
                                     wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
