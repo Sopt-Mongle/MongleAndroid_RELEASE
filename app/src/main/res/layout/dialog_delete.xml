@@ -87,7 +87,7 @@
             android:text="아니요"
             android:textColor="@color/soft_green"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_quit_yes"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delete_yes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toRightOf="@id/tv_delete_yes"
