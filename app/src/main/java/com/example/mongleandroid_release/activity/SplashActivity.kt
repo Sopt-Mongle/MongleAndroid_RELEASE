@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
-        Glide.with(this).load(R.raw.splash).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(load)
+        Glide.with(this).load(R.drawable.splash).into(load)
 
         startLoading()
 
