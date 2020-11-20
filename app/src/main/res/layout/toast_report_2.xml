@@ -24,7 +24,7 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="허위 내용 신고가 접수되었어요!"
+        android:text= "부적절한 내용 신고가 접수되었어요!"
         android:textColor="#ffffff"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
