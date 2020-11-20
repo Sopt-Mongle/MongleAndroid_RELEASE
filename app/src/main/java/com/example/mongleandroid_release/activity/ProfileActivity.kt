@@ -71,13 +71,20 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-
-        fileUri = SharedPreferenceController.getImage(this)?.toUri()
+        if(SharedPreferenceController.getImage(this).isNullOrBlank()) {
+            fileUri = Uri.parse("android.resource://$packageName/drawable/my_settings_profile_img_profile")
+            SharedPreferenceController.setImage(this, Uri.parse("android.resource://$packageName/drawable/my_settings_profile_img_profile"))
+            Log.d("테스트", "기본 이미지로 세팅")
+        } else {
+            fileUri = SharedPreferenceController.getImage(this)!!.toUri()
+            Log.d("테스트", "원래 있던걸로 세팅")
+        }
 
         // 이미지 둥글게
         activity_profile_img.background = ShapeDrawable(OvalShape())
         activity_profile_img.clipToOutline = true
 
+        // 내정보 받아오기
         requestToServer.service.lookLibraryProfile(
             token = SharedPreferenceController.getAccessToken(this)
         ).enqueue(object : Callback<ResponseMainLibraryData> {
@@ -89,14 +96,24 @@ class ProfileActivity : AppCompatActivity() {
                     if (response.body()!!.data.isNullOrEmpty()) {
 
                     } else {
-                        Glide.with(this@ProfileActivity).load(response.body()!!.data[0].img).into(
-                            activity_profile_img
-                        )
+
+                        // 이미지 null 처리
+                        if (response.body()!!.data[0].img == null) {
+                            Glide.with(this@ProfileActivity)
+                                .load(R.drawable.my_settings_profile_img_profile).into(
+                                activity_profile_img
+                            )
+                        } else {
+                            Glide.with(this@ProfileActivity).load(response.body()!!.data[0].img)
+                                .into(
+                                    activity_profile_img
+                                )
+                        }
 
                         activity_profile_et_nickname.setText(response.body()!!.data[0].name)
                         profile_name = response.body()!!.data[0].name
 
-                        if(response.body()!!.data[0].keyword == null) {
+                        if (response.body()!!.data[0].keyword == null) {
 
                         } else {
                             when (response.body()!!.data[0].keyword) {
