@@ -22,7 +22,6 @@
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="감성자극"
             android:textColor="@color/black_two"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="@+id/activity_curator_keyword_btn_back"
