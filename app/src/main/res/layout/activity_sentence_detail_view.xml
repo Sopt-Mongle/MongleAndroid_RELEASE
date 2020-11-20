@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/sentence_detail_img_theme"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/sentence_theme_o_img_theme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="브랜딩이 어려울 때, 영감을 주는 문장 브랜딩이 어려울 때, 영감을 주는 문장"
+        android:text="Title"
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,13 +50,13 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="44dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView49">
+        app:layout_constraintTop_toBottomOf="@+id/tv_theme">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="23dp" />
+                app:layout_constraintGuide_percent="0.9414758" />
 
             <ImageView
                 android:id="@+id/imageView17"
@@ -165,9 +165,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="#00000000"
+                android:button="@null"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/middle_line"
-                android:button="@null" />
+                app:layout_constraintTop_toTopOf="@+id/middle_line" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_book_info"
@@ -180,7 +180,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView18">
 
                 <ImageView
-                    android:id="@+id/imageView20"
+                    android:id="@+id/img_book_thumnail"
                     android:layout_width="75dp"
                     android:layout_height="102dp"
                     android:layout_marginStart="28dp"
@@ -206,8 +206,8 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView20"
-                    app:layout_constraintTop_toTopOf="@+id/imageView20" />
+                    app:layout_constraintStart_toEndOf="@+id/img_book_thumnail"
+                    app:layout_constraintTop_toTopOf="@+id/img_book_thumnail" />
 
                 <ImageView
                     android:id="@+id/imageView21"
@@ -259,14 +259,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="gone"
                 android:id="@+id/ccc"
                 android:layout_width="69dp"
                 android:layout_height="69dp"
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/background_rectangle"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
                 <TextView
@@ -275,11 +275,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="1sp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="2dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="1sp"
                     android:text="수정"
                     android:textColor="#838383"
                     android:textSize="14sp"
@@ -292,22 +292,21 @@
                     android:id="@+id/lineeeee"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#f2f2f2"
                     android:layout_marginTop="34.5dp"
+                    android:background="#f2f2f2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="삭제"
+                    android:layout_marginTop="7.5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="3dp"
-                    android:layout_marginTop="7.5dp"
+                    android:text="삭제"
                     android:textColor="#838383"
                     android:textSize="14sp"
                     android:textStyle="normal"
@@ -318,41 +317,41 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="gone"
                 android:id="@+id/cl_report"
+                android:layout_width="151dp"
+                android:layout_height="69dp"
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/background_rectangle"
-                app:layout_constraintTop_toBottomOf="@+id/middle_line"
-                android:layout_width="151dp"
-                android:layout_height="69dp">
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
                 <TextView
                     android:id="@+id/tv_report1111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="허위 내용 신고"
                     android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center_horizontal"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="1sp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="2dp"
-                    android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:text="허위 내용 신고"
                     android:textColor="#838383"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="1sp"
-                    android:gravity="center_horizontal"/>
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/report_line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#f2f2f2"
                     android:layout_marginTop="34.5dp"
+                    android:background="#f2f2f2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -361,11 +360,11 @@
                     android:id="@+id/tv_report2222"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="부적절한 내용 신고"
+                    android:layout_marginTop="7.5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="3dp"
-                    android:layout_marginTop="7.5dp"
+                    android:text="부적절한 내용 신고"
                     android:textColor="#838383"
                     android:textSize="14sp"
                     android:textStyle="normal"

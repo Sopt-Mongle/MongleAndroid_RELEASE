@@ -23,5 +23,5 @@ data class SentenceDetailData(
     val timestamp : String,
     val alreadyLiked : Boolean,
     val alreadyBookmarked : Boolean,
-    val themeImgIdx : Int
+    val themeImg : String
 )
