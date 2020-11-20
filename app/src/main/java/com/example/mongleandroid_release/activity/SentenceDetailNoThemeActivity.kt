@@ -1,10 +1,10 @@
 package com.example.mongleandroid_release.activity
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
@@ -96,11 +96,42 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                         }
 
                         tv_sentence_detail_bookmark_num_notheme.text = response.body()!!.data[0].saves.toString()
-                        // 내가 쓴 문장일때 북마크 처리?
                         if(response.body()!!.data[0].alreadyBookmarked) { // 북마크 여부
                             img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
                         } else {
                             img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                        }
+
+                        tv_report_no_theme_111.setOnClickListener { // 허위 내용 신고 눌렀을 때!!!
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            change_gone(cl_no_theme_report)
+                        }
+
+                        tv_report_no_theme_222.setOnClickListener {
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            change_gone(cl_no_theme_report)
+                        }
+
+                        checkbox_more_btn.setOnClickListener {
+                            if(checkbox_more_btn.isChecked) {
+                                if(response.body()!!.data[0].writer == SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
+                                    change_visible(ccc_noTheme)
+                                } else {
+                                    change_visible(cl_no_theme_report)
+                                }
+                            }
                         }
 
 //                        if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {

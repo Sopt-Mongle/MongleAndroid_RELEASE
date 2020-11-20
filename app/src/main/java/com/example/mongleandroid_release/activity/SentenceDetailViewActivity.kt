@@ -118,15 +118,45 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             startActivity(intent)
                         }
 
+                        tv_report1111.setOnClickListener { // 허위 내용 신고 눌렀을 때!!!
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            // 허위내용신고 gone 처리
+                            change_gone(cl_report)
+                        }
+
+                        tv_report2222.setOnClickListener { // 부적절한 내용 신고 눌렀을 때 !!
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            // 허위내용신고 gone 처리
+                            change_gone(cl_report)
+                        }
+
 //                        more_btn_checkbox.setOnCheckedChangeListener()
-                        if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
-                            Log.d("체크체크첵첵첵스초코", "체크 되는거임???????????")
-                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
-                                change_visible(ccc)
-                                //change_gone(cl_report)
-                            } else { // 내가 쓴 글이 아닐 때 -> 신고 뷰 띄우기
-                                change_visible(cl_report)
+
+                        more_btn_checkbox.setOnClickListener {
+
+                            if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
+                                Log.d("체크체크첵첵첵스초코", "체크 되는거임???????????")
+                                if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
+                                    change_visible(ccc)
+                                    //change_gone(cl_report)
+                                } else { // 내가 쓴 글이 아닐 때 -> 신고 뷰 띄우기
+                                    change_visible(cl_report)
+                                }
+
                             }
+
                         }
 //                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
 //                                more_btn_checkbox. { // 더보기를 눌렀을 때 내가 쓴 글이면 수정/삭제 뷰 보이게 하기

@@ -328,6 +328,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
                 <TextView
+                    android:id="@+id/tv_report1111"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -356,7 +357,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/report_delete"
+                    android:id="@+id/tv_report2222"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7.5dp"
