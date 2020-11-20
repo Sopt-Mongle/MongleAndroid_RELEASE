@@ -348,7 +348,6 @@ class LibrarySentenceFragment : Fragment() {
                                                             if (response.isSuccessful) {
                                                                 //프래그먼트 새로고침
 
-
                                                             }
                                                         }
 

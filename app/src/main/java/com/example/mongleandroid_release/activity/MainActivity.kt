@@ -133,4 +133,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //LibraryFragment reload
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        Log.e("hi", "hihihi")
+//    }
 }

@@ -43,7 +43,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/cl_library_item_sentence"
             app:layout_constraintTop_toTopOf="@id/cl_library_item_sentence"
-            tools:text="번아웃을 극복하고 싶을 때 봐야하는 문장" />
+            tools:text="" />
 
         <TextView
             android:id="@+id/tv_library_sentence_sentence"
@@ -56,7 +56,7 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:maxLines="2"
-            android:text="결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. "
+            android:text=""
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@id/img_item_library_sentence_usermark"
@@ -85,7 +85,7 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="2sp"
-            android:text="예스리"
+            android:text=""
             android:textColor="#bcbcbc"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="@id/img_item_library_sentence_usermark"
