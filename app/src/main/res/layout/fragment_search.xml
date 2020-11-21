@@ -8,7 +8,7 @@
     tools:context=".fragment.SearchFragment">
 
     <ImageView
-        android:id="@+id/fragment_search_btn_back"
+        android:id="@+id/fragment_search_btn_back_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -18,6 +18,22 @@
         android:paddingRight="17dp"
         android:paddingBottom="16dp"
         android:src="@drawable/btn_back"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fragment_search_btn_back_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="17dp"
+        android:paddingLeft="3dp"
+        android:paddingTop="16dp"
+        android:paddingRight="17dp"
+        android:paddingBottom="16dp"
+        android:src="@drawable/btn_back"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +41,8 @@
         android:id="@+id/fragment_search_et_search"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/et_area"
         android:ems="10"
@@ -35,10 +53,9 @@
         android:maxLines="1"
         android:paddingLeft="15dp"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_search_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fragment_search_btn_back"
-        app:layout_constraintTop_toTopOf="@+id/fragment_search_btn_back" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/fragment_search_btn_search"

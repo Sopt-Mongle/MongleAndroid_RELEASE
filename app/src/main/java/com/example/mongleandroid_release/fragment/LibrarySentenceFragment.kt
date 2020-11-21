@@ -208,9 +208,9 @@ class LibrarySentenceFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 문장 조회 성공", "${response.body()}")
-                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
-                            } else {
-                                Log.d("내 서재 문장 조회 null", "${response.body()}")
+//                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
+//                            Log.d("내 서재 문장 조회 null", "${response.body()}")
+//                            } else {
                                 librarySentenceAdapter = LibrarySentenceAdapter(
                                     view!!.context,
                                     response.body()!!.data!!.save
@@ -236,7 +236,7 @@ class LibrarySentenceFragment : Fragment() {
                                         }
                                     }
                                 })
-                            }
+//                            }
                         }
 
                     }
@@ -260,9 +260,9 @@ class LibrarySentenceFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 문장 클릭 조회 성공", "${response.body()}")
-                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
-                                Log.d("내 서재 문장 클릭 조회 null", "${response.body()}")
-                            } else {
+//                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
+//                                Log.d("내 서재 문장 클릭 조회 null", "${response.body()}")
+//                            } else {
                                 librarySentenceClickAdapter = LibrarySentenceClickAdapter(
                                     view!!.context,
                                     response.body()!!.data!!.write
@@ -367,7 +367,7 @@ class LibrarySentenceFragment : Fragment() {
                                     }
                                 })
 
-                            }
+//                            }
 
                         }
 

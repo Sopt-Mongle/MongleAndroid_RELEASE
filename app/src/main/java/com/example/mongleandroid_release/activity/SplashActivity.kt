@@ -27,8 +27,6 @@ class SplashActivity : AppCompatActivity() {
         val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
         Glide.with(this).load(R.drawable.splash).into(load)
 
-        startLoading()
-
         if(SharedPreferenceController.getMail(this).isNullOrBlank()) {
             // 처음 들어온 사람
             startLoading()

@@ -26,6 +26,7 @@ class WritingThemeActivity : AppCompatActivity() {
 
     lateinit var writingThemeImgAdapter: WritingThemeImgAdapter
     var writingThemeData =  RequestWritingThemeData("", -1)
+    var writingThemeImg =  ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,6 +148,10 @@ class WritingThemeActivity : AppCompatActivity() {
                                     writing_theme_step1_et_sentence.clearFocus()
                                     writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
                                     writing_theme_step1_ll_warning2.visibility = View.GONE
+
+                                    writingThemeImg = data.img
+
+
 
                                     // single selection impl
                                     for(data in datas){

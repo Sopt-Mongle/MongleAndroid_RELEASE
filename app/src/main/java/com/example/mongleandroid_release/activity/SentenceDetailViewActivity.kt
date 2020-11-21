@@ -40,6 +40,8 @@ import retrofit2.Response
 
 class SentenceDetailViewActivity : AppCompatActivity() {
 
+    private var sentenceIdx: Int = 0
+
     val requestToServer = RequestToServer
 
     companion object{
@@ -51,6 +53,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sentence_detail_view)
+
+        sentenceIdx = intent.getIntExtra("param",0)
 
         // 뒤로 가기 버튼
         back_btn.setOnClickListener {
@@ -70,7 +74,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceDetail() {
         requestToServer.service.GetDetailSentence(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceDetailData> {
                 override fun onFailure(call: Call<ResponseSentenceDetailData>, t: Throwable) {
@@ -287,7 +291,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceTheme() {
 
         requestToServer.service.GetDetailSentenceOtherThemeSentence(
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceDetailOtherThemeData> {
                 override fun onFailure(call: Call<ResponseSentenceDetailOtherThemeData>, t: Throwable) {
@@ -332,7 +336,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceLikeNum() {
         requestToServer.service.PutsentenceLikeNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceLikeNumData> {
                 override fun onFailure(call: Call<ResponseSentenceLikeNumData>, t: Throwable) {
@@ -367,7 +371,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceBookmarkNum() {
         requestToServer.service.PutsentenceBookmarkNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceBookmarkNumData> {
                 override fun onResponse(

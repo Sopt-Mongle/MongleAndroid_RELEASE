@@ -35,22 +35,34 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="28dp"
+        android:breakStrategy="simple"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="브랜딩이 어려울 때, 영감을 주는 문장 브랜딩이 어려울 때, 영감을 주는 문장"
+        android:text=" "
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView49"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="25dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_theme"
+        app:srcCompat="@drawable/background_detail_sentence_rounded" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +94,7 @@
                 android:layout_width="31dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/detailview_icon_quote"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -92,22 +104,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
+                android:breakStrategy="simple"
                 android:fontFamily="@font/notosanscjkkr_demilight"
                 android:includeFontPadding="false"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="3sp"
                 android:maxLength="280"
-                android:text="처음 마주할 때의 인상, 사소한 것으로 인해 생기
-는 호감, 알아가면서 느끼는 다양한 감정과 머금
-고있는 풍경과 분위기까지. 처음 마주할 때의 인
-상, 사소한 것으로 인해 생기는 호감, 알아가면서
-느끼는 다양한 감정과 머금고있는 풍경과 분위기
-까지. 처음 마주할 때의 인상, 사소한 것으로 인해
-생기는 호감, 알아가면서 느끼는 다양한 감정과
-머금고있는 풍경과 분위기까지. 처음 마주할 때
-의 인상, 사소한 것으로 인해 생기는 호감, 알아가
-면서 느끼는 다양한 감정과 머금고있는 풍경과
-분위기까지. 가나다라 마바사"
+                android:text=" "
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -141,7 +144,7 @@
                 android:layout_marginStart="8dp"
                 android:letterSpacing="-0.02"
                 android:lineSpacingExtra="-1sp"
-                android:text="몽글이"
+                android:text=" "
                 android:textColor="#a7a7a7"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView18"
@@ -164,9 +167,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="#00000000"
+                android:button="@null"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/middle_line"
-                android:button="@null" />
+                app:layout_constraintTop_toTopOf="@+id/middle_line" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_book_info"
@@ -203,7 +206,7 @@
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="7sp"
                     android:singleLine="true"
-                    android:text="오체불만족"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -226,7 +229,7 @@
                     android:layout_marginStart="11dp"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="6sp"
-                    android:text="이예슬"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView21"
@@ -249,7 +252,7 @@
                     android:layout_marginStart="11dp"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="6sp"
-                    android:text="몽글하우스"
+                    android:text=" "
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView22"
@@ -259,14 +262,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="gone"
                 android:id="@+id/ccc_noTheme"
                 android:layout_width="69dp"
                 android:layout_height="69dp"
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="28dp"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/background_rectangle"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
                 <TextView
@@ -275,11 +278,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
+                    android:letterSpacing="-0.02"
+                    android:lineSpacingExtra="1sp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="2dp"
-                    android:letterSpacing="-0.02"
-                    android:lineSpacingExtra="1sp"
                     android:text="수정"
                     android:textColor="#838383"
                     android:textSize="14sp"
@@ -292,22 +295,21 @@
                     android:id="@+id/lineeeee"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#f2f2f2"
                     android:layout_marginTop="34.5dp"
+                    android:background="#f2f2f2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/delete_noTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="삭제"
+                    android:layout_marginTop="7.5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="3dp"
-                    android:layout_marginTop="7.5dp"
+                    android:text="삭제"
                     android:textColor="#838383"
                     android:textSize="14sp"
                     android:textStyle="normal"
@@ -379,6 +381,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="43dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_theme"
+        app:srcCompat="@drawable/top_blur" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/sentence_detail_cl_bottom"
@@ -478,17 +490,6 @@
                 app:layout_constraintTop_toTopOf="@+id/img_sentence_detail_bookmark_notheme" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageView49"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="25dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_theme"
-        app:srcCompat="@drawable/theme_box_blur" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
