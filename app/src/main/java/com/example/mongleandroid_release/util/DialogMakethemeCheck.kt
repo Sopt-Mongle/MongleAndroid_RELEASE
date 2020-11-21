@@ -8,7 +8,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.Window
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.ThemeWritingSentenceBookActivity
@@ -40,7 +42,11 @@ class DialogMakethemeCheck(context : Context) {
         dlg.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dlg.setContentView(R.layout.dialog_writing_theme_check)     //다이얼로그에 사용할 xml 파일을 불러옴
 
-        dlg.show()
+        Glide.with(dlg.context).load(act.writingThemeImg).into(dlg.findViewById<ImageView>(R.id.dialog_writing_theme_check_img_title))
+        dlg.findViewById<TextView>(R.id.dialog_writing_theme_check_tv_title).text = act.writingThemeData.theme
+
+
+            dlg.show()
 
 
     }
