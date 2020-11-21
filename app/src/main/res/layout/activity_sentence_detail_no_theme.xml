@@ -88,7 +88,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/textView19_notheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="11dp"
@@ -122,7 +122,7 @@
                 android:background="#e7e7e7"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@id/textView19" />
+                app:layout_constraintTop_toBottomOf="@id/textView19_notheme" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView18"
@@ -270,7 +270,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
                 <TextView
-                    android:id="@+id/edit"
+                    android:id="@+id/edit_noTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -300,7 +300,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/delete"
+                    android:id="@+id/delete_noTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="삭제"
