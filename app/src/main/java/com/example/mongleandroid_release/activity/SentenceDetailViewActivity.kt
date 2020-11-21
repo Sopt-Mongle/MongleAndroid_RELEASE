@@ -208,8 +208,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             requestReportSentence() // 통신
                         }
 
-//                        more_btn_checkbox.setOnCheckedChangeListener()
-
+                        // 더보기 ``` 눌렀을 때
                         more_btn_checkbox.setOnClickListener {
 
                             if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
@@ -221,6 +220,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                                     change_visible(cl_report)
                                 }
 
+                            } else { // 다시 더보기 ``` 눌렀을 때 수정/삭제/신고 박스 사라지게 하기
+                                change_gone(ccc)
+                                change_gone(cl_report)
                             }
 
                         }

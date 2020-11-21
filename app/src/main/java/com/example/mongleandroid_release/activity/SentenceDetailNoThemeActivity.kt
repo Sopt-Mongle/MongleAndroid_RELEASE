@@ -185,7 +185,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
 
                             change_gone(cl_no_theme_report)
                         }
-
+                        // 더보기 ``` 눌렀을 때
                         checkbox_more_btn.setOnClickListener {
                             if(checkbox_more_btn.isChecked) {
                                 if(response.body()!!.data[0].writer == SharedPreferenceController.getName(this@SentenceDetailNoThemeActivity)) {
@@ -193,6 +193,9 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                                 } else {
                                     change_visible(cl_no_theme_report)
                                 }
+                            } else { // 다시 더보기 ``` 눌렀을 때 수정/삭제/신고 박스 사라지게 하기
+                                change_gone(ccc_noTheme)
+                                change_gone(cl_no_theme_report)
                             }
                         }
 
