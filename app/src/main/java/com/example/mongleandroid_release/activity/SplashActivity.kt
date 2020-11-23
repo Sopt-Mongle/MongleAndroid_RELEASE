@@ -6,23 +6,81 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.ImageView
+import androidx.core.os.postDelayed
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
+import com.example.mongleandroid_release.network.customEnqueue
+import com.example.mongleandroid_release.network.data.request.RequestLoginData
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SplashActivity : AppCompatActivity() {
+
+    val requestToServer = RequestToServer
+
+    val SPLASH_TIME : Long = 2500
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
-        Glide.with(this).load(R.raw.splash).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(load)
+//        val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
+//        Glide.with(this).load(R.drawable.splash).into(load)
 
-        startLoading()
+        if(SharedPreferenceController.getMail(this).isNullOrBlank()) {
+            // 처음 들어온 사람
+            startLoading()
+        } else {
+            // 두번째 이상 들어온 사람
+            val now = System.currentTimeMillis()
+            val mDate = Date(now)
+            val simpleData = SimpleDateFormat("ddkkmmss")
+            val nowTime = simpleData.format(mDate).toInt()
 
+            Log.d("시간테스트 현재시간", nowTime.toString())
 
+            // 현재시간 - pref 시간 = 3시간이상 이면 토큰 갱신
+            if(SharedPreferenceController.getCurrentTime(this) == "") {
+                // 로그인
+                login()
+                SharedPreferenceController.setCurrentTime(this, nowTime.toString())
+            } else {
+                val lastTime = SharedPreferenceController.getCurrentTime(this)!!.toInt()
+                Log.d("시간테스트 now - last", "${nowTime - lastTime}")
+                Log.d("시간테스트 lastTime", lastTime.toString())
+                Log.d("시간테스트 원래토큰", SharedPreferenceController.getAccessToken(this))
+                if(nowTime - lastTime > 30000) {
+                    // 갱신
+                    Log.d("시간테스트", "갱신")
+                    SharedPreferenceController.setCurrentTime(this, nowTime.toString())
+                    login()
+                }
+            }
 
+            startLoading()
+        }
+
+    }
+
+    private fun login() {
+        requestToServer.service.requestLogin(
+            RequestLoginData(
+                email = SharedPreferenceController.getMail(this).toString(),
+                password = SharedPreferenceController.getPasswd(this).toString()
+            )
+        ).customEnqueue(
+            onError = {
+                Log.d("error", "에러")
+            },
+            onSuccess = {
+                if(it.status == 200) {
+                    SharedPreferenceController.setAccessToken(this, it.data.accessToken)
+                }
+            }
+        )
     }
 
     private fun startLoading() {
@@ -48,7 +106,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, SPLASH_TIME)
     }
 
     private fun startLogin() {
@@ -57,7 +115,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, SPLASH_TIME)
     }
 
     private fun startOnBoarding() {
@@ -66,7 +124,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, SPLASH_TIME)
     }
 
 

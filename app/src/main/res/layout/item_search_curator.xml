@@ -23,8 +23,7 @@
             android:layout_marginBottom="27dp"
             app:layout_constraintBottom_toBottomOf="@id/search_curator_cl"
             app:layout_constraintStart_toStartOf="@id/search_curator_cl"
-            app:layout_constraintTop_toTopOf="@id/search_curator_cl"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="@id/search_curator_cl" />
 
         <TextView
             android:id="@+id/search_curator_tv_name"
@@ -36,7 +35,6 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
-            android:text="예스리"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/search_curator_img_profile"
@@ -65,7 +63,7 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="1sp"
-            android:text="540"
+            android:text=""
             android:textColor="@color/very_light_pink_two"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView9"
@@ -96,7 +94,7 @@
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="3sp"
-            android:text="대학내일"
+            android:text=""
             android:textColor="@color/very_light_pink_two"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/search_curator_img_profile"

@@ -17,17 +17,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView46"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="22dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/background_detail_theme_rounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView7" />
-
-    <ImageView
         android:id="@+id/img_detail_theme_activity_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,10 +35,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="16dp"
-        android:letterSpacing="-0.04"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
-        android:text="브랜딩이 어려울 때, 영감을 주는 문장"
+        android:letterSpacing="-0.04"
+        android:text="  "
         android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,10 +46,11 @@
         app:layout_constraintTop_toBottomOf="@+id/img_detail_theme_activity_back_btn" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/img_detail_theme_writerimg"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="46dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/theme_img_profile"
         app:layout_constraintStart_toStartOf="@+id/tv_main_theme_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_theme_title" />
@@ -72,12 +62,12 @@
         android:layout_marginStart="6dp"
         android:fontFamily="@font/notosanscjkkr_demilight"
         android:includeFontPadding="false"
-        android:text="몽글찡"
+        android:text="  "
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_detail_theme_writerimg"
+        app:layout_constraintStart_toEndOf="@+id/img_detail_theme_writerimg"
+        app:layout_constraintTop_toTopOf="@+id/img_detail_theme_writerimg" />
 
     <TextView
         android:id="@+id/textView11"
@@ -86,7 +76,7 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="246"
+        android:text="0"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/textView46"
@@ -100,7 +90,7 @@
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         android:letterSpacing="-0.02"
-        android:text="14"
+        android:text="0"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/textView140"
@@ -131,7 +121,7 @@
         android:text="문장"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintBottom_toBottomOf="@+id/img_detail_theme_writerimg"
         app:layout_constraintEnd_toStartOf="@+id/textView46" />
 
     <ImageView
@@ -146,11 +136,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/theme_btn_more" />
 
+    <ImageView
+        android:id="@+id/imageView46"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="22dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_detail_theme_rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_detail_theme_writerimg" />
+
     <ScrollView
         android:id="@+id/activity_join_step2_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -206,16 +207,26 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/btn_detail_theme_bookmark_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/theme_info_btn_bookmark"
+            android:src="@drawable/theme_detail_ic_bookmark_box"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_detail_theme_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_detail_theme_bookmark_box"
+            app:layout_constraintEnd_toEndOf="@+id/btn_detail_theme_bookmark_box"
+            app:layout_constraintStart_toStartOf="@+id/btn_detail_theme_bookmark_box"
+            app:layout_constraintTop_toTopOf="@+id/btn_detail_theme_bookmark_box"
+            app:srcCompat="@drawable/theme_detail_ic_bookmark_off" />
 
         <ImageView
             android:id="@+id/img_writing_sentence_in_theme_btn"
@@ -224,10 +235,10 @@
             android:layout_marginStart="13dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/btn_green"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_detail_theme_bookmark_box"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+            app:layout_constraintStart_toEndOf="@+id/btn_detail_theme_bookmark_box"
+            app:layout_constraintTop_toTopOf="@+id/btn_detail_theme_bookmark_box" />
 
         <TextView
             android:layout_width="wrap_content"

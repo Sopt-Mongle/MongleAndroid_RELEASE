@@ -1,34 +1,39 @@
 package com.example.mongleandroid_release.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
+import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceBookmarkNumData
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailOtherThemeData
+import com.example.mongleandroid_release.network.data.ResponseReportSentence
+import com.example.mongleandroid_release.network.data.request.RequestReportSentence
+import com.example.mongleandroid_release.network.data.response.*
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.ccc
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.imageView18
-import kotlinx.android.synthetic.main.activity_sentence_detail_view.imageView20
-import kotlinx.android.synthetic.main.activity_sentence_detail_view.img_sentence_detail_view_edit_btn
+import kotlinx.android.synthetic.main.activity_sentence_detail_view.img_book_thumnail
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView19
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView20
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.textView35
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_author
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_publisher
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.tv_theme
+import kotlinx.serialization.json.Json.Default.context
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,6 +43,10 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private var sentenceIdx: Int = 0
 
     val requestToServer = RequestToServer
+
+    companion object{
+        var reportSentence : RequestReportSentence = RequestReportSentence()
+    }
 
     private lateinit var detailSentenceAdapter: DetailSentenceAdapter
 
@@ -80,7 +89,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
 
                         Log.d("통신성공", response.body()!!.data.toString())
-                        //Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].).into(sentence_detail_img_theme)
+                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].themeImg)
+                            .apply(RequestOptions.bitmapTransform(BlurTransformation(7, 3))).into(sentence_detail_img_theme) // 테마이미지
                         tv_theme.text = response.body()!!.data[0].theme // 해당 테마 제목
                         textView19.text = response.body()!!.data[0].sentence // 해당 테마의 문장
                         if(response.body()!!.data[0].writerImg == null) {
@@ -88,9 +98,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                         } else{
                             Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].writerImg).into(imageView18) // 문장 작성자 프사
                         }
-                        //Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data?.thumbnail).into(imageView13) // 테마
                         textView20.text = response.body()!!.data[0].writer // 문장 작성자
-                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].thumbnail).into(imageView20) // 해당 문장의 책 사진
+                        Glide.with(this@SentenceDetailViewActivity).load(response.body()!!.data[0].thumbnail).into(img_book_thumnail) // 해당 문장의 책 사진
                         textView35.text = response.body()!!.data[0].title // 책 제목
                         tv_author.text = response.body()!!.data[0].author //  책 저자
                         tv_publisher.text = response.body()!!.data[0].publisher // 출판사
@@ -114,21 +123,112 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             startActivity(intent)
                         }
 
-                        // 수정, 삭제, 신고 기능
+                        // 수정 기능
                         edit.setOnClickListener {  // 수정 눌렀을 때 -> 문장 수정하기 액틸비티로 이동
                             val intent = Intent(this@SentenceDetailViewActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            intent.putExtra("sentence", textView19.text.toString()) // 해당 문장 보내기
+                            intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)
                         }
 
-//                        more_btn_checkbox.setOnCheckedChangeListener()
-                        if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
-                            Log.d("체크체크첵첵첵스초코", "체크 되는거임???????????")
-                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
-                                change_visible(ccc)
-                                //change_gone(cl_report)
-                            } else { // 내가 쓴 글이 아닐 때 -> 신고 뷰 띄우기
-                                change_visible(cl_report)
+                        // 삭제 기능
+                        delete.setOnClickListener { // 삭제 눌렀을 때
+                            //삭제 버튼 눌렀을 때 통하는 부분
+                            val dlg = DialogDeleteSentence(this@SentenceDetailViewActivity)
+                            dlg.start()
+                            dlg.setOnClickListener { content ->
+                                if (content == "삭제") {
+                                    requestToServer.service.DeleteSentenceWritten(
+                                        token = SharedPreferenceController.getAccessToken(
+                                            applicationContext
+                                        ),
+                                        params = response.body()!!.data[0].sentenceIdx
+
+                                    ).enqueue(
+                                        object :
+                                            Callback<ResponseDeleteSentenceWritten> {
+                                            override fun onResponse(
+                                                call: Call<ResponseDeleteSentenceWritten>,
+                                                response: Response<ResponseDeleteSentenceWritten>
+                                            ) {
+                                                if (response.isSuccessful) {
+                                                    //프래그먼트 새로고침
+
+
+                                                }
+                                            }
+
+                                            override fun onFailure(
+                                                call: Call<ResponseDeleteSentenceWritten>,
+                                                t: Throwable
+                                            ) {
+                                                Log.d("문장 삭제 통신 실패", "$t")
+
+                                            }
+
+                                        }
+                                    )
+                                }
+
                             }
+                        }
+
+                        // 허위 내용 신고
+                        tv_report1111.setOnClickListener { // 허위 내용 신고 눌렀을 때!!!
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            // 허위내용신고 gone 처리
+                            change_gone(cl_report)
+
+                            Log.d("허위내용 신고", "허위내용신고!!!!!!!!!!!!!!!!!!1")
+                            reportSentence.sort = "sentence"
+                            reportSentence.idx = response.body()!!.data[0].sentenceIdx // 문장 인덱스 넘기기
+                            reportSentence.content = "falseAd"
+
+                            requestReportSentence() // 통신
+                        }
+
+                        // 부적절한 내용 신고
+                        tv_report2222.setOnClickListener { // 부적절한 내용 신고 눌렀을 때 !!
+                            val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
+
+                            // 허위내용신고 gone 처리
+                            change_gone(cl_report)
+
+                            reportSentence.sort = "sentence"
+                            reportSentence.idx = response.body()!!.data[0].sentenceIdx // 문장 인덱스 넘기기
+                            reportSentence.content = "inappropriate"
+
+                            requestReportSentence() // 통신
+                        }
+
+                        // 더보기 ``` 눌렀을 때
+                        more_btn_checkbox.setOnClickListener {
+
+                            if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
+                                Log.d("체크체크첵첵첵스초코", "체크 되는거임???????????")
+                                if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
+                                    change_visible(ccc)
+                                    //change_gone(cl_report)
+                                } else { // 내가 쓴 글이 아닐 때 -> 신고 뷰 띄우기
+                                    change_visible(cl_report)
+                                }
+
+                            } else { // 다시 더보기 ``` 눌렀을 때 수정/삭제/신고 박스 사라지게 하기
+                                change_gone(ccc)
+                                change_gone(cl_report)
+                            }
+
                         }
 //                            if (response.body()!!.data[0].writer ==  SharedPreferenceController.getName(this@SentenceDetailViewActivity)) {
 //                                more_btn_checkbox. { // 더보기를 눌렀을 때 내가 쓴 글이면 수정/삭제 뷰 보이게 하기
@@ -158,6 +258,32 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                 }
 
             }
+        )
+    }
+
+    // 신고하기 통신
+    private fun requestReportSentence() {
+
+        requestToServer.service.ReportSentence(
+            token = applicationContext.let { SharedPreferenceController.getAccessToken(it) },
+            body = reportSentence
+        ).enqueue(object : Callback<ResponseReportSentence> {
+            @SuppressLint("신고하기 통신~~~")
+            override fun onFailure(call: Call<ResponseReportSentence>, t: Throwable) {
+                Log.e("ReportSentence 통신실패",t.toString())            }
+
+            @SuppressLint("신고신고신고")
+            override fun onResponse(
+                call: Call<ResponseReportSentence>,
+                response: Response<ResponseReportSentence>
+            ) {
+                if(response.isSuccessful) {
+                    Log.e("통신응답성공", "신고하기 통신통신")
+
+                }
+            }
+
+        }
         )
     }
 
@@ -257,6 +383,13 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
                             val result : Int = response.body()!!.data!!.saves
                             tv_sentence_bookmark_num.text = result.toString()
+
+                            val customToast = layoutInflater.inflate(R.layout.toast_sentence_bookmark, null)
+                            val toast = Toast(applicationContext)
+                            toast.duration = Toast.LENGTH_SHORT
+                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                            toast.view = customToast
+                            toast.show()
                         } else {
                             img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
                             val result : Int = response.body()!!.data!!.saves

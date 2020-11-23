@@ -248,6 +248,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/img_thumbnail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="108dp"
+        android:visibility="gone"
+        android:text="이미지이미지"
+        android:layout_marginEnd="108dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_book_CL_book" />
+
+    <TextView
         android:id="@+id/activity_theme_writing_sentence_book_btn_upload"
         style="@android:style/ButtonBar"
         android:layout_width="0dp"

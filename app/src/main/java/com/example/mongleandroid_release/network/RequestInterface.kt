@@ -1,5 +1,6 @@
 package com.example.mongleandroid_release.network
 
+import com.example.mongleandroid_release.network.data.ResponseReportSentence
 import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
 import com.example.mongleandroid_release.network.data.request.*
 import com.example.mongleandroid_release.network.data.response.*
@@ -213,6 +214,13 @@ interface RequestInterface {
         @Path("curatorIdx") params: Int?
     ) : Call<ResponseCuratorInformationData>
 
+    // 테마 북마크
+    @PUT("/detail/theme/{themeIdx}/bookmark")
+    fun putThemeBookmarkNum(
+        @Header("token") token: String?,
+        @Path("themeIdx") params: Int
+    ) : Call<ResponseThemeBookmarkNumData>
+
     // 문장 좋아요 누르기
     @PUT("/detail/sentence/{sentenceIdx}/like")
     fun PutsentenceLikeNum(
@@ -220,7 +228,7 @@ interface RequestInterface {
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseSentenceLikeNumData>
 
-    // 문장 좋아요 누르기
+    // 문장 북마크 누르기
     @PUT("/detail/sentence/{sentenceIdx}/bookmark")
     fun PutsentenceBookmarkNum(
         @Header("token") token: String?,
@@ -241,6 +249,14 @@ interface RequestInterface {
         @Header("token") token: String?,
         @Path("sentenceIdx") params: Int
     ) : Call<ResponseDeleteSentenceWritten>
+
+    // 문장 신고하기
+    @POST("/detail/report")
+    fun ReportSentence(
+        @Header("token") token: String?,
+        @Body body: RequestReportSentence
+    ) : Call<ResponseReportSentence>
+
 
     //회원 탈퇴
     //위와 같이 @DELETE 어쩌구의 형식으로 가지고 가면
