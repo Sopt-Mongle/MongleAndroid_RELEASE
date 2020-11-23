@@ -64,6 +64,10 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fragment_search_cl_before.setOnClickListener {
+            fragment_search_et_search.unshowKeyboard()
+        }
+
         // 검색창에 초점 맞추고, 키보드 올리는 부분
         fragment_search_et_search.requestFocus()
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt

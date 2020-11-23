@@ -61,7 +61,8 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".activity.WritingSentenceActivity" />
         <activity android:name=".activity.WritingThemeActivity" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustNothing"/>
     </application>
 
 </manifest>
