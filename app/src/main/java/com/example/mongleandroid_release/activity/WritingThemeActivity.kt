@@ -7,7 +7,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.WritingThemeImgAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -38,7 +37,6 @@ class WritingThemeActivity : AppCompatActivity() {
         // MARK :: XML
         // 뒤로가기 버튼
         writing_theme_step1_btn_out.setOnClickListener{
-            Toast.makeText(this, "메인화면으로 돌아갑니다.", Toast.LENGTH_SHORT).show()
             finish() //onDestroy() 호출되어 아예 메모리에 액티비티 삭제!
         }
         // 테마 이름 입력창
@@ -85,8 +83,6 @@ class WritingThemeActivity : AppCompatActivity() {
                 if(writingThemeData.theme.isEmpty() || writingThemeData.themeImgIdx <=0 ){
 
                 }else{
-                    Toast.makeText(this, "등록 팝업 등장.", Toast.LENGTH_SHORT).show()
-
                     val dlg = DialogMakethemeCheck(this)
                     dlg.start()
                     dlg.setOnOKClickedListener{
