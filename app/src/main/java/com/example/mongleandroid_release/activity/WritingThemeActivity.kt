@@ -55,6 +55,8 @@ class WritingThemeActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // writing_theme_step1_et_sentence 빨간 박스 해제
                 // 테마 이름 글자 수 카운팅
+                writing_theme_step1_tv_cnt.visibility = View.VISIBLE
+                writing_theme_step1_tv_cnt2.visibility = View.VISIBLE
                 writing_theme_step1_tv_cnt.text = writing_theme_step1_et_sentence.text.toString().length.toString()
                 writing_theme_step1_ll_warning.visibility = View.GONE
 
@@ -74,6 +76,8 @@ class WritingThemeActivity : AppCompatActivity() {
             // 빈칸 경고
             if(writing_theme_step1_et_sentence.text.isEmpty()) {
                 writing_theme_step1_ll_warning.visibility = View.VISIBLE
+                writing_theme_step1_tv_cnt.visibility = View.INVISIBLE
+                writing_theme_step1_tv_cnt2.visibility = View.INVISIBLE
 
                 writing_theme_step1_et_sentence
                     .setBackgroundResource(R.drawable.et_area_red)

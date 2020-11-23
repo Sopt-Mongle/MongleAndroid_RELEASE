@@ -103,6 +103,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:maxImageSize="24dp"
         app:tint="@color/white"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:elevation="10dp"
         />
 
 
