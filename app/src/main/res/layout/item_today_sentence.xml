@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/tv_today_sentence"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="47dp"
             android:layout_marginStart="17dp"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="17dp"
