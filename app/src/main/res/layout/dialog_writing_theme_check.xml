@@ -39,7 +39,7 @@
             <ImageView
                 android:id="@+id/dialog_writing_theme_check_img_title"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="128dp"
                 android:src="@drawable/maketheme_check_img_theme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -18,6 +18,7 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestLoginData
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.onboarding_step2.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -97,9 +98,10 @@ class MainActivity : AppCompatActivity() {
         if (isFabOpen) {
             main_activity_FAB_tm.startAnimation(fab_close)
             main_activity_FAB_st.startAnimation(fab_close)
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", 0f).apply { start() }
-            main_activity_FAB_main.setImageResource(R.drawable.ic_add)
+            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", 0f).apply { duration = 270 }.start()
+            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", 0f).apply { start()}
+//            main_activity_FAB_main.setImageResource(R.drawable.ic_add)
+            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation",45f, 0f ).apply { start() }
 
             main_activity_blur.visibility = View.GONE
 
@@ -109,9 +111,10 @@ class MainActivity : AppCompatActivity() {
             main_activity_FAB_st.startAnimation(fab_open)
             main_activity_FAB_st.visibility = View.VISIBLE
             main_activity_FAB_tm.visibility = View.VISIBLE
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -250f).apply { start() }
-            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -400f).apply { start() }
-            main_activity_FAB_main.setImageResource(R.drawable.ic_close)
+            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -240f).apply { duration = 270 }.start()
+            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -390f).apply { start() }
+//            main_activity_FAB_main.setImageResource(R.drawable.ic_close)
+            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
 
             main_activity_blur.visibility = View.VISIBLE
 
