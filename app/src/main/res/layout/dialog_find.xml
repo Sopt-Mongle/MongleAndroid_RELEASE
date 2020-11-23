@@ -37,7 +37,7 @@
             android:lineSpacingExtra="-1sp"
             android:text="몽글에 메일로 문의하시겠어요?"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
             android:letterSpacing="-0.02"
             android:text="mongle.official@gmail.com 으로\n문의 주시면 계정을 찾아드릴게요! "
             android:textColor="#a7a7a7"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/tv_findmain"
             app:layout_constraintStart_toStartOf="@+id/tv_findmain"
             app:layout_constraintTop_toBottomOf="@+id/tv_findmain" />
@@ -77,7 +77,7 @@
             android:paddingBottom="8dp"
             android:text="메일 문의"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_findsub" />
@@ -100,7 +100,7 @@
             android:paddingBottom="8dp"
             android:text="아니요"
             android:textColor="@color/soft_green"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/dialog_find_yes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dialog_find_yes"

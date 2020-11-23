@@ -36,7 +36,7 @@
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="-1sp"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintStart_toEndOf="@+id/search_curator_img_profile"
             app:layout_constraintTop_toTopOf="@+id/search_curator_img_profile" />
 
@@ -50,7 +50,7 @@
             android:lineSpacingExtra="1sp"
             android:text="구독자 "
             android:textColor="@color/very_light_pink_two"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@id/search_curator_tv_keyword"
             app:layout_constraintStart_toStartOf="@+id/search_curator_tv_name"
             app:layout_constraintTop_toBottomOf="@+id/search_curator_tv_name" />
@@ -65,7 +65,7 @@
             android:lineSpacingExtra="1sp"
             android:text=""
             android:textColor="@color/very_light_pink_two"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView9"
             app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="@+id/textView9" />
@@ -80,7 +80,7 @@
             android:lineSpacingExtra="1sp"
             android:text="명"
             android:textColor="@color/very_light_pink_two"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/search_curator_tv_subcount"
             app:layout_constraintStart_toEndOf="@+id/search_curator_tv_subcount"
             app:layout_constraintTop_toTopOf="@+id/search_curator_tv_subcount" />
@@ -96,7 +96,7 @@
             android:lineSpacingExtra="3sp"
             android:text=""
             android:textColor="@color/very_light_pink_two"
-            android:textSize="12sp"
+            android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/search_curator_img_profile"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -123,7 +123,7 @@
             android:button="@null"
             android:gravity="center"
             android:text="구독"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:letterSpacing="-0.02"
             android:textColor="@color/cb_subscribe_selector"
             app:layout_constraintBottom_toBottomOf="parent"

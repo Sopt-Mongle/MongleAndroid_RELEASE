@@ -52,7 +52,7 @@
                 android:lineSpacingExtra="7sp"
                 android:text="몽글"
                 android:textColor="#3e3e3e"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 app:layout_constraintStart_toStartOf="@+id/imageView4"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -75,7 +75,7 @@
                 android:lineSpacingExtra="7sp"
                 android:text="서비스 운영정책"
                 android:textColor="#717171"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -90,7 +90,7 @@
                 android:lineSpacingExtra="4sp"
                 android:text="본 운영정책은 몽글팀이 제공하는 몽글 서비스를 운영함에 있어, 서비스 내에 발생할 수 있는 문제 상황에 대하여 일관성 있게 대처하기 위하여 서비스 운영의 기준과 고객 여러분이 지켜주셔야 할 세부적인 사항이 규정되어 있습니다. 운영정책을 지키지 않을 경우 불이익을 당할 수 있으니 주의 깊게 읽어 주시기 바랍니다."
                 android:textColor="#656565"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -105,7 +105,7 @@
                 android:letterSpacing="-0.04"
                 android:text="고객의 권리와 의무"
                 android:textColor="#434343"
-                android:textSize="19sp"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="@+id/textView12"
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -120,7 +120,7 @@
                 android:lineSpacingExtra="8sp"
                 android:text="1. 고객의 권리"
                 android:textColor="#454545"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -136,7 +136,7 @@
                 android:lineSpacingExtra="4sp"
                 android:text="회사는 서비스 내 고객들 간에 발생하는 분쟁 및 고객 스스로의 과실로 일어난 피해에 대해서는 개입하거나 조치하지 않습니다. 다만, 서비스 이용 중 다른 고객의 운영정책 위반 행위로 인해 피해를 입으신 경우, 고객 은 이를 회사에 제보하여 운영정책의 적용을 요청할  수 있으며 회사는 신고 내용을 확인하고 운영정책에  따른 제재 조치를 취할 수 있습니다."
                 android:textColor="#5f5f5f"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +154,7 @@
                 android:lineSpacingExtra="4sp"
                 android:text="고객은 이메일 문의를 통해 몽글 서비스에 대한 각종 문의를 포함하여 요청 및 건의를 할 수 있습니다."
                 android:textColor="#5f5f5f"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -171,7 +171,7 @@
                 android:lineSpacingExtra="4sp"
                 android:text="[온라인문의] mongle.official@gmail.com"
                 android:textColor="#5f5f5f"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -185,7 +185,7 @@
                 android:lineSpacingExtra="4sp"
                 android:text="(24시간)"
                 android:textColor="#5f5f5f"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView35"
                 app:layout_constraintStart_toEndOf="@+id/textView35" />
 
@@ -200,7 +200,7 @@
                 android:lineSpacingExtra="8sp"
                 android:text="2. 고객의 의무"
                 android:textColor="#454545"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -216,7 +216,7 @@
                 android:lineSpacingExtra="5sp"
                 android:text="고객은 서비스 내에서 관계 법령을 위반하는 활동과 서비스 시스템 및 다른 회원의 정상적인 서비스 이용을 방해하는 활동을 하지 않습니다. 금지하는 활동을 하는 경우 정상적인 이용 회원의 신속한 보호를 위해 사전 안내 없이 위반/방해 활동 회원의 서비스 이용이 한시적, 영구적으로 제한할 수 있습니다."
                 android:textColor="#5f5f5f"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -231,7 +231,7 @@
                 android:letterSpacing="-0.04"
                 android:text="서비스의 이용제한"
                 android:textColor="#434343"
-                android:textSize="19sp"
+                android:textSize="19dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView17" />
 
@@ -245,7 +245,7 @@
                 android:letterSpacing="-0.04"
                 android:text="1. 이용제한 사유에 해당되는 금지 활동"
                 android:textColor="#454545"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="@id/textView39"
                 app:layout_constraintTop_toBottomOf="@id/textView39" />
 
@@ -261,7 +261,7 @@
                 android:lineSpacingExtra="5sp"
                 android:text="- 불법성 활동"
                 android:textColor="#5f5f5f"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView51"
                 tools:ignore="HardcodedText" />
@@ -276,7 +276,7 @@
                 android:letterSpacing="-0.04"
                 android:text="2. 이용제한의 종류"
                 android:textColor="#454545"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
@@ -303,7 +303,7 @@
                 android:lineSpacingExtra="5sp"
                 android:text="게시글 제한 : 게시글을 볼 수 없도록 노출이 제한됩니다. "
                 android:textColor="#5f5f5f"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView54" />
@@ -331,7 +331,7 @@
                 android:lineSpacingExtra="5sp"
                 android:text="서비스 제한 : 해당 서비스의 이용이 한시적, 영구적으로 일부 또는 전체 제한됩니다."
                 android:textColor="#5f5f5f"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView55" />
@@ -359,7 +359,7 @@
                 android:lineSpacingExtra="5sp"
                 android:text="계정 제한 : 회사가 제공하는 모든 서비스의 이용이  한시적, 영구적으로 제한됩니다."
                 android:textColor="#5f5f5f"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgview1"
                 app:layout_constraintTop_toBottomOf="@+id/textView56" />
@@ -375,7 +375,7 @@
                 android:lineSpacingExtra="5sp"
                 android:text="위의 항목에 구체적으로 해당하지 않는 사항이라 하더라 도 건전한 서비스 환경 제공에 악영향을 끼치는 경우는  서비스의 이용약관에 의거하여 이용이 제한될 수 있으며,  위반 활동이 반복되는 경우 가중처리될 수 있습니다.\n"
                 android:textColor="#5f5f5f"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imgview1"
                 app:layout_constraintTop_toBottomOf="@+id/textView57" />
