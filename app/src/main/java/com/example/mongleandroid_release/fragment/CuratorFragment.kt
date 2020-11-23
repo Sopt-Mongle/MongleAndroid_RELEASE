@@ -42,14 +42,17 @@ class CuratorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        curatorRecommend()
-        curatorInThemeData()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_curator, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 큐탭 튕기는 오류 - 이걸로 수정해두고, 그래도 똑같으면 원위치
+        curatorRecommend()
+        curatorInThemeData()
 
         goKeywordActivity(fragment_curator_tv_gamsung, 1)
         goKeywordActivity(fragment_curator_tv_donggi, 2)
