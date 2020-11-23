@@ -14,4 +14,7 @@
         <item name="android:paddingBottom">5dp</item>
     </style>
 
+    <style name="tab_text" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">17dp</item>
+    </style>
 </resources>

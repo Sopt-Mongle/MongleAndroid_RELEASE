@@ -36,7 +36,7 @@
             android:letterSpacing="-0.02"
             android:text="메일이 스팸 메일로 분류된 것은 아닌지\n확인해주세요!"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +52,7 @@
             android:letterSpacing="-0.02"
             android:text="스팸 메일함에도 메일이 없다면,\n재전송을 시도해주세요."
             android:textColor="#a7a7a7"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@+id/textView18"
             app:layout_constraintStart_toStartOf="@+id/textView18"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -76,7 +76,7 @@
             android:paddingBottom="8dp"
             android:text="네"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -99,7 +99,7 @@
             android:paddingBottom="8dp"
             android:text="재전송"
             android:textColor="@color/soft_green"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/dialog_join_step3_spammail_yes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dialog_join_step3_spammail_yes"

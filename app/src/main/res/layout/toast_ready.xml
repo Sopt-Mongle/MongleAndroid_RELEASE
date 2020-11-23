@@ -27,7 +27,7 @@
         android:includeFontPadding="false"
         android:text="준비 중인 기능이에요!"
         android:textColor="#ffffff"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

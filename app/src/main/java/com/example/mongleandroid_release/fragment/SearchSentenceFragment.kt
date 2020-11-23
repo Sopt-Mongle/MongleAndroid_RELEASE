@@ -42,25 +42,33 @@ class SearchSentenceFragment : Fragment() {
                 fragment_search_sentence_cl.visibility = View.GONE
                 fragment_search_sentence_cl_noresult.visibility = View.GONE
                 if (response.isSuccessful){
-                    fragment_search_sentence_cl.visibility = View.VISIBLE
-                    response.body().let { body ->
-                        Log.d("문장 검색", response.body()!!.message)
-                        fragment_search_sentence_tv_count.text = body!!.data.size.toString()
-                        searchSentenceAdapter = SearchSentenceAdapter(view!!.context, body.data)
-                        rv_search_sentence.adapter = searchSentenceAdapter
-                        searchSentenceAdapter.notifyDataSetChanged()
+                    if(response.body()!!.data.isNullOrEmpty()) {
+                        fragment_search_sentence_cl.visibility = View.GONE
+                        fragment_search_sentence_cl_noresult.visibility = View.VISIBLE
+                    } else {
+                        fragment_search_sentence_cl.visibility = View.VISIBLE
+                        fragment_search_sentence_cl_noresult.visibility = View.GONE
 
-                        searchSentenceAdapter.setItemClickListener(object : SearchSentenceAdapter.ItemClickListener{
-                            override fun onClick(view: View, position: Int) {
-                                activity?.let {
-                                    val intent = Intent(context, SentenceDetailViewActivity::class.java)
-                                    intent.putExtra("param", body.data[position].sentenceIdx)
-                                    startActivity(intent)
+                        response.body().let { body ->
+                            Log.d("문장 검색", response.body()!!.message)
+                            fragment_search_sentence_tv_count.text = body!!.data.size.toString()
+                            searchSentenceAdapter = SearchSentenceAdapter(view!!.context, body.data)
+                            rv_search_sentence.adapter = searchSentenceAdapter
+                            searchSentenceAdapter.notifyDataSetChanged()
+
+                            searchSentenceAdapter.setItemClickListener(object : SearchSentenceAdapter.ItemClickListener{
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent = Intent(context, SentenceDetailViewActivity::class.java)
+                                        intent.putExtra("param", body.data[position].sentenceIdx)
+                                        startActivity(intent)
+                                    }
                                 }
-                            }
 
-                        })
+                            })
+                        }
                     }
+
                 } else {
                     fragment_search_sentence_cl_noresult.visibility = View.VISIBLE
                 }
