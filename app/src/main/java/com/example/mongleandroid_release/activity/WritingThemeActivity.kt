@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.WritingThemeImgAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -146,7 +147,8 @@ class WritingThemeActivity : AppCompatActivity() {
                                     Log.d("SSS", "${position}번 리스트 선택")
 
                                     writing_theme_step1_et_sentence.clearFocus()
-                                    writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
+//                                    writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
+                                    writingThemeData.themeImgIdx = Integer.parseInt(view.findViewById<TextView>(R.id.item_writing_theme_tv_imgIdx).text.toString())
                                     writing_theme_step1_ll_warning2.visibility = View.GONE
 
                                     writingThemeImg = data.img
