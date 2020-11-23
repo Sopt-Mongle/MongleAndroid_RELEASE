@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", 0f).apply { duration = 270 }.start()
             ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", 0f).apply { start()}
 //            main_activity_FAB_main.setImageResource(R.drawable.ic_add)
-            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
+            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation",45f, 0f ).apply { start() }
 
             main_activity_blur.visibility = View.GONE
 
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -240f).apply { duration = 270 }.start()
             ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -390f).apply { start() }
 //            main_activity_FAB_main.setImageResource(R.drawable.ic_close)
-            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 45f, 0f).apply { start() }
+            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
 
             main_activity_blur.visibility = View.VISIBLE
 
