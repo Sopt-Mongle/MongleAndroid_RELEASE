@@ -45,23 +45,31 @@ class SearchThemeFragment : Fragment() {
                 fragment_search_theme_cl_noresult.visibility = View.GONE
 
                 if (response.isSuccessful) {
-                    fragment_search_theme_cl.visibility = View.VISIBLE
-                    response.body().let { body ->
-                        Log.d("테마 검색", response.body()!!.message)
-                        fragment_search_theme_tv_count.text = body!!.data.size.toString()
-                        searchThemeAdapter = SearchThemeAdapter(view!!.context, body.data)
-                        rv_search_theme.adapter = searchThemeAdapter
-                        searchThemeAdapter.notifyDataSetChanged()
+                    if(response.body()!!.data.isNullOrEmpty()) {
+                        fragment_search_theme_cl.visibility = View.GONE
+                        fragment_search_theme_cl_noresult.visibility = View.VISIBLE
+                    } else {
+                        fragment_search_theme_cl.visibility = View.VISIBLE
+                        fragment_search_theme_cl_noresult.visibility = View.GONE
 
-                        searchThemeAdapter.setItemClickListener(object : SearchThemeAdapter.ItemClickListener{
-                            override fun onClick(view: View, position: Int) {
-                                val intent = Intent(context, DetailThemeActivity::class.java)
-                                intent.putExtra("param", body.data[position].themeIdx)
-                                startActivity(intent)
-                            }
+                        response.body().let { body ->
+                            Log.d("테마 검색", response.body()!!.message)
+                            fragment_search_theme_tv_count.text = body!!.data.size.toString()
+                            searchThemeAdapter = SearchThemeAdapter(view!!.context, body.data)
+                            rv_search_theme.adapter = searchThemeAdapter
+                            searchThemeAdapter.notifyDataSetChanged()
 
-                        })
+                            searchThemeAdapter.setItemClickListener(object : SearchThemeAdapter.ItemClickListener{
+                                override fun onClick(view: View, position: Int) {
+                                    val intent = Intent(context, DetailThemeActivity::class.java)
+                                    intent.putExtra("param", body.data[position].themeIdx)
+                                    startActivity(intent)
+                                }
+
+                            })
+                        }
                     }
+
                 } else {
                     fragment_search_theme_cl_noresult.visibility = View.VISIBLE
                 }

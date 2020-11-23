@@ -52,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
                 Log.d("시간테스트 now - last", "${nowTime - lastTime}")
                 Log.d("시간테스트 lastTime", lastTime.toString())
                 Log.d("시간테스트 원래토큰", SharedPreferenceController.getAccessToken(this))
-                if(nowTime - lastTime > 30000) {
+                if(nowTime - lastTime < 0 || nowTime - lastTime > 30000) {
                     // 갱신
                     Log.d("시간테스트", "갱신")
                     SharedPreferenceController.setCurrentTime(this, nowTime.toString())

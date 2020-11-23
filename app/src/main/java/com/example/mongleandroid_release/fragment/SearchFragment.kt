@@ -116,6 +116,11 @@ class SearchFragment : Fragment() {
 
             change_gone(fragment_search_btn_back_search)
             change_visible(fragment_search_btn_back_main)
+
+            if(fragment_search_et_search.text.isNotEmpty()) {
+                fragment_search_tv_no_keyword.visibility = GONE
+            }
+            recentKeyword()
         }
 
         // 엔터 눌렀을 때 검색
@@ -199,7 +204,7 @@ class SearchFragment : Fragment() {
                         if(response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
-                            removeRecentKeyword()
+                            //removeRecentKeyword()
                             val layoutManager = LinearLayoutManager(view!!.context)
                             layoutManager.orientation = LinearLayoutManager.HORIZONTAL
                             fragment_search_rv_recent_keyword.layoutManager = layoutManager
