@@ -78,6 +78,8 @@ dependencies {
     implementation 'com.android.support:support-annotations:27.1.1'
     //switch button custom library
     implementation 'com.kyleduo.switchbutton:library:2.0.0'
+    // gif
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
 
     //navigation 사용하기
     // Kotlin
