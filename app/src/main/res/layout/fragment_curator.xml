@@ -210,6 +210,51 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fragment_curator_tv_dokseo" />
 
+            <View
+                android:id="@+id/view20"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
+                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_donggi" />
+
+            <View
+                android:id="@+id/view19"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toTopOf="@+id/fragment_curator_tv_donggi"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
+                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung" />
+
+            <View
+                android:id="@+id/view21"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
+                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_dokseo" />
+
+            <View
+                android:id="@+id/view22"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_curator_tv_dokseo"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_kipeun"
+                app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_donggi" />
+
+            <View
+                android:id="@+id/view23"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_curator_tv_dokseo"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_donggi"
+                app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_donggi" />
+
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"

@@ -19,25 +19,29 @@
             android:id="@+id/activity_curator_keyword_tv_keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center"
             android:includeFontPadding="false"
             android:textColor="@color/black_two"
             android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_curator_keyword_btn_back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activity_curator_keyword_btn_back" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/activity_curator_keyword_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="3dp"
             android:paddingStart="17dp"
             android:paddingTop="16dp"
             android:paddingEnd="23dp"
             android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/btn_back" />
