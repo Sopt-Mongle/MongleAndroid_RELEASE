@@ -19,12 +19,14 @@ class WritingSentenceBookSearchViewHolder(itemView: View) : RecyclerView.ViewHol
     private val item_search_book_tv_htitle = itemView.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_title)
     private val item_search_book_tv_author = itemView.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_author)
     private val item_search_book_tv_publisher = itemView.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_publisher)
+    private val item_writing_sentence_book_result_tv_thumbnail = itemView.findViewById<TextView>(R.id.item_writing_sentence_book_result_tv_thumbnail)
 
 
     fun bind(bookData: BookData){
         Glide.with(itemView).load(bookData.thumbnail).into(itemView.findViewById<ImageView>(R.id.item_writing_sentence_book_result_img))
         item_search_book_tv_author.text = bookData.authors[0]
         item_search_book_tv_publisher.text = bookData.publisher
+        item_writing_sentence_book_result_tv_thumbnail.text = bookData.thumbnail
 
         val inputString = MainActivity.book_result
 
