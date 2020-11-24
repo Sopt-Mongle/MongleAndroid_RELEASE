@@ -14,10 +14,7 @@ import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
-import com.example.mongleandroid_release.network.data.response.ResponseDeleteSentenceWritten
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceBookmarkNumData
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceDetailData
-import com.example.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
+import com.example.mongleandroid_release.network.data.response.*
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
@@ -111,11 +108,55 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                         }
 
                         tv_sentence_detail_bookmark_num_notheme.text = response.body()!!.data[0].saves.toString() // 북마크 수
-                        if(response.body()!!.data[0].alreadyBookmarked) { // 북마크 여부
-                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
-                        } else {
-                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
-                        }
+
+
+                        // 북마크 여부
+                        val alreadyBookmarked = response.body()!!.data[0].alreadyBookmarked
+
+                        // 내서재 문장 불러와서 비교
+                        requestToServer.service.lookLibrarySentence(
+                            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) }
+                        ).enqueue(object : Callback<ResponseLibrarySentenceData> {
+                            override fun onResponse(
+                                call: Call<ResponseLibrarySentenceData>,
+                                response: Response<ResponseLibrarySentenceData>
+                            ) {
+                                if(response.isSuccessful) {
+                                    val sentence_size = response.body()!!.data!!.save.size
+
+                                    if(alreadyBookmarked) {
+                                        var save_check = false
+
+                                        for(i in 0 until sentence_size) {
+                                            if(response.body()!!.data!!.save[i].sentenceIdx
+                                                == intent.getIntExtra("param", 0)) {
+                                                save_check = true
+                                                break
+                                            } else {
+                                                save_check = false
+                                            }
+                                        }
+
+                                        if(save_check) {
+                                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                                        } else {
+                                            img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                                        }
+                                    } else {
+                                        img_sentence_detail_bookmark_notheme.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                                    }
+                                }
+                            }
+
+                            override fun onFailure(
+                                call: Call<ResponseLibrarySentenceData>,
+                                t: Throwable
+                            ) {
+                                Log.d("통신 실패", "$t")
+                            }
+
+                        })
+
                         // 수정 기능
                         edit_noTheme.setOnClickListener {
                             val intent = Intent(this@SentenceDetailNoThemeActivity,ModifyLibraryWrittenSentenceActivity::class.java)
