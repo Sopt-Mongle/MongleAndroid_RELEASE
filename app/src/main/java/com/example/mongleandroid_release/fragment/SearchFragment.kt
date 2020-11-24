@@ -204,7 +204,7 @@ class SearchFragment : Fragment() {
                         if(response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
-                            //removeRecentKeyword()
+                            removeRecentKeyword()
                             val layoutManager = LinearLayoutManager(view!!.context)
                             layoutManager.orientation = LinearLayoutManager.HORIZONTAL
                             fragment_search_rv_recent_keyword.layoutManager = layoutManager
