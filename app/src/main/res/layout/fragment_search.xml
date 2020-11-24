@@ -52,7 +52,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:paddingLeft="15dp"
-        android:textSize="14dp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -93,7 +93,7 @@
             android:lineSpacingExtra="8sp"
             android:text="최근 키워드"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,7 +110,7 @@
             android:paddingBottom="14dp"
             android:text="전체삭제"
             android:textColor="#bcbcbc"
-            android:textSize="14dp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,7 +122,7 @@
             android:layout_marginTop="19dp"
             android:text="최근 검색어가 없습니다."
             android:textColor="#bcbcbc"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -157,7 +157,7 @@
             android:lineSpacingExtra="8sp"
             android:text="추천 키워드"
             android:textColor="#000000"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -185,7 +185,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword2"
@@ -199,7 +199,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword3"
@@ -213,7 +213,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword4"
@@ -227,7 +227,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword5"
@@ -241,7 +241,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword6"
@@ -255,7 +255,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword7"
@@ -269,7 +269,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword8"
@@ -283,7 +283,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword9"
@@ -297,7 +297,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword10"
@@ -311,7 +311,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword11"
@@ -325,7 +325,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword12"
@@ -339,7 +339,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword13"
@@ -353,7 +353,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword14"
@@ -367,7 +367,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_recommend_keyword15"
@@ -381,7 +381,7 @@
                 android:singleLine="true"
                 android:text=""
                 android:textColor="#69af7c"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
         </com.nex3z.flowlayout.FlowLayout>
 
@@ -404,7 +404,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            app:tabTextAppearance="@style/tab_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
