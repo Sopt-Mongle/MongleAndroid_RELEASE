@@ -52,7 +52,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         constraint_sentence_like_num_notheme.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
-                val dlg = DialogGuest(view.context)
+                val dlg = DialogGuest(it.context)
                 dlg.start()
 
             }else{
@@ -64,7 +64,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         container_bookmark_num_notheme.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
-                val dlg = DialogGuest(view.context)
+                val dlg = DialogGuest(it.context)
                 dlg.start()
 
             }else{

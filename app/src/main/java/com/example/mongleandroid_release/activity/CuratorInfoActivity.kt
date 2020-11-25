@@ -9,11 +9,13 @@ import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorInfoPagerAdapter
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorInformationData
 import kotlinx.android.synthetic.main.activity_curator_info.*
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -62,9 +64,16 @@ class CuratorInfoActivity : AppCompatActivity() {
 
 
         cb_curator_subs_info.setOnClickListener {
-            if (cb_curator_subs_info.isChecked) {
-                cb_curator_subs_info.setText("구독중")
-            } else cb_curator_subs_info.setText("구독")
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
+
+                val dlg = DialogGuest(view.context)
+                dlg.start()
+
+            } else {
+                if (cb_curator_subs_info.isChecked) {
+                    cb_curator_subs_info.setText("구독중")
+                } else cb_curator_subs_info.setText("구독")
+            }
 
         }
 
@@ -196,6 +205,7 @@ class CuratorInfoActivity : AppCompatActivity() {
 
                         // 구독여부 통신
                         cb_curator_subs_info.setOnClickListener {
+
                             requestToServer.service.getFollowIdx(
                                 token = SharedPreferenceController.getAccessToken(applicationContext),
                                 params = response.body()!!.data!!.profile[0].curatorIdx

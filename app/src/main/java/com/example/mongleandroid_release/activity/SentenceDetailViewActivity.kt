@@ -68,7 +68,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
         constraint_likes_num.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
-                val dlg = DialogGuest(view.context)
+                val dlg = DialogGuest(it.context)
                 dlg.start()
 
             }else{
@@ -78,7 +78,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
         container_bookmark_num.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
-                val dlg = DialogGuest(view.context)
+                val dlg = DialogGuest(it.context)
                 dlg.start()
 
             }else{
