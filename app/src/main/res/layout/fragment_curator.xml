@@ -37,7 +37,7 @@
             android:includeFontPadding="false"
             android:text="큐레이터"
             android:textColor="@color/black_two"
-            android:textSize="19dp"
+            android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
                 android:lineSpacingExtra="9sp"
                 android:text="추천 큐레이터"
                 android:textColor="@color/black_two"
-                android:textSize="19dp"
+                android:textSize="19sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,7 +104,7 @@
                 android:paddingBottom="15dp"
                 android:text="감성자극"
                 android:textColor="@color/brown_grey_two"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_curator_tv_donggi"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,7 +124,7 @@
                 android:includeFontPadding="false"
                 android:text="동기부여"
                 android:textColor="@color/brown_grey_two"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_curator_tv_jagi"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fragment_curator_tv_gamsung"
@@ -144,7 +144,7 @@
                 android:paddingBottom="15dp"
                 android:text="깊은생각"
                 android:textColor="@color/brown_grey_two"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_curator_tv_dokseo"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +164,7 @@
                 android:includeFontPadding="false"
                 android:text="자기계발"
                 android:textColor="@color/brown_grey_two"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fragment_curator_tv_donggi"
@@ -184,7 +184,7 @@
                 android:includeFontPadding="false"
                 android:text="독서기록"
                 android:textColor="@color/brown_grey_two"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/fragment_curator_tv_kipeun"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_curator_tv_ilsang"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -204,7 +204,7 @@
                 android:includeFontPadding="false"
                 android:text="일상문장"
                 android:textColor="@color/brown_grey_two"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/fragment_curator_tv_dokseo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -267,7 +267,7 @@
                 android:lineSpacingExtra="9sp"
                 android:text="테마 속 큐레이터"
                 android:textColor="@color/black_two"
-                android:textSize="19dp"
+                android:textSize="19sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_dokseo" />
 
@@ -306,7 +306,7 @@
                     android:maxLines="2"
                     android:text=" "
                     android:textColor="#ffffff"
-                    android:textSize="19dp"
+                    android:textSize="19sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView30"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -323,7 +323,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:text="큐레이터 "
                     android:textColor="#ffffff"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_themename" />
 
@@ -337,7 +337,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:text="0"
                     android:textColor="#ffffff"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
                     app:layout_constraintTop_toTopOf="@+id/textView30" />
 
@@ -351,7 +351,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:text="명"
                     android:textColor="#ffffff"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/fragment_curator_tv_curator_count"
                     app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_curator_count" />
 
@@ -403,7 +403,7 @@
                     android:maxLines="2"
                     android:text=" "
                     android:textColor="#ffffff"
-                    android:textSize="19dp"
+                    android:textSize="19sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView32"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -420,7 +420,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:text="큐레이터 "
                     android:textColor="#ffffff"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_themename2" />
 
@@ -434,7 +434,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:text="0"
                     android:textColor="#ffffff"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/textView32"
                     app:layout_constraintTop_toTopOf="@+id/textView32" />
 
@@ -448,7 +448,7 @@
                     android:lineSpacingExtra="-1sp"
                     android:text="명"
                     android:textColor="#ffffff"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/fragment_curator_tv_curator_count2"
                     app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_curator_count2" />
             </androidx.constraintlayout.widget.ConstraintLayout>

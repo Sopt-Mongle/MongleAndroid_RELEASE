@@ -15,6 +15,6 @@
     </style>
 
     <style name="tab_text" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">17dp</item>
+        <item name="android:textSize">17sp</item>
     </style>
 </resources>

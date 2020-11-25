@@ -33,7 +33,7 @@
             android:gravity="center"
             android:text="프로필 수정"
             android:textColor="@color/black_two"
-            android:textSize="19dp"
+            android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="@+id/activity_profile_btn_out"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
                 android:letterSpacing="-0.02"
                 android:text="닉네임"
                 android:textColor="@color/greyish_brown"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_profile_img" />
 
@@ -111,7 +111,7 @@
                 android:paddingRight="15dp"
                 android:paddingBottom="12dp"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView39"
                 app:layout_constraintTop_toBottomOf="@+id/textView39" />
@@ -172,7 +172,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="닉네임을 입력해주세요!"
                 android:textColor="@color/reddish"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_nickname_warning"
                 app:layout_constraintStart_toEndOf="@+id/activity_profile_img_nickname_warning"
@@ -189,7 +189,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="이미 사용 중인 닉네임이에요!"
                 android:textColor="@color/reddish"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_nickname_warning"
                 app:layout_constraintStart_toEndOf="@+id/activity_profile_img_nickname_warning"
@@ -207,7 +207,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="사용 가능한 닉네임이에요!"
                 android:textColor="@color/soft_green"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_nickname_warning"
                 app:layout_constraintStart_toEndOf="@+id/activity_profile_img_nickname_warning"
@@ -239,7 +239,7 @@
                 android:lineSpacingExtra="8sp"
                 android:text="키워드"
                 android:textColor="@color/greyish_brown"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/activity_profile_et_nickname"
                 app:layout_constraintTop_toBottomOf="@+id/activity_profile_img_nickname_warning" />
 
@@ -251,7 +251,7 @@
                 android:letterSpacing="-0.04"
                 android:text="당신의 문장 취향을 대표할 키워드를 설정해주세요."
                 android:textColor="#a7a7a7"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView40"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -283,7 +283,7 @@
                         android:paddingBottom="15dp"
                         android:text="감성자극"
                         android:textColor="@color/keyword_text_selector"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn2"
                         app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn2"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -302,7 +302,7 @@
                         android:paddingBottom="15dp"
                         android:text="동기부여"
                         android:textColor="@color/keyword_text_selector"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn3"
                         app:layout_constraintStart_toEndOf="@+id/activity_profile_btn1"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -321,7 +321,7 @@
                         android:paddingBottom="15dp"
                         android:text="자기계발"
                         android:textColor="@color/keyword_text_selector"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_profile_btn2" />
@@ -347,7 +347,7 @@
                         android:paddingBottom="15dp"
                         android:text="깊은생각"
                         android:textColor="@color/keyword_text_selector"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn5"
                         app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn5"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -366,7 +366,7 @@
                         android:paddingBottom="15dp"
                         android:text="독서기록"
                         android:textColor="@color/keyword_text_selector"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/activity_profile_btn6"
                         app:layout_constraintStart_toEndOf="@+id/activity_profile_btn4" />
@@ -385,7 +385,7 @@
                         android:paddingBottom="15dp"
                         android:text="일상문장"
                         android:textColor="@color/keyword_text_selector"
-                        android:textSize="14dp"
+                        android:textSize="14sp"
                         app:layout_constraintBaseline_toBaselineOf="@+id/activity_profile_btn5"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_profile_btn5" />
@@ -400,8 +400,7 @@
                 android:background="#e8e8e8"
                 app:layout_constraintBottom_toTopOf="@+id/activity_profile_radiogroup"
                 app:layout_constraintEnd_toEndOf="@+id/activity_profile_radiogroup"
-                app:layout_constraintStart_toStartOf="@+id/activity_profile_radiogroup"
-                app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_donggi" />
+                app:layout_constraintStart_toStartOf="@+id/activity_profile_radiogroup" />
 
             <View
                 android:id="@+id/view27"
@@ -410,8 +409,7 @@
                 android:background="#e8e8e8"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_radiogroup"
                 app:layout_constraintEnd_toEndOf="@+id/activity_profile_radiogroup"
-                app:layout_constraintStart_toStartOf="@+id/activity_profile_radiogroup"
-                app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_donggi" />
+                app:layout_constraintStart_toStartOf="@+id/activity_profile_radiogroup" />
 
             <View
                 android:id="@+id/view24"
@@ -419,8 +417,8 @@
                 android:layout_height="1dp"
                 android:background="#e8e8e8"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_radiogroup"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
-                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/activity_profile_radiogroup" />
 
             <View
@@ -466,7 +464,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="키워드를 설정해주세요!"
                 android:textColor="@color/reddish"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_keyword_warning"
                 app:layout_constraintStart_toEndOf="@+id/activity_profile_img_keyword_warning"
@@ -484,7 +482,7 @@
                 android:lineSpacingExtra="8sp"
                 android:text="소개"
                 android:textColor="@color/greyish_brown"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_profile_img_keyword_warning" />
 
@@ -508,7 +506,7 @@
                 android:paddingRight="40dp"
                 android:paddingBottom="12dp"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView39"
@@ -535,7 +533,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="소개를 입력해주세요!"
                 android:textColor="@color/reddish"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_profile_img_introduce_warning"
                 app:layout_constraintStart_toEndOf="@+id/activity_profile_img_introduce_warning"
@@ -617,7 +615,7 @@
         android:text="완료"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="19dp"
+        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

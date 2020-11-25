@@ -48,7 +48,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="검색된 문장 "
                 android:textColor="#565656"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="0"
                 android:textColor="#565656"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView8"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
                 app:layout_constraintTop_toTopOf="@+id/textView8" />
@@ -80,7 +80,7 @@
                 android:lineSpacingExtra="1sp"
                 android:text="개"
                 android:textColor="#565656"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/fragment_search_sentence_tv_count"
                 app:layout_constraintStart_toEndOf="@+id/fragment_search_sentence_tv_count"
                 app:layout_constraintTop_toTopOf="@+id/fragment_search_sentence_tv_count" />
@@ -150,7 +150,7 @@
             android:lineSpacingExtra="4sp"
             android:text="검색 결과가 없습니다."
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView14" />
@@ -165,7 +165,7 @@
             android:lineSpacingExtra="4sp"
             android:text="다른 키워드로 검색해보세요!"
             android:textColor="@color/very_light_pink_two"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />

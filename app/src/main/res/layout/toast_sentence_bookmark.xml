@@ -27,7 +27,7 @@
         android:includeFontPadding="false"
         android:text="문장이 저장되었어요!"
         android:textColor="#ffffff"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

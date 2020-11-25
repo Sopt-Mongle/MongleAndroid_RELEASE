@@ -36,7 +36,7 @@
             android:lineSpacingExtra="7sp"
             android:text="몽글"
             android:textColor="#3e3e3e"
-            android:textSize="23dp"
+            android:textSize="23sp"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -50,7 +50,7 @@
             android:lineSpacingExtra="7sp"
             android:text="에서"
             android:textColor="#717171"
-            android:textSize="23dp"
+            android:textSize="23sp"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/textView" />
 
@@ -64,7 +64,7 @@
             android:lineSpacingExtra="7sp"
             android:text="책 속의 문장을"
             android:textColor="#717171"
-            android:textSize="23dp"
+            android:textSize="23sp"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -78,7 +78,7 @@
             android:lineSpacingExtra="7sp"
             android:text="수집해보세요!"
             android:textColor="#717171"
-            android:textSize="23dp"
+            android:textSize="23sp"
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -118,7 +118,7 @@
             android:paddingBottom="12dp"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -144,7 +144,7 @@
             android:paddingRight="16dp"
             android:paddingBottom="12dp"
             android:singleLine="true"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_login_et_email" />
@@ -164,7 +164,7 @@
             android:includeFontPadding="false"
             android:text="로그인"
             android:textColor="@color/white"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/activity_login_et_pass"
             app:layout_constraintStart_toStartOf="@+id/activity_login_et_pass"
             app:layout_constraintTop_toBottomOf="@+id/activity_login_et_pass" />
@@ -177,7 +177,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center_horizontal"
             android:letterSpacing="-0.02"
-            android:lineSpacingExtra="14dp"
+            android:lineSpacingExtra="14sp"
             android:paddingLeft="11dp"
             android:paddingTop="3dp"
             android:paddingRight="13dp"
@@ -186,7 +186,7 @@
             android:includeFontPadding="false"
             android:text="회원가입"
             android:textColor="@color/very_light_pink_two"
-            android:textSize="14dp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/img_div"
             app:layout_constraintHorizontal_bias="0.5"
@@ -203,14 +203,14 @@
             android:gravity="center_horizontal"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
-            android:lineSpacingExtra="14dp"
+            android:lineSpacingExtra="14sp"
             android:paddingLeft="11dp"
             android:paddingTop="3dp"
             android:paddingRight="13dp"
             android:paddingBottom="5dp"
             android:text="이메일 찾기"
             android:textColor="@color/very_light_pink_two"
-            android:textSize="14dp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView16"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/img_div"
@@ -223,7 +223,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:letterSpacing="-0.02"
-            android:lineSpacingExtra="14dp"
+            android:lineSpacingExtra="14sp"
             android:paddingLeft="11dp"
             android:paddingTop="3dp"
             android:paddingRight="12dp"
@@ -232,7 +232,7 @@
             android:includeFontPadding="false"
             android:text="비밀번호 찾기"
             android:textColor="@color/very_light_pink_two"
-            android:textSize="14dp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageView16"
