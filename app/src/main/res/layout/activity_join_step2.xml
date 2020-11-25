@@ -222,6 +222,23 @@
                 app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_email_warning"
                 app:layout_constraintTop_toTopOf="@id/activity_join_step2_img_email_warning" />
 
+            <TextView
+                android:id="@+id/activity_join_step2_tv_possible_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/notosanscjkkr_demilight"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="1sp"
+                android:text="사용 가능한 이메일이에요!"
+                android:textColor="@color/soft_green"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_join_step2_img_email_warning"
+                app:layout_constraintStart_toEndOf="@+id/activity_join_step2_img_email_warning"
+                app:layout_constraintTop_toTopOf="@id/activity_join_step2_img_email_warning" />
+
 
             <ImageView
                 android:id="@+id/activity_join_step2_btn_email_erase"

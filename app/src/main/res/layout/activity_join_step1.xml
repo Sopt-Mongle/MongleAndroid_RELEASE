@@ -154,7 +154,7 @@
         android:textColor="#5a5a5a"
         android:letterSpacing="-0.04"
         android:lineSpacingExtra="8sp"
-        android:text="[필수] 개인정보 수집이용 동의"
+        android:text="[필수] 개인정보 이용약관 동의"
         android:fontFamily="@font/notosanscjkkr_regular"
         android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="@+id/activity_join_step1_cb"
