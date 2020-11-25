@@ -63,6 +63,7 @@ class DialogMakethemeCheck(context : Context) {
         maketheme_popup_yes = dlg.findViewById(R.id.dialog_writing_theme_check_yes)
         maketheme_popup_yes.setOnClickListener{
             Log.d("requestWritingThemeData", "${requestWritingThemeData.themeImgIdx} && ${requestWritingThemeData.theme}")
+
             themePost(requestWritingThemeData)
             act.setContentView(R.layout.writing_theme_finish)
             dlg.dismiss()

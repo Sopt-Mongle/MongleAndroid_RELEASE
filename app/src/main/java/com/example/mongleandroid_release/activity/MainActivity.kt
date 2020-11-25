@@ -9,6 +9,8 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.dialog.DialogGuest
+import com.example.mongleandroid_release.dialog.DialogJoinStep3
 import com.example.mongleandroid_release.fragment.CuratorFragment
 import com.example.mongleandroid_release.fragment.LibraryFragment
 import com.example.mongleandroid_release.fragment.MainFragment
@@ -17,6 +19,7 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestLoginData
+import kotlinx.android.synthetic.main.activity_join_step3.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.onboarding_step2.*
 import java.text.SimpleDateFormat
@@ -119,15 +122,31 @@ class MainActivity : AppCompatActivity() {
             main_activity_blur.visibility = View.VISIBLE
 
             main_activity_FAB_st.setOnClickListener {
-                val intent = Intent(this@MainActivity,WritingSentenceActivity::class.java)
-                startActivity(intent)
-                overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out)
+
+                if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+                    val dlg = DialogGuest(view.context)
+                    dlg.start()
+
+                }else{
+                    val intent = Intent(this@MainActivity,WritingSentenceActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out)
+                }
             }
 
             main_activity_FAB_tm.setOnClickListener {
-                val intent = Intent(this@MainActivity,WritingThemeActivity::class.java)
-                startActivity(intent)
-                overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out)
+
+                if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+                    val dlg = DialogGuest(view.context)
+                    dlg.start()
+
+                }else{
+                    val intent = Intent(this@MainActivity,WritingThemeActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out)
+                }
             }
 
         }

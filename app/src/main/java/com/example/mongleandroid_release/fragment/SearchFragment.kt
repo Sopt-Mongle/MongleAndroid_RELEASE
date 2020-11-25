@@ -19,6 +19,8 @@ import com.example.mongleandroid_release.*
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
+import com.example.mongleandroid_release.dialog.DialogDeleteSentence
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
@@ -163,8 +165,12 @@ class SearchFragment : Fragment() {
 
         fragment_search_tv_delete.setOnClickListener {
             if (context?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                //삭제 버튼 눌렀을 때 통신하는 부분
+                val dlg = DialogGuest(view.context)
+                dlg.start()
 
             }else{
+
                 removeRecentKeyword()
             }
         }
