@@ -19,6 +19,11 @@ class OpenSourceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_open_source)
 
+        activity_open_source_btn_back.setOnClickListener {
+            finish()
+        }
+
+
         rv_open_source.addItemDecoration(OpenSourceDecoration(18))
         openSourceAdapter = OpenSourceAdapter(this)
         rv_open_source.adapter = openSourceAdapter

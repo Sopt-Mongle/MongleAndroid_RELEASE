@@ -12,5 +12,9 @@ class OpenSourceDetailActivity : AppCompatActivity() {
 
         tv_open_detail.text = intent.getStringExtra("title")
         tv_open_source_content.text = intent.getStringExtra("content")
+
+        activity_open_detail_btn_back.setOnClickListener {
+            finish()
+        }
     }
 }
