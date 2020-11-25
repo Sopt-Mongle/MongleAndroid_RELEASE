@@ -123,6 +123,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/activity_login_btn_email_erase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="8dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="14dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_login_et_email"
+            app:layout_constraintEnd_toEndOf="@+id/activity_login_et_email"
+            app:layout_constraintTop_toTopOf="@+id/activity_login_et_email"
+            app:srcCompat="@drawable/btn_erase" />
+
         <EditText
             android:id="@+id/activity_login_et_pass"
             android:layout_width="0dp"
@@ -148,6 +163,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_login_et_email" />
+
+        <ImageView
+            android:id="@+id/activity_login_btn_pass_erase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:paddingStart="8dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="14dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_login_et_pass"
+            app:layout_constraintEnd_toEndOf="@+id/activity_login_et_pass"
+            app:layout_constraintTop_toTopOf="@+id/activity_login_et_pass"
+            app:srcCompat="@drawable/btn_erase" />
 
         <TextView
             android:id="@+id/activity_login_btn_login"
