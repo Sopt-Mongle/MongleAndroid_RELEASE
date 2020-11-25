@@ -10,6 +10,8 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -19,7 +21,6 @@ import com.example.mongleandroid_release.*
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
-import com.example.mongleandroid_release.dialog.DialogDeleteSentence
 import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -27,6 +28,7 @@ import com.example.mongleandroid_release.network.data.response.ResponseSearchRec
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -80,6 +82,19 @@ class SearchFragment : Fragment() {
             fragment_search_et_search.isCursorVisible = true
         }
 
+
+        fragment_search_et_search.setOnFocusChangeListener { _, hasFocus ->
+            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            if(fragment_search_et_search.text.isNotEmpty()) {
+                fragment_search_et_search.clearText(fragment_search_btn_erase)
+            }
+
+            if(!hasFocus) {
+                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
+                change_gone(fragment_search_btn_erase)
+            }
+        }
+
         fragment_search_et_search.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence?,
@@ -93,6 +108,8 @@ class SearchFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
                 fragment_search_et_search.isCursorVisible = true
+
+                fragment_search_et_search.clearText(fragment_search_btn_erase)
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -356,6 +373,14 @@ class SearchFragment : Fragment() {
         resultTabLayout.getTabAt(1)!!.text = "문장"
         resultTabLayout.getTabAt(2)!!.text = "큐레이터"
 
+    }
+
+    // edittext 지우는 x버튼
+    private fun EditText.clearText(button : ImageView) {
+        change_visible(button)
+        button.setOnClickListener {
+            this.setText("")
+        }
     }
 
 
