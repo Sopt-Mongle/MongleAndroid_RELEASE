@@ -27,7 +27,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         var search_result = ""
         var book_result = ""
     }
@@ -52,10 +52,12 @@ class MainActivity : AppCompatActivity() {
 
         main_activity_FAB_st.visibility = View.GONE
         main_activity_FAB_tm.visibility = View.GONE
-        fab_open = AnimationUtils.loadAnimation(this,
+        fab_open = AnimationUtils.loadAnimation(
+            this,
             R.anim.fab_open
         );
-        fab_close = AnimationUtils.loadAnimation(this,
+        fab_close = AnimationUtils.loadAnimation(
+            this,
             R.anim.fab_close
         );
 
@@ -74,37 +76,52 @@ class MainActivity : AppCompatActivity() {
         curatorFragment = CuratorFragment()
         libraryFragment = LibraryFragment()
 
-        supportFragmentManager.beginTransaction().replace(R.id.main_activity_fg, mainFragment).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.main_activity_fg, mainFragment)
+            .commit()
 
-        main_activity_bnv.setOnNavigationItemSelectedListener{
-            when(it.itemId){
-                R.id.menu_main -> supportFragmentManager.beginTransaction().replace(R.id.main_activity_fg, mainFragment).commit()
-                R.id.menu_search -> supportFragmentManager.beginTransaction().replace(R.id.main_activity_fg, searchFragment).commit()
-                R.id.menu_curator -> supportFragmentManager.beginTransaction().replace(R.id.main_activity_fg, curatorFragment).commit()
-                R.id.menu_my_page -> supportFragmentManager.beginTransaction().replace(R.id.main_activity_fg, libraryFragment).commit()
+        main_activity_bnv.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.menu_main -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_activity_fg, mainFragment).commit()
+                R.id.menu_search -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_activity_fg, searchFragment).commit()
+                R.id.menu_curator -> supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_activity_fg, curatorFragment).commit()
+                R.id.menu_my_page -> {
+                    if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
+
+                        val dlg = DialogGuest(view.context)
+                        dlg.start()
+
+                    } else {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.main_activity_fg, libraryFragment).commit()
+                    }
+                }
+
+
             }
             true
         }
 
 
         // 둘러보기로 넘어왔을 때 mail이 저장되어있지 않는 경우 = 비회원
-        if(SharedPreferenceController.getMail(this).isNullOrBlank())
-        {
+        if (SharedPreferenceController.getMail(this).isNullOrBlank()) {
             // guest로 넘겨준다.
             SharedPreferenceController.setAccessToken(this, "guest")
         }
     }
 
 
-
     private fun toggleFab() {
         if (isFabOpen) {
             main_activity_FAB_tm.startAnimation(fab_close)
             main_activity_FAB_st.startAnimation(fab_close)
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", 0f).apply { duration = 270 }.start()
-            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", 0f).apply { start()}
+            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", 0f)
+                .apply { duration = 270 }.start()
+            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", 0f).apply { start() }
 //            main_activity_FAB_main.setImageResource(R.drawable.ic_add)
-            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation",45f, 0f ).apply { start() }
+            ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 45f, 0f).apply { start() }
 
             main_activity_blur.visibility = View.GONE
 
@@ -114,7 +131,8 @@ class MainActivity : AppCompatActivity() {
             main_activity_FAB_st.startAnimation(fab_open)
             main_activity_FAB_st.visibility = View.VISIBLE
             main_activity_FAB_tm.visibility = View.VISIBLE
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -240f).apply { duration = 270 }.start()
+            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -240f)
+                .apply { duration = 270 }.start()
             ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -390f).apply { start() }
 //            main_activity_FAB_main.setImageResource(R.drawable.ic_close)
             ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
@@ -123,13 +141,13 @@ class MainActivity : AppCompatActivity() {
 
             main_activity_FAB_st.setOnClickListener {
 
-                if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
                     val dlg = DialogGuest(view.context)
                     dlg.start()
 
-                }else{
-                    val intent = Intent(this@MainActivity,WritingSentenceActivity::class.java)
+                } else {
+                    val intent = Intent(this@MainActivity, WritingSentenceActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out)
                 }
@@ -137,13 +155,13 @@ class MainActivity : AppCompatActivity() {
 
             main_activity_FAB_tm.setOnClickListener {
 
-                if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
                     val dlg = DialogGuest(view.context)
                     dlg.start()
 
-                }else{
-                    val intent = Intent(this@MainActivity,WritingThemeActivity::class.java)
+                } else {
+                    val intent = Intent(this@MainActivity, WritingThemeActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out)
                 }
