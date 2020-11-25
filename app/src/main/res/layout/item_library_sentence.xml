@@ -7,7 +7,7 @@
 
 
     <View
-        android:id="@+id/line_top"
+        android:id="@+id/line_bot"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#59bcbcbc"
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/line_top"
+        app:layout_constraintBottom_toBottomOf="@+id/line_bot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
