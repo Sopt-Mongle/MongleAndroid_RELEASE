@@ -124,15 +124,15 @@
 
         <com.kyleduo.switchbutton.SwitchButton
             android:id="@+id/sb_setting_push"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:kswThumbColor="#ffffff"
-            app:kswBackRadius="20dp"
+            android:layout_width="33dp"
+            android:layout_height="20dp"
             app:kswBackColor="@color/switch_button_state"
+            app:kswBackRadius="20dp"
             app:kswFadeBack="true"
+            app:kswThumbColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="@id/tv_setting_push"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_setting_push"
-            app:layout_constraintBottom_toBottomOf="@id/tv_setting_push"/>
+            app:layout_constraintTop_toTopOf="@id/tv_setting_push" />
 
     </LinearLayout>
 

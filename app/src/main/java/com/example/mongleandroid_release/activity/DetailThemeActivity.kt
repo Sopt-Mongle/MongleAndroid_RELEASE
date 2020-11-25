@@ -15,6 +15,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailThemeAdapter
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
@@ -23,6 +24,7 @@ import com.example.mongleandroid_release.network.data.response.ResponseThemeBook
 import com.example.mongleandroid_release.network.data.response.ResponseThemeDetailData
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_detail_theme.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,10 +50,17 @@ class DetailThemeActivity : AppCompatActivity() {
         }
         // 테마에 문장쓰기 액티비티로 전환하면서 해당테마의 이름 전달해주기
         img_writing_sentence_in_theme_btn.setOnClickListener {
-            val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
-            intent.putExtra("param", tv_main_theme_title.text.toString())
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                val dlg = DialogGuest(it.context)
+                dlg.start()
 
-            startActivity(intent)
+            }else{
+                val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+                intent.putExtra("param", tv_main_theme_title.text.toString())
+
+                startActivity(intent)
+            }
+
         }
 
         requestThemeData()
@@ -59,7 +68,16 @@ class DetailThemeActivity : AppCompatActivity() {
 
         // 테마 북마크
         btn_detail_theme_bookmark_box.setOnClickListener {
-            requestThemeBookmark()
+
+
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                val dlg = DialogGuest(it.context)
+                dlg.start()
+
+            }else{
+                requestThemeBookmark()
+            }
+
         }
         // 테마 더보기 ```눌렀을 때
         checkbox_theme_more_btn.setOnClickListener {

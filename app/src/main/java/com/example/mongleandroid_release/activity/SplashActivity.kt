@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
 
-    val SPLASH_TIME : Long = 2500
+    val SPLASH_TIME : Long = 2600
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

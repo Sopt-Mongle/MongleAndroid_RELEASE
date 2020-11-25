@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
+            android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -41,11 +42,12 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="13dp"
                 android:paddingBottom="5dp"
-                android:text="저장한 테마"
+                android:text="@string/save_theme"
                 android:textColor="@color/radio_button_state"
                 app:layout_constraintBottom_toBottomOf="@id/rg_library_thema"
                 app:layout_constraintEnd_toStartOf="@id/rdbtn_making_thema"
                 app:layout_constraintTop_toTopOf="@id/rg_library_thema" />
+
 
             <RadioButton
                 android:id="@+id/rdbtn_making_thema"
@@ -62,7 +64,7 @@
                 android:paddingTop="5dp"
                 android:paddingEnd="11dp"
                 android:paddingBottom="5dp"
-                android:text="만든 테마"
+                android:text="@string/making_theme"
                 android:textColor="@color/radio_button_state"
                 app:layout_constraintBottom_toBottomOf="@id/rg_library_thema"
                 app:layout_constraintEnd_toEndOf="@id/rg_library_thema"
@@ -71,18 +73,6 @@
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <View
-        android:id="@+id/view15"
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:layout_marginTop="11dp"
-        android:background="@drawable/topbar_gradient"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thema_const1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_library_thema"

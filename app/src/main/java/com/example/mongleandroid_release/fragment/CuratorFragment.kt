@@ -17,6 +17,7 @@ import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.CuratorKeywordActivity
 import com.example.mongleandroid_release.adapter.CuratorInThemeAdapter
 import com.example.mongleandroid_release.adapter.CuratorRecommendAdapter
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
@@ -199,7 +200,14 @@ class CuratorFragment : Fragment() {
                                     }
 
                                     override fun onClickSubscribe(view: View, position: Int) {
-                                        subscribed(0, position)
+                                        if (context?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
+
+                                            val dlg = DialogGuest(view.context)
+                                            dlg.start()
+
+                                        } else {
+                                            subscribed(0, position)
+                                        }
                                     }
                                 })
 
@@ -213,7 +221,14 @@ class CuratorFragment : Fragment() {
                                     }
 
                                     override fun onClickSubscribe(view: View, position: Int) {
-                                        subscribed(1, position)
+                                        if (context?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
+
+                                            val dlg = DialogGuest(view.context)
+                                            dlg.start()
+
+                                        } else {
+                                            subscribed(1, position)
+                                        }
                                     }
                                 })
 
