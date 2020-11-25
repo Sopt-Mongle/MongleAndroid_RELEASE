@@ -326,7 +326,7 @@
                 android:layout_marginTop="41dp"
                 android:layout_marginEnd="28dp"
                 android:background="@drawable/background_rectangle"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/middle_line">
 
@@ -341,6 +341,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="2dp"
+                    android:paddingTop="2dp"
                     android:text="허위 내용 신고"
                     android:textColor="#838383"
                     android:textSize="14sp"
@@ -363,7 +364,7 @@
                     android:id="@+id/tv_report_no_theme_222"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7.5dp"
+                    android:layout_marginTop="6.5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="3dp"
