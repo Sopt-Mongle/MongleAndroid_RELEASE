@@ -136,7 +136,6 @@
                 app:tabMode="fixed"
                 app:tabRippleColor="#00ffffff">
 
-
             </com.google.android.material.tabs.TabLayout>
 
             <com.example.mongleandroid_release.util.CustomViewPager

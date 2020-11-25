@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintHorizontal_bias="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@id/rv_library_sentence"
@@ -34,6 +34,7 @@
             android:paddingEnd="13dp"
             android:paddingBottom="5dp"
             android:text="저장한 문장"
+            android:textAlignment="center"
             android:textColor="@color/radio_button_state"
             app:layout_constraintBottom_toBottomOf="@id/rg_library_thema"
             app:layout_constraintEnd_toStartOf="@id/rdbtn_making_thema"
@@ -43,7 +44,7 @@
             android:id="@+id/rdbtn_making_sentence"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/rb_library_thema_make"
             android:button="@null"
             android:checked="false"
@@ -63,18 +64,6 @@
 
     </RadioGroup>
 
-
-    <View
-        android:id="@+id/view16"
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:layout_marginTop="11dp"
-        android:layout_weight="1"
-        android:background="@drawable/topbar_gradient"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_library_sentence" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_library_sentence"
