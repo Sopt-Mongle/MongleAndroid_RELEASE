@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailThemeAdapter
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -76,6 +78,32 @@ class DetailThemeActivity : AppCompatActivity() {
                 requestThemeBookmark()
             }
 
+        }
+        // 테마 더보기 ```눌렀을 때
+        checkbox_theme_more_btn.setOnClickListener {
+            if(checkbox_theme_more_btn.isChecked) { // 더보기 버튼을 눌렀을 때
+                change_visible(cl_report_detailTheme)
+            } else {
+                change_gone(cl_report_detailTheme)
+            }
+        }
+        // 허위내용신고
+        tv_report_theme1.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
+        }
+        //부적절한내용신고
+        tv_report2222.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
         }
     }
 
