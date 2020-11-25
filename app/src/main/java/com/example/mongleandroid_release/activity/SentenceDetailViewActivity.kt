@@ -15,6 +15,7 @@ import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogDeleteSentence
+import com.example.mongleandroid_release.dialog.DialogGuest
 //import com.example.mongleandroid_release.adapter.DetailSentenceAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -22,6 +23,7 @@ import com.example.mongleandroid_release.network.data.ResponseReportSentence
 import com.example.mongleandroid_release.network.data.request.RequestReportSentence
 import com.example.mongleandroid_release.network.data.response.*
 import jp.wasabeef.glide.transformations.BlurTransformation
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_view.ccc
@@ -64,10 +66,24 @@ class SentenceDetailViewActivity : AppCompatActivity() {
         requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
         requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
         constraint_likes_num.setOnClickListener {
-            requestSentenceLikeNum() // 문장 좋아요 누르기
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+                val dlg = DialogGuest(it.context)
+                dlg.start()
+
+            }else{
+                requestSentenceLikeNum() // 문장 좋아요 누르기
+            }
         }
         container_bookmark_num.setOnClickListener {
-            requestSentenceBookmarkNum() // 문장 북마크 누르기
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+                val dlg = DialogGuest(it.context)
+                dlg.start()
+
+            }else{
+                requestSentenceBookmarkNum() // 문장 북마크 누르기
+            }
         }
     }
     // 문장 상세보기 데이터 서버 통신
@@ -217,41 +233,56 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
                         // 허위 내용 신고
                         tv_report1111.setOnClickListener { // 허위 내용 신고 눌렀을 때!!!
-                            val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
-                            val toast = Toast(applicationContext)
-                            toast.duration = Toast.LENGTH_SHORT
-                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
-                            toast.view = customToast
-                            toast.show()
+                            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
-                            // 허위내용신고 gone 처리
-                            change_gone(cl_report)
+                                val dlg = DialogGuest(view.context)
+                                dlg.start()
 
-                            Log.d("허위내용 신고", "허위내용신고!!!!!!!!!!!!!!!!!!1")
-                            reportSentence.sort = "sentence"
-                            reportSentence.idx = response.body()!!.data[0].sentenceIdx // 문장 인덱스 넘기기
-                            reportSentence.content = "falseAd"
+                            }else{
+                                val customToast = layoutInflater.inflate(R.layout.toast_report_1, null)
+                                val toast = Toast(applicationContext)
+                                toast.duration = Toast.LENGTH_SHORT
+                                toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                                toast.view = customToast
+                                toast.show()
 
-                            requestReportSentence() // 통신
+                                // 허위내용신고 gone 처리
+                                change_gone(cl_report)
+
+                                Log.d("허위내용 신고", "허위내용신고!!!!!!!!!!!!!!!!!!1")
+                                reportSentence.sort = "sentence"
+                                reportSentence.idx = response.body()!!.data[0].sentenceIdx // 문장 인덱스 넘기기
+                                reportSentence.content = "falseAd"
+                                requestReportSentence() // 통신
+                            }
+
+
+
                         }
 
                         // 부적절한 내용 신고
                         tv_report2222.setOnClickListener { // 부적절한 내용 신고 눌렀을 때 !!
-                            val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
-                            val toast = Toast(applicationContext)
-                            toast.duration = Toast.LENGTH_SHORT
-                            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
-                            toast.view = customToast
-                            toast.show()
+                            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                                val dlg = DialogGuest(view.context)
+                                dlg.start()
 
-                            // 허위내용신고 gone 처리
-                            change_gone(cl_report)
+                            }else{
+                                val customToast = layoutInflater.inflate(R.layout.toast_report_2, null)
+                                val toast = Toast(applicationContext)
+                                toast.duration = Toast.LENGTH_SHORT
+                                toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                                toast.view = customToast
+                                toast.show()
 
-                            reportSentence.sort = "sentence"
-                            reportSentence.idx = response.body()!!.data[0].sentenceIdx // 문장 인덱스 넘기기
-                            reportSentence.content = "inappropriate"
+                                // 허위내용신고 gone 처리
+                                change_gone(cl_report)
 
-                            requestReportSentence() // 통신
+                                reportSentence.sort = "sentence"
+                                reportSentence.idx = response.body()!!.data[0].sentenceIdx // 문장 인덱스 넘기기
+                                reportSentence.content = "inappropriate"
+
+                                requestReportSentence() // 통신
+                            }
                         }
 
                         // 더보기 ``` 눌렀을 때

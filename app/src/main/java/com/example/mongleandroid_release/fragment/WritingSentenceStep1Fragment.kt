@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
 import androidx.navigation.findNavController
 import com.example.mongleandroid_release.R
@@ -34,6 +35,8 @@ class WritingSentenceStep1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
         // forProgressOn
         view.findViewById<EditText>(R.id.writing_sentence_step1_et_sentence).addTextChangedListener(object : TextWatcher{
