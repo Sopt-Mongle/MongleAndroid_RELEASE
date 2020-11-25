@@ -6,8 +6,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.OvalShape
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -24,6 +26,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
@@ -42,6 +45,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.IOException
 import java.io.InputStream
 
 
@@ -73,7 +77,10 @@ class ProfileActivity : AppCompatActivity() {
 
         if(SharedPreferenceController.getImage(this).isNullOrBlank()) {
             fileUri = Uri.parse("android.resource://$packageName/drawable/my_settings_profile_img_profile")
-            SharedPreferenceController.setImage(this, Uri.parse("android.resource://$packageName/drawable/my_settings_profile_img_profile"))
+            SharedPreferenceController.setImage(
+                this,
+                Uri.parse("android.resource://$packageName/drawable/my_settings_profile_img_profile")
+            )
             Log.d("테스트", "기본 이미지로 세팅")
         } else {
             fileUri = SharedPreferenceController.getImage(this)!!.toUri()
@@ -101,8 +108,8 @@ class ProfileActivity : AppCompatActivity() {
                         if (response.body()!!.data[0].img == null) {
                             Glide.with(this@ProfileActivity)
                                 .load(R.drawable.my_settings_profile_img_profile).into(
-                                activity_profile_img
-                            )
+                                    activity_profile_img
+                                )
                         } else {
                             Glide.with(this@ProfileActivity).load(response.body()!!.data[0].img)
                                 .into(
@@ -425,14 +432,37 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
+    private fun fixOrientation(bitmap: Bitmap): Bitmap? {
+        var ei: ExifInterface? = null
+        val selectedBitmap: Bitmap
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                ei = ExifInterface(contentResolver.openInputStream(fileUri!!))
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        val orientation =
+            ei!!.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+        selectedBitmap =
+            when (orientation) {
+                ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90)
+                ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap, 180)
+                ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270)
+                ExifInterface.ORIENTATION_NORMAL -> bitmap
+                else -> bitmap
+            }
+        return selectedBitmap
+    }
     private fun settingDataMultiForm() {
 
         // multipart로 변환
         val options = BitmapFactory.Options()
         val inputStream: InputStream = contentResolver.openInputStream(fileUri!!)!!
         val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
+        val bmp = fixOrientation(bitmap!!)
         val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap!!.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
+        bmp!!.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
         val photoBody = RequestBody.create(
             MediaType.parse("image/jpeg"),
             byteArrayOutputStream.toByteArray()
@@ -517,7 +547,7 @@ class ProfileActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, temp.trim().split(" ").toTypedArray(), 1)
         } else {
             // 모두 허용 상태
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            val intent = Intent(Intent.ACTION_PICK)
             intent.type = MediaStore.Images.Media.CONTENT_TYPE
             intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             startActivityForResult(intent, PICK_FROM_ALBUM)
