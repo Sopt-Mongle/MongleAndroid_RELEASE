@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.DetailThemeAdapter
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
@@ -21,6 +22,7 @@ import com.example.mongleandroid_release.network.data.response.ResponseThemeBook
 import com.example.mongleandroid_release.network.data.response.ResponseThemeDetailData
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_detail_theme.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,7 +59,16 @@ class DetailThemeActivity : AppCompatActivity() {
 
         // 테마 북마크
         btn_detail_theme_bookmark_box.setOnClickListener {
-            requestThemeBookmark()
+
+
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+                val dlg = DialogGuest(view.context)
+                dlg.start()
+
+            }else{
+                requestThemeBookmark()
+            }
+
         }
     }
 

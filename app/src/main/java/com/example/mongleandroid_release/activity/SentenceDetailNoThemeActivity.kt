@@ -12,10 +12,12 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogDeleteSentence
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.*
 import jp.wasabeef.glide.transformations.BlurTransformation
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.*
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.back_btn
 import kotlinx.android.synthetic.main.activity_sentence_detail_no_theme.imageView18
@@ -48,11 +50,27 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
         requestSentenceData() // 문장 상세보기 뷰 통신
 
         constraint_sentence_like_num_notheme.setOnClickListener {
-            requestSentenceLike()
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+                val dlg = DialogGuest(view.context)
+                dlg.start()
+
+            }else{
+                requestSentenceLike() // 문장 북마크 누르기
+            }
+
         }
 
         container_bookmark_num_notheme.setOnClickListener {
-            requestSentenceBookmark()
+            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+                val dlg = DialogGuest(view.context)
+                dlg.start()
+
+            }else{
+                requestSentenceBookmark()// 문장 북마크 누르기
+            }
+
         }
 
     }
