@@ -1,4 +1,4 @@
-package com.example.mongleandroid_release.util
+package com.example.mongleandroid_release.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog

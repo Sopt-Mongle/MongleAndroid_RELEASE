@@ -161,6 +161,14 @@ class SearchFragment : Fragment() {
 
         }
 
+        fragment_search_tv_delete.setOnClickListener {
+            if (context?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
+
+            }else{
+                removeRecentKeyword()
+            }
+        }
+
 
     }
 
@@ -204,6 +212,7 @@ class SearchFragment : Fragment() {
                         if(response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
+
                             //removeRecentKeyword()
                             val layoutManager = LinearLayoutManager(view!!.context)
                             layoutManager.orientation = LinearLayoutManager.HORIZONTAL

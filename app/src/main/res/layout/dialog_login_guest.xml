@@ -7,25 +7,25 @@
     android:background="@android:color/transparent">
 
     <ImageView
-        android:id="@+id/dialog_login_popup_img"
+        android:id="@+id/dialog_guest_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
-        app:layout_constraintStart_toStartOf="@+id/dialog_login_popup_cl1"
+        app:layout_constraintStart_toStartOf="@+id/dialog_guest_cl1"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/login_popup_btn_mongle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/dialog_login_popup_cl1"
+        android:id="@+id/dialog_guest_cl1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/dialog_area"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_login_popup_img">
+        app:layout_constraintTop_toBottomOf="@+id/dialog_guest_img">
 
         <TextView
-            android:id="@+id/dialog_login_popup_tv1"
+            android:id="@+id/dialog_guest_tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="69dp"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dialog_login_popup_tv2"
+            android:id="@+id/dialog_guest_tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -54,12 +54,12 @@
             android:text="몽글의 더 많은 기능을 이용하기 위해\n로그인을 하시겠어요?"
             android:textColor="#a7a7a7"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/dialog_login_popup_tv1"
-            app:layout_constraintStart_toStartOf="@+id/dialog_login_popup_tv1"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_login_popup_tv1" />
+            app:layout_constraintEnd_toEndOf="@+id/dialog_guest_tv1"
+            app:layout_constraintStart_toStartOf="@+id/dialog_guest_tv1"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_guest_tv1" />
 
         <TextView
-            android:id="@+id/dialog_login_popup_btn_login"
+            android:id="@+id/dialog_guest_btn_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -79,13 +79,13 @@
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dialog_login_popup_btn_no"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_guest_btn_no"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_login_popup_tv2" />
+            app:layout_constraintTop_toBottomOf="@+id/dialog_guest_tv2" />
 
         <TextView
-            android:id="@+id/dialog_login_popup_btn_no"
+            android:id="@+id/dialog_guest_btn_no"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="14dp"
@@ -103,10 +103,10 @@
             android:text="아니요"
             android:textColor="@color/soft_green"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/dialog_login_popup_btn_login"
+            app:layout_constraintBottom_toBottomOf="@+id/dialog_guest_btn_login"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dialog_login_popup_btn_login"
-            app:layout_constraintTop_toTopOf="@+id/dialog_login_popup_btn_login" />
+            app:layout_constraintStart_toEndOf="@+id/dialog_guest_btn_login"
+            app:layout_constraintTop_toTopOf="@+id/dialog_guest_btn_login" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
