@@ -45,51 +45,59 @@ class SearchCuratorFragment : Fragment() {
                 fragment_search_curator_cl.visibility = View.GONE
                 fragment_search_curator_cl_noresult.visibility = View.GONE
                 if (response.isSuccessful){
-                    fragment_search_curator_cl.visibility = View.VISIBLE
-                    response.body().let { body ->
-                        Log.d("큐레이터 검색", response.body()!!.message)
-                        fragment_search_curator_tv_count.text = body!!.data.size.toString()
-                        searchCuratorAdapter = SearchCuratorAdapter(view!!.context, body.data)
-                        rv_search_curator.adapter = searchCuratorAdapter
-                        searchCuratorAdapter.notifyDataSetChanged()
+                    if(response.body()!!.data.isNullOrEmpty()) {
+                        fragment_search_curator_cl.visibility = View.GONE
+                        fragment_search_curator_cl_noresult.visibility = View.VISIBLE
+                    } else {
+                        fragment_search_curator_cl.visibility = View.VISIBLE
+                        fragment_search_curator_cl_noresult.visibility = View.GONE
+                        
+                        response.body().let { body ->
+                            Log.d("큐레이터 검색", response.body()!!.message)
+                            fragment_search_curator_tv_count.text = body!!.data.size.toString()
+                            searchCuratorAdapter = SearchCuratorAdapter(view!!.context, body.data)
+                            rv_search_curator.adapter = searchCuratorAdapter
+                            searchCuratorAdapter.notifyDataSetChanged()
 
 
-                        searchCuratorAdapter.setItemClickListener(object : SearchCuratorAdapter.ItemClickListener{
-                            override fun onClickItem(view: View, position: Int) {
-                                // 큐레이터 상세로 이동
-                                val intent = Intent(context, CuratorInfoActivity::class.java)
-                                intent.putExtra("param", body.data[position].curatorIdx)
-                                startActivity(intent)
-                            }
+                            searchCuratorAdapter.setItemClickListener(object : SearchCuratorAdapter.ItemClickListener{
+                                override fun onClickItem(view: View, position: Int) {
+                                    // 큐레이터 상세로 이동
+                                    val intent = Intent(context, CuratorInfoActivity::class.java)
+                                    intent.putExtra("param", body.data[position].curatorIdx)
+                                    startActivity(intent)
+                                }
 
-                            override fun onClickSubscribe(view: View, position: Int) {
-                                requestToServer.service.getFollowIdx(
-                                    token = context?.let { SharedPreferenceController.getAccessToken(it) },
-                                    params = response.body()!!.data[position].curatorIdx
-                                ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                    override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
-                                        Log.e("통신실패", t.toString())
-                                    }
-
-                                    override fun onResponse(
-                                        call: Call<ResponseCuratorFollowedData>,
-                                        response: Response<ResponseCuratorFollowedData>
-                                    ) {
-                                        if (response.isSuccessful) {
-                                            if(response.body()!!.data) {
-                                                Log.d("구독", "구독")
-                                            } else {
-                                                Log.d("구독", "구독취소")
-                                            }
+                                override fun onClickSubscribe(view: View, position: Int) {
+                                    requestToServer.service.getFollowIdx(
+                                        token = context?.let { SharedPreferenceController.getAccessToken(it) },
+                                        params = response.body()!!.data[position].curatorIdx
+                                    ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                        override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                            Log.e("통신실패", t.toString())
                                         }
 
-                                    }
-                                })
-                            }
+                                        override fun onResponse(
+                                            call: Call<ResponseCuratorFollowedData>,
+                                            response: Response<ResponseCuratorFollowedData>
+                                        ) {
+                                            if (response.isSuccessful) {
+                                                if(response.body()!!.data) {
+                                                    Log.d("구독", "구독")
+                                                } else {
+                                                    Log.d("구독", "구독취소")
+                                                }
+                                            }
 
-                        })
+                                        }
+                                    })
+                                }
 
+                            })
+
+                        }
                     }
+
                 } else {
                     fragment_search_curator_cl_noresult.visibility = View.VISIBLE
                 }

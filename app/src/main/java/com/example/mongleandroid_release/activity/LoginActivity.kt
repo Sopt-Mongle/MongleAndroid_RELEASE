@@ -1,17 +1,23 @@
 package com.example.mongleandroid_release.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.mongleandroid_release.dialog.DialogLogin
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.dialog.DialogFind
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestLoginData
+import kotlinx.android.synthetic.main.activity_join_step3.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -28,21 +34,45 @@ class LoginActivity : AppCompatActivity() {
         }
 
         activity_login_tv_findid.setOnClickListener {
-            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
-            val toast = Toast(applicationContext)
-            toast.duration = Toast.LENGTH_SHORT
-            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
-            toast.view = customToast
-            toast.show()
+            val dlg = DialogFind(this)
+            dlg.start()
+            dlg.setOnClickListener { content ->
+                if(content == "메일") {
+                    val email = Intent(Intent.ACTION_SEND)
+                    email.type = "plain/text"
+                    val address =
+                        arrayOf("mongle.official@gmail.com")
+                    email.putExtra(Intent.EXTRA_EMAIL, address)
+                    email.putExtra(Intent.EXTRA_SUBJECT, "[문의]")
+                    email.putExtra(Intent.EXTRA_TEXT, "*몽글팀이 빠르게 처리할 수 있게 메일 제목에 간단하게 어떤 문의인지 적어주세요!\n" +
+                            "\n" +
+                            "1. 문의 유형(문의/신고/버그제보/기타) : \n" +
+                            "2. 회원 아이디 (필요시 기입) : \n" +
+                            "3. 문의 내용 :")
+                    startActivity(email)
+                }
+            }
         }
 
         activity_login_tv_findpass.setOnClickListener {
-            val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
-            val toast = Toast(applicationContext)
-            toast.duration = Toast.LENGTH_SHORT
-            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
-            toast.view = customToast
-            toast.show()
+            val dlg = DialogFind(this)
+            dlg.start()
+            dlg.setOnClickListener { content ->
+                if(content == "메일") {
+                    val email = Intent(Intent.ACTION_SEND)
+                    email.type = "plain/text"
+                    val address =
+                        arrayOf("mongle.official@gmail.com")
+                    email.putExtra(Intent.EXTRA_EMAIL, address)
+                    email.putExtra(Intent.EXTRA_SUBJECT, "[문의]")
+                    email.putExtra(Intent.EXTRA_TEXT, "*몽글팀이 빠르게 처리할 수 있게 메일 제목에 간단하게 어떤 문의인지 적어주세요!\n" +
+                            "\n" +
+                            "1. 문의 유형(문의/신고/버그제보/기타) : \n" +
+                            "2. 회원 아이디 (필요시 기입) : \n" +
+                            "3. 문의 내용 :")
+                    startActivity(email)
+                }
+            }
         }
 
         activity_login_btn_login.setOnClickListener {

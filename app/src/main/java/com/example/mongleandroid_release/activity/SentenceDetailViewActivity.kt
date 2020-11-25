@@ -40,6 +40,8 @@ import retrofit2.Response
 
 class SentenceDetailViewActivity : AppCompatActivity() {
 
+    private var sentenceIdx: Int = 0
+
     val requestToServer = RequestToServer
 
     companion object{
@@ -51,6 +53,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sentence_detail_view)
+
+        sentenceIdx = intent.getIntExtra("param",0)
 
         // 뒤로 가기 버튼
         back_btn.setOnClickListener {
@@ -70,7 +74,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceDetail() {
         requestToServer.service.GetDetailSentence(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceDetailData> {
                 override fun onFailure(call: Call<ResponseSentenceDetailData>, t: Throwable) {
@@ -106,11 +110,53 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             img_sentence_detail_likes_num.setImageResource(R.drawable.sentence_theme_o_ic_like)
                         }
                         tv_sentence_bookmark_num.text = response.body()!!.data[0].saves.toString() // 북마크 수
-                        if(response.body()!!.data[0].alreadyBookmarked) { // 북마크 여부
-                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
-                        } else {
-                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
-                        }
+
+
+                        // 북마크 여부
+                        val alreadyBookmarked = response.body()!!.data[0].alreadyBookmarked
+
+                        // 내서재 문장 불러와서 비교
+                        requestToServer.service.lookLibrarySentence(
+                            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) }
+                        ).enqueue(object : Callback<ResponseLibrarySentenceData> {
+                            override fun onResponse(
+                                call: Call<ResponseLibrarySentenceData>,
+                                response: Response<ResponseLibrarySentenceData>
+                            ) {
+                                if(response.isSuccessful) {
+                                    val sentence_size = response.body()!!.data!!.save.size
+
+                                    if(alreadyBookmarked) {
+                                        var save_check = false
+
+                                        for(i in 0 until sentence_size) {
+                                            if(response.body()!!.data!!.save[i].sentenceIdx == sentenceIdx) {
+                                                save_check = true
+                                                break
+                                            } else {
+                                                save_check = false
+                                            }
+                                        }
+
+                                        if(save_check) {
+                                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_btn_btn_bookmark_g)
+                                        } else {
+                                            img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                                        }
+                                    } else {
+                                        img_sentence_detail_bookmark_num.setImageResource(R.drawable.sentence_theme_o_ic_bookmark)
+                                    }
+                                }
+                            }
+
+                            override fun onFailure(
+                                call: Call<ResponseLibrarySentenceData>,
+                                t: Throwable
+                            ) {
+                                Log.d("통신 실패", "$t")
+                            }
+
+                        })
 
                         // 테마 보러 가기 버튼
                         btn_go_to_theme.setOnClickListener {
@@ -208,8 +254,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             requestReportSentence() // 통신
                         }
 
-//                        more_btn_checkbox.setOnCheckedChangeListener()
-
+                        // 더보기 ``` 눌렀을 때
                         more_btn_checkbox.setOnClickListener {
 
                             if(more_btn_checkbox.isChecked ) { // 더보기 버튼을 눌렀을 때
@@ -221,6 +266,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                                     change_visible(cl_report)
                                 }
 
+                            } else { // 다시 더보기 ``` 눌렀을 때 수정/삭제/신고 박스 사라지게 하기
+                                change_gone(ccc)
+                                change_gone(cl_report)
                             }
 
                         }
@@ -285,7 +333,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceTheme() {
 
         requestToServer.service.GetDetailSentenceOtherThemeSentence(
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceDetailOtherThemeData> {
                 override fun onFailure(call: Call<ResponseSentenceDetailOtherThemeData>, t: Throwable) {
@@ -330,7 +378,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceLikeNum() {
         requestToServer.service.PutsentenceLikeNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceLikeNumData> {
                 override fun onFailure(call: Call<ResponseSentenceLikeNumData>, t: Throwable) {
@@ -365,7 +413,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
     private fun requestSentenceBookmarkNum() {
         requestToServer.service.PutsentenceBookmarkNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
+            params = sentenceIdx
         ).enqueue(
             object : Callback<ResponseSentenceBookmarkNumData> {
                 override fun onResponse(

@@ -16,6 +16,7 @@ import com.example.mongleandroid_release.adapter.DetailThemeAdapter
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
+import com.example.mongleandroid_release.network.data.response.ResponseLibraryThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseThemeBookmarkNumData
 import com.example.mongleandroid_release.network.data.response.ResponseThemeDetailData
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -24,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.properties.Delegates
 
 class DetailThemeActivity : AppCompatActivity() {
 
@@ -31,29 +33,7 @@ class DetailThemeActivity : AppCompatActivity() {
         var writingSentenceInThemeData: RequestWritingSentenceData = RequestWritingSentenceData()
     }
 
-    //DataTheme 데이터
-    //private var themeIdx = 0
-    private var theme = ""
-    private var themeImg = ""
-    private var saves = 0
-    private var writer = ""
-    private var writerImg = ""
-    private var alreadyBookmarked = false
-    private var sentenceNum = 0
-
-    //DataSentence 데이터1
-    private var sentenceIdx = 0
-    private var sentence = ""
-    private var likes = 0
-    private var title = "String"
-    private var author = "String"
-    private var publisher = "String"
-    private var timestamp = "String"
-    private var alreadyLiked = false
-
-
     val requestToServer = RequestToServer
-
 
     private lateinit var detailThemeAdapter: DetailThemeAdapter
 
@@ -106,18 +86,66 @@ class DetailThemeActivity : AppCompatActivity() {
                             img_detail_theme_writerimg.background = ShapeDrawable(OvalShape())
                             img_detail_theme_writerimg.clipToOutline = true
 
-                            Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].writerImg).into(img_detail_theme_writerimg)
+                            // 데이터 세팅
+                            if(response.body()!!.data!!.theme[0].writerImg == null) {
+                                Glide.with(this@DetailThemeActivity).load(R.drawable.theme_img_profile).into(img_detail_theme_writerimg)
+                            } else {
+                                Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].writerImg).into(img_detail_theme_writerimg)
+                            }
                             tv_main_theme_title.text = response.body()!!.data!!.theme[0].theme
                             tv_main_theme_author.text = response.body()!!.data!!.theme[0].writer
                             textView12.text = response.body()!!.data!!.theme[0].sentenceNum.toString()
                             textView11.text = response.body()!!.data!!.theme[0].saves.toString()
                             Glide.with(this@DetailThemeActivity).load(response.body()!!.data!!.theme[0].themeImg)
                                 .apply(RequestOptions.bitmapTransform(BlurTransformation(7, 3))).into(imageView5)
-                            if (response.body()!!.data!!.theme[0].alreadyBookmarked) {
-                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
-                            } else {
-                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
-                            }
+
+                            // 북마크 여부
+                            val alreadyBookmarked = response.body()!!.data!!.theme[0].alreadyBookmarked
+
+                            // 내서재 테마 불러와서 비교
+                            requestToServer.service.lookLibraryThema(
+                                token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) }
+                            ).enqueue(object : Callback<ResponseLibraryThemeData> {
+                                override fun onResponse(
+                                    call: Call<ResponseLibraryThemeData>,
+                                    response: Response<ResponseLibraryThemeData>
+                                ) {
+                                    if(response.isSuccessful) {
+                                        val theme_size = response.body()!!.data!!.save.size
+                                        if(alreadyBookmarked) {
+                                            var save_check = false
+
+                                            for(i in 0 until theme_size) {
+                                                // 테마 인덱스가 내가 저장한 테마이면
+                                                if(response.body()!!.data!!.save[i].themeIdx
+                                                    == intent.getIntExtra("param", 0)) {
+                                                    save_check = true
+                                                    Log.d("테스트", "저장한 테마")
+                                                    break
+                                                } else {
+                                                    save_check = false
+                                                    Log.d("테스트", "저장하지 않은 테마")
+                                                }
+                                            }
+
+                                            if(save_check) {
+                                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
+                                            } else {
+                                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
+                                            }
+
+                                        } else {
+                                            img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
+                                        }
+
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
+                                    Log.d("통신 실패", "$t")
+                                }
+
+                            })
 
                             // 해당 테마 인덱스 저장
                             writingSentenceInThemeData.themeIdx = response.body()!!.data!!.theme[0].themeIdx
@@ -184,30 +212,10 @@ class DetailThemeActivity : AppCompatActivity() {
     }
 
 
-    // 리사이클러뷰 아이템 통신
-    private fun loadDatas() {
-        requestToServer.service.GetDetailTheme(
-            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
-            params = intent.getIntExtra("param", 0)
-        ).enqueue(object : retrofit2.Callback<ResponseThemeDetailData>{
-            override fun onFailure(call: Call<ResponseThemeDetailData>, t: Throwable) {
-                Log.e("통신 실패", t.toString())
-            }
-
-            override fun onResponse(
-                call: Call<ResponseThemeDetailData>,
-                response: Response<ResponseThemeDetailData>
-            ) {
-                if (response.isSuccessful) {
-                    Log.d("테마 리사이클러뷰 통신 성공", "${response.body()!!.data}")
-
-                }
-            }
-
-        })
-    }
-
+    // 테마 북마크 통신
     private fun requestThemeBookmark() {
+
+        // 테마 북마크 누르기
         requestToServer.service.putThemeBookmarkNum(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
             params = intent.getIntExtra("param", 0)
@@ -218,6 +226,7 @@ class DetailThemeActivity : AppCompatActivity() {
             ) {
                 if(response.isSuccessful) {
                     if(response.body()!!.data!!.isSave) {
+
                         img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
                         textView11.text = response.body()!!.data!!.saves.toString()
 
@@ -228,6 +237,7 @@ class DetailThemeActivity : AppCompatActivity() {
                         toast.view = customToast
                         toast.show()
                     } else {
+
                         img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
                         textView11.text = response.body()!!.data!!.saves.toString()
                     }
@@ -239,6 +249,7 @@ class DetailThemeActivity : AppCompatActivity() {
             }
 
         })
+
     }
 
 }

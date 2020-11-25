@@ -210,6 +210,51 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fragment_curator_tv_dokseo" />
 
+            <View
+                android:id="@+id/view20"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
+                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_donggi" />
+
+            <View
+                android:id="@+id/view19"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toTopOf="@+id/fragment_curator_tv_donggi"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
+                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung" />
+
+            <View
+                android:id="@+id/view21"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_jagi"
+                app:layout_constraintStart_toStartOf="@+id/fragment_curator_tv_gamsung"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_curator_tv_dokseo" />
+
+            <View
+                android:id="@+id/view22"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_curator_tv_dokseo"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_kipeun"
+                app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_donggi" />
+
+            <View
+                android:id="@+id/view23"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_curator_tv_dokseo"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_curator_tv_donggi"
+                app:layout_constraintTop_toTopOf="@+id/fragment_curator_tv_donggi" />
+
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
@@ -259,7 +304,7 @@
                     android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:maxLines="2"
-                    android:text="흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야 스쳐 지나간건가 뒤돌아보는 문장 "
+                    android:text=" "
                     android:textColor="#ffffff"
                     android:textSize="19sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView30"
@@ -290,7 +335,7 @@
                     android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="-1sp"
-                    android:text="53"
+                    android:text="0"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/textView30"
@@ -356,7 +401,7 @@
                     android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:maxLines="2"
-                    android:text="마음 속 장마를 막아줄 우산 같은 문장"
+                    android:text=" "
                     android:textColor="#ffffff"
                     android:textSize="19sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView32"
@@ -387,7 +432,7 @@
                     android:includeFontPadding="false"
                     android:letterSpacing="-0.02"
                     android:lineSpacingExtra="-1sp"
-                    android:text="53"
+                    android:text="0"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/textView32"

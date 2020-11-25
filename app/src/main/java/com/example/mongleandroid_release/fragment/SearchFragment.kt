@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
-import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.*
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchRecentAdapter
 import com.example.mongleandroid_release.adapter.SearchTabAdapter
@@ -24,8 +24,6 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.example.mongleandroid_release.network.data.response.ResponseSearchRecommendData
-import com.example.mongleandroid_release.showKeyboard
-import com.example.mongleandroid_release.unshowKeyboard
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
@@ -66,6 +64,10 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fragment_search_cl_before.setOnClickListener {
+            fragment_search_et_search.unshowKeyboard()
+        }
+
         // 검색창에 초점 맞추고, 키보드 올리는 부분
         fragment_search_et_search.requestFocus()
         fragment_search_et_search.showKeyboard() // 확장함수 showKeyboard.kt
@@ -97,10 +99,28 @@ class SearchFragment : Fragment() {
 
         })
 
-        // 뒤로가기 버튼
-        fragment_search_btn_back.setOnClickListener {
+        // 뒤로가기 버튼 - 메인으로 이동
+        fragment_search_btn_back_main.setOnClickListener {
             replaceFragment(MainFragment())
             fragment_search_et_search.unshowKeyboard()
+        }
+
+        // 뒤로가기 버튼 - 원래 검색화면으로 이동
+        fragment_search_btn_back_search.setOnClickListener {
+            change_gone(fragment_search_cl_after)
+            change_visible(fragment_search_cl_before)
+
+            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            fragment_search_et_search.isCursorVisible = true
+            fragment_search_et_search.showKeyboard()
+
+            change_gone(fragment_search_btn_back_search)
+            change_visible(fragment_search_btn_back_main)
+
+            if(fragment_search_et_search.text.isNotEmpty()) {
+                fragment_search_tv_no_keyword.visibility = GONE
+            }
+            recentKeyword()
         }
 
         // 엔터 눌렀을 때 검색
@@ -141,34 +161,6 @@ class SearchFragment : Fragment() {
 
         }
 
-
-        // 최근 키워드 전체 삭제
-        fragment_search_tv_delete.setOnClickListener {
-            fragment_search_rv_recent_keyword.visibility = GONE
-
-            requestToServer.service.requestSearchRecentDelete(
-                token = context?.let { SharedPreferenceController.getAccessToken(it) }
-            ).enqueue(
-                object : Callback<ResponseSearchRecentDeleteData> {
-                    override fun onFailure(call: Call<ResponseSearchRecentDeleteData>, t: Throwable) {
-                        Log.d("통신실패", "$t")
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseSearchRecentDeleteData>,
-                        response: Response<ResponseSearchRecentDeleteData>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.d("최근 검색어 삭제", response.body()!!.message)
-                            fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
-                            searchRecentAdapter.notifyDataSetChanged()
-                        }
-                    }
-                }
-            )
-
-            fragment_search_tv_no_keyword.visibility = VISIBLE
-        }
 
     }
 
@@ -212,6 +204,7 @@ class SearchFragment : Fragment() {
                         if(response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
+                            removeRecentKeyword()
                             val layoutManager = LinearLayoutManager(view!!.context)
                             layoutManager.orientation = LinearLayoutManager.HORIZONTAL
                             fragment_search_rv_recent_keyword.layoutManager = layoutManager
@@ -242,6 +235,36 @@ class SearchFragment : Fragment() {
             }
         )
 
+    }
+
+    // 최근 키워드 전체 삭제
+    private fun removeRecentKeyword() {
+        fragment_search_tv_delete.setOnClickListener {
+            fragment_search_rv_recent_keyword.visibility = GONE
+
+            requestToServer.service.requestSearchRecentDelete(
+                token = context?.let { SharedPreferenceController.getAccessToken(it) }
+            ).enqueue(
+                object : Callback<ResponseSearchRecentDeleteData> {
+                    override fun onFailure(call: Call<ResponseSearchRecentDeleteData>, t: Throwable) {
+                        Log.d("통신실패", "$t")
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseSearchRecentDeleteData>,
+                        response: Response<ResponseSearchRecentDeleteData>
+                    ) {
+                        if (response.isSuccessful) {
+                            Log.d("최근 검색어 삭제", response.body()!!.message)
+                            fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
+                            searchRecentAdapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+            )
+
+            fragment_search_tv_no_keyword.visibility = VISIBLE
+        }
     }
 
 
@@ -294,6 +317,9 @@ class SearchFragment : Fragment() {
     fun goResult() {
 
         hideFocus()
+
+        change_gone(fragment_search_btn_back_main)
+        change_visible(fragment_search_btn_back_search)
 
         // 키보드 내리는 부분
         fragment_search_et_search.unshowKeyboard()

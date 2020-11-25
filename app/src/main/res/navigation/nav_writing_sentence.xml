@@ -90,6 +90,11 @@
         android:id="@+id/writing_sentence_finish_fragment"
         android:name="com.example.mongleandroid_release.fragment.WritingSentenceFinishFragment"
         tools:layout="@layout/writing_sentence_finish">
+        <argument
+            android:name="sentenceIdx"
+            app:argType="integer"
+            app:nullable="false"
+            android:defaultValue= "0" />
     </fragment>
 
 

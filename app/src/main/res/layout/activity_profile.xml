@@ -393,6 +393,56 @@
 
             </RadioGroup>
 
+            <View
+                android:id="@+id/view26"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toTopOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintEnd_toEndOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintStart_toStartOf="@+id/activity_profile_radiogroup" />
+
+            <View
+                android:id="@+id/view27"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintEnd_toEndOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintStart_toStartOf="@+id/activity_profile_radiogroup" />
+
+            <View
+                android:id="@+id/view24"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_profile_radiogroup" />
+
+            <View
+                android:id="@+id/view25"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintEnd_toStartOf="@+id/view18"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_profile_radiogroup" />
+
+            <View
+                android:id="@+id/view18"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#e8e8e8"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_profile_radiogroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view25"
+                app:layout_constraintTop_toTopOf="@+id/activity_profile_radiogroup" />
+
             <ImageView
                 android:id="@+id/activity_profile_img_keyword_warning"
                 android:layout_width="wrap_content"

@@ -7,7 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import android.widget.TextView
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.WritingThemeImgAdapter
 import com.example.mongleandroid_release.network.RequestToServer
@@ -26,6 +26,7 @@ class WritingThemeActivity : AppCompatActivity() {
 
     lateinit var writingThemeImgAdapter: WritingThemeImgAdapter
     var writingThemeData =  RequestWritingThemeData("", -1)
+    var writingThemeImg =  ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,6 @@ class WritingThemeActivity : AppCompatActivity() {
         // MARK :: XML
         // 뒤로가기 버튼
         writing_theme_step1_btn_out.setOnClickListener{
-            Toast.makeText(this, "메인화면으로 돌아갑니다.", Toast.LENGTH_SHORT).show()
             finish() //onDestroy() 호출되어 아예 메모리에 액티비티 삭제!
         }
         // 테마 이름 입력창
@@ -56,6 +56,8 @@ class WritingThemeActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // writing_theme_step1_et_sentence 빨간 박스 해제
                 // 테마 이름 글자 수 카운팅
+                writing_theme_step1_tv_cnt.visibility = View.VISIBLE
+                writing_theme_step1_tv_cnt2.visibility = View.VISIBLE
                 writing_theme_step1_tv_cnt.text = writing_theme_step1_et_sentence.text.toString().length.toString()
                 writing_theme_step1_ll_warning.visibility = View.GONE
 
@@ -75,6 +77,8 @@ class WritingThemeActivity : AppCompatActivity() {
             // 빈칸 경고
             if(writing_theme_step1_et_sentence.text.isEmpty()) {
                 writing_theme_step1_ll_warning.visibility = View.VISIBLE
+                writing_theme_step1_tv_cnt.visibility = View.INVISIBLE
+                writing_theme_step1_tv_cnt2.visibility = View.INVISIBLE
 
                 writing_theme_step1_et_sentence
                     .setBackgroundResource(R.drawable.et_area_red)
@@ -84,8 +88,6 @@ class WritingThemeActivity : AppCompatActivity() {
                 if(writingThemeData.theme.isEmpty() || writingThemeData.themeImgIdx <=0 ){
 
                 }else{
-                    Toast.makeText(this, "등록 팝업 등장.", Toast.LENGTH_SHORT).show()
-
                     val dlg = DialogMakethemeCheck(this)
                     dlg.start()
                     dlg.setOnOKClickedListener{
@@ -145,8 +147,13 @@ class WritingThemeActivity : AppCompatActivity() {
                                     Log.d("SSS", "${position}번 리스트 선택")
 
                                     writing_theme_step1_et_sentence.clearFocus()
-                                    writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
+//                                    writingThemeData.themeImgIdx = Integer.parseInt(item_writing_theme_tv_imgIdx.text.toString())
+                                    writingThemeData.themeImgIdx = Integer.parseInt(view.findViewById<TextView>(R.id.item_writing_theme_tv_imgIdx).text.toString())
                                     writing_theme_step1_ll_warning2.visibility = View.GONE
+
+                                    writingThemeImg = data.img
+
+
 
                                     // single selection impl
                                     for(data in datas){

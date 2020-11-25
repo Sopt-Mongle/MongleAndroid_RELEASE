@@ -138,7 +138,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 if(imgChk){ // 테마를 선택함
 
                     // user reaction : 테마를 선택해주세요 ! 취소
-                    view.findViewById<TextView>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
 
                     // step3로 이동
                     val action =
@@ -218,6 +218,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                 ) {
                                     Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
 
+
 //                                  선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
                                     theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
 
@@ -233,6 +234,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                     for(data in datas){
                                         data.themeChked = false
                                     }
+                                    imgChk = true
                                     datas[position].themeChked = true
                                     wrtingSentenceThemeSearchFirstAdapter.datas = datas
                                     wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
@@ -314,6 +316,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                     datas: MutableList<SearchTheme>
                                 ) {
                                     Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
+                                    Log.d("SSS", "테마 이미지 사 :: ${data.themeImgIdx}")
 
                                     //선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
                                     theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
@@ -325,11 +328,11 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                                 R.id.item_writing_sentence_theme_result_tv_themeIdx
                                             ).text.toString()
                                         )
-
                                     // single selection impl
                                     for(data in datas){
                                         data.themeChked = false
                                     }
+                                    imgChk = true
                                     datas[position].themeChked = true
                                     wrtingSentenceThemeSearchAdapter.datas = datas
                                     wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()

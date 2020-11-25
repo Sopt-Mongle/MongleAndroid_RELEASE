@@ -10,27 +10,28 @@
         android:id="@+id/tv_version_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginHorizontal="16dp"
         android:letterSpacing="-0.04"
         android:text="버전 정보"
         android:textColor="#292929"
         android:textSize="19sp"
-        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back_setting_version_info"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/img_back_setting_version_info" />
 
     <ImageView
         android:id="@+id/img_back_setting_version_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingStart="17dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="23dp"
+        android:paddingBottom="16dp"
         android:src="@drawable/btn_back"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_version_info"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tv_version_info"
-        app:layout_constraintTop_toTopOf="@id/tv_version_info" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_settings_version_info_img_simbol"
@@ -49,10 +50,11 @@
         android:id="@+id/img_setting_ground_version_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         android:src="@drawable/my_settings_version_info_bg_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/img_settings_version_info_img_mongle"

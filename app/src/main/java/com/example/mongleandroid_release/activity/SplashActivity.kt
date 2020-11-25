@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.widget.ImageView
+import androidx.core.os.postDelayed
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mongleandroid_release.R
@@ -20,14 +21,14 @@ class SplashActivity : AppCompatActivity() {
 
     val requestToServer = RequestToServer
 
+    val SPLASH_TIME : Long = 2500
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
-        Glide.with(this).load(R.drawable.splash).into(load)
-
-        startLoading()
+//        val load: ImageView = findViewById<ImageView>(R.id.img_splash_gif)
+//        Glide.with(this).load(R.drawable.splash).into(load)
 
         if(SharedPreferenceController.getMail(this).isNullOrBlank()) {
             // 처음 들어온 사람
@@ -51,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
                 Log.d("시간테스트 now - last", "${nowTime - lastTime}")
                 Log.d("시간테스트 lastTime", lastTime.toString())
                 Log.d("시간테스트 원래토큰", SharedPreferenceController.getAccessToken(this))
-                if(nowTime - lastTime > 30000) {
+                if(nowTime - lastTime < 0 || nowTime - lastTime > 30000) {
                     // 갱신
                     Log.d("시간테스트", "갱신")
                     SharedPreferenceController.setCurrentTime(this, nowTime.toString())
@@ -105,7 +106,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, SPLASH_TIME)
     }
 
     private fun startLogin() {
@@ -114,7 +115,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, SPLASH_TIME)
     }
 
     private fun startOnBoarding() {
@@ -123,7 +124,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(baseContext, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
-        }, 4000)
+        }, SPLASH_TIME)
     }
 
 

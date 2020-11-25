@@ -10,7 +10,7 @@
         android:id="@+id/activity_curator_keyword_topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/activity_join_step2_sv"
+        app:layout_constraintBottom_toTopOf="@+id/rv_curator_keyword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,25 +19,29 @@
             android:id="@+id/activity_curator_keyword_tv_keyword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
             android:fontFamily="@font/notosanscjkkr_regular"
             android:gravity="center"
             android:includeFontPadding="false"
             android:textColor="@color/black_two"
             android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_curator_keyword_btn_back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activity_curator_keyword_btn_back" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/activity_curator_keyword_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="3dp"
             android:paddingStart="17dp"
             android:paddingTop="16dp"
             android:paddingEnd="23dp"
             android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/btn_back" />
@@ -69,12 +73,13 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_search_curator" />
 
-    <View
-        android:id="@+id/view7"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:background="@drawable/btn_gradient"
+    <ImageView
+        android:id="@+id/imageView56"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/my_settings_service_box_blur_bottom" />
 </androidx.constraintlayout.widget.ConstraintLayout>
