@@ -15,8 +15,7 @@ import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.request.RequestWritingThemeData
 import com.example.mongleandroid_release.network.data.response.ResponseWritingThemeImgData
 import com.example.mongleandroid_release.network.data.response.ThemeImg
-import com.example.mongleandroid_release.util.DialogMakethemeCheck
-import kotlinx.android.synthetic.main.item_writing_theme_img.*
+import com.example.mongleandroid_release.dialog.DialogMakethemeCheck
 import kotlinx.android.synthetic.main.writing_theme_step1.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -88,7 +87,10 @@ class WritingThemeActivity : AppCompatActivity() {
                 if(writingThemeData.theme.isEmpty() || writingThemeData.themeImgIdx <=0 ){
 
                 }else{
-                    val dlg = DialogMakethemeCheck(this)
+                    val dlg =
+                        DialogMakethemeCheck(
+                            this
+                        )
                     dlg.start()
                     dlg.setOnOKClickedListener{
                     }

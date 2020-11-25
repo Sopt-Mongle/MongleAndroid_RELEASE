@@ -1,4 +1,4 @@
-package com.example.mongleandroid_release.util
+package com.example.mongleandroid_release.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -63,6 +63,7 @@ class DialogMakethemeCheck(context : Context) {
         maketheme_popup_yes = dlg.findViewById(R.id.dialog_writing_theme_check_yes)
         maketheme_popup_yes.setOnClickListener{
             Log.d("requestWritingThemeData", "${requestWritingThemeData.themeImgIdx} && ${requestWritingThemeData.theme}")
+
             themePost(requestWritingThemeData)
             act.setContentView(R.layout.writing_theme_finish)
             dlg.dismiss()

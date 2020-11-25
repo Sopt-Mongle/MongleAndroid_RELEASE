@@ -16,6 +16,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.MainActivity
 import com.example.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.example.mongleandroid_release.activity.WritingSentenceActivity
+import com.example.mongleandroid_release.network.SharedPreferenceController
 
 class WritingSentenceFinishFragment : Fragment() {
 
@@ -36,6 +37,14 @@ class WritingSentenceFinishFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        val name = context?.let {
+            SharedPreferenceController.getName(it)
+        }
+
+        view.findViewById<TextView>(R.id.writing_sentence_finish_tv).text = "${name}" + "님의 문장으로\n몽글이 더욱 풍부해졌어요!"
 
         view.findViewById<TextView>(R.id.writing_sentence_finish_btn_sentence).setOnClickListener {
             val intent = Intent(activity , SentenceDetailViewActivity::class.java)
