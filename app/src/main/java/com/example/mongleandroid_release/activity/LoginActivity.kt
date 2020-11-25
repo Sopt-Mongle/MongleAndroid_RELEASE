@@ -9,9 +9,13 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.mongleandroid_release.dialog.DialogLogin
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogFind
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -107,5 +111,72 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+
+
+        // email 입력창
+        activity_login_et_email.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                activity_login_et_email.clearText(activity_login_btn_email_erase)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
+        // passwd 입력창창
+        activity_login_et_pass.addTextChangedListener(object :TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                activity_login_et_pass.clearText(activity_login_btn_pass_erase)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
+        activity_login_et_email.setOnFocusChangeListener { _, hasFocus ->
+            activity_login_et_email.background = resources.getDrawable(R.drawable.et_area_green, null)
+            if(activity_login_et_email.text.isNotEmpty()) {
+                activity_login_et_email.clearText(activity_login_btn_email_erase)
+            }
+
+            if(!hasFocus) {
+                activity_login_et_email.background = resources.getDrawable(R.drawable.et_area, null)
+                change_gone(activity_login_btn_email_erase)
+            }
+        }
+
+        activity_login_et_pass.setOnFocusChangeListener { _, hasFocus ->
+            activity_login_et_pass.background = resources.getDrawable(R.drawable.et_area_green, null)
+            if(activity_login_et_pass.text.isNotEmpty()) {
+                activity_login_et_pass.clearText(activity_login_btn_pass_erase)
+            }
+
+
+            if(!hasFocus) {
+                activity_login_et_pass.background = resources.getDrawable(R.drawable.et_area, null)
+                change_gone(activity_login_btn_pass_erase)
+            }
+        }
+
+    }
+
+    // edittext 지우는 x버튼
+    private fun EditText.clearText(button : ImageView) {
+        change_visible(button)
+        button.setOnClickListener {
+            this.setText("")
+        }
     }
 }

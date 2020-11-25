@@ -51,11 +51,26 @@
         android:includeFontPadding="false"
         android:inputType="text"
         android:maxLines="1"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="78dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fragment_search_btn_erase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="14dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_search_btn_search"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_search_btn_search"
+        app:layout_constraintTop_toTopOf="@+id/fragment_search_btn_search"
+        app:srcCompat="@drawable/btn_erase" />
 
     <ImageView
         android:id="@+id/fragment_search_btn_search"
@@ -163,10 +178,11 @@
 
         <com.nex3z.flowlayout.FlowLayout
             android:layout_width="0dp"
-            android:layout_height="92dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:flChildSpacing="8dp"
             app:flChildSpacingForLastRow="align"
+            app:flMaxRows="2"
             app:flRowSpacing="8dp"
             app:layout_constraintEnd_toEndOf="@+id/fragment_search_tv_delete"
             app:layout_constraintHorizontal_bias="0.0"

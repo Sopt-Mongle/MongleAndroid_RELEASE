@@ -13,7 +13,7 @@
         android:layout_marginStart="49dp"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout7"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/writing_theme_popup_btn_mongle" />
+        app:srcCompat="@drawable/login_popup_btn_mongle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout7"

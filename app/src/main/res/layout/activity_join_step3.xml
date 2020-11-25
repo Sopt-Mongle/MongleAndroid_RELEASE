@@ -172,7 +172,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/activity_join_step3_tv_usersmail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="54dp"
@@ -195,7 +195,7 @@
                 android:layout_height="38dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_join_step3_tv_usersmail" />
 
             <TextView
                 android:id="@+id/activity_join_step3_tv_timer"
@@ -209,8 +209,8 @@
                 android:text="05:00"
                 android:textColor="@color/soft_green"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/textView26"
-                app:layout_constraintStart_toStartOf="@+id/textView26"
+                app:layout_constraintEnd_toEndOf="@+id/activity_join_step3_tv_usersmail"
+                app:layout_constraintStart_toStartOf="@+id/activity_join_step3_tv_usersmail"
                 app:layout_constraintTop_toBottomOf="@+id/view_empty4" />
 
             <View

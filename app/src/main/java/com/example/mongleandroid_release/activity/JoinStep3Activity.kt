@@ -8,11 +8,13 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
@@ -41,6 +43,9 @@ class JoinStep3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_step3)
 
+        val email = intent.getStringExtra("email")
+
+        activity_join_step3_tv_usersmail.setText("입력한 $email 으로 전송된\n메일 속 본인 확인 인증 코드를 입력해주세요.")
         // 프로그래스바 애니메이션
         Handler().postDelayed({
             val progressAnimator_step3 = ObjectAnimator.ofInt(
@@ -182,8 +187,18 @@ class JoinStep3Activity : AppCompatActivity() {
 
         // 재전송 버튼
         activity_join_step3_btn_repeat.setOnClickListener {
+            val customToast = layoutInflater.inflate(R.layout.toast_code_repeat, null)
+            val toast = Toast(applicationContext)
+            toast.duration = Toast.LENGTH_SHORT
+            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+            toast.view = customToast
+            toast.show()
+
             startTimer()
             authUser()
+
+            hideKeyboard()
+            showEmpty()
         }
 
         changeCodeBackground(activity_join_step3_et_code1)

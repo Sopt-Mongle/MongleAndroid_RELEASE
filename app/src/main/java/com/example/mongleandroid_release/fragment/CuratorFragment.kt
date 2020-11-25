@@ -15,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.CuratorKeywordActivity
+import com.example.mongleandroid_release.activity.DetailThemeActivity
 import com.example.mongleandroid_release.adapter.CuratorInThemeAdapter
 import com.example.mongleandroid_release.adapter.CuratorRecommendAdapter
 import com.example.mongleandroid_release.dialog.DialogGuest
@@ -164,6 +165,21 @@ class CuratorFragment : Fragment() {
                                 curatorInThemeAdapter2 = CuratorInThemeAdapter(view!!.context, body.data.theme[1].curators)
                                 fragment_curator_rv_curator2.adapter = curatorInThemeAdapter2
                                 curatorInThemeAdapter2.notifyDataSetChanged()
+
+                                // 테마 눌렀을 때 테마보기로 이동
+                                fragment_curator_img_theme1.setOnClickListener {
+                                    val intent = Intent(context, DetailThemeActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data!!.theme[0].themeIdx)
+                                    startActivity(intent)
+                                }
+
+                                fragment_curator_img_theme2.setOnClickListener {
+                                    val intent = Intent(context, DetailThemeActivity::class.java)
+                                    intent.putExtra("param", response.body()!!.data!!.theme[1].themeIdx)
+                                    startActivity(intent)
+                                }
+
+
 
                                 // 구독여부 통신
                                 fun subscribed(num : Int, position : Int) {

@@ -53,6 +53,7 @@ class JoinStep2Activity : AppCompatActivity() {
         activity_join_step2_btn_next.setOnClickListener {
             if(activity_join_step2_et_email.text.isEmpty()) {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
+                activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_warning)
                 change_visible(activity_join_step2_img_email_warning)
                 change_visible(activity_join_step2_tv_email_warning)
                 change_gone(activity_join_step2_tv_email_valid_warning)
@@ -85,9 +86,6 @@ class JoinStep2Activity : AppCompatActivity() {
                 change_visible(activity_join_step2_tv_pass_nomatch)
                 activity_join_step2_img_pass_warning.setImageResource(R.drawable.ic_warning)
                 change_gone(activity_join_step2_tv_pass_match)
-            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()){
-                change_visible(activity_join_step2_img_email_warning)
-                change_visible(activity_join_step2_tv_email_valid_warning)
             } else {
 
                 val intent = Intent(this, JoinStep3Activity::class.java)
@@ -111,6 +109,7 @@ class JoinStep2Activity : AppCompatActivity() {
                             Log.d("중복", response.body().toString())
                             if(response.body()!!.data!!.duplicate == "email") {
                                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
+                                activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_warning)
                                 change_visible(activity_join_step2_img_email_warning)
                                 change_visible(activity_join_step2_tv_exist_email)
                             } else if(response.body()!!.data!!.duplicate == "name") {
@@ -150,6 +149,15 @@ class JoinStep2Activity : AppCompatActivity() {
                 change_gone(activity_join_step2_tv_email_warning)
                 change_gone(activity_join_step2_tv_email_valid_warning)
                 change_gone(activity_join_step2_tv_exist_email)
+
+                if(activity_join_step2_et_email.text.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
+                    activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_warning)
+                    change_visible(activity_join_step2_img_email_warning)
+                    change_visible(activity_join_step2_tv_email_valid_warning)
+                } else {
+                    change_gone(activity_join_step2_img_email_warning)
+                    change_gone(activity_join_step2_tv_email_valid_warning)
+                }
             }
         })
 
@@ -160,6 +168,7 @@ class JoinStep2Activity : AppCompatActivity() {
             change_gone(activity_join_step2_tv_email_warning)
             change_gone(activity_join_step2_tv_email_valid_warning)
             change_gone(activity_join_step2_tv_exist_email)
+            change_gone(activity_join_step2_tv_possible_email)
 
             // edittext 지우는 x버튼
             activity_join_step2_et_email.clearText(activity_join_step2_btn_email_erase)
@@ -177,13 +186,14 @@ class JoinStep2Activity : AppCompatActivity() {
                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area, null)
                 change_gone(activity_join_step2_btn_email_erase)
 
-                if(activity_join_step2_et_email.text.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
-                    change_visible(activity_join_step2_img_email_warning)
-                    change_visible(activity_join_step2_tv_email_valid_warning)
-                } else {
-                    change_gone(activity_join_step2_img_email_warning)
-                    change_gone(activity_join_step2_tv_email_valid_warning)
-                }
+//                if(activity_join_step2_et_email.text.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
+//                    activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_warning)
+//                    change_visible(activity_join_step2_img_email_warning)
+//                    change_visible(activity_join_step2_tv_email_valid_warning)
+//                } else {
+//                    change_gone(activity_join_step2_img_email_warning)
+//                    change_gone(activity_join_step2_tv_email_valid_warning)
+//                }
 
                 // 이메일 중복체크
                 requestToServer.service.requestDuplicate(
@@ -203,8 +213,25 @@ class JoinStep2Activity : AppCompatActivity() {
                         if(response.isSuccessful) {
                             if(response.body()!!.data.duplicate == "email") {
                                 activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
+                                activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_warning)
                                 change_visible(activity_join_step2_img_email_warning)
                                 change_visible(activity_join_step2_tv_exist_email)
+                            } else {
+                                if(activity_join_step2_et_email.text.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(activity_join_step2_et_email.text.toString()).matches()) {
+                                    activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area_red, null)
+                                    activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_warning)
+                                    change_visible(activity_join_step2_img_email_warning)
+                                    change_visible(activity_join_step2_tv_email_valid_warning)
+                                } else {
+                                    change_gone(activity_join_step2_img_email_warning)
+                                    change_gone(activity_join_step2_tv_email_valid_warning)
+
+                                    activity_join_step2_et_email.background = resources.getDrawable(R.drawable.et_area, null)
+                                    activity_join_step2_img_email_warning.setImageResource(R.drawable.ic_possible)
+                                    change_visible(activity_join_step2_img_email_warning)
+                                    change_visible(activity_join_step2_tv_possible_email)
+                                }
+
                             }
                         }
                     }
