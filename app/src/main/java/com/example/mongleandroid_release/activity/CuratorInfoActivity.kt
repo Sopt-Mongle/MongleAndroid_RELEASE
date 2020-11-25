@@ -63,21 +63,6 @@ class CuratorInfoActivity : AppCompatActivity() {
         }
 
 
-        cb_curator_subs_info.setOnClickListener {
-            if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
-
-                val dlg = DialogGuest(view.context)
-                dlg.start()
-
-            } else {
-                if (cb_curator_subs_info.isChecked) {
-                    cb_curator_subs_info.setText("구독중")
-                } else cb_curator_subs_info.setText("구독")
-            }
-
-        }
-
-
 
         cl_curator_theme.setOnClickListener {
             tv_thema_num_cu_info.setTextColor(Color.parseColor("#73c088"))
@@ -196,40 +181,39 @@ class CuratorInfoActivity : AppCompatActivity() {
                         }
 
 
-//                        if (response.body()!!.data?.profile.isNullOrEmpty()) {
-//
-//                        } else {
-//                            Glide.with(this@CuratorInfoActivity).load(response.body()!!.data!!.profile[0].img).into(img_curator_profile)
-//
-//                        }
-
-                        // 구독여부 통신
                         cb_curator_subs_info.setOnClickListener {
+                            if (this@CuratorInfoActivity.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
+                                cb_curator_subs_info.isChecked = false
+                                val dlg = DialogGuest(this@CuratorInfoActivity)
+                                dlg.start()
 
-                            requestToServer.service.getFollowIdx(
-                                token = SharedPreferenceController.getAccessToken(applicationContext),
-                                params = response.body()!!.data!!.profile[0].curatorIdx
-                            ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
-                                    Log.e("통신실패", t.toString())
-                                }
-
-                                override fun onResponse(
-                                    call: Call<ResponseCuratorFollowedData>,
-                                    response: Response<ResponseCuratorFollowedData>
-                                ) {
-                                    if (response.isSuccessful) {
-                                        if(response.body()!!.data) {
-                                            Log.d("구독", "구독")
-                                            cb_curator_subs_info.text = "구독중"
-                                        } else {
-                                            Log.d("구독", "구독취소")
-                                            cb_curator_subs_info.text = "구독"
-                                        }
+                            } else {
+                                requestToServer.service.getFollowIdx(
+                                    token = SharedPreferenceController.getAccessToken(applicationContext),
+                                    params = response.body()!!.data!!.profile[0].curatorIdx
+                                ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                    override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                        Log.e("통신실패", t.toString())
                                     }
 
-                                }
-                            })
+                                    override fun onResponse(
+                                        call: Call<ResponseCuratorFollowedData>,
+                                        response: Response<ResponseCuratorFollowedData>
+                                    ) {
+                                        if (response.isSuccessful) {
+                                            if(response.body()!!.data) {
+                                                Log.d("구독", "구독")
+                                                cb_curator_subs_info.text = "구독중"
+                                            } else {
+                                                Log.d("구독", "구독취소")
+                                                cb_curator_subs_info.text = "구독"
+                                            }
+                                        }
+
+                                    }
+                                })
+                            }
+
                         }
 
                     }

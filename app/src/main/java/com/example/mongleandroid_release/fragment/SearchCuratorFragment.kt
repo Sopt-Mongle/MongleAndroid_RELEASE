@@ -11,6 +11,7 @@ import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.activity.CuratorInfoActivity
 import com.example.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.example.mongleandroid_release.adapter.SearchCuratorAdapter
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
@@ -69,28 +70,36 @@ class SearchCuratorFragment : Fragment() {
                                 }
 
                                 override fun onClickSubscribe(view: View, position: Int) {
-                                    requestToServer.service.getFollowIdx(
-                                        token = context?.let { SharedPreferenceController.getAccessToken(it) },
-                                        params = response.body()!!.data[position].curatorIdx
-                                    ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                        override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
-                                            Log.e("통신실패", t.toString())
-                                        }
+                                    if (context?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
-                                        override fun onResponse(
-                                            call: Call<ResponseCuratorFollowedData>,
-                                            response: Response<ResponseCuratorFollowedData>
-                                        ) {
-                                            if (response.isSuccessful) {
-                                                if(response.body()!!.data) {
-                                                    Log.d("구독", "구독")
-                                                } else {
-                                                    Log.d("구독", "구독취소")
-                                                }
+                                        val dlg = DialogGuest(view.context)
+                                        dlg.start()
+
+                                    } else {
+                                        requestToServer.service.getFollowIdx(
+                                            token = context?.let { SharedPreferenceController.getAccessToken(it) },
+                                            params = response.body()!!.data[position].curatorIdx
+                                        ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                            override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                                Log.e("통신실패", t.toString())
                                             }
 
-                                        }
-                                    })
+                                            override fun onResponse(
+                                                call: Call<ResponseCuratorFollowedData>,
+                                                response: Response<ResponseCuratorFollowedData>
+                                            ) {
+                                                if (response.isSuccessful) {
+                                                    if(response.body()!!.data) {
+                                                        Log.d("구독", "구독")
+                                                    } else {
+                                                        Log.d("구독", "구독취소")
+                                                    }
+                                                }
+
+                                            }
+                                        })
+                                    }
+
                                 }
 
                             })

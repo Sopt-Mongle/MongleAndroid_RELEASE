@@ -7,11 +7,13 @@ import android.util.Log
 import android.view.View
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorKeywordAdapter
+import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorFollowedData
 import com.example.mongleandroid_release.network.data.response.ResponseCuratorKeywordData
 import kotlinx.android.synthetic.main.activity_curator_keyword.*
+import kotlinx.android.synthetic.main.item_search_curator.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,28 +79,36 @@ class CuratorKeywordActivity : AppCompatActivity() {
                                 }
 
                                 override fun onClickSubscribe(view: View, position: Int) {
-                                    requestToServer.service.getFollowIdx(
-                                        token = applicationContext.let { SharedPreferenceController.getAccessToken(it) },
-                                        params = response.body()!!.data[position].curatorIdx
-                                    ).enqueue(object : Callback<ResponseCuratorFollowedData> {
-                                        override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
-                                            Log.e("통신실패", t.toString())
-                                        }
+                                    if (this@CuratorKeywordActivity.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
-                                        override fun onResponse(
-                                            call: Call<ResponseCuratorFollowedData>,
-                                            response: Response<ResponseCuratorFollowedData>
-                                        ) {
-                                            if (response.isSuccessful) {
-                                                if(response.body()!!.data) {
-                                                    Log.d("구독", "구독")
-                                                } else {
-                                                    Log.d("구독", "구독취소")
-                                                }
+                                        val dlg = DialogGuest(this@CuratorKeywordActivity)
+                                        dlg.start()
+
+                                    } else {
+                                        requestToServer.service.getFollowIdx(
+                                            token = applicationContext.let { SharedPreferenceController.getAccessToken(it) },
+                                            params = response.body()!!.data[position].curatorIdx
+                                        ).enqueue(object : Callback<ResponseCuratorFollowedData> {
+                                            override fun onFailure(call: Call<ResponseCuratorFollowedData>, t: Throwable) {
+                                                Log.e("통신실패", t.toString())
                                             }
 
-                                        }
-                                    })
+                                            override fun onResponse(
+                                                call: Call<ResponseCuratorFollowedData>,
+                                                response: Response<ResponseCuratorFollowedData>
+                                            ) {
+                                                if (response.isSuccessful) {
+                                                    if(response.body()!!.data) {
+                                                        Log.d("구독", "구독")
+                                                    } else {
+                                                        Log.d("구독", "구독취소")
+                                                    }
+                                                }
+
+                                            }
+                                        })
+                                    }
+
                                 }
 
                             })
