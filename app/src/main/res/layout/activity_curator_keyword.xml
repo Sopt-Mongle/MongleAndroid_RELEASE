@@ -49,11 +49,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/view6"
+        android:id="@+id/activity_curator_keyword_view_top"
         android:layout_width="0dp"
         android:layout_height="10dp"
         android:background="@drawable/topbar_gradient"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_curator_keyword_topbar" />

@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.adapter.CuratorKeywordAdapter
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -42,6 +44,14 @@ class CuratorKeywordActivity : AppCompatActivity() {
 
         activity_curator_keyword_btn_back.setOnClickListener {
             finish()
+        }
+
+        // 그림자 박스
+        rv_curator_keyword.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            change_visible(activity_curator_keyword_view_top)
+            if(scrollY == 0) {
+                change_gone(activity_curator_keyword_view_top)
+            }
         }
     }
 

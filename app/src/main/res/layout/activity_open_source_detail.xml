@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activity.OpenSourceDetailActivity">
 
+    <View
+        android:id="@+id/activity_open_detail_view_top"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:background="@drawable/topbar_gradient"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_curator_topbar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fragment_curator_topbar"
         android:layout_width="match_parent"
@@ -48,6 +58,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/sv_open_detail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="28dp"

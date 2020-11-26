@@ -8,11 +8,11 @@
     tools:context=".fragment.CuratorFragment">
 
     <View
-        android:id="@+id/view8"
+        android:id="@+id/fragment_curator_view_top"
         android:layout_width="0dp"
         android:layout_height="10dp"
         android:background="@drawable/topbar_gradient"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_curator_topbar" />
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/activity_join_step2_sv"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_curator_sv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -46,7 +46,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/activity_join_step2_sv"
+        android:id="@+id/fragment_curator_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"

@@ -18,6 +18,8 @@ import com.example.mongleandroid_release.activity.CuratorKeywordActivity
 import com.example.mongleandroid_release.activity.DetailThemeActivity
 import com.example.mongleandroid_release.adapter.CuratorInThemeAdapter
 import com.example.mongleandroid_release.adapter.CuratorRecommendAdapter
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.dialog.DialogGuest
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
@@ -63,6 +65,13 @@ class CuratorFragment : Fragment() {
         goKeywordActivity(fragment_curator_tv_dokseo, 5)
         goKeywordActivity(fragment_curator_tv_ilsang, 6)
 
+        // 그림자 박스
+        fragment_curator_sv.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            change_visible(fragment_curator_view_top)
+            if(scrollY == 0) {
+                change_gone(fragment_curator_view_top)
+            }
+        }
 
 
     }
