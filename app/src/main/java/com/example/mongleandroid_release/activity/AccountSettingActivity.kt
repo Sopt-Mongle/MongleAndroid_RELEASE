@@ -40,11 +40,11 @@ class AccountSettingActivity : AppCompatActivity() {
 
         //로그 아웃 버튼 눌렀을 떄 dialog 띄우기
         logout.setOnClickListener {
-            SharedPreferenceController.setAccessToken(this, "logout")
             val dlg = DialogLogout(this)
             dlg.start()
             dlg.setOnClickListener { content ->
                 if(content == "로그아웃") {
+                    SharedPreferenceController.setAccessToken(this, "logout")
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     ActivityCompat.finishAffinity(this)
