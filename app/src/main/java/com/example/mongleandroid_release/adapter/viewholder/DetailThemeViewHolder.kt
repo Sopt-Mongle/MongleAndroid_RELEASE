@@ -14,7 +14,7 @@ class DetailThemeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
    fun bind(dataSentence: DataSentence) {
        tv_theme_sentence.text = dataSentence.sentence
-       tv_theme_curator.text = dataSentence.writer
+       tv_theme_curator.text = dataSentence.title // 여기 ㅎㅎㅎ 책 제목인듯,,
        tv_likes_num.text = dataSentence.likes.toString()
        tv_saves_num.text = dataSentence.saves.toString()
    }
