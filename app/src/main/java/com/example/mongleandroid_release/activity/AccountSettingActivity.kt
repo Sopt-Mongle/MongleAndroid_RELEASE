@@ -75,7 +75,8 @@ class AccountSettingActivity : AppCompatActivity() {
                             ) {
                                 Log.d("탈퇴 통신 성공", " ")
                                 if (response.isSuccessful) {
-
+                                    //현 액티비티 완전 종료
+                                    ActivityCompat.finishAffinity(this@AccountSettingActivity)
                                 }
                             }
 
@@ -86,8 +87,7 @@ class AccountSettingActivity : AppCompatActivity() {
 
                         }
                     )
-                    //현 액티비티 완전 종료
-                    ActivityCompat.finishAffinity(this)
+
                 }
             }
 
