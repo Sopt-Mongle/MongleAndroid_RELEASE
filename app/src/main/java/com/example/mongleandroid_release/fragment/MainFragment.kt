@@ -16,6 +16,8 @@ import com.example.mongleandroid_release.adapter.MainHotThemeAdapter
 import com.example.mongleandroid_release.adapter.MainNowHotCuratorAdapter
 import com.example.mongleandroid_release.adapter.MainPagerAdapter
 import com.example.mongleandroid_release.adapter.TodaySentenceAdapter
+import com.example.mongleandroid_release.change_gone
+import com.example.mongleandroid_release.change_visible
 import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.data.response.MainThemes
@@ -78,6 +80,14 @@ class MainFragment : Fragment() {
 
         img_main_search_btn.setOnClickListener {
             replaceFragment(SearchFragment())
+        }
+
+        // 그림자 박스
+        sv_main_fragment.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            change_visible(fragment_main_view_top)
+            if(scrollY == 0) {
+                change_gone(fragment_main_view_top)
+            }
         }
 
     }
