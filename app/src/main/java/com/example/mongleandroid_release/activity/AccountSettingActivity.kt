@@ -75,7 +75,11 @@ class AccountSettingActivity : AppCompatActivity() {
                             ) {
                                 Log.d("탈퇴 통신 성공", " ")
                                 if (response.isSuccessful) {
-                                    //현 액티비티 완전 종료
+                                    SharedPreferenceController.setAccessToken(this@AccountSettingActivity, "logout")
+                                    SharedPreferenceController.clearUser(this@AccountSettingActivity)
+                                    SharedPreferenceController.clearProfile(this@AccountSettingActivity)
+                                    val intent = Intent(this@AccountSettingActivity, LoginActivity::class.java)
+                                    startActivity(intent)
                                     ActivityCompat.finishAffinity(this@AccountSettingActivity)
                                 }
                             }
