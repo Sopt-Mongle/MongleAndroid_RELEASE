@@ -101,6 +101,13 @@ object SharedPreferenceController {
         return prefs.getString("NAME", "")
     }
 
+    fun clearProfile(context: Context) {
+        val prefs = context.getSharedPreferences(MY_PROFILE, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.clear()
+        editor.apply()
+    }
+
     // 온보딩 한번 체크
     fun setOnBoarding(context: Context, input: String) {
         val prefs = context.getSharedPreferences(ON_BOARDING, Context.MODE_PRIVATE)

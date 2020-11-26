@@ -40,11 +40,11 @@ class AccountSettingActivity : AppCompatActivity() {
 
         //로그 아웃 버튼 눌렀을 떄 dialog 띄우기
         logout.setOnClickListener {
-            SharedPreferenceController.setAccessToken(this, "logout")
             val dlg = DialogLogout(this)
             dlg.start()
             dlg.setOnClickListener { content ->
                 if(content == "로그아웃") {
+                    SharedPreferenceController.setAccessToken(this, "logout")
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     ActivityCompat.finishAffinity(this)
@@ -75,7 +75,12 @@ class AccountSettingActivity : AppCompatActivity() {
                             ) {
                                 Log.d("탈퇴 통신 성공", " ")
                                 if (response.isSuccessful) {
-
+                                    SharedPreferenceController.setAccessToken(this@AccountSettingActivity, "logout")
+                                    SharedPreferenceController.clearUser(this@AccountSettingActivity)
+                                    SharedPreferenceController.clearProfile(this@AccountSettingActivity)
+                                    val intent = Intent(this@AccountSettingActivity, LoginActivity::class.java)
+                                    startActivity(intent)
+                                    ActivityCompat.finishAffinity(this@AccountSettingActivity)
                                 }
                             }
 
@@ -86,8 +91,7 @@ class AccountSettingActivity : AppCompatActivity() {
 
                         }
                     )
-                    //현 액티비티 완전 종료
-                    ActivityCompat.finishAffinity(this)
+
                 }
             }
 
