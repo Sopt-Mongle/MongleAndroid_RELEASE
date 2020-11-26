@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.example.mongleandroid_release.R
+import com.example.mongleandroid_release.change_gone
 import com.example.mongleandroid_release.network.data.request.RequestWritingSentenceData
 import kotlinx.android.synthetic.main.activity_detail_theme.*
 import kotlinx.android.synthetic.main.activity_writing_sentence_in_theme.*
@@ -32,6 +33,8 @@ class WritingSentenceInThemeActivity : AppCompatActivity() {
         activity_theme_writing_sentence_btn_next.setOnClickListener {
             if(activity_theme_writing_sentence_et_sentence.text.isEmpty()) {
                 writing_sentence_step1_ll_warning.visibility = View.VISIBLE
+                change_gone(activity_theme_writing_sentence_tv_cnt) // 글자수 세는 카운팅 안보이게하기
+                change_gone(activity_theme_writing_sentence_tv_cnt2) // 글자수 카운팅 안보이게하기
                 activity_theme_writing_sentence_et_sentence.setBackgroundResource(R.drawable.et_area_red)
             } else { // 다음 액티비티로 넘어가기
                 Log.d("다음 버튼 누름!!!!!!!!!1", "다음다음다음다음")
