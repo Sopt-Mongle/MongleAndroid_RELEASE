@@ -62,7 +62,7 @@ class CuratorKeywordActivity : AppCompatActivity() {
                 }
             }
         })
-        
+
 
     }
 
