@@ -210,9 +210,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                                                 response: Response<ResponseDeleteSentenceWritten>
                                             ) {
                                                 if (response.isSuccessful) {
-                                                    //프래그먼트 새로고침
-
-
+                                                    //삭제 버튼 누르면 해당 액티비티 나가기
+                                                    finish()
                                                 }
                                             }
 
