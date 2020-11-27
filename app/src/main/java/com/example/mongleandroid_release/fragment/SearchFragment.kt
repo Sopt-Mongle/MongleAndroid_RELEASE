@@ -83,40 +83,10 @@ class SearchFragment : Fragment() {
         }
 
 
-        fragment_search_et_search.setOnFocusChangeListener { _, hasFocus ->
-            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
-            if(fragment_search_et_search.text.isNotEmpty()) {
-                fragment_search_et_search.clearText(fragment_search_btn_erase)
-            }
+        // x버튼 컨트롤러
+        btn_earse_control()
 
-            if(!hasFocus) {
-                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
-                change_gone(fragment_search_btn_erase)
-            }
-        }
 
-        fragment_search_et_search.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
-                fragment_search_et_search.isCursorVisible = true
-
-                fragment_search_et_search.clearText(fragment_search_btn_erase)
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
 
         // 뒤로가기 버튼 - 메인으로 이동
         fragment_search_btn_back_main.setOnClickListener {
@@ -139,6 +109,7 @@ class SearchFragment : Fragment() {
             if(fragment_search_et_search.text.isNotEmpty()) {
                 fragment_search_tv_no_keyword.visibility = GONE
             }
+
             recentKeyword()
         }
 
@@ -271,32 +242,30 @@ class SearchFragment : Fragment() {
 
     // 최근 키워드 전체 삭제
     private fun removeRecentKeyword() {
-        fragment_search_tv_delete.setOnClickListener {
-            fragment_search_rv_recent_keyword.visibility = GONE
+        fragment_search_rv_recent_keyword.visibility = GONE
 
-            requestToServer.service.requestSearchRecentDelete(
-                token = context?.let { SharedPreferenceController.getAccessToken(it) }
-            ).enqueue(
-                object : Callback<ResponseSearchRecentDeleteData> {
-                    override fun onFailure(call: Call<ResponseSearchRecentDeleteData>, t: Throwable) {
-                        Log.d("통신실패", "$t")
-                    }
+        requestToServer.service.requestSearchRecentDelete(
+            token = context?.let { SharedPreferenceController.getAccessToken(it) }
+        ).enqueue(
+            object : Callback<ResponseSearchRecentDeleteData> {
+                override fun onFailure(call: Call<ResponseSearchRecentDeleteData>, t: Throwable) {
+                    Log.d("통신실패", "$t")
+                }
 
-                    override fun onResponse(
-                        call: Call<ResponseSearchRecentDeleteData>,
-                        response: Response<ResponseSearchRecentDeleteData>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.d("최근 검색어 삭제", response.body()!!.message)
-                            fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
-                            searchRecentAdapter.notifyDataSetChanged()
-                        }
+                override fun onResponse(
+                    call: Call<ResponseSearchRecentDeleteData>,
+                    response: Response<ResponseSearchRecentDeleteData>
+                ) {
+                    if (response.isSuccessful) {
+                        Log.d("최근 검색어 삭제", response.body()!!.message)
+                        fragment_search_rv_recent_keyword.adapter = searchRecentAdapter
+                        searchRecentAdapter.notifyDataSetChanged()
                     }
                 }
-            )
+            }
+        )
 
-            fragment_search_tv_no_keyword.visibility = VISIBLE
-        }
+        fragment_search_tv_no_keyword.visibility = VISIBLE
     }
 
 
@@ -345,10 +314,57 @@ class SearchFragment : Fragment() {
 
     }
 
+    private fun btn_earse_control() {
+
+        fragment_search_et_search.setOnFocusChangeListener { _, hasFocus ->
+            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            if(fragment_search_et_search.text.isNotEmpty()) {
+                fragment_search_et_search.clearText(fragment_search_btn_erase)
+            } else {
+                change_gone(fragment_search_btn_erase)
+            }
+
+            if(!hasFocus) {
+                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
+                change_gone(fragment_search_btn_erase)
+            }
+        }
+
+        fragment_search_et_search.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+                fragment_search_et_search.isCursorVisible = true
+
+                if(fragment_search_et_search.text.isNotEmpty()) {
+                    fragment_search_et_search.clearText(fragment_search_btn_erase)
+                } else {
+                    change_gone(fragment_search_btn_erase)
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+    }
+
     // 검색결과로 이동
     fun goResult() {
 
         hideFocus()
+
+        btn_earse_control()
 
         change_gone(fragment_search_btn_back_main)
         change_visible(fragment_search_btn_back_search)

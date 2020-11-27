@@ -178,6 +178,7 @@ class JoinStep3Activity : AppCompatActivity() {
             dlg.dialog_spammail()
             dlg.setOnOKClickedListener { content ->
                 if(content == "재전송") {
+                    repeatCodeToast()
                     startTimer()
                     authUser()
                 }
@@ -187,13 +188,7 @@ class JoinStep3Activity : AppCompatActivity() {
 
         // 재전송 버튼
         activity_join_step3_btn_repeat.setOnClickListener {
-            val customToast = layoutInflater.inflate(R.layout.toast_code_repeat, null)
-            val toast = Toast(applicationContext)
-            toast.duration = Toast.LENGTH_SHORT
-            toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
-            toast.view = customToast
-            toast.show()
-
+            repeatCodeToast()
             startTimer()
             authUser()
 
@@ -262,6 +257,15 @@ class JoinStep3Activity : AppCompatActivity() {
 
         showEmpty()
 
+    }
+
+    private fun repeatCodeToast() {
+        val customToast = layoutInflater.inflate(R.layout.toast_code_repeat, null)
+        val toast = Toast(applicationContext)
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+        toast.view = customToast
+        toast.show()
     }
 
     private fun authUser() {
@@ -347,6 +351,7 @@ class JoinStep3Activity : AppCompatActivity() {
             dlg.dialog_timeout()
             dlg.setOnOKClickedListener { content ->
                 if(content == "재전송") {
+                    repeatCodeToast()
                     startTimer()
                     authUser()
                 }

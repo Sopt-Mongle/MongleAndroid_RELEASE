@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activity.CuratorKeywordActivity">
 
+    <View
+        android:id="@+id/activity_curator_keyword_view_top"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:background="@drawable/topbar_gradient"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_curator_keyword_topbar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_curator_keyword_topbar"
         android:layout_width="match_parent"
@@ -48,16 +58,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/activity_curator_keyword_view_top"
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:background="@drawable/topbar_gradient"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_curator_keyword_topbar" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_curator_keyword"
         android:layout_width="0dp"
@@ -71,7 +71,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_curator_keyword_topbar"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_search_curator" />
+        tools:listitem="@layout/item_search_curator" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <ImageView
         android:id="@+id/imageView56"
