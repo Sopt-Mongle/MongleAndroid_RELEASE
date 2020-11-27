@@ -202,7 +202,8 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                                                 response: Response<ResponseDeleteSentenceWritten>
                                             ) {
                                                 if (response.isSuccessful) {
-                                                    //프래그먼트 새로고침
+                                                    //액티비티 나가기
+                                                    finish()
 
 
                                                 }
