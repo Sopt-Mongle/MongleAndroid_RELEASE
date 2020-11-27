@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.mongleandroid_release.dialog.DialogLogin
 import com.example.mongleandroid_release.R
 import com.example.mongleandroid_release.change_gone
@@ -21,8 +22,13 @@ import com.example.mongleandroid_release.network.RequestToServer
 import com.example.mongleandroid_release.network.SharedPreferenceController
 import com.example.mongleandroid_release.network.customEnqueue
 import com.example.mongleandroid_release.network.data.request.RequestLoginData
+import com.example.mongleandroid_release.network.data.response.ResponseMainLibraryData
 import kotlinx.android.synthetic.main.activity_join_step3.*
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_profile.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
@@ -98,6 +104,9 @@ class LoginActivity : AppCompatActivity() {
                         SharedPreferenceController.setMail(this, activity_login_et_email.text.toString())
                         SharedPreferenceController.setPasswd(this, activity_login_et_pass.text.toString())
 
+                        // 이름 세팅
+                        setProfile()
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -170,6 +179,31 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun setProfile() {
+        requestToServer.service.lookLibraryProfile(
+            token = SharedPreferenceController.getAccessToken(this)
+        ).enqueue(object : Callback<ResponseMainLibraryData> {
+            override fun onResponse(
+                call: Call<ResponseMainLibraryData>,
+                response: Response<ResponseMainLibraryData>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.data.isNullOrEmpty()) {
+
+                    } else {
+
+                        SharedPreferenceController.setName(this@LoginActivity, response.body()!!.data[0].name)
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseMainLibraryData>, t: Throwable) {
+                Log.d("프로필 받아오기 실패", "$t")
+            }
+        })
     }
 
     // edittext 지우는 x버튼
