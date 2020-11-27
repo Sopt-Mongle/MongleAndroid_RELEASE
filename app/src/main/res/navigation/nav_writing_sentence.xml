@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/writing_sentence_step1_fragment"
-        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep1Fragment"
+        android:name="com.mongle.mongleandroid_release.fragment.WritingSentenceStep1Fragment"
         tools:layout="@layout/writing_sentence_step1">
         <action
             android:id="@+id/action_writing_step1_fg_to_writing_step2_fg"
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/writing_sentence_step2_fragment"
-        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep2Fragment"
+        android:name="com.mongle.mongleandroid_release.fragment.WritingSentenceStep2Fragment"
         tools:layout="@layout/writing_sentence_step2">
         <action
             android:id="@+id/action_writing_step2_fg_to_writing_step3_fg"
@@ -63,7 +63,7 @@
 
     <fragment
         android:id="@+id/writing_sentence_step3_fragment"
-        android:name="com.example.mongleandroid_release.fragment.WritingSentenceStep3Fragment"
+        android:name="com.mongle.mongleandroid_release.fragment.WritingSentenceStep3Fragment"
         tools:layout="@layout/writing_sentence_step3">
         <action
             android:id="@+id/action_writing_step3_fg_to_writing_step2_fg"
@@ -88,7 +88,7 @@
 
     <fragment
         android:id="@+id/writing_sentence_finish_fragment"
-        android:name="com.example.mongleandroid_release.fragment.WritingSentenceFinishFragment"
+        android:name="com.mongle.mongleandroid_release.fragment.WritingSentenceFinishFragment"
         tools:layout="@layout/writing_sentence_finish">
         <argument
             android:name="sentenceIdx"
@@ -100,7 +100,7 @@
 
     <fragment
         android:id="@+id/writing_sentence_book_search_fragment"
-        android:name="com.example.mongleandroid_release.fragment.WritingSentenceBookSearchFragment"
+        android:name="com.mongle.mongleandroid_release.fragment.WritingSentenceBookSearchFragment"
         tools:layout="@layout/writing_sentence_book_search">
         <action
             android:id="@+id/action_writing_sentence_book_search_fragment_to_writing_sentence_step2_fragment"
@@ -111,7 +111,7 @@
 
     <fragment
         android:id="@+id/writing_sentence_theme_search_fragment"
-        android:name="com.example.mongleandroid_release.fragment.WritingSentenceThemeSearchFragment"
+        android:name="com.mongle.mongleandroid_release.fragment.WritingSentenceThemeSearchFragment"
         tools:layout="@layout/writing_sentence_theme_search">
         <action
             android:id="@+id/action_writing_sentence_theme_search_fragment_to_writing_sentence_step3_fragment"

@@ -1,0 +1,272 @@
+package com.mongle.mongleandroid_release.network
+
+import com.mongle.mongleandroid_release.network.data.ResponseReportSentence
+import com.mongle.mongleandroid_release.network.data.response.ResponseSentenceLikeNumData
+import com.mongle.mongleandroid_release.network.data.request.*
+import com.mongle.mongleandroid_release.network.data.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.http.*
+
+interface RequestInterface {
+
+    //내서재 메인 프로필 조회
+    @GET("/my/profile")
+    fun lookLibraryProfile(
+        @Header("token") token: String?
+    ) : Call<ResponseMainLibraryData>
+
+    //내서재 테마 조회
+    @GET("/my/theme")
+    fun lookLibraryThema(
+        @Header("token") token: String?
+    ) : Call<ResponseLibraryThemeData>
+
+    //내서재 문장 조회
+    @GET("/my/sentence")
+    fun lookLibrarySentence(
+        @Header("token") token: String?
+    ) : Call<ResponseLibrarySentenceData>
+
+    //내서재 구독 조회
+    @GET("/my/subscribe")
+    fun lookLibraryCurator(
+        @Header("token") token: String?
+    ) : Call<ResponseLibraryCuratorData>
+
+    /* 큐레이터 */
+    // 큐레이터 구독 / 취소
+    @PUT("/curator/{followedIdx}")
+    fun getFollowIdx(
+        @Header("token") token: String?,
+        @Path("followedIdx") params: Int
+    ) : Call<ResponseCuratorFollowedData>
+
+    // 추천 큐레이터
+    @GET("/curator/recommend")
+    fun getRecommendCurator() : Call<ResponseRecommendCuratorData>
+
+    // 키워드 큐레이터 리스트
+    @GET("/curator/{keywordIdx}/keyword")
+    fun getCuratorKeyword(
+        @Header("token") token: String?,
+        @Path("keywordIdx") params: Int
+    ) : Call<ResponseCuratorKeywordData>
+
+    // 테마 속 큐레이터
+    @GET("/curator/themeInCurator")
+    fun requestCuratorInThemeData(
+        @Header("token") token: String?
+    ) : Call<ResponseCuratorInThemeData>
+
+    /* 로그인, 회원가입 */
+    // 로그인
+    @POST("/users/signin")
+    fun requestLogin(@Body body: RequestLoginData) : Call<ResponseLoginData>
+
+    // 중복 확인
+    @POST("/users/duplicate")
+    fun requestDuplicate(@Body body : RequestDuplicateData) : Call<ResponseDuplicateData>
+
+    // 회원가입
+    @POST("/users/signup")
+    fun requestJoin(@Body body: RequestJoinData) : Call<ResponseJoinData>
+
+    // 인증 메일 전송
+    @POST("/users/auth")
+    fun requestCode(@Body body: RequestCodeData) : Call<ResponseCodeData>
+
+    /* 검색 */
+    // 검색 - 최근 키워드
+    @GET("/search/recent")
+    fun requestSearchRecent(
+        @Header("token") token: String?
+    ) : Call<ResponseSearchRecentData>
+
+    // 검색 - 최근 키워드 전체 삭제
+    @DELETE("/search/recent")
+    fun requestSearchRecentDelete(
+        @Header("token") token: String?
+    ) : Call<ResponseSearchRecentDeleteData>
+
+    // 검색 - 추천 키워드
+    @GET("/search/recommend")
+    fun getRecommendKeyword() : Call<ResponseSearchRecommendData>
+
+    // 테마 검색
+    @GET("/search/theme")
+    fun requestSearchTheme(
+        @Header("token") token: String?,
+        @Query("words") words: String
+    ) : Call<ResponseSearchThemeData>
+
+    // 문장 검색
+    @GET("/search/sentence")
+    fun requestResultSentenceData(
+        @Query("words") words: String
+    ) : Call<ResponseSearchSentenceData>
+
+    // 큐레이터 검색
+    @GET("/search/curator")
+    fun requestResultCuratorData(
+        @Header("token") token: String?,
+        @Query("words") words: String
+    ) : Call<ResponseSearchCuratorData>
+
+    //테마 만들기
+    @POST("/post/theme")
+    fun RequestWritingTheme(@Header("token") token: String?, @Body body: RequestWritingThemeData) : Call<ResponseWritingThemeData>
+
+    //문장 올리기
+    @POST("/post/sentence")
+    fun RequestWritingSentence(@Header("token") token: String?, @Body body: RequestWritingSentenceData) : Call<ResponseWritingSentenceData>
+
+    //제목으로 책 검색
+    @GET("/post/bookSearch")
+    fun RequestWritingSentenceBookSearch(
+        @Query("query") keyword: String
+    ) :Call<ResponseWritingSentenceBookSearchData>
+
+    //선택할 테마 목록 조회
+    @GET("/post/theme")
+    fun RequestWritingSentenceThemeSearch() :Call<ResponseWritingSentenceThemeSearchFirstData>
+
+    //테마 이미지 조희
+    @GET("/post/themeImg")
+    fun RequestWritingThemeImg( @Header("token") token: String?) : Call<ResponseWritingThemeImgData>
+
+    /* 메인 */
+    //메인 - Editor's Pick
+    @GET("/main/editorsPick")
+    fun RequestEditorsPick() : Call<ResponseEditorsPickData>
+
+    //메인 - 오늘의 문장 - 성공
+    @GET("/main/sentences")
+    fun RequestMainSentences(
+        @Header("token") token: String?
+    ) : Call<ResponseTodaySentenceData>
+
+    // 메인 - 지금 인기있는 큐레이터 목록 조회 - 성공
+    @GET("/main/curators")
+    fun GetMainQurators() : Call<ResponseMainNowHotData>
+
+    // 메인 - 오늘 하루 저장이 가장 많이 된 테마목록 조회 - 성공
+    @GET("/main/themes")
+    fun GetMainThemes(
+        @Header("token") token: String?
+    ) : Call<ResponseMainHotThemeData>
+
+    // 메인 - 문장을 기다리고 있는 테마 목록 조회
+    @GET("/main/waitThemes")
+    fun GetMainWaitThemes(
+        @Header("token") token: String?
+    ) : Call<ResponseMainHotThemeData>
+
+    // 메인 - 요즘 사람들이 많이 본 테마
+    @GET("/main/nowThemes")
+    fun GetMainNowThemes(
+        @Header("token") token: String?
+    ) : Call<ResponseMainHotThemeData>
+
+    //테마 상세 조회
+    @GET("/detail/theme/{themeIdx}")
+    fun GetDetailTheme(
+        @Header("token") token: String?,
+        @Path ("themeIdx") params: Int
+    ) : Call<ResponseThemeDetailData>
+
+    /* 설정 */
+    // 프로필 수정
+    @Multipart
+    @POST("/my/profile")
+    fun updateProfile(
+        @Header("token") token: String?,
+        @Part img: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("keywordIdx") keywordIdx: RequestBody,
+        @Part("introduce") introduce: RequestBody
+    ) : Call<ResponseUpdateProfileData>
+
+    // 비밀번호 변경
+    @PUT("/users/changePassword")
+    fun requestChangePassword(
+        @Header("token") token: String?,
+        @Body body: RequestChangePasswordData) : Call<ResponseChangePasswordData>
+
+    //문장 상세 조회
+    @GET("/detail/sentence/{sentenceIdx}")
+    fun GetDetailSentence(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceDetailData>
+
+    //문장 상세 조회 - 이 테마의 다른 문장
+    @GET("/detail/sentence/{sentenceIdx}/other")
+    fun GetDetailSentenceOtherThemeSentence(
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceDetailOtherThemeData>
+
+    //큐레이터 상세보기
+    @GET("/curator/{curatorIdx}")
+    fun CuratorInformation(
+        @Header("token") token: String?,
+        @Path("curatorIdx") params: Int?
+    ) : Call<ResponseCuratorInformationData>
+
+    // 테마 북마크
+    @PUT("/detail/theme/{themeIdx}/bookmark")
+    fun putThemeBookmarkNum(
+        @Header("token") token: String?,
+        @Path("themeIdx") params: Int
+    ) : Call<ResponseThemeBookmarkNumData>
+
+    // 문장 좋아요 누르기
+    @PUT("/detail/sentence/{sentenceIdx}/like")
+    fun PutsentenceLikeNum(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceLikeNumData>
+
+    // 문장 북마크 누르기
+    @PUT("/detail/sentence/{sentenceIdx}/bookmark")
+    fun PutsentenceBookmarkNum(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseSentenceBookmarkNumData>
+
+    //내가 쓴 문장 수정
+    @PUT("/my/{sentenceIdx}")
+    fun ModifySentenceWritten(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int,
+        @Body body: RequestModifySentenceData
+    ) : Call<ResponseModifySentenceWrittenData>
+
+    //내가 쓴 문장 삭제
+    @DELETE("/my/{sentenceIdx}")
+    fun DeleteSentenceWritten(
+        @Header("token") token: String?,
+        @Path("sentenceIdx") params: Int
+    ) : Call<ResponseDeleteSentenceWritten>
+
+    // 문장 신고하기
+    @POST("/detail/report")
+    fun ReportSentence(
+        @Header("token") token: String?,
+        @Body body: RequestReportSentence
+    ) : Call<ResponseReportSentence>
+
+
+    //회원 탈퇴
+    //위와 같이 @DELETE 어쩌구의 형식으로 가지고 가면
+    // Non-body HTTP method cannot contain @Body or @TypedOutput
+    // 이러한 오류가 난다 그래서
+    // @HTTP(method = "DELETE", path = "/job/deletejob", hasBody = true)
+    // 이렇게 사용해야 함
+    @HTTP(method = "DELETE", path = "/users/withdraw", hasBody = true)
+    fun QuitUser(
+        @Header("token") token: String?,
+        @Body body : RequestQuitUserData
+    ) : Call<ResponseQuitUserData>
+}

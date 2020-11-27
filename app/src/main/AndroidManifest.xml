@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.mongleandroid_release">
+    package="com.mongle.mongleandroid_release">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,51 +19,51 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.OpenSourceDetailActivity"></activity>
-        <activity android:name=".activity.ModifyLibraryWrittenSentenceActivity" />
-        <activity android:name=".activity.ThemeWritingSentenceFinishActivity" />
-        <activity android:name=".activity.OnBoardingActivity" />
-        <activity android:name=".activity.WritingSentenceInThemeActivity"
+        <activity android:name="com.mongle.mongleandroid_release.activity.OpenSourceDetailActivity"></activity>
+        <activity android:name="com.mongle.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.ThemeWritingSentenceFinishActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.OnBoardingActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.WritingSentenceInThemeActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".activity.ChangePasswordActivity" />
-        <activity android:name=".activity.AccountSettingActivity" />
-        <activity android:name=".activity.SplashActivity">
+        <activity android:name="com.mongle.mongleandroid_release.activity.ChangePasswordActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.AccountSettingActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.OpenSourceActivity" />
-        <activity android:name=".activity.ProfileActivity" />
-        <activity android:name=".activity.CuratorInfoActivity" />
-        <activity android:name=".activity.SentenceDetailNoThemeActivity" />
-        <activity android:name=".activity.ServiceTermsActivity" />
-        <activity android:name=".activity.ServicePolicyActivity" />
-        <activity android:name=".activity.SentenceDetailViewActivity" />
-        <activity android:name=".activity.ThemeWritingSentenceBookActivity" />
-        <activity android:name=".activity.ThemeWritingSentenceBookSearchActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.OpenSourceActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.ProfileActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.CuratorInfoActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.SentenceDetailNoThemeActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.ServiceTermsActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.ServicePolicyActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.SentenceDetailViewActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.ThemeWritingSentenceBookActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.ThemeWritingSentenceBookSearchActivity" />
         <activity
-            android:name=".activity.DetailThemeActivity"
+            android:name="com.mongle.mongleandroid_release.activity.DetailThemeActivity"
             android:label="@string/title_activity_detail_theme" />
-        <activity android:name=".activity.CuratorKeywordActivity" />
-        <activity android:name=".activity.SettingDeveloperInfoActivity" />
-        <activity android:name=".activity.SettingVersionInfoActivity" />
-        <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".activity.LibraryActivity" />
-        <activity android:name=".activity.JoinFinishActivity" />
-        <activity android:name=".activity.PrivacyTermsActivity" />
-        <activity android:name=".activity.JoinStep2Activity" />
-        <activity android:name=".activity.JoinStep1Activity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.CuratorKeywordActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.SettingDeveloperInfoActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.SettingVersionInfoActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.SettingActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.LibraryActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.JoinFinishActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.PrivacyTermsActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.JoinStep2Activity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.JoinStep1Activity" />
         <activity
-            android:name=".activity.JoinStep3Activity"
+            android:name="com.mongle.mongleandroid_release.activity.JoinStep3Activity"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.mongle.mongleandroid_release.activity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activity.WritingSentenceActivity" />
-        <activity android:name=".activity.WritingThemeActivity" />
-        <activity android:name=".activity.MainActivity"
+        <activity android:name="com.mongle.mongleandroid_release.activity.WritingSentenceActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.WritingThemeActivity" />
+        <activity android:name="com.mongle.mongleandroid_release.activity.MainActivity"
             android:windowSoftInputMode="adjustNothing"/>
     </application>
 
