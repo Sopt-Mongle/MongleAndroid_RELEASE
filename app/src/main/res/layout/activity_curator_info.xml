@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.mongleandroid_release.util.NewScrollView
+    <com.mongle.mongleandroid_release.util.NewScrollView
         android:id="@+id/main_scroll_view_cura_info"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -258,7 +258,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.example.mongleandroid_release.util.NonSwipeableViewPager
+            <com.mongle.mongleandroid_release.util.NonSwipeableViewPager
                 android:id="@+id/vp_curator_info"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
@@ -270,6 +270,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.example.mongleandroid_release.util.NewScrollView>
+    </com.mongle.mongleandroid_release.util.NewScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

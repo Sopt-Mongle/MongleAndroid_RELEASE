@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.mongleandroid_release.util.NewScrollView
+    <com.mongle.mongleandroid_release.util.NewScrollView
         android:id="@+id/main_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -138,7 +138,7 @@
 
             </com.google.android.material.tabs.TabLayout>
 
-            <com.example.mongleandroid_release.util.CustomViewPager
+            <com.mongle.mongleandroid_release.util.CustomViewPager
                 android:id="@+id/vp_library"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
@@ -150,6 +150,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.example.mongleandroid_release.util.NewScrollView>
+    </com.mongle.mongleandroid_release.util.NewScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
