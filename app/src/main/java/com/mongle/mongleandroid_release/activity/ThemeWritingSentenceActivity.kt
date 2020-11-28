@@ -11,7 +11,7 @@ import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.change_gone
 import kotlinx.android.synthetic.main.activity_writing_sentence_in_theme.*
 
-class WritingSentenceInThemeActivity : AppCompatActivity() {
+class ThemeWritingSentenceActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

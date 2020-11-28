@@ -76,9 +76,9 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
 //            } else{
 //                // 서버 통신
 //                //sentenceInThemePost()
-//                WritingSentenceInThemeActivity.writingSentenceInThemeData.title = activity_theme_writing_sentence_book_tv_title.text.toString()
-//                WritingSentenceInThemeActivity.writingSentenceInThemeData.author = activity_theme_writing_sentence_book_v_author.text.toString()
-//                WritingSentenceInThemeActivity.writingSentenceInThemeData.publisher = activity_theme_writing_sentence_book_v_publisher.text.toString()
+//                ThemeWritingSentenceActivity.writingSentenceInThemeData.title = activity_theme_writing_sentence_book_tv_title.text.toString()
+//                ThemeWritingSentenceActivity.writingSentenceInThemeData.author = activity_theme_writing_sentence_book_v_author.text.toString()
+//                ThemeWritingSentenceActivity.writingSentenceInThemeData.publisher = activity_theme_writing_sentence_book_v_publisher.text.toString()
 //
 //                val intent = Intent(this, ThemeWritingSentenceFinishActivity::class.java )
 //                startActivity(intent)
