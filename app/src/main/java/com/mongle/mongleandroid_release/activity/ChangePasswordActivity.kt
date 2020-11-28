@@ -43,6 +43,7 @@ class ChangePasswordActivity : AppCompatActivity() {
                 change_gone(tv_now_password_valid)
                 change_gone(tv_now_password_nomatch)
             } else if(SharedPreferenceController.getPasswd(this) != et_now_password.text.toString()) {
+                et_now_password.background = resources.getDrawable(R.drawable.et_area_red, null)
                 change_visible(img_now_password_warning)
                 change_visible(tv_now_password_nomatch)
             }
@@ -134,6 +135,7 @@ class ChangePasswordActivity : AppCompatActivity() {
 
             // 현재 비밀번호 확인
             if(SharedPreferenceController.getPasswd(this) != et_now_password.text.toString()) {
+                et_now_password.background = resources.getDrawable(R.drawable.et_area_red, null)
                 change_visible(img_now_password_warning)
                 change_visible(tv_now_password_nomatch)
             }

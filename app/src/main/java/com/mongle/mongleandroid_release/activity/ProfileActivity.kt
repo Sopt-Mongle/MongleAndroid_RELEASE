@@ -504,6 +504,7 @@ class ProfileActivity : AppCompatActivity() {
                 response: Response<ResponseUpdateProfileData>
             ) {
                 if (response.isSuccessful) {
+                    finish()
                     val customToast = layoutInflater.inflate(R.layout.toast_update_profile, null)
                     val toast = Toast(applicationContext)
                     toast.duration = Toast.LENGTH_SHORT
