@@ -32,6 +32,7 @@ class SettingActivity : AppCompatActivity() {
         }
 
         sb_setting_push.setOnClickListener {
+            sb_setting_push.isChecked = false
             val customToast = layoutInflater.inflate(R.layout.toast_ready, null)
             val toast = Toast(applicationContext)
             toast.duration = Toast.LENGTH_SHORT
