@@ -50,40 +50,49 @@
 
     </FrameLayout>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <View
+        android:id="@+id/main_activity_blur"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#aa000000"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_FL" />
+
+    <TextView
         android:id="@+id/main_activity_FAB_tm"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_above="@+id/main_activity_FAB_main"
+        android:layout_height="wrap_content"
         android:background="@drawable/fab_sub"
-        android:backgroundTint="@color/white"
-        android:text=" 테마 만들기"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:text="테마 만들기"
         android:textSize="16dp"
-        app:fabSize="normal"
+        android:textColor="@color/black"
+        android:paddingVertical="9dp"
+        android:paddingHorizontal="18dp"
+        android:gravity="center"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/main_activity_FAB_main"
         android:visibility="visible"/>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <TextView
         android:id="@+id/main_activity_FAB_st"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_above="@+id/main_activity_FAB_main"
+        android:layout_height="wrap_content"
         android:background="@drawable/fab_sub"
-        android:backgroundTint="@color/white"
-        android:text=" 문장 쓰기"
+        android:text="문장 쓰기"
         android:textSize="16dp"
-        app:borderWidth="0dp"
+        android:textColor="@color/black"
+        android:paddingVertical="9dp"
+        android:paddingHorizontal="18dp"
         android:gravity="center"
-        app:fabSize="normal"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/main_activity_FAB_main"
         android:visibility="visible"/>
 
 
@@ -109,18 +118,6 @@
         />
 
 
-    <View
-        android:id="@+id/main_activity_blur"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#aa000000"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_activity_FL"
-
-        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

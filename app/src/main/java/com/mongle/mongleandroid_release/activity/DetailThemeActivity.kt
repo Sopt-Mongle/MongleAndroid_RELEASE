@@ -24,8 +24,6 @@ import com.mongle.mongleandroid_release.network.data.response.ResponseThemeBookm
 import com.mongle.mongleandroid_release.network.data.response.ResponseThemeDetailData
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_detail_theme.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,7 +52,7 @@ class DetailThemeActivity : AppCompatActivity() {
                 dlg.start()
 
             }else{
-                val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+                val intent = Intent(this@DetailThemeActivity, ThemeWritingSentenceActivity::class.java)
                 intent.putExtra("param", tv_main_theme_title.text.toString())
 
                 startActivity(intent)
@@ -197,7 +195,7 @@ class DetailThemeActivity : AppCompatActivity() {
 
                             // 테마에 문장 쓰러 가기
 //                            img_writing_sentence_in_theme_btn.setOnClickListener {
-//                                val intent = Intent(this@DetailThemeActivity, WritingSentenceInThemeActivity::class.java)
+//                                val intent = Intent(this@DetailThemeActivity, ThemeWritingSentenceActivity::class.java)
 //                                intent.putExtra("param", response.body()!!.data!!.theme[0].themeIdx)
 //                            }
                         }

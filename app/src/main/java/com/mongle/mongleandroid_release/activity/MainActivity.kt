@@ -126,10 +126,8 @@ class MainActivity : AppCompatActivity() {
             main_activity_FAB_st.startAnimation(fab_open)
             main_activity_FAB_st.visibility = View.VISIBLE
             main_activity_FAB_tm.visibility = View.VISIBLE
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -240f)
-                .apply { duration = 270 }.start()
-            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -390f).apply { start() }
-//            main_activity_FAB_main.setImageResource(R.drawable.ic_close)
+            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -340f).apply { duration = 270 }.start()
+            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -200f).apply { start() }
             ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
 
             main_activity_blur.visibility = View.VISIBLE

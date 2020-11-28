@@ -13,7 +13,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.activity.MainActivity
-import com.mongle.mongleandroid_release.activity.ThemeWritingSentenceBookActivity
+import com.mongle.mongleandroid_release.activity.ThemeWritingSentenceActivity
 import com.mongle.mongleandroid_release.activity.WritingThemeActivity
 import com.mongle.mongleandroid_release.network.RequestToServer
 import com.mongle.mongleandroid_release.network.SharedPreferenceController
@@ -75,7 +75,8 @@ class DialogMakethemeCheck(context : Context) {
             }
             // 이 테마에 문장 쓰기
             act.writing_theme_finish_btn_write.setOnClickListener {
-                val intent = Intent(it.context , ThemeWritingSentenceBookActivity::class.java)
+                val intent = Intent(it.context , ThemeWritingSentenceActivity::class.java)
+                intent.putExtra("param",requestWritingThemeData.theme)
                 it.context.startActivity(intent)
                 act.finish()
             }
