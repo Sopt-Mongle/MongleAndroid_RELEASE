@@ -75,6 +75,11 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        requestSentenceData()
+    }
+
     // 문장 상세보기 뷰 통신
     private fun requestSentenceData() {
         requestToServer.service.GetDetailSentence(
@@ -181,9 +186,11 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
                             intent.putExtra("sentence", textView19_notheme.text.toString()) // 해당 문장 보내기
                             intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)
+                            change_gone(ccc_noTheme)
                         }
                         // 삭제 기능
                         delete_noTheme.setOnClickListener {
+                            change_gone(ccc_noTheme)
                             val dlg = DialogDeleteSentence(this@SentenceDetailNoThemeActivity)
                             dlg.start()
                             dlg.setOnClickListener { content ->

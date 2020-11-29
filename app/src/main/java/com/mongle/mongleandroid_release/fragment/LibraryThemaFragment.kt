@@ -40,39 +40,35 @@ class LibraryThemaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        libraryThemaAdapter = LibraryThemaAdapter(view.context)
-//        rv_library_thema.adapter = libraryThemaAdapter
-//        loadDatas()
-//        rv_library_thema.adapter = libraryThemaAdapter
 
-        requestLibraryThemeData()
 
         //클릭 시에 어댑터의 값만 바꿔주는 걸로 item 바꿀 수 있음.
         rdbtn_saved_thema.setOnClickListener {
             if (rdbtn_saved_thema.isChecked) {
-//                rv_library_sentence.adapter = librarySentenceAdapter
-//                loadDatas()
                 requestLibraryThemeData()
-
-            } else {
-
             }
         }
 
 
         rdbtn_making_thema.setOnClickListener {
             if (rdbtn_making_thema.isChecked) {
-//                rv_library_sentence.adapter = librarySentenceClickAdapter
                 requestLibraryThemeClickData()
-            } else {
-
-
             }
-
         }
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if(rdbtn_saved_thema.isChecked) {
+            rv_library_thema.removeAllViewsInLayout()
+            requestLibraryThemeData()
+        } else if(rdbtn_making_thema.isChecked) {
+            rv_library_thema.removeAllViewsInLayout()
+            requestLibraryThemeClickData()
+        }
+    }
 
     private fun requestLibraryThemeData() {
         requestToServer.service.lookLibraryThema(
@@ -89,10 +85,10 @@ class LibraryThemaFragment : Fragment() {
                         response: Response<ResponseLibraryThemeData>
                     ) {
                         if(response.isSuccessful) {
-                            Log.d("내서재 테마 조회", "${response.body()}")
-//                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
-//                                Log.d("내 서재 테마 null", "${response.body()}")
-//                            } else {
+                            Log.d("내서재 저장 테마 조회", "${response.body()!!.data!!.save}")
+                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
+                                Log.d("내 서재 테마 null", "${response.body()}")
+                            } else {
                                 libraryThemaAdapter = LibraryThemaAdapter(
                                     view!!.context,
                                     response.body()!!.data!!.save
@@ -115,7 +111,7 @@ class LibraryThemaFragment : Fragment() {
                                         }
                                     }
                                 })
-//                            }
+                            }
                         }
                     }
                 }
@@ -137,10 +133,10 @@ class LibraryThemaFragment : Fragment() {
                         response: Response<ResponseLibraryThemeData>
                     ) {
                         if(response.isSuccessful) {
-                            Log.d("내서재 테마 저장 조회", "${response.body()}")
-//                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
-//                                Log.d("내 서재 테마 저장 null", "${response.body()}")
-//                            } else {
+                            Log.d("내서재 만든 테마 조회", "${response.body()!!.data!!.write}")
+                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
+                                Log.d("내 서재 테마 저장 null", "${response.body()}")
+                            } else {
                                 libraryThemaClickAdapter = LibraryThemaClickAdapter(
                                     view!!.context,
                                     response.body()!!.data!!.write
@@ -163,7 +159,7 @@ class LibraryThemaFragment : Fragment() {
                                         }
                                     }
                                 })
-//                            }
+                            }
                         }
                     }
                 }

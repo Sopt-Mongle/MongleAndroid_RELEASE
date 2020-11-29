@@ -85,6 +85,12 @@ class SentenceDetailViewActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        requestSentenceDetail()
+    }
+
     // 문장 상세보기 데이터 서버 통신
     private fun requestSentenceDetail() {
         requestToServer.service.GetDetailSentence(
@@ -186,10 +192,12 @@ class SentenceDetailViewActivity : AppCompatActivity() {
                             intent.putExtra("sentence", textView19.text.toString()) // 해당 문장 보내기
                             intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)
+                            change_gone(ccc)
                         }
 
                         // 삭제 기능
                         delete.setOnClickListener { // 삭제 눌렀을 때
+                            change_gone(ccc)
                             //삭제 버튼 눌렀을 때 통하는 부분
                             val dlg = DialogDeleteSentence(this@SentenceDetailViewActivity)
                             dlg.start()

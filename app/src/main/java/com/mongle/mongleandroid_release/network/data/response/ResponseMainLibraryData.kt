@@ -13,5 +13,7 @@ data class MainLibrary (
     val img : String, //나의 프로필사진
     val introduce : String, //나의 큐레이터 소개 줄글
     val keyword : String, //나의 큐레이터 소개 키워드
-    val subscribe : Int //나를 구독하는 사람 수
+    val subscribe : Int, //나를 구독하는 사람 수
+    val themeCount : Int, //내가 쓰거나 구독한 테마 개수
+    val sentenceCount : Int //내가 쓰거나 구독한 문장 개수
 )
