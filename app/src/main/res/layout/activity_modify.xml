@@ -31,47 +31,67 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/img_back_sentence_modify" />
 
-    <EditText
-        android:id="@+id/et_sentence_modify"
-        android:layout_width="match_parent"
-        android:layout_height="277dp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/notosanscjkkr_regular"
-        android:includeFontPadding="false"
-        android:letterSpacing="-0.02"
-        android:background="@drawable/et_state_focused"
-        android:gravity="start"
-        android:maxLength="280"
-        android:paddingStart="14dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="9dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_sentence_modify" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sentence_modify">
 
-    <TextView
-        android:id="@+id/tv_sentence_modify_words"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:layout_marginTop="10dp"
-        android:textColor="#73c088"
-        android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@id/et_sentence_modify"
-        app:layout_constraintRight_toLeftOf="@id/tv_sentence_modify_words_max"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/tv_sentence_modify_words_max"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="/280"
-        android:textColor="#cbcbcb"
-        android:textSize="13sp"
-        app:layout_constraintTop_toTopOf="@id/tv_sentence_modify_words"
-        app:layout_constraintBottom_toBottomOf="@id/tv_sentence_modify_words"
-        app:layout_constraintRight_toRightOf="parent"/>
+            <EditText
+                android:id="@+id/et_sentence_modify"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@drawable/et_state_focused"
+                android:fontFamily="@font/notosanscjkkr_regular"
+                android:gravity="start"
+                android:includeFontPadding="false"
+                android:letterSpacing="-0.02"
+                android:maxLength="280"
+                android:paddingStart="14dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="9dp"
+                android:paddingBottom="16dp"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/tv_sentence_modify_words"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginTop="10dp"
+                android:textColor="#73c088"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@id/et_sentence_modify"
+                app:layout_constraintRight_toLeftOf="@id/tv_sentence_modify_words_max"/>
+
+            <TextView
+                android:id="@+id/tv_sentence_modify_words_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/280"
+                android:textColor="#cbcbcb"
+                android:textSize="13sp"
+                app:layout_constraintTop_toTopOf="@id/tv_sentence_modify_words"
+                app:layout_constraintBottom_toBottomOf="@id/tv_sentence_modify_words"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
     <TextView
         android:id="@+id/tv_modify_done"
