@@ -21,7 +21,14 @@ class ThemeWritingSentenceActivity : AppCompatActivity() {
         //테마 이름 받아오기
         activity_theme_writing_sentence_tv_themename.text = intent.getStringExtra("param")
         //테마 인덱스 받아오기
-        DetailThemeActivity.writingSentenceInThemeData.themeIdx = intent.getIntExtra("param2", 0)
+        val themeIdx_from_detail = intent.getIntExtra("themeIdx", 0)
+        val themeIdx_from_make = intent.getIntExtra("param2", 0)
+        if(themeIdx_from_detail != 0) {
+            DetailThemeActivity.writingSentenceInThemeData.themeIdx = themeIdx_from_detail
+        } else if(themeIdx_from_make != 0) {
+            DetailThemeActivity.writingSentenceInThemeData.themeIdx = themeIdx_from_make
+        }
+
 
         // X 아이콘 눌렀을 때
         activity_theme_writing_sentence_btn_out.setOnClickListener {

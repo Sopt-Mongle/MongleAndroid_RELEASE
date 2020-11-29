@@ -35,7 +35,7 @@ class DetailThemeActivity : AppCompatActivity() {
     }
 
     val requestToServer = RequestToServer
-
+    var themeIdx = 0
     private lateinit var detailThemeAdapter: DetailThemeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +54,7 @@ class DetailThemeActivity : AppCompatActivity() {
             }else{
                 val intent = Intent(this@DetailThemeActivity, ThemeWritingSentenceActivity::class.java)
                 intent.putExtra("param", tv_main_theme_title.text.toString())
-
+                intent.putExtra("themeIdx", themeIdx)
                 startActivity(intent)
             }
 
@@ -198,7 +198,7 @@ class DetailThemeActivity : AppCompatActivity() {
                             })
 
                             // 해당 테마 인덱스 저장
-                            writingSentenceInThemeData.themeIdx = response.body()!!.data!!.theme[0].themeIdx
+                            themeIdx = response.body()!!.data!!.theme[0].themeIdx
 
                             // 테마에 문장 쓰러 가기
 //                            img_writing_sentence_in_theme_btn.setOnClickListener {
