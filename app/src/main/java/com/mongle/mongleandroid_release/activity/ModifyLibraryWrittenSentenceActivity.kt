@@ -17,6 +17,7 @@ import com.mongle.mongleandroid_release.network.RequestToServer
 import com.mongle.mongleandroid_release.network.SharedPreferenceController
 import com.mongle.mongleandroid_release.network.data.request.RequestModifySentenceData
 import com.mongle.mongleandroid_release.network.data.response.ResponseModifySentenceWrittenData
+import com.mongle.mongleandroid_release.showKeyboard
 import kotlinx.android.synthetic.main.activity_modify.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +31,8 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modify)
+
+        et_sentence_modify.showKeyboard()
 
         // 뒤로 가기 버튼 눌렀을 때
         img_back_sentence_modify.setOnClickListener {
