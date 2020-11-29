@@ -42,6 +42,12 @@ class LibraryCuratorFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        rv_library_curator.removeAllViewsInLayout()
+        requestLibraryCuratorData()
+    }
+
     private fun requestLibraryCuratorData() {
         requestToServer.service.lookLibraryCurator(
             token = SharedPreferenceController.getAccessToken(requireView().context)

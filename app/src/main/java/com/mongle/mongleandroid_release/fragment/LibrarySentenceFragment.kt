@@ -49,147 +49,42 @@ class LibrarySentenceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-//        librarySentenceAdapter = LibrarySentenceAdapter(view.context)
-//        rv_library_sentence.adapter = librarySentenceAdapter
-        //        loadDatas()
-//        librarySentenceClickAdapter = LibrarySentenceClickAdapter(view.context)
-        //아래 코드까지 쓰면 최종적으로 리사이클러뷰에 불러들어오는 어댑터가 클릭 시 어댑터이기 때문에 초기값을 하나만 주기 위해 아래처럼 했다.
-//        rv_library_sentence.adapter = librarySentenceClickAdapter
-
-
-        requestLibrarySentenceData()
-
         //클릭 시에 어댑터의 값만 바꿔주는 걸로 item 바꿀 수 있음.
         rdbtn_saved_sentence.setOnClickListener {
             if (rdbtn_saved_sentence.isChecked) {
-//                rv_library_sentence.adapter = librarySentenceAdapter
-//                loadDatas()
-
                 requestLibrarySentenceData()
-            } else {
-
             }
         }
 
 
         rdbtn_making_sentence.setOnClickListener {
             if (rdbtn_making_sentence.isChecked) {
-//                rv_library_sentence.adapter = librarySentenceClickAdapter
                 requestLibrarySentenceClickData()
-
-
-            } else {
-
-
             }
 
         }
 
-        //수정, 삭제 버튼 눌렀을 때
-//        library_sentence_more.setOnClickListener {
-//
-//        }
-
-        //fragment 안에 있는 recyclerView안에 있는 item의 특정 ...버튼 누르면 EditSentenceActicity로 넘어가는
-//        library_sentence_more.setOnClickListener {
-//
-//            activity?.let {
-//                val intent = Intent(context, EditSentenceActivity::class.java)
-//                startActivity(intent) }
-//
-//        }
-
 
     }
 
+    // resume 됐을 때 데이터 갱신
+    override fun onResume() {
+        super.onResume()
 
-    //SearchFragment로 이동
-//    private fun replaceFragment(fragment: Fragment) {
-//        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-//        transaction.replace(R.id.main_activity_fg, fragment)
-//        transaction.commit()
-//
-//    }
+        if(rdbtn_saved_sentence.isChecked) {
+            Log.d("테스트", "저장 체크됨")
+            rv_library_sentence.removeAllViewsInLayout()
+            requestLibrarySentenceData()
+        } else if(rdbtn_making_sentence.isChecked) {
+            Log.d("테스트", "쓴거 체크됨")
+            rv_library_sentence.removeAllViewsInLayout()
+            requestLibrarySentenceClickData()
+
+        }
+    }
 
 
 
-
-
-
-//    private fun loadDatas() {
-//        librarySentenceData.apply {
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//            add(
-//                LibrarySentenceData(
-//                    tv_library_sentence_themename = "번아웃을 극복하고 싶을 때 봐야하는 문장",
-//                    tv_library_sentence_sentence = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔 했던 봄을 생각하면 마음이 섬찟해진다. ",
-//                    tv_item_library_sentence_username = "예스리"
-//                )
-//            )
-//
-//
-//        }
-//
-//
-//
-//        librarySentenceAdapter.data_sen = librarySentenceData
-//        librarySentenceAdapter.notifyDataSetChanged()
-//    }
 
     private fun requestLibrarySentenceData() {
         requestToServer.service.lookLibrarySentence(
@@ -206,10 +101,10 @@ class LibrarySentenceFragment : Fragment() {
                         response: Response<ResponseLibrarySentenceData>
                     ) {
                         if (response.isSuccessful) {
-                            Log.d("내 서재 문장 조회 성공", "${response.body()}")
-//                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
-//                            Log.d("내 서재 문장 조회 null", "${response.body()}")
-//                            } else {
+                            Log.d("내 서재 저장 문장 조회 성공", "${response.body()!!.data!!.save}")
+                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
+                                Log.d("내 서재 저장 문장 조회 null", "${response.body()}")
+                            } else {
                                 librarySentenceAdapter = LibrarySentenceAdapter(
                                     view!!.context,
                                     response.body()!!.data!!.save
@@ -235,12 +130,12 @@ class LibrarySentenceFragment : Fragment() {
                                         }
                                     }
                                 })
-//                            }
+                            }
                         }
 
                     }
-                }
-            )
+                })
+
     }
 
     private fun requestLibrarySentenceClickData() {
@@ -258,10 +153,10 @@ class LibrarySentenceFragment : Fragment() {
                         response: Response<ResponseLibrarySentenceData>
                     ) {
                         if (response.isSuccessful) {
-                            Log.d("내 서재 문장 클릭 조회 성공", "${response.body()}")
-//                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
-//                                Log.d("내 서재 문장 클릭 조회 null", "${response.body()}")
-//                            } else {
+                            Log.d("내 서재 쓴 문장 조회 성공", "${response.body()!!.data!!.write}")
+                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
+                                Log.d("내 서재 쓴 문장 클릭 조회 null", "${response.body()}")
+                            } else {
                                 librarySentenceClickAdapter = LibrarySentenceClickAdapter(
                                     view!!.context,
                                     response.body()!!.data!!.write
@@ -306,16 +201,6 @@ class LibrarySentenceFragment : Fragment() {
                                             "sentence",
                                             response.body()!!.data!!.write[position].sentence
                                         )
-                                        //LibraryFragment 새로고침
-//                                        var frg: Fragment? = null
-//                                        frg =
-//                                            supportFragmentManager().findFragmentByTag("Your_Fragment_TAG")
-//                                        val ft: FragmentTransaction =
-//                                            supportFragmentManager().beginTransaction()
-//                                        ft.detach(frg)
-//                                        ft.attach(frg)
-//                                        ft.commit()
-
 
                                         startActivity(intent)
 
@@ -346,7 +231,7 @@ class LibrarySentenceFragment : Fragment() {
                                                         ) {
                                                             if (response.isSuccessful) {
                                                                 //프래그먼트 새로고침
-
+                                                                requestLibrarySentenceClickData()
                                                             }
                                                         }
 
@@ -366,7 +251,7 @@ class LibrarySentenceFragment : Fragment() {
                                     }
                                 })
 
-//                            }
+                            }
 
                         }
 

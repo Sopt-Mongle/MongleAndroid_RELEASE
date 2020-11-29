@@ -104,6 +104,13 @@ class DetailThemeActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        requestThemeData()
+        requestMainThemeData()
+    }
+
+
     private fun requestThemeData() {
         requestToServer.service.GetDetailTheme(
             token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) },
@@ -214,7 +221,8 @@ class DetailThemeActivity : AppCompatActivity() {
             }
         )
     }
-// 리사이클러뷰 통신
+
+    // 리사이클러뷰 통신
     private fun requestMainThemeData() {
 
         requestToServer.service.GetDetailTheme(

@@ -48,60 +48,22 @@ class LibraryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-//        var themeNumWrite : Int = data_theme_write_num.size
-//        var themeNum : Int = data_theme_num.size
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_library, container, false)
 
     }
 
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        requestMyProfile()
-//    }
 
-    fun requestMyProfile(){
-        requestToServer.service.lookLibraryProfile(
-            token = SharedPreferenceController.getAccessToken(requireView().context)
-//            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjM2LCJuYW1lIjoi7ZWY7JiBMiIsImlhdCI6MTU5NDkxMTQzNiwiZXhwIjoxNTk1MDg0MjM2LCJpc3MiOiJtb25nbGUifQ.1QUSDWRk_C3bYxrR95qqD4AJNIKVz5P6EbAIhd58jsU"
-        )
-
-            .enqueue(
-                object : Callback<ResponseMainLibraryData> {
-                    override fun onFailure(call: Call<ResponseMainLibraryData>, t: Throwable) {
-                        Log.e("내 서재 통신 실패", "${t}")
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseMainLibraryData>,
-                        response: Response<ResponseMainLibraryData>
-                    ) {
-                        if (response.isSuccessful) {
-                            Log.e("내 서재 프로필 조회 성공", "${response.body()}")
-                            if(response.body()!!.data[0].img == null) {
-                                Glide.with(view!!.context).load(R.drawable.my_settings_profile_img_profile).into(img_library_profile)
-                            } else {
-                                Glide.with(view!!.context).load(response.body()!!.data[0].img).into(img_library_profile)
-                            }
-                            tx_library_username.text = response.body()!!.data[0].name
-                            tx_library_contents.text = response.body()!!.data[0].keyword
-                            tx_library_keyword.text = response.body()!!.data[0].introduce
-
-
-
-                        }
-                    }
-                }
-            )
+    override fun onResume() {
+        super.onResume()
+        requestMyProfile()
+        requestLibraryCuratorData()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         requestMyProfile()
-        requestLibraryThemeData()
-        requestLibrarySentenceData()
         requestLibraryCuratorData()
 
         //sticky header
@@ -139,24 +101,8 @@ class LibraryFragment : Fragment() {
 
         //저장된 테마/문장 + 만든 테마/쓴 문장, 큐레이터 수 배열의 길이를 구하면 될 것 같다.
 
-
-//        var themeNumSave : Int = data_theme_save_num.size
-//        var themeNumWrite : Int = data_theme_write_num.size
-
-//        var themeNum : Int = themeNumSave + themeNumWrite
-
-//        Log.d("태그", "내용 : "+themeNumWrite)
-
-//        var sentenceNum : Int = data_the_write_sentence.size
-//        var curatorNum : Int = data_the_write_curator.size
-
-//        txtUpper1.setText(themeNum.toString())
         txtDown1.setText("테마")
-
-//        txtUpper2.setText(sentenceNum.toString())
         txtDown2.setText("문장")
-
-//        txtUpper3.setText(curatorNum.toString())
         txtDown3.setText("큐레이터")
 
         libraryViewPager.setAdapter(adapter)
@@ -166,128 +112,46 @@ class LibraryFragment : Fragment() {
         libraryTabLayout.getTabAt(1)!!.customView = viewSecond
         libraryTabLayout.getTabAt(2)!!.customView = viewThird
 
-        /*libraryTabLayout.getTabAt(0)!!.setText("테마")
-        libraryTabLayout.getTabAt(1)!!.setText("문장")
-        libraryTabLayout.getTabAt(2)!!.setText("큐레이터")
-*/
-
 
     }
 
 
-
-    private fun requestLibraryThemeData() {
-        requestToServer.service.lookLibraryThema(
+    fun requestMyProfile(){
+        requestToServer.service.lookLibraryProfile(
             token = SharedPreferenceController.getAccessToken(requireView().context)
         )
+
             .enqueue(
-                object : Callback<ResponseLibraryThemeData> {
-                    override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
-                        Log.d("통신실패", "${t}")
+                object : Callback<ResponseMainLibraryData> {
+                    override fun onFailure(call: Call<ResponseMainLibraryData>, t: Throwable) {
+                        Log.e("내 서재 통신 실패", "${t}")
                     }
 
                     override fun onResponse(
-                        call: Call<ResponseLibraryThemeData>,
-                        response: Response<ResponseLibraryThemeData>
-                    ) {
-                        if(response.isSuccessful) {
-                            Log.d("내서재 테마 조회", "${response.body()}")
-                            //size 를 탭에 보내서 text로 받는 거는 null을 할 필요가 없음. 오히려 하면 동작 안함. 어쩌면 내 코드 문제 일지도 그러네 내 코드 문제네
-                            //size이기 떄문에 null값을 가질때 0인데 null로 처리됨.
-//                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
-//                                Log.d("내 서재 테마 null", "${response.body()}")
-//                            } else {
-                                data_theme_num =
-                                    response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
-                                txtUpper1.setText(data_theme_num.toString())
-//                            }
-                        }
-                    }
-                }
-            )
-    }
-
-//    private fun requestLibraryThemeClickData() {
-//        requestToServer.service.lookLibraryThema(
-//            token = SharedPreferenceController.getAccessToken(requireView().context)
-//        )
-//            .enqueue(
-//                object : Callback<ResponseLibraryThemeData> {
-//                    override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
-//                        Log.d("통신실패", "${t}")
-//                    }
-//
-//                    override fun onResponse(
-//                        call: Call<ResponseLibraryThemeData>,
-//                        response: Response<ResponseLibraryThemeData>
-//                    ) {
-//                        if(response.isSuccessful) {
-//                            Log.d("내서재 테마 저장 조회", "${response.body()}")
-//                            data_theme_write_num = response.body()!!.data!!.write.size + data_theme_save_num
-//                            txtUpper1.setText(data_theme_write_num.toString())
-//                        }
-//                    }
-//                }
-//            )
-//    }
-
-    private fun requestLibrarySentenceData() {
-        requestToServer.service.lookLibrarySentence(
-            token = SharedPreferenceController.getAccessToken(requireView().context)
-        )
-            .enqueue(
-                object : Callback<ResponseLibrarySentenceData> {
-                    override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
-                        Log.d("통신실패", "${t}")
-                    }
-
-                    override fun onResponse(
-                        call: Call<ResponseLibrarySentenceData>,
-                        response: Response<ResponseLibrarySentenceData>
+                        call: Call<ResponseMainLibraryData>,
+                        response: Response<ResponseMainLibraryData>
                     ) {
                         if (response.isSuccessful) {
-                            Log.d("내 서재 문장 조회", "${response.body()}")
-//                            if(response.body()!!.data!!.save.isNullOrEmpty() || response.body()!!.data!!.write.isNullOrEmpty()){
-//                                Log.d("내 서재 문장 조회 null", "${response.body()}")
-//
-//                            }
-//                            else{
-                            data_sentence_num = response.body()!!.data!!.save.size + response.body()!!.data!!.write.size
-                            txtUpper2.setText(data_sentence_num.toString())
-//                        }
+                            Log.e("내 서재 프로필 조회 성공", "${response.body()}")
+                            if(response.body()!!.data[0].img == null) {
+                                Glide.with(view!!.context).load(R.drawable.my_settings_profile_img_profile).into(img_library_profile)
+                            } else {
+                                Glide.with(view!!.context).load(response.body()!!.data[0].img).into(img_library_profile)
+                            }
+                            tx_library_username.text = response.body()!!.data[0].name
+                            tx_library_contents.text = response.body()!!.data[0].keyword
+                            tx_library_keyword.text = response.body()!!.data[0].introduce
+
+                            txtUpper1.text = response.body()!!.data[0].themeCount.toString()
+                            txtUpper2.text = response.body()!!.data[0].sentenceCount.toString()
+
 
                         }
-
                     }
                 }
             )
     }
 
-//    private fun requestLibrarySentenceClickData() {
-//        requestToServer.service.lookLibrarySentence(
-//            token = SharedPreferenceController.getAccessToken(requireView().context)
-//        )
-//            .enqueue(
-//                object : Callback<ResponseLibrarySentenceData> {
-//                    override fun onFailure(call: Call<ResponseLibrarySentenceData>, t: Throwable) {
-//                        Log.d("통신실패", "${t}")
-//                    }
-//
-//                    override fun onResponse(
-//                        call: Call<ResponseLibrarySentenceData>,
-//                        response: Response<ResponseLibrarySentenceData>
-//                    ) {
-//                        if (response.isSuccessful) {
-//                            Log.d("내 서재 문장 클릭 조회", "${response.body()}")
-//                            data_sentence_write_num = response.body()!!.data!!.write.size + data_sentence_save_num
-//                            txtUpper2.setText(data_sentence_write_num.toString())
-//
-//                        }
-//
-//                    }
-//                }
-//            )
-//    }
 
     private fun requestLibraryCuratorData() {
         requestToServer.service.lookLibraryCurator(
@@ -320,24 +184,6 @@ class LibraryFragment : Fragment() {
                 }
             )
     }
-
-//    private fun loadFragment(fragment: Fragment){
-//        val transaction = supportFragmentManager.beginTransaction()
-//        transaction.replace(R.id.fragment_library_view, fragment)
-//        transaction.disallowAddToBackStack()
-//        transaction.commit()
-//    }
-
-
-
-    // Fragment 새로고침
-//    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
-//        var ft: FragmentTransaction = fragmentManager.beginTransaction()
-//        ft.detach(fragment).attach(fragment).commit()
-//    }
-
-    // Fragment 클래스에서 사용 시
-//    refreshFragment(this, getFragmentManager())
 
 
 }

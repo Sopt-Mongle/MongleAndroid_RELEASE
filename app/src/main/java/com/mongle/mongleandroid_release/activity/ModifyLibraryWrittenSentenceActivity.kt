@@ -1,14 +1,18 @@
 package com.mongle.mongleandroid_release.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.dialog.DialogModifySentence
+import com.mongle.mongleandroid_release.fragment.LibrarySentenceFragment
 import com.mongle.mongleandroid_release.network.RequestToServer
 import com.mongle.mongleandroid_release.network.SharedPreferenceController
 import com.mongle.mongleandroid_release.network.data.request.RequestModifySentenceData
@@ -62,27 +66,13 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Log.d("내 서재 문장 수정 내용 보내기 통신 성공", " ")
 
-
-
-
-                        // 성공하면 다이얼로그 띄우고 확인 누르면 종료 시키기
-                        val dlg = DialogModifySentence(this@ModifyLibraryWrittenSentenceActivity)
-                        dlg.start()
-                        dlg.setOnClickListener { content ->
-                            if (content == "확인") {
-                                finish() //액티비티 종료하고
-                                // 프래그먼트 갱신
-                                var fmReload : Fragment? = supportFragmentManager.findFragmentById(R.id.fragment_library_view)
-                                val ft : FragmentTransaction = supportFragmentManager.beginTransaction()
-//                                    ft.replace(R.id.fragment_library_view, LibraryFragment())
-                                if (fmReload != null) {
-                                    ft.detach(fmReload)
-                                    ft.attach(fmReload)
-
-                                }
-                                    ft.commit()
-                            }
-                        }
+                        val customToast = layoutInflater.inflate(R.layout.toast_modify, null)
+                        val toast = Toast(applicationContext)
+                        toast.duration = Toast.LENGTH_SHORT
+                        toast.setGravity(Gravity.BOTTOM or Gravity.FILL_HORIZONTAL, 0, 0)
+                        toast.view = customToast
+                        toast.show()
+                        finish()
 
                     }
                 }
