@@ -56,9 +56,11 @@ class CuratorInfoActivity : AppCompatActivity() {
             header = cl_titleLayout
             stickListener = { _ ->
                 Log.d("LOGGER_TAG", "stickListener")
+                runOnUiThread { tv_curator_info_top_name.text = tv_curator_username.text }
             }
             freeListener = { _ ->
                 Log.d("LOGGER_TAG", "freeListener")
+                runOnUiThread { tv_curator_info_top_name.text = "" }
             }
         }
 
