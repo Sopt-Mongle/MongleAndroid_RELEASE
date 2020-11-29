@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.adapter.ItemDecoration
@@ -17,6 +19,7 @@ import com.mongle.mongleandroid_release.network.data.response.ResponseWritingSen
 import com.mongle.mongleandroid_release.showKeyboard
 import com.mongle.mongleandroid_release.unshowKeyboard
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_book_search.*
+import kotlinx.android.synthetic.main.activity_theme_writing_sentence_book_search.view.*
 import kotlinx.android.synthetic.main.item_writing_sentence_book_result.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,6 +56,27 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         theme_writing_sentence_book_search_btn_delete.setOnClickListener {
             theme_writing_sentence_book_search_et_search.setText("")
         }
+        // 키보드 엔터 눌렀을 때 검색되기
+        theme_writing_sentence_book_search_et_search.setOnKeyListener { v, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+                //키보드 제어
+                theme_writing_sentence_book_search_et_search.unshowKeyboard()
+
+                //검색 결과가 있으면
+                goNextPage(
+                    writing_sentence_book_search_cl_before,
+                    writing_sentence_book_search_cl_after
+                )
+                writing_sentence_book_search_rv.visibility = View.VISIBLE
+
+                //서버 데이타를 넣어줌
+                val bookSearchWord = theme_writing_sentence_book_search_et_search.text.toString()
+                theme_book_result = bookSearchWord.trim()
+                requestData(bookSearchWord)
+            }
+            true
+        }
+        goResult() // 검색 버튼 눌렀을 때!!!
 
         //포커스는 검색창에
         theme_writing_sentence_book_search_et_search.requestFocus()
@@ -82,6 +106,10 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         writing_sentence_book_search_rv.adapter = themeSentenceBookSearchAdapter
         writing_sentence_book_search_rv.addItemDecoration(ItemDecoration())
 
+
+    }
+
+    fun goResult() {
         // 검색 버튼 눌렀을 때
         theme_writing_sentence_book_search_btn_search.setOnClickListener {
 
@@ -89,7 +117,10 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
             theme_writing_sentence_book_search_et_search.unshowKeyboard()
 
             //검색 결과가 있으면
-            goNextPage(writing_sentence_book_search_cl_before, writing_sentence_book_search_cl_after)
+            goNextPage(
+                writing_sentence_book_search_cl_before,
+                writing_sentence_book_search_cl_after
+            )
             writing_sentence_book_search_rv.visibility = View.VISIBLE
 
             //서버 데이타를 넣어줌
@@ -98,8 +129,6 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
             requestData(bookSearchWord)
 
         }
-
-
     }
 
     private fun requestData(keyword: String) {
