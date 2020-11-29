@@ -115,8 +115,8 @@
 
         <ImageView
             android:id="@+id/img_item_library_sentence_usermark"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="11dp"
+            android:layout_height="11dp"
             android:layout_marginTop="11dp"
             android:layout_marginBottom="22dp"
             android:src="@drawable/my_sentence_bookmark_ic_curator_1"

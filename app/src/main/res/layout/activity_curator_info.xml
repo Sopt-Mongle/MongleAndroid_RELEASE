@@ -85,7 +85,7 @@
                     android:id="@+id/tx_curators_keyword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
+                    android:layout_marginTop="7dp"
                     android:fontFamily="@font/notosanscjkkr_regular"
                     android:gravity="center_horizontal"
                     android:includeFontPadding="false"
