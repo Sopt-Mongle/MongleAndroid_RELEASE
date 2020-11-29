@@ -39,8 +39,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
     lateinit var wrtingSentenceThemeSearchAdapter: WritingSentenceThemeSearchAdapter
     private var keyword: String = ""
     private var theme: String = ""
-    private var imgChk : Boolean = false
-    private var imgChked : Int = -1
+    private var imgChk: Boolean = false
+    private var imgChked: Int = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,10 +133,11 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         view.findViewById<TextView>(R.id.writing_sentence_theme_search_btn_next)
             .setOnClickListener {
 
-                if(imgChk){ // 테마를 선택함
+                if (imgChk) { // 테마를 선택함
 
                     // user reaction : 테마를 선택해주세요 ! 취소
-                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.GONE
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility =
+                        View.GONE
 
                     // step3로 이동
                     val action =
@@ -145,9 +146,10 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                         )
                     view.findNavController().navigate(action)
 
-                }else{
+                } else {
                     // user reaction : 테마를 선택하세요!
-                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility = View.VISIBLE
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_warning).visibility =
+                        View.VISIBLE
                 }
 
 
@@ -218,7 +220,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
 
 //                                  선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
-                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
+                                    theme =
+                                        view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
 
                                     // (/post/sentence) req data init (6/6):: themeIdx
                                     WritingSentenceActivity.writingSentenceData.themeIdx =
@@ -229,7 +232,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                         )
 
                                     // single selection impl
-                                    for(data in datas){
+                                    for (data in datas) {
                                         data.themeChked = false
                                     }
                                     imgChk = true
@@ -302,7 +305,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                             view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt).text =
                                 "총 " + body.data.size.toString() + "건"
                             // 위 두 가지 동작을 보이게 함
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_yes).visibility = View.VISIBLE
+                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_yes).visibility =
+                                View.VISIBLE
 
                             // 리사이클러뷰 클릭 리스너
                             wrtingSentenceThemeSearchAdapter.setItemClickListener(object :
@@ -317,7 +321,8 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                     Log.d("SSS", "테마 이미지 사 :: ${data.themeImgIdx}")
 
                                     //선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
-                                    theme = view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
+                                    theme =
+                                        view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
 
                                     // (/post/sentence) req data init (6/6):: themeIdx
                                     WritingSentenceActivity.writingSentenceData.themeIdx =
@@ -327,7 +332,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                                             ).text.toString()
                                         )
                                     // single selection impl
-                                    for(data in datas){
+                                    for (data in datas) {
                                         data.themeChked = false
                                     }
                                     imgChk = true

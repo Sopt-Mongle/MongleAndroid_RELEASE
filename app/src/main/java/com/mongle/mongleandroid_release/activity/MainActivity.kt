@@ -18,6 +18,10 @@ import com.mongle.mongleandroid_release.network.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_join_step3.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.onboarding_step2.*
+import kotlinx.android.synthetic.main.onboarding_step4.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -112,10 +116,12 @@ class MainActivity : AppCompatActivity() {
         if (isFabOpen) {
             main_activity_FAB_tm.startAnimation(fab_close)
             main_activity_FAB_st.startAnimation(fab_close)
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", 0f)
-                .apply { duration = 270 }.start()
-            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", 0f).apply { start() }
-//            main_activity_FAB_main.setImageResource(R.drawable.ic_add)
+
+            main_activity_FAB_st.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_out))
+            main_activity_FAB_tm.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_out))
+            main_activity_FAB_st.visibility = View.INVISIBLE
+            main_activity_FAB_tm.visibility = View.INVISIBLE
+
             ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 45f, 0f).apply { start() }
 
             main_activity_blur.visibility = View.GONE
@@ -124,10 +130,13 @@ class MainActivity : AppCompatActivity() {
         } else {
             main_activity_FAB_tm.startAnimation(fab_open)
             main_activity_FAB_st.startAnimation(fab_open)
-            main_activity_FAB_st.visibility = View.VISIBLE
+
             main_activity_FAB_tm.visibility = View.VISIBLE
-            ObjectAnimator.ofFloat(main_activity_FAB_tm, "translationY", -340f).apply { duration = 270 }.start()
-            ObjectAnimator.ofFloat(main_activity_FAB_st, "translationY", -200f).apply { start() }
+            main_activity_FAB_tm.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_in))
+            main_activity_FAB_st.visibility = View.VISIBLE
+            main_activity_FAB_st.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_in))
+
+
             ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
 
             main_activity_blur.visibility = View.VISIBLE
@@ -165,10 +174,4 @@ class MainActivity : AppCompatActivity() {
         isFabOpen = !isFabOpen
     }
 
-
-    //LibraryFragment reload
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        Log.e("hi", "hihihi")
-//    }
 }
