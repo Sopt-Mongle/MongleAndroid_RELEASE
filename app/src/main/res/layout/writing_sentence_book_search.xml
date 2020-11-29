@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/writing_sentence_btn_cancel"
         android:padding="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -47,13 +47,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
         android:text="책 검색"
-        android:textStyle="bold"
-        android:textSize="19sp"
         android:textColor="@color/black_two"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/writing_sentence_book_search_btn_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_top"/>
+        app:layout_constraintTop_toTopOf="@+id/writing_sentence_book_search_btn_out" />
 
     <EditText
         android:id="@+id/writing_sentence_book_search_et_search"
@@ -62,6 +65,11 @@
         android:layout_marginTop="75dp"
         android:background="@drawable/et_area"
         android:hint="책 제목을 검색해주세요."
+        android:textColor="@color/black"
+        android:letterSpacing="-0.02"
+        android:textSize="16sp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
         android:maxLength="40"
         android:maxLines="1"
         android:paddingStart="15dp"
@@ -215,6 +223,8 @@
             android:id="@+id/writing_sentence_book_search_tv_cnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:includeFontPadding="false"
             android:text="0"
             android:textSize="13sp"
             android:textColor="@color/soft_green"
@@ -225,6 +235,8 @@
             android:id="@+id/writing_sentence_book_search_tv_cnt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:includeFontPadding="false"
             android:text="/40"
             android:textColor="@color/very_light_pink_two"
             android:textSize="13sp"
@@ -239,6 +251,8 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/very_light_pink_two"
             android:layout_marginTop="25dp"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:includeFontPadding="false"
             android:text="• 40자 이내로 검색해주세요"
             android:textSize="14sp"
             />
@@ -250,6 +264,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/very_light_pink_two"
+            android:fontFamily="@font/notosanscjkkr_demilight"
+            android:includeFontPadding="false"
             android:text="• 책 제목의 일부만 입력해도 책을 찾을 수 있어요\n      예) 해리포터와 불의 잔 → 해리"
             android:textSize="14sp"
             />
