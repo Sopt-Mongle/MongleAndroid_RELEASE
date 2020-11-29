@@ -5,13 +5,20 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import com.mongle.mongleandroid_release.R
+import com.mongle.mongleandroid_release.network.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_finish.*
 
 class ThemeWritingSentenceFinishActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_finish)
+        val name = this?.let {
+            SharedPreferenceController.getName(it)
+        }
+
+        findViewById<TextView>(R.id.theme_writing_sentence_finish_tv).text = "${name}" + "님의 문장으로\n몽글이 더욱 풍부해졌어요!"
 
         val sentenceIdx = intent.getIntExtra("sentenceIdx",0)
         Log.d("통신 응답바디 sentenceIdx ", sentenceIdx.toString())
