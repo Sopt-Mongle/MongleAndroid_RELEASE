@@ -38,29 +38,28 @@
         android:id="@+id/theme_writing_sentence_book_search_btn_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/writing_sentence_btn_cancel"
+        android:layout_marginTop="5dp"
         android:padding="16dp"
-        android:layout_marginTop="10dp"
+        android:src="@drawable/writing_sentence_btn_cancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="책 검색"
-        android:textStyle="bold"
-        android:textSize="19sp"
         android:textColor="@color/black_two"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/theme_writing_sentence_book_search_btn_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/gl_top"/>
+        app:layout_constraintTop_toTopOf="@+id/theme_writing_sentence_book_search_btn_out" />
 
     <EditText
         android:id="@+id/theme_writing_sentence_book_search_et_search"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="22dp"
         android:background="@drawable/et_area"
         android:hint="책 제목을 검색해주세요."
         android:maxLength="40"
@@ -70,7 +69,7 @@
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintStart_toStartOf="@id/gl_left"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/theme_writing_sentence_book_search_btn_out">
 
         <requestFocus />
     </EditText>
