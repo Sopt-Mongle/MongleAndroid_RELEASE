@@ -10,38 +10,36 @@
         android:id="@+id/activity_theme_writing_sentence_topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/activity_theme_writing_sentence_btn_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/writing_sentence_book_btn_back"
-            android:paddingLeft="18.5dp"
-            android:paddingTop="15.5dp"
-            android:paddingRight="21.4dp"
-            android:paddingBottom="16.3dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="4dp"
             android:backgroundTint="@color/white"
+            android:paddingLeft="18dp"
+            android:paddingTop="15dp"
+            android:paddingRight="21dp"
+            android:paddingBottom="16dp"
+            android:src="@drawable/writing_sentence_book_btn_back"
             android:tint="#cbcbcb"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="테마에 문장 쓰기"
-            android:textSize="19sp"
             android:textColor="#292929"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="19sp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_theme_writing_sentence_btn_out"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activity_theme_writing_sentence_btn_out"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_theme_writing_sentence_btn_out"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_theme_writing_sentence_btn_out" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,7 +47,7 @@
         android:id="@+id/activity_theme_writing_sentence_CL_sentence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_topbar">
@@ -58,22 +56,22 @@
             android:id="@+id/gl_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_begin="16dp"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_end="16dp"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
 
         <TextView
             android:id="@+id/activity_theme_writing_sentence_tv_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="마음에 드는 "
             android:layout_marginLeft="16dp"
+            android:text="마음에 드는 "
             android:textColor="@color/greyish_brown"
             android:textSize="19sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -114,10 +112,10 @@
             android:paddingRight="13dp"
             android:paddingBottom="10dp"
             android:text="밤에 보고 싶은 문장"
-            app:layout_constraintEnd_toEndOf="@id/gl_right"
-            app:layout_constraintStart_toStartOf="@id/gl_left"
             android:textColor="#cbcbcb"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/gl_right"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
             app:layout_constraintTop_toBottomOf="@+id/activity_theme_writing_sentence_tv_1" />
 
         <EditText
@@ -164,23 +162,24 @@
             android:id="@+id/writing_sentence_step1_ll_warning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@id/gl_left"
-            app:layout_constraintTop_toBottomOf="@id/activity_theme_writing_sentence_et_sentence"
             android:layout_marginTop="10dp"
-            android:visibility="gone">
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/gl_left"
+            app:layout_constraintTop_toBottomOf="@id/activity_theme_writing_sentence_et_sentence">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_warning"
                 android:layout_marginVertical="3dp"
-                />
+                android:src="@drawable/ic_warning" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="한 문장을 적어주세요!"
                 android:layout_marginStart="3dp"
-                android:textColor="@color/reddish"/>
+                android:text="한 문장을 적어주세요!"
+                android:textColor="@color/reddish" />
 
         </LinearLayout>
 
