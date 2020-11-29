@@ -20,6 +20,8 @@ class ThemeWritingSentenceActivity : AppCompatActivity() {
 
         //테마 이름 받아오기
         activity_theme_writing_sentence_tv_themename.text = intent.getStringExtra("param")
+        //테마 인덱스 받아오기
+        DetailThemeActivity.writingSentenceInThemeData.themeIdx = intent.getIntExtra("param2", 0)
 
         // X 아이콘 눌렀을 때
         activity_theme_writing_sentence_btn_out.setOnClickListener {
