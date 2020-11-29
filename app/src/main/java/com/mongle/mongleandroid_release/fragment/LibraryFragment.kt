@@ -71,9 +71,15 @@ class LibraryFragment : Fragment() {
             header = titleLayout
             stickListener = { _ ->
                 Log.d("LOGGER_TAG", "stickListener")
+                activity?.runOnUiThread {
+                    tv_library_top_name.text = tx_library_username.text
+                }
             }
             freeListener = { _ ->
                 Log.d("LOGGER_TAG", "freeListener")
+                activity?.runOnUiThread {
+                    tv_library_top_name.text = ""
+                }
             }
         }
 

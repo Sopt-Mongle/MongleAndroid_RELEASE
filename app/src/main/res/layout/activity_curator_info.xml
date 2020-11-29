@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".fragment.LibraryFragment">
 
+    <TextView
+        android:id="@+id/tv_curator_info_top_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="19sp"
+        android:textColor="@color/black_two"
+        android:letterSpacing="-0.02"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back_curator_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_back_curator_info" />
+
     <ImageView
         android:id="@+id/img_back_curator_info"
         android:layout_width="wrap_content"
@@ -58,7 +73,7 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginTop="24dp"
-                    android:background="@color/soft_green"
+                    android:background="@drawable/my_settings_profile_img_profile"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toTopOf="@id/tv_curator_username"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -271,5 +286,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.mongle.mongleandroid_release.util.NewScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

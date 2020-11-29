@@ -8,10 +8,26 @@
     android:paddingBottom="0dp"
     tools:context=".fragment.LibraryFragment">
 
+    <TextView
+        android:id="@+id/tv_library_top_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.02"
+        android:text=""
+        android:textColor="@color/black_two"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_library_setting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_library_setting" />
+
     <ImageView
         android:id="@+id/img_library_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:paddingStart="16dp"
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
@@ -58,7 +74,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="21dp"
-                    android:src="@drawable/join_img_mongle"
+                    android:src="@drawable/my_settings_profile_img_profile"
                     app:layout_constraintBottom_toTopOf="@id/tx_library_username"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -151,5 +167,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.mongle.mongleandroid_release.util.NewScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
