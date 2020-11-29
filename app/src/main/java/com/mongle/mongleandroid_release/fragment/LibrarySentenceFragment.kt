@@ -35,7 +35,6 @@ class LibrarySentenceFragment : Fragment() {
 //    private lateinit var listener : MoreBtnOnClickedListener
 
     val librarySentenceData = mutableListOf<LibrarySentenceData>()
-    val REQUEST_CODE = 100
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -203,7 +202,7 @@ class LibrarySentenceFragment : Fragment() {
                                             response.body()!!.data!!.write[position].sentence
                                         )
 
-                                        startActivityForResult(intent, REQUEST_CODE)
+                                        startActivity(intent)
 
                                         change_gone(library_sentence_more_box)
                                         //정보 같이 넘겨주기
