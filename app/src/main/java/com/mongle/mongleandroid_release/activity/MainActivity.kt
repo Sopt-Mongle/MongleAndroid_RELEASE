@@ -123,6 +123,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun goMain() {
+        main_activity_bnv.menu.findItem(R.id.menu_main).isChecked = true
+    }
+
+    fun goSearch() {
+        main_activity_bnv.menu.findItem(R.id.menu_search).isChecked = true
+    }
+
 
     private fun toggleFab() {
         if (isFabOpen) {
