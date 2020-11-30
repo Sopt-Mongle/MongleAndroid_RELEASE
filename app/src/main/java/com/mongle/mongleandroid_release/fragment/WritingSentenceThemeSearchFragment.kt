@@ -95,6 +95,11 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 }
             })
 
+        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setOnClickListener {
+            view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setBackgroundResource(R.drawable.et_area_green)
+        }
+
+
         // 나가기 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_back)
             .setOnClickListener {
@@ -113,6 +118,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         // 검색 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_search)
             .setOnClickListener {
+                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setBackgroundResource(R.drawable.et_area)
 
                 // 서버 통신 및 rv 게시, user reaction
                 keyword =
@@ -348,6 +354,11 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 } else {
                     //if 서버 통신 실패
                     Log.d("서버 통신", "서버 통신 실패")
+
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                        View.GONE
+                    view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                        View.VISIBLE
                 }
 
             }

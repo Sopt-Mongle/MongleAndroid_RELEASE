@@ -59,7 +59,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_activity_FL" />
+        app:layout_constraintBottom_toTopOf="@id/main_activity_FL"
+        />
 
     <TextView
         android:id="@+id/main_activity_FAB_tm"
@@ -84,7 +85,6 @@
         android:layout_width="96dp"
         android:layout_height="42dp"
         android:background="@drawable/fab_sub"
-
         android:text="문장 쓰기"
         android:textSize="16dp"
         android:textColor="@color/black"
@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="invisible"
-        android:focusable="true" />
+        android:focusable="true"/>
 
 
 
@@ -118,7 +118,8 @@
         app:borderWidth="0dp"
         app:fabSize="normal"
         app:elevation="10dp"
-        />
+        android:clickable="true"
+        android:focusable="true" />
 
 
 
