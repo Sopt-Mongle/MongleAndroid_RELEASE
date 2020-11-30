@@ -17,7 +17,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.mongle.mongleandroid_release.*
+import com.mongle.mongleandroid_release.activity.MainActivity
 import com.mongle.mongleandroid_release.activity.MainActivity.Companion.search_result
 import com.mongle.mongleandroid_release.adapter.SearchRecentAdapter
 import com.mongle.mongleandroid_release.adapter.SearchTabAdapter
@@ -27,12 +29,12 @@ import com.mongle.mongleandroid_release.network.SharedPreferenceController
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchRecommendData
-import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class SearchFragment : Fragment() {
 
@@ -78,7 +80,10 @@ class SearchFragment : Fragment() {
 
         // 검색창에 초점 맞았을 때
         fragment_search_et_search.setOnClickListener {
-            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            fragment_search_et_search.background = resources.getDrawable(
+                R.drawable.et_area_green,
+                null
+            )
             fragment_search_et_search.isCursorVisible = true
         }
 
@@ -92,6 +97,7 @@ class SearchFragment : Fragment() {
         fragment_search_btn_back_main.setOnClickListener {
             replaceFragment(MainFragment())
             fragment_search_et_search.unshowKeyboard()
+            (activity as MainActivity?)?.goMain()
         }
 
         // 뒤로가기 버튼 - 원래 검색화면으로 이동
@@ -99,7 +105,10 @@ class SearchFragment : Fragment() {
             change_gone(fragment_search_cl_after)
             change_visible(fragment_search_cl_before)
 
-            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            fragment_search_et_search.background = resources.getDrawable(
+                R.drawable.et_area_green,
+                null
+            )
             fragment_search_et_search.isCursorVisible = true
             fragment_search_et_search.showKeyboard()
 
@@ -203,7 +212,7 @@ class SearchFragment : Fragment() {
                     response: Response<ResponseSearchRecentData>
                 ) {
                     if (response.isSuccessful) {
-                        if(response.body()!!.data.isNullOrEmpty()) {
+                        if (response.body()!!.data.isNullOrEmpty()) {
                             fragment_search_tv_no_keyword.visibility = VISIBLE
                         } else {
 
@@ -218,18 +227,18 @@ class SearchFragment : Fragment() {
                             searchRecentAdapter.notifyDataSetChanged()
 
                             searchRecentAdapter.setItemClickListener(
-                                object : SearchRecentAdapter.ItemClickListener{
-                                override fun onClick(view: View, position: Int) {
-                                    // 선택한 최근 검색어로 검색
-                                    goResult()
-                                    val searchword = response.body()!!.data[position]
-                                    search_result = searchword.trim()
+                                object : SearchRecentAdapter.ItemClickListener {
+                                    override fun onClick(view: View, position: Int) {
+                                        // 선택한 최근 검색어로 검색
+                                        goResult()
+                                        val searchword = response.body()!!.data[position]
+                                        search_result = searchword.trim()
 
-                                    fragment_search_et_search.setText(searchword)
-                                    hideFocus()
-                                }
+                                        fragment_search_et_search.setText(searchword)
+                                        hideFocus()
+                                    }
 
-                            })
+                                })
                         }
                         Log.d("최근 검색어", response.body().toString())
                     }
@@ -317,7 +326,10 @@ class SearchFragment : Fragment() {
     private fun btn_earse_control() {
 
         fragment_search_et_search.setOnFocusChangeListener { _, hasFocus ->
-            fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+            fragment_search_et_search.background = resources.getDrawable(
+                R.drawable.et_area_green,
+                null
+            )
             if(fragment_search_et_search.text.isNotEmpty()) {
                 fragment_search_et_search.clearText(fragment_search_btn_erase)
             } else {
@@ -325,7 +337,10 @@ class SearchFragment : Fragment() {
             }
 
             if(!hasFocus) {
-                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
+                fragment_search_et_search.background = resources.getDrawable(
+                    R.drawable.et_area,
+                    null
+                )
                 change_gone(fragment_search_btn_erase)
             }
         }
@@ -341,10 +356,13 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area_green, null)
+                fragment_search_et_search.background = resources.getDrawable(
+                    R.drawable.et_area_green,
+                    null
+                )
                 fragment_search_et_search.isCursorVisible = true
 
-                if(fragment_search_et_search.text.isNotEmpty()) {
+                if (fragment_search_et_search.text.isNotEmpty()) {
                     fragment_search_et_search.clearText(fragment_search_btn_erase)
                 } else {
                     change_gone(fragment_search_btn_erase)
@@ -392,7 +410,7 @@ class SearchFragment : Fragment() {
     }
 
     // edittext 지우는 x버튼
-    private fun EditText.clearText(button : ImageView) {
+    private fun EditText.clearText(button: ImageView) {
         change_visible(button)
         button.setOnClickListener {
             this.setText("")

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.activity.CuratorInfoActivity
 import com.mongle.mongleandroid_release.activity.DetailThemeActivity
+import com.mongle.mongleandroid_release.activity.MainActivity
 import com.mongle.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.mongle.mongleandroid_release.adapter.MainHotThemeAdapter
 import com.mongle.mongleandroid_release.adapter.MainNowHotCuratorAdapter
@@ -80,6 +81,7 @@ class MainFragment : Fragment() {
 
         img_main_search_btn.setOnClickListener {
             replaceFragment(SearchFragment())
+            (activity as MainActivity?)?.goSearch()
         }
 
         // 그림자 박스
