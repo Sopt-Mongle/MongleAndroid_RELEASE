@@ -115,6 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone">
         <LinearLayout
+            android:id="@+id/writing_sentence_book_search_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -148,6 +149,16 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/very_light_pink_three"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/writing_sentence_book_search_ll" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/writing_sentence_book_search_rv"
             android:layout_width="match_parent"
@@ -156,7 +167,7 @@
             android:orientation="vertical"
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
             tools:listitem="@layout/item_writing_sentence_book_result" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

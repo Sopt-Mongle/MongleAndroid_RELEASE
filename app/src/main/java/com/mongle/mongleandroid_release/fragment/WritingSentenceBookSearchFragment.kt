@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,13 +18,16 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mongle.mongleandroid_release.R
+import com.mongle.mongleandroid_release.activity.MainActivity
 import com.mongle.mongleandroid_release.activity.MainActivity.Companion.book_result
 import com.mongle.mongleandroid_release.activity.WritingSentenceActivity
 import com.mongle.mongleandroid_release.adapter.ItemDecoration
 import com.mongle.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
+import com.mongle.mongleandroid_release.change_gone
 import com.mongle.mongleandroid_release.network.RequestToServer
 import com.mongle.mongleandroid_release.network.data.response.BookData
 import com.mongle.mongleandroid_release.network.data.response.ResponseWritingSentenceBookSearchData
+import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,7 +74,6 @@ class WritingSentenceBookSearchFragment : Fragment() {
         // 검색 창
         view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -81,12 +84,38 @@ class WritingSentenceBookSearchFragment : Fragment() {
                 //실시간 글자 수 세기
                 view.findViewById<TextView>(R.id.writing_sentence_book_search_tv_cnt).text =
                     view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).text.toString().length.toString()
-
             }
         })
 
+        // 검색창 활성화 시 테두리 색 변화
+        view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnClickListener {
+            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setBackgroundResource(R.drawable.et_area_green)
+        }
+
+//        view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnKeyListener (View.OnKeyListener { view, keyCode, _ ->
+//            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+//                hideFocus()
+//
+//                MainActivity.search_result = if (view == null) {
+//                    val searchword = " "
+//                    searchword.trim()
+//                } else {
+//                    val searchword = fragment_search_et_search.text.toString()
+//                    searchword.trim()
+//                }
+//
+//                // 검색 결과로 이동
+//                goResult()
+//
+//                return@OnKeyListener true
+//            }
+//            false
+//        })
+
+
         // 나가기 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_out).setOnClickListener{
+            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setBackgroundResource(R.drawable.et_area)
             it.findNavController().navigate(R.id.action_writing_sentence_book_search_fragment_to_writing_sentence_step2_fragment)
             // 책 제목 넘겨 줌
         }
@@ -98,6 +127,8 @@ class WritingSentenceBookSearchFragment : Fragment() {
 
         // 검색 버튼
         view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_search).setOnClickListener {
+
+            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setBackgroundResource(R.drawable.et_area)
 
             // 서버 통신 및 rv 게시, user reaction
             keyword = view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).text.toString()

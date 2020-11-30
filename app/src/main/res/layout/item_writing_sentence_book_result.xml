@@ -7,15 +7,6 @@ android:layout_height="wrap_content"
 android:layout_marginBottom="17dp"
 xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<View
-    android:id="@+id/view"
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/very_light_pink_three"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    />
 
     <ImageView
         android:id="@+id/item_writing_sentence_book_result_img"
@@ -99,6 +90,16 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/very_light_pink_three"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 
 
