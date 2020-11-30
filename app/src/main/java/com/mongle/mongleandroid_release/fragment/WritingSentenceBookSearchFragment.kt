@@ -92,25 +92,6 @@ class WritingSentenceBookSearchFragment : Fragment() {
             view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setBackgroundResource(R.drawable.et_area_green)
         }
 
-//        view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnKeyListener (View.OnKeyListener { view, keyCode, _ ->
-//            if (keyCode == KeyEvent.KEYCODE_ENTER) {
-//                hideFocus()
-//
-//                MainActivity.search_result = if (view == null) {
-//                    val searchword = " "
-//                    searchword.trim()
-//                } else {
-//                    val searchword = fragment_search_et_search.text.toString()
-//                    searchword.trim()
-//                }
-//
-//                // 검색 결과로 이동
-//                goResult()
-//
-//                return@OnKeyListener true
-//            }
-//            false
-//        })
 
 
         // 나가기 버튼
@@ -205,6 +186,10 @@ class WritingSentenceBookSearchFragment : Fragment() {
                 }else{
                     //if 서버 통신 실패
                     Log.d("서버 통신", "서버 통신 실패")
+
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_before).visibility = View.GONE
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_after).visibility = View.GONE
+                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_book_search_cl_no).visibility = View.VISIBLE
                 }
 
             }
