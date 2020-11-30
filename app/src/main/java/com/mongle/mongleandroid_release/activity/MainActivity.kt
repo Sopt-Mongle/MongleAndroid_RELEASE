@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         main_activity_FAB_st.visibility = View.GONE
         main_activity_FAB_tm.visibility = View.GONE
         fab_open = AnimationUtils.loadAnimation(
@@ -80,13 +82,23 @@ class MainActivity : AppCompatActivity() {
 
         main_activity_bnv.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_main -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_activity_fg, mainFragment).commit()
-                R.id.menu_search -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_activity_fg, searchFragment).commit()
-                R.id.menu_curator -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_activity_fg, curatorFragment).commit()
+                R.id.menu_main -> {
+                    if (isFabOpen) toggleFab()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_activity_fg, mainFragment).commit()
+                }
+                R.id.menu_search -> {
+                    if (isFabOpen) toggleFab()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_activity_fg, searchFragment).commit()
+                }
+                R.id.menu_curator -> {
+                    if (isFabOpen) toggleFab()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_activity_fg, curatorFragment).commit()
+                }
                 R.id.menu_my_page -> {
+                    if (isFabOpen) toggleFab()
                     if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
                         val dlg = DialogGuest(view.context)
@@ -117,8 +129,18 @@ class MainActivity : AppCompatActivity() {
             main_activity_FAB_tm.startAnimation(fab_close)
             main_activity_FAB_st.startAnimation(fab_close)
 
-            main_activity_FAB_st.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_out))
-            main_activity_FAB_tm.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_out))
+            main_activity_FAB_st.startAnimation(
+                AnimationUtils.loadAnimation(
+                    this@MainActivity,
+                    R.anim.mongle_list_out
+                )
+            )
+            main_activity_FAB_tm.startAnimation(
+                AnimationUtils.loadAnimation(
+                    this@MainActivity,
+                    R.anim.mongle_list_out
+                )
+            )
             main_activity_FAB_st.visibility = View.INVISIBLE
             main_activity_FAB_tm.visibility = View.INVISIBLE
 
@@ -132,9 +154,22 @@ class MainActivity : AppCompatActivity() {
             main_activity_FAB_st.startAnimation(fab_open)
 
             main_activity_FAB_tm.visibility = View.VISIBLE
-            main_activity_FAB_tm.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_in))
+
+            // 블러 뷰에 대한 clickable 을 줘서, 뒤에 있는 프래그먼트에 대한 터치를 막음 !
+            main_activity_blur.isClickable = true
+            main_activity_FAB_tm.startAnimation(
+                AnimationUtils.loadAnimation(
+                    this@MainActivity,
+                    R.anim.mongle_list_in
+                )
+            )
             main_activity_FAB_st.visibility = View.VISIBLE
-            main_activity_FAB_st.startAnimation(AnimationUtils.loadAnimation(this@MainActivity,R.anim.mongle_list_in))
+            main_activity_FAB_st.startAnimation(
+                AnimationUtils.loadAnimation(
+                    this@MainActivity,
+                    R.anim.mongle_list_in
+                )
+            )
 
 
             ObjectAnimator.ofFloat(main_activity_FAB_main, "rotation", 0f, 45f).apply { start() }
