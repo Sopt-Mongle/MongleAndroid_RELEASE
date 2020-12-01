@@ -98,8 +98,7 @@
         app:layout_constraintEnd_toEndOf="@+id/gl_right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gl_left"
-        app:layout_constraintTop_toTopOf="parent">
-    </EditText>
+        app:layout_constraintTop_toTopOf="parent"></EditText>
 
     <LinearLayout
         android:id="@+id/writing_theme_step1_ll_warning"
