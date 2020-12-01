@@ -36,11 +36,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/onboarding_1_bg"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/onboarding_1_ll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -58,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="직접 "
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -66,14 +68,14 @@
                 android:text="테마"
                 android:textStyle="bold"
                 android:textColor="@color/soft_green"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="를 만들고"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -86,14 +88,14 @@
                 android:textStyle="bold"
                 android:text="책 속 문장"
                 android:textColor="@color/soft_green"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="을 공유해보세요!"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="23dp"
                 />
         </LinearLayout>
 
@@ -103,26 +105,33 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/onboarding_step1_img_book"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/onboarding_1_cl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/onboarding_1_img_book"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="320dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_1_ll">
 
-    <ImageView
-        android:id="@+id/onboarding_step1_img_mongle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/onboarding_1_img_mongle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="388dp"/>
+        <ImageView
+            android:id="@+id/onboarding_step1_img_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/onboarding_1_img_book"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/onboarding_step1_img_mongle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/onboarding_1_img_mongle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/onboarding_step1_skip"
@@ -131,7 +140,7 @@
         android:text="건너뛰기"
         android:background="@color/white"
         android:textColor="@color/very_light_pink_two"
-        android:textSize="17sp"
+        android:textSize="17dp"
         app:layout_constraintStart_toStartOf="@id/gl_left"
         app:layout_constraintBottom_toBottomOf="@id/gl_bottom"
         android:padding="18dp"
@@ -144,7 +153,7 @@
         android:text="다음"
         android:background="@drawable/btn_green"
         android:textColor="@color/white"
-        android:textSize="17sp"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="@id/gl_right"
         app:layout_constraintBottom_toBottomOf="@id/gl_bottom"
         android:paddingHorizontal="51dp"
