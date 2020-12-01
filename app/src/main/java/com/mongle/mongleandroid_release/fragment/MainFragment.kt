@@ -80,7 +80,6 @@ class MainFragment : Fragment() {
         requestMainNowThemes() // 요즘 사람들이 많이 본 테마 통신
 
         img_main_search_btn.setOnClickListener {
-            replaceFragment(SearchFragment())
             (activity as MainActivity?)?.goSearch()
         }
 
@@ -93,17 +92,7 @@ class MainFragment : Fragment() {
         }
 
     }
-    private fun init() {
 
-
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-        transaction.replace(R.id.main_activity_fg, fragment)
-        transaction.commit()
-
-    }
 
     //오늘의 문장 통신
     private fun requestTodaySentenceData() {
