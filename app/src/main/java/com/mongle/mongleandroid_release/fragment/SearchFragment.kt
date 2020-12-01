@@ -95,7 +95,6 @@ class SearchFragment : Fragment() {
 
         // 뒤로가기 버튼 - 메인으로 이동
         fragment_search_btn_back_main.setOnClickListener {
-            replaceFragment(MainFragment())
             fragment_search_et_search.unshowKeyboard()
             (activity as MainActivity?)?.goMain()
         }
@@ -185,12 +184,6 @@ class SearchFragment : Fragment() {
         state = 2
     }
 
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-        transaction.replace(R.id.main_activity_fg, fragment)
-        transaction.commit()
-
-    }
 
     private fun hideFocus() {
         fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
