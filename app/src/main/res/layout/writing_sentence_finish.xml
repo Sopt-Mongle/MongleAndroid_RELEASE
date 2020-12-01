@@ -21,7 +21,7 @@
         android:layout_marginTop="354dp"
         android:text="문장이 등록되었습니다!"
         android:textColor="@color/black"
-        android:textStyle=""
+        android:textStyle="normal"
         android:textSize="19dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
