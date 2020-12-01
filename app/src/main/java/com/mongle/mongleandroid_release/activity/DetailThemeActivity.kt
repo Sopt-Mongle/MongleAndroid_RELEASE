@@ -60,8 +60,9 @@ class DetailThemeActivity : AppCompatActivity() {
 
         }
 
-        requestThemeData()
-        requestMainThemeData()
+        // 현진 - 수정 및 삭제 & 데이터 불러오기를 동시에 하기 위해 onResume()에서 통신
+//        requestThemeData()
+//        requestMainThemeData()
 
         // 테마 북마크
         btn_detail_theme_bookmark_box.setOnClickListener {
@@ -152,74 +153,56 @@ class DetailThemeActivity : AppCompatActivity() {
                             // 북마크 여부
                             val alreadyBookmarked = response.body()!!.data!!.theme[0].alreadyBookmarked
 
-                            // 내서재 테마 불러와서 비교
-                            requestToServer.service.lookLibraryThema(
-                                token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) }
-                            ).enqueue(object : Callback<ResponseLibraryThemeData> {
-                                override fun onResponse(
-                                    call: Call<ResponseLibraryThemeData>,
-                                    response: Response<ResponseLibraryThemeData>
-                                ) {
-                                    if(response.isSuccessful) {
-                                        val theme_size = response.body()!!.data!!.save.size
-                                        if(alreadyBookmarked) {
-                                            var save_check = false
-
-                                            for(i in 0 until theme_size) {
-                                                // 테마 인덱스가 내가 저장한 테마이면
-                                                if(response.body()!!.data!!.save[i].themeIdx
-                                                    == intent.getIntExtra("param", 0)) {
-                                                    save_check = true
-                                                    Log.d("테스트", "저장한 테마")
-                                                    break
-                                                } else {
-                                                    save_check = false
-                                                    Log.d("테스트", "저장하지 않은 테마")
-                                                }
-                                            }
-
-                                            if(save_check) {
-                                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
-                                            } else {
-                                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
-                                            }
-
-                                        } else {
-                                            img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
-                                        }
-
-                                    }
-                                }
-
-                                override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
-                                    Log.d("통신 실패", "$t")
-                                }
-
-                            })
+                            bookmarkTheme(alreadyBookmarked)
 
                             // 해당 테마 인덱스 저장
                             themeIdx = response.body()!!.data!!.theme[0].themeIdx
 
-                            // 테마에 문장 쓰러 가기
-//                            img_writing_sentence_in_theme_btn.setOnClickListener {
-//                                val intent = Intent(this@DetailThemeActivity, ThemeWritingSentenceActivity::class.java)
-//                                intent.putExtra("param", response.body()!!.data!!.theme[0].themeIdx)
-//                            }
                         }
-                        //tv_main_theme_title.text = themesData.get(1).toString()
-//                        for (i in 0..5) {
-//                            tv_main_theme_title.text = response.body()!!.data!!.theme[i].theme
-//                            tv_main_theme_author.text = response.body()!!.data!!.theme[i].writer
-//                            textView12.text = response.body()!!.data!!.theme[i].sentenceNum.toString()
-//                            textView11.text = response.body()!!.data!!.theme[i].saves.toString()
-//                        }
-                        //val themeIdx = intent.getIntExtra("param", 0)
 
                     }
                 }
 
             }
         )
+    }
+
+    private fun bookmarkTheme(alreadyBookmarked : Boolean) {
+        // 내서재 테마 불러와서 비교
+        requestToServer.service.lookLibraryThema(
+            token = applicationContext?.let { SharedPreferenceController.getAccessToken(it) }
+        ).enqueue(object : Callback<ResponseLibraryThemeData> {
+            override fun onResponse(
+                call: Call<ResponseLibraryThemeData>,
+                response: Response<ResponseLibraryThemeData>
+            ) {
+                if(response.isSuccessful) {
+                    val save_size = response.body()!!.data!!.save.size
+                    val themeIdx = intent.getIntExtra("param", 0)
+
+                    if(alreadyBookmarked) {
+                        for (i in 0 until save_size) {
+                            // 테마 인덱스가 내가 저장한 테마이면
+                            if(response.body()!!.data!!.save[i].themeIdx == themeIdx) {
+                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_on)
+                                break
+                            } else {
+                                img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
+                            }
+                        }
+
+                    } else {
+                        img_detail_theme_bookmark.setImageResource(R.drawable.theme_detail_ic_bookmark_off)
+                    }
+
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseLibraryThemeData>, t: Throwable) {
+                Log.d("통신 실패", "$t")
+            }
+
+        })
     }
 
     // 리사이클러뷰 통신

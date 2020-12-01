@@ -62,8 +62,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
             finish()
         }
 
-        requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
-        requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
+        //requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
+        //requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
+
         constraint_likes_num.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
@@ -88,7 +89,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        requestSentenceDetail()
+        requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
+        requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
     }
 
     // 문장 상세보기 데이터 서버 통신

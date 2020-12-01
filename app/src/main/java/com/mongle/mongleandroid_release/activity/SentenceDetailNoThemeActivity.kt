@@ -47,7 +47,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
             finish()
         }
 
-        requestSentenceData() // 문장 상세보기 뷰 통신
+        // requestSentenceData() // 문장 상세보기 뷰 통신
 
         constraint_sentence_like_num_notheme.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
