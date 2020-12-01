@@ -189,6 +189,7 @@ class MainActivity : AppCompatActivity() {
             main_activity_blur.visibility = View.VISIBLE
 
             main_activity_FAB_st.setOnClickListener {
+                toggleFab()
 
                 if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
@@ -203,6 +204,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             main_activity_FAB_tm.setOnClickListener {
+                toggleFab()
 
                 if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest") {
 
