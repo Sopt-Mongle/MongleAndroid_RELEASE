@@ -182,7 +182,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
 
                         // 수정 기능
                         edit_noTheme.setOnClickListener {
-                            val intent = Intent(this@SentenceDetailNoThemeActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            val intent = Intent(this@SentenceDetailNoThemeActivity,ModifyActivity::class.java)
                             intent.putExtra("sentence", textView19_notheme.text.toString()) // 해당 문장 보내기
                             intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)

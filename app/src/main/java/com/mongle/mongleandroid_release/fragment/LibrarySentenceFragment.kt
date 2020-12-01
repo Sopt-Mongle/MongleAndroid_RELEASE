@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mongle.mongleandroid_release.R
-import com.mongle.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity
+import com.mongle.mongleandroid_release.activity.ModifyActivity
 import com.mongle.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.mongle.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.mongle.mongleandroid_release.adapter.LibrarySentenceClickAdapter
@@ -102,35 +102,31 @@ class LibrarySentenceFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 저장 문장 조회 성공", "${response.body()!!.data!!.save}")
-                            if (response.body()!!.data!!.save.isNullOrEmpty()) {
-                                Log.d("내 서재 저장 문장 조회 null", "${response.body()}")
-                            } else {
-                                librarySentenceAdapter = LibrarySentenceAdapter(
-                                    view!!.context,
-                                    response.body()!!.data!!.save
-                                )
-                                rv_library_sentence.adapter = librarySentenceAdapter
-                                librarySentenceAdapter.notifyDataSetChanged()
+                            librarySentenceAdapter = LibrarySentenceAdapter(
+                                view!!.context,
+                                response.body()!!.data!!.save
+                            )
+                            rv_library_sentence.adapter = librarySentenceAdapter
+                            librarySentenceAdapter.notifyDataSetChanged()
 
-                                librarySentenceAdapter.setItemClickListener(object :
-                                    LibrarySentenceAdapter.ItemClickListener {
+                            librarySentenceAdapter.setItemClickListener(object :
+                                LibrarySentenceAdapter.ItemClickListener {
 
-                                    override fun onClick(view: View, position: Int) {
-                                        activity?.let {
-                                            val intent =
-                                                Intent(
-                                                    context,
-                                                    SentenceDetailViewActivity::class.java
-                                                )
-                                            intent.putExtra(
-                                                "param",
-                                                response.body()!!.data!!.save[position].sentenceIdx
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
+                                        val intent =
+                                            Intent(
+                                                context,
+                                                SentenceDetailViewActivity::class.java
                                             )
-                                            startActivity(intent)
-                                        }
+                                        intent.putExtra(
+                                            "param",
+                                            response.body()!!.data!!.save[position].sentenceIdx
+                                        )
+                                        startActivity(intent)
                                     }
-                                })
-                            }
+                                }
+                            })
                         }
 
                     }
@@ -154,104 +150,99 @@ class LibrarySentenceFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 쓴 문장 조회 성공", "${response.body()!!.data!!.write}")
-                            if (response.body()!!.data!!.write.isNullOrEmpty()) {
-                                Log.d("내 서재 쓴 문장 클릭 조회 null", "${response.body()}")
-                            } else {
-                                librarySentenceClickAdapter = LibrarySentenceClickAdapter(
-                                    view!!.context,
-                                    response.body()!!.data!!.write
-                                )
-                                rv_library_sentence.adapter = librarySentenceClickAdapter
-                                librarySentenceClickAdapter.notifyDataSetChanged()
+                            librarySentenceClickAdapter = LibrarySentenceClickAdapter(
+                                view!!.context,
+                                response.body()!!.data!!.write
+                            )
+                            rv_library_sentence.adapter = librarySentenceClickAdapter
+                            librarySentenceClickAdapter.notifyDataSetChanged()
 
-                                librarySentenceClickAdapter.setItemClickListener(object :
-                                    LibrarySentenceClickAdapter.ItemClickListener {
+                            librarySentenceClickAdapter.setItemClickListener(object :
+                                LibrarySentenceClickAdapter.ItemClickListener {
 
-                                    override fun onClick(view: View, position: Int) {
-                                        activity?.let {
-                                            val intent = Intent(
-                                                context,
-                                                SentenceDetailViewActivity::class.java
-                                            )
-                                            intent.putExtra(
-                                                "param",
-                                                response.body()!!.data!!.write[position].sentenceIdx
-                                            )
-                                            startActivity(intent)
-                                        }
-                                        change_gone(library_sentence_more_box)
-                                    }
-
-                                    override fun onClickMore(view: View, position: Int) {
-                                        if (cb_library_sentence_more.isChecked) {
-                                            change_visible(library_sentence_more_box)
-                                        } else change_gone(library_sentence_more_box)
-                                    }
-
-                                    override fun onClickModify(view: View, position: Int) {
+                                override fun onClick(view: View, position: Int) {
+                                    activity?.let {
                                         val intent = Intent(
                                             context,
-                                            ModifyLibraryWrittenSentenceActivity::class.java
+                                            SentenceDetailViewActivity::class.java
                                         )
                                         intent.putExtra(
                                             "param",
                                             response.body()!!.data!!.write[position].sentenceIdx
                                         )
-                                        intent.putExtra(
-                                            "sentence",
-                                            response.body()!!.data!!.write[position].sentence
-                                        )
-
                                         startActivity(intent)
-
-                                        change_gone(library_sentence_more_box)
-                                        //정보 같이 넘겨주기
                                     }
+                                    change_gone(library_sentence_more_box)
+                                }
 
-                                    override fun onClickDelete(view: View, position: Int) {
-                                        change_gone(library_sentence_more_box)
+                                override fun onClickMore(view: View, position: Int) {
+                                    if (cb_library_sentence_more.isChecked) {
+                                        change_visible(library_sentence_more_box)
+                                    } else change_gone(library_sentence_more_box)
+                                }
 
-                                        //삭제 버튼 눌렀을 때 통신하는 부분
-                                        val dlg = DialogDeleteSentence(view.context)
-                                        dlg.start()
-                                        dlg.setOnClickListener { content ->
-                                            if (content == "삭제") {
-                                                requestToServer.service.DeleteSentenceWritten(
-                                                    token = SharedPreferenceController.getAccessToken(
-                                                        view.context
-                                                    ),
-                                                    params = response.body()!!.data!!.write[position].sentenceIdx
+                                override fun onClickModify(view: View, position: Int) {
+                                    val intent = Intent(
+                                        context,
+                                        ModifyActivity::class.java
+                                    )
+                                    intent.putExtra(
+                                        "param",
+                                        response.body()!!.data!!.write[position].sentenceIdx
+                                    )
+                                    intent.putExtra(
+                                        "sentence",
+                                        response.body()!!.data!!.write[position].sentence
+                                    )
 
-                                                ).enqueue(
-                                                    object :
-                                                        Callback<ResponseDeleteSentenceWritten> {
-                                                        override fun onResponse(
-                                                            call: Call<ResponseDeleteSentenceWritten>,
-                                                            response: Response<ResponseDeleteSentenceWritten>
-                                                        ) {
-                                                            if (response.isSuccessful) {
-                                                                //프래그먼트 새로고침
-                                                                requestLibrarySentenceClickData()
-                                                            }
+                                    startActivity(intent)
+
+                                    change_gone(library_sentence_more_box)
+                                    //정보 같이 넘겨주기
+                                }
+
+                                override fun onClickDelete(view: View, position: Int) {
+                                    change_gone(library_sentence_more_box)
+
+                                    //삭제 버튼 눌렀을 때 통신하는 부분
+                                    val dlg = DialogDeleteSentence(view.context)
+                                    dlg.start()
+                                    dlg.setOnClickListener { content ->
+                                        if (content == "삭제") {
+                                            requestToServer.service.DeleteSentenceWritten(
+                                                token = SharedPreferenceController.getAccessToken(
+                                                    view.context
+                                                ),
+                                                params = response.body()!!.data!!.write[position].sentenceIdx
+
+                                            ).enqueue(
+                                                object :
+                                                    Callback<ResponseDeleteSentenceWritten> {
+                                                    override fun onResponse(
+                                                        call: Call<ResponseDeleteSentenceWritten>,
+                                                        response: Response<ResponseDeleteSentenceWritten>
+                                                    ) {
+                                                        if (response.isSuccessful) {
+                                                            //프래그먼트 새로고침
+                                                            requestLibrarySentenceClickData()
                                                         }
+                                                    }
 
-                                                        override fun onFailure(
-                                                            call: Call<ResponseDeleteSentenceWritten>,
-                                                            t: Throwable
-                                                        ) {
-                                                            Log.d("내 서재 쓴 문장 삭제 통신 실패", "$t")
-
-                                                        }
+                                                    override fun onFailure(
+                                                        call: Call<ResponseDeleteSentenceWritten>,
+                                                        t: Throwable
+                                                    ) {
+                                                        Log.d("내 서재 쓴 문장 삭제 통신 실패", "$t")
 
                                                     }
-                                                )
-                                            }
 
+                                                }
+                                            )
                                         }
-                                    }
-                                })
 
-                            }
+                                    }
+                                }
+                            })
 
                         }
 
@@ -261,25 +252,6 @@ class LibrarySentenceFragment : Fragment() {
     }
 
 
-//    fun setOnClickListener(listener: (String) -> Unit) {
-//        this.listener = object:
-//            MoreBtnOnClickedListener {
-//            override fun onOKClicked(content: String) {
-//                listener(content)
-//            }
-//        }
-//    }
-//
-//
-//    interface MoreBtnOnClickedListener {
-//        fun onOKClicked(content : String)
-//    }
-
-    //프래그먼트 새로 고침
-//    fun refreshFragment(fragment: Fragment, fragmentManager: FragmentManager) {
-//        var ft: FragmentTransaction = fragmentManager.beginTransaction()
-//        ft.detach(fragment).attach(fragment).commit()
-//    }
 
 }
 

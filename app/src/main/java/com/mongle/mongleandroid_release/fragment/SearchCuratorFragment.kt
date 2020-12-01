@@ -40,7 +40,7 @@ class SearchCuratorFragment : Fragment() {
         super.onResume()
         requestSearchCurator()
     }
-    
+
     private fun requestSearchCurator() {
         requestToServer.service.requestResultCuratorData(
             token = context?.let { SharedPreferenceController.getAccessToken(it) },
