@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mongle.mongleandroid_release.R
-import com.mongle.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity
+import com.mongle.mongleandroid_release.activity.ModifyActivity
 import com.mongle.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.mongle.mongleandroid_release.adapter.LibrarySentenceAdapter
 import com.mongle.mongleandroid_release.adapter.LibrarySentenceClickAdapter
@@ -184,7 +184,7 @@ class LibrarySentenceFragment : Fragment() {
                                 override fun onClickModify(view: View, position: Int) {
                                     val intent = Intent(
                                         context,
-                                        ModifyLibraryWrittenSentenceActivity::class.java
+                                        ModifyActivity::class.java
                                     )
                                     intent.putExtra(
                                         "param",

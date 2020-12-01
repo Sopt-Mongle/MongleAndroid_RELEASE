@@ -190,7 +190,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
                         // 수정 기능
                         edit.setOnClickListener {  // 수정 눌렀을 때 -> 문장 수정하기 액틸비티로 이동
-                            val intent = Intent(this@SentenceDetailViewActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            val intent = Intent(this@SentenceDetailViewActivity,ModifyActivity::class.java)
                             intent.putExtra("sentence", textView19.text.toString()) // 해당 문장 보내기
                             intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)
