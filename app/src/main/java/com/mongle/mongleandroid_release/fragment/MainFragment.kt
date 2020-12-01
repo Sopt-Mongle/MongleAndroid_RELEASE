@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.activity.CuratorInfoActivity
 import com.mongle.mongleandroid_release.activity.DetailThemeActivity
+import com.mongle.mongleandroid_release.activity.MainActivity
 import com.mongle.mongleandroid_release.activity.SentenceDetailViewActivity
 import com.mongle.mongleandroid_release.adapter.MainHotThemeAdapter
 import com.mongle.mongleandroid_release.adapter.MainNowHotCuratorAdapter
@@ -79,7 +80,7 @@ class MainFragment : Fragment() {
         requestMainNowThemes() // 요즘 사람들이 많이 본 테마 통신
 
         img_main_search_btn.setOnClickListener {
-            replaceFragment(SearchFragment())
+            (activity as MainActivity?)?.goSearch()
         }
 
         // 그림자 박스
@@ -91,17 +92,7 @@ class MainFragment : Fragment() {
         }
 
     }
-    private fun init() {
 
-
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-        transaction.replace(R.id.main_activity_fg, fragment)
-        transaction.commit()
-
-    }
 
     //오늘의 문장 통신
     private fun requestTodaySentenceData() {
