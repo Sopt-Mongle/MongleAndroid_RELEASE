@@ -76,7 +76,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="를 공유해보세요!"
+                android:text="를 구독해보세요!"
                 android:textColor="@color/black"
                 android:textSize="23dp"
                 />
