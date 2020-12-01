@@ -29,6 +29,16 @@ class SearchThemeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_search_theme, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestSearchTheme()
+    }
+
+    private fun requestSearchTheme() {
         requestToServer.service.requestSearchTheme(
             token = context?.let { SharedPreferenceController.getAccessToken(it) },
             words = search_result
@@ -76,8 +86,5 @@ class SearchThemeFragment : Fragment() {
 
             }
         })
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_theme, container, false)
     }
 }
