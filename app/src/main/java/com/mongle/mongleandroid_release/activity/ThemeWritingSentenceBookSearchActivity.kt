@@ -10,14 +10,13 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
-import com.mongle.mongleandroid_release.R
+import com.mongle.mongleandroid_release.*
 import com.mongle.mongleandroid_release.adapter.ItemDecoration
 import com.mongle.mongleandroid_release.adapter.ThemeSentenceBookSearchAdapter
-import com.mongle.mongleandroid_release.goNextPage
 import com.mongle.mongleandroid_release.network.RequestToServer
 import com.mongle.mongleandroid_release.network.data.response.ResponseWritingSentenceBookSearchData
-import com.mongle.mongleandroid_release.showKeyboard
-import com.mongle.mongleandroid_release.unshowKeyboard
+import com.mongle.mongleandroid_release.util.controlButton
+import com.mongle.mongleandroid_release.util.controlEditText
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_book_search.*
 import kotlinx.android.synthetic.main.activity_theme_writing_sentence_book_search.view.*
 import kotlinx.android.synthetic.main.item_writing_sentence_book_result.*
@@ -38,10 +37,16 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         var theme_book_result = ""
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_book_search)
 
+        // 초기화면 세팅
         theme_writing_sentence_book_search_cl_before.visibility = View.VISIBLE
         writing_sentence_book_search_cl_after.visibility = View.GONE
         writing_sentence_book_search_rv.visibility = View.GONE
@@ -56,11 +61,13 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         theme_writing_sentence_book_search_btn_delete.setOnClickListener {
             theme_writing_sentence_book_search_et_search.setText("")
         }
-        // 키보드 엔터 눌렀을 때 검색되기
+
+        // 키보드 완료 눌렀을 때 검색되기
         theme_writing_sentence_book_search_et_search.setOnKeyListener { v, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+            if ( keyCode == KEYCODE_ENTER) {
                 //키보드 제어
                 theme_writing_sentence_book_search_et_search.unshowKeyboard()
+                controlEditText(theme_writing_sentence_book_search_et_search,false)
 
                 //검색 결과가 있으면
                 goNextPage(
@@ -74,32 +81,58 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                 theme_book_result = bookSearchWord.trim()
                 requestData(bookSearchWord)
             }
-            true
+            false
         }
-        goResult() // 검색 버튼 눌렀을 때!!!
+
+        //goResult() // 검색 버튼 눌렀을 때!!!
 
         //포커스는 검색창에
         theme_writing_sentence_book_search_et_search.requestFocus()
 
         // 키보드 등장
         theme_writing_sentence_book_search_et_search.showKeyboard()
+        change_gone(theme_writing_sentence_book_search_btn_delete)
+
+        controlEditText(theme_writing_sentence_book_search_et_search,true)
+
+        controlButton(theme_writing_sentence_book_search_et_search,theme_writing_sentence_book_search_btn_delete,theme_writing_sentence_book_search_tv_cnt)
+
+        // 검색 이미지 버튼 눌렀을 때
+        theme_writing_sentence_book_search_btn_search.setOnClickListener {
+
+            controlEditText(theme_writing_sentence_book_search_et_search,false)
+            theme_writing_sentence_book_search_et_search.unshowKeyboard()
+            change_gone(theme_writing_sentence_book_search_btn_delete)
+
+            //검색 결과가 있으면
+            goNextPage(
+                theme_writing_sentence_book_search_cl_before,
+                writing_sentence_book_search_cl_after
+            )
+            writing_sentence_book_search_rv.visibility = View.VISIBLE
+
+            //서버 데이타를 넣어줌
+            val bookSearchWord = theme_writing_sentence_book_search_et_search.text.toString()
+            theme_book_result = bookSearchWord.trim()
+            requestData(bookSearchWord)
+        }
 
         // 글자수 카운팅 및 경고 박스
-        theme_writing_sentence_book_search_et_search.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // 글자수 세기
-                theme_writing_sentence_book_search_tv_cnt.text= theme_writing_sentence_book_search_et_search.text.toString().length.toString()
-            }
-
-        })
+//        theme_writing_sentence_book_search_et_search.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                // 글자수 세기
+//                theme_writing_sentence_book_search_tv_cnt.text= theme_writing_sentence_book_search_et_search.text.toString().length.toString()
+//            }
+//
+//        })
 
         //rv 동작
         themeSentenceBookSearchAdapter = ThemeSentenceBookSearchAdapter(this)
@@ -130,6 +163,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
         }
     }
+
 
     private fun requestData(keyword: String) {
         val call: Call<ResponseWritingSentenceBookSearchData> = RequestToServer.service.RequestWritingSentenceBookSearch(keyword = keyword)
@@ -186,6 +220,10 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                 }else{
                     //if 서버 통신 실패
                     Log.d("서버 통신", "서버 통신 실패")
+
+                    theme_writing_sentence_book_search_cl_before.visibility = View.GONE
+                    writing_sentence_book_search_cl_after.visibility = View.GONE
+                    writing_sentence_book_search_cl_no.visibility = View.VISIBLE
                 }
 
             }
