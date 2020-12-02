@@ -9,6 +9,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.Gravity
+import android.view.KeyEvent
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
@@ -65,91 +67,19 @@ class JoinStep3Activity : AppCompatActivity() {
         // 인증번호 칸에 포커스
         activity_join_step3_et_code1.requestFocus()
 
-        // 옆칸으로 이동
-        activity_join_step3_et_code1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        // 오른쪽 칸으로 이동
+        goNextNumber(activity_join_step3_et_code1, activity_join_step3_et_code2)
+        goNextNumber(activity_join_step3_et_code2, activity_join_step3_et_code3)
+        goNextNumber(activity_join_step3_et_code3, activity_join_step3_et_code4)
+        goNextNumber(activity_join_step3_et_code4, activity_join_step3_et_code5)
+        goNextNumber(activity_join_step3_et_code5, activity_join_step3_et_code6)
 
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s!!.length == 1) {
-                    activity_join_step3_et_code2.requestFocus()
-                }
-            }
-
-        })
-
-        activity_join_step3_et_code2.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s!!.length == 1) {
-                    activity_join_step3_et_code3.requestFocus()
-                }
-            }
-
-        })
-
-        activity_join_step3_et_code3.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s!!.length == 1) {
-                    activity_join_step3_et_code4.requestFocus()
-                }
-            }
-
-        })
-
-        activity_join_step3_et_code4.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s!!.length == 1) {
-                    activity_join_step3_et_code5.requestFocus()
-                }
-            }
-
-        })
-
-        activity_join_step3_et_code5.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s!!.length == 1) {
-                    activity_join_step3_et_code6.requestFocus()
-                }
-            }
-
-        })
+//        // 지웠을때 왼쪽으로 이동
+//        deleteNumber(activity_join_step3_et_code6, activity_join_step3_et_code5)
+//        deleteNumber(activity_join_step3_et_code5, activity_join_step3_et_code4)
+//        deleteNumber(activity_join_step3_et_code4, activity_join_step3_et_code3)
+//        deleteNumber(activity_join_step3_et_code3, activity_join_step3_et_code2)
+//        deleteNumber(activity_join_step3_et_code2, activity_join_step3_et_code1)
 
         if(activity_join_step3_et_code1.requestFocus()) {
             activity_join_step3_et_code1.background = resources.getDrawable(
@@ -208,6 +138,48 @@ class JoinStep3Activity : AppCompatActivity() {
         etTextChangedListener(activity_join_step3_et_code4)
         etTextChangedListener(activity_join_step3_et_code5)
         etTextChangedListener(activity_join_step3_et_code6)
+
+    }
+
+    private fun goNextNumber(editText: EditText, editText2: EditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 1) {
+                    editText2.requestFocus()
+                }
+                deleteNumber(editText2, editText)
+            }
+
+        })
+    }
+
+    private fun deleteNumber(editText: EditText, editText2: EditText) {
+        var previous = 0
+        editText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                previous = s!!.length
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                val backspace = previous > s!!.length
+                if(backspace) {
+                    editText2.requestFocus()
+                }
+            }
+
+        })
 
     }
 

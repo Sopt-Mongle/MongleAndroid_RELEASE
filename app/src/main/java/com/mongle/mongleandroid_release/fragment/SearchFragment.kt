@@ -29,6 +29,7 @@ import com.mongle.mongleandroid_release.network.SharedPreferenceController
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchRecentData
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchRecentDeleteData
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchRecommendData
+import com.mongle.mongleandroid_release.util.controlEditText
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
@@ -61,7 +62,7 @@ class SearchFragment : Fragment() {
 
         if(state == 1) {
             fragment_search_et_search.setText(search_result)
-            hideFocus()
+            controlEditText(fragment_search_et_search, false)
         } else {
             fragment_search_et_search.setText("")
         }
@@ -80,11 +81,7 @@ class SearchFragment : Fragment() {
 
         // 검색창에 초점 맞았을 때
         fragment_search_et_search.setOnClickListener {
-            fragment_search_et_search.background = resources.getDrawable(
-                R.drawable.et_area_green,
-                null
-            )
-            fragment_search_et_search.isCursorVisible = true
+            controlEditText(fragment_search_et_search, true) // 확장함수 SearchUXz
         }
 
 
@@ -104,11 +101,7 @@ class SearchFragment : Fragment() {
             change_gone(fragment_search_cl_after)
             change_visible(fragment_search_cl_before)
 
-            fragment_search_et_search.background = resources.getDrawable(
-                R.drawable.et_area_green,
-                null
-            )
-            fragment_search_et_search.isCursorVisible = true
+            controlEditText(fragment_search_et_search, true) // 확장함수 SearchUXz
             fragment_search_et_search.showKeyboard()
 
             change_gone(fragment_search_btn_back_search)
@@ -124,7 +117,7 @@ class SearchFragment : Fragment() {
         // 엔터 눌렀을 때 검색
         fragment_search_et_search.setOnKeyListener(View.OnKeyListener { view, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                hideFocus()
+                controlEditText(fragment_search_et_search, false)
 
                 search_result = if (view == null) {
                     val searchword = " "
@@ -144,7 +137,7 @@ class SearchFragment : Fragment() {
 
         // 검색 버튼
         fragment_search_btn_search.setOnClickListener {
-            hideFocus()
+            controlEditText(fragment_search_et_search, false)
 
             search_result = if(fragment_search_et_search == null) {
                 val searchword = " "
@@ -185,11 +178,6 @@ class SearchFragment : Fragment() {
     }
 
 
-    private fun hideFocus() {
-        fragment_search_et_search.background = resources.getDrawable(R.drawable.et_area, null)
-        fragment_search_et_search.isCursorVisible = false
-    }
-
     // 최근 키워드
     private fun recentKeyword() {
         requestToServer.service.requestSearchRecent(
@@ -228,7 +216,7 @@ class SearchFragment : Fragment() {
                                         search_result = searchword.trim()
 
                                         fragment_search_et_search.setText(searchword)
-                                        hideFocus()
+                                        controlEditText(fragment_search_et_search, false)
                                     }
 
                                 })
@@ -304,7 +292,7 @@ class SearchFragment : Fragment() {
                                 search_result = searchword.trim()
 
                                 fragment_search_et_search.setText(searchword)
-                                hideFocus()
+                                controlEditText(fragment_search_et_search, false)
                             }
                         }
 
@@ -319,10 +307,8 @@ class SearchFragment : Fragment() {
     private fun btn_earse_control() {
 
         fragment_search_et_search.setOnFocusChangeListener { _, hasFocus ->
-            fragment_search_et_search.background = resources.getDrawable(
-                R.drawable.et_area_green,
-                null
-            )
+            controlEditText(fragment_search_et_search, true)
+
             if(fragment_search_et_search.text.isNotEmpty()) {
                 fragment_search_et_search.clearText(fragment_search_btn_erase)
             } else {
@@ -330,10 +316,7 @@ class SearchFragment : Fragment() {
             }
 
             if(!hasFocus) {
-                fragment_search_et_search.background = resources.getDrawable(
-                    R.drawable.et_area,
-                    null
-                )
+                controlEditText(fragment_search_et_search, false)
                 change_gone(fragment_search_btn_erase)
             }
         }
@@ -349,11 +332,7 @@ class SearchFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                fragment_search_et_search.background = resources.getDrawable(
-                    R.drawable.et_area_green,
-                    null
-                )
-                fragment_search_et_search.isCursorVisible = true
+                controlEditText(fragment_search_et_search, true) // 확장함수 SearchUXz
 
                 if (fragment_search_et_search.text.isNotEmpty()) {
                     fragment_search_et_search.clearText(fragment_search_btn_erase)
@@ -373,7 +352,7 @@ class SearchFragment : Fragment() {
     // 검색결과로 이동
     fun goResult() {
 
-        hideFocus()
+        controlEditText(fragment_search_et_search, false)
 
         btn_earse_control()
 
