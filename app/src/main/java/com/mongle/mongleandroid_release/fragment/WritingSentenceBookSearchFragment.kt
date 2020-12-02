@@ -70,8 +70,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
         )
 
 
-        //1. 키보드가 올라오는 시점
-        // > 초기 설정 >> 키보드, 커서, x버튼 등장, 검색창 활성화
+        //1. 키보드 올라오는 시점 <맨 처음 화면>
         view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).requestFocus()
         view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).showKeyboard()
         controlEditText(view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search), true)
@@ -81,7 +80,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
             view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_delete),
             view.findViewById<TextView>(R.id.writing_sentence_book_search_tv_cnt))
 
-        // > 검색창 눌렀을 때 >> 키보드, 커서, x버튼 등장, 검색창 활성화
+        //1. 키보드 올라오는 시점 <검색창 눌렀을 때>
         view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnClickListener{
             view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).requestFocus()
             view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).showKeyboard()
@@ -89,7 +88,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
         }
 
 
-        //2. 키보드가 내려가는 시점 > 검색 버튼 눌렀을 때, 다른 곳 터치 했을 때 >> 키보드, 커서, x버튼 사라짐, 검색창 비활성화
+//        2. 키보드 내려가는 시점 ( == 검색 했을 때) <검색 버튼 눌렀을 때>
         view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_search).setOnClickListener {
 
             controlEditText(view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search), false)
@@ -107,7 +106,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
         }
 
 
-        //3. 키보드 엔터로 검색 하게 하기
+//        2. 키보드 내려가는 시점 ( == 검색 했을 때) <엔터키로 검색했을 때>
         view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnKeyListener(View.OnKeyListener { v, keyCode, _ ->
 
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
