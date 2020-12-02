@@ -91,16 +91,18 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
         // 키보드 등장
         theme_writing_sentence_book_search_et_search.showKeyboard()
+        change_gone(theme_writing_sentence_book_search_btn_delete)
 
         controlEditText(theme_writing_sentence_book_search_et_search,true)
 
         controlButton(theme_writing_sentence_book_search_et_search,theme_writing_sentence_book_search_btn_delete,theme_writing_sentence_book_search_tv_cnt)
 
-        // 검색 이미지 눌렀을 때
+        // 검색 이미지 버튼 눌렀을 때
         theme_writing_sentence_book_search_btn_search.setOnClickListener {
 
             controlEditText(theme_writing_sentence_book_search_et_search,false)
             theme_writing_sentence_book_search_et_search.unshowKeyboard()
+            change_gone(theme_writing_sentence_book_search_btn_delete)
 
             //검색 결과가 있으면
             goNextPage(
