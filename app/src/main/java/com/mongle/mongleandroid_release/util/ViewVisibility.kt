@@ -1,8 +1,7 @@
 package com.mongle.mongleandroid_release
 
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import androidx.constraintlayout.widget.ConstraintLayout
 
 fun change_visible(view : View) {
@@ -10,10 +9,10 @@ fun change_visible(view : View) {
 }
 
 fun change_gone(view : View) {
-    view.visibility = GONE
+    view.visibility = INVISIBLE
 }
 
 fun goNextPage(current : ConstraintLayout, next : ConstraintLayout){
-    current.visibility = View.GONE
+    current.visibility = View.INVISIBLE
     next.visibility = View.VISIBLE
 }

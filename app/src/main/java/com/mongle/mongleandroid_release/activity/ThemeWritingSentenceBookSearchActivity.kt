@@ -42,7 +42,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_book_search)
 
-        writing_sentence_book_search_cl_before.visibility = View.VISIBLE
+        theme_writing_sentence_book_search_cl_before.visibility = View.VISIBLE
         writing_sentence_book_search_cl_after.visibility = View.GONE
         writing_sentence_book_search_rv.visibility = View.GONE
         writing_sentence_book_search_cl_no.visibility = View.GONE
@@ -64,7 +64,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
                 //검색 결과가 있으면
                 goNextPage(
-                    writing_sentence_book_search_cl_before,
+                    theme_writing_sentence_book_search_cl_before,
                     writing_sentence_book_search_cl_after
                 )
                 writing_sentence_book_search_rv.visibility = View.VISIBLE
@@ -118,7 +118,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
             //검색 결과가 있으면
             goNextPage(
-                writing_sentence_book_search_cl_before,
+                theme_writing_sentence_book_search_cl_before,
                 writing_sentence_book_search_cl_after
             )
             writing_sentence_book_search_rv.visibility = View.VISIBLE
@@ -149,7 +149,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
                         if(body.data.isNullOrEmpty()){
                             //if 서버 통신 성공 && 결과 없음
-                            writing_sentence_book_search_cl_before.visibility = View.GONE
+                            theme_writing_sentence_book_search_cl_before.visibility = View.GONE
                             writing_sentence_book_search_cl_after.visibility = View.GONE
                             writing_sentence_book_search_cl_no.visibility = View.VISIBLE
 
@@ -160,7 +160,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                             //if 서버 통신 성공 && 결과 있음
 //                            empty_tv1.visibility = View.GONE
 //                            empty_tv2.visibility = View.GONE
-                            writing_sentence_book_search_cl_before.visibility = View.GONE
+                            theme_writing_sentence_book_search_cl_before.visibility = View.GONE
                             writing_sentence_book_search_cl_after.visibility = View.VISIBLE
                             writing_sentence_book_search_cl_no.visibility = View.GONE
                             writing_sentence_book_search_tv_keyword.text = keyword
