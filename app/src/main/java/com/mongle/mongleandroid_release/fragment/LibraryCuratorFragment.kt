@@ -64,9 +64,6 @@ class LibraryCuratorFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             Log.d("내 서재 큐레이터 조회", "${response.body()}")
-                            if (response.body()!!.data.isNullOrEmpty()) {
-                                Log.d("내 서재 테마 null", "${response.body()}")
-                            } else {
                             libraryCuratorAdapter =
                                 LibraryCuratorAdapter(view!!.context, response.body()!!.data)
                             rv_library_curator.adapter = libraryCuratorAdapter
@@ -119,7 +116,6 @@ class LibraryCuratorFragment : Fragment() {
                                 }
 
                             })
-                        }
 
                         }
 

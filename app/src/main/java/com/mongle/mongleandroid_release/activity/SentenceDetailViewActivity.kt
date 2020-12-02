@@ -62,8 +62,9 @@ class SentenceDetailViewActivity : AppCompatActivity() {
             finish()
         }
 
-        requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
-        requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
+        //requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
+        //requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
+
         constraint_likes_num.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
 
@@ -88,7 +89,8 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        requestSentenceDetail()
+        requestSentenceDetail() // 문장 상세보기 데이터 서버 통신
+        requestSentenceTheme() // 이 테마의 다른 문장 리사이클러뷰 통신
     }
 
     // 문장 상세보기 데이터 서버 통신
@@ -188,7 +190,7 @@ class SentenceDetailViewActivity : AppCompatActivity() {
 
                         // 수정 기능
                         edit.setOnClickListener {  // 수정 눌렀을 때 -> 문장 수정하기 액틸비티로 이동
-                            val intent = Intent(this@SentenceDetailViewActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            val intent = Intent(this@SentenceDetailViewActivity,ModifyActivity::class.java)
                             intent.putExtra("sentence", textView19.text.toString()) // 해당 문장 보내기
                             intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)

@@ -47,7 +47,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
             finish()
         }
 
-        requestSentenceData() // 문장 상세보기 뷰 통신
+        // requestSentenceData() // 문장 상세보기 뷰 통신
 
         constraint_sentence_like_num_notheme.setOnClickListener {
             if (applicationContext?.let { SharedPreferenceController.getAccessToken(it) } == "guest"){
@@ -182,7 +182,7 @@ class SentenceDetailNoThemeActivity : AppCompatActivity() {
 
                         // 수정 기능
                         edit_noTheme.setOnClickListener {
-                            val intent = Intent(this@SentenceDetailNoThemeActivity,ModifyLibraryWrittenSentenceActivity::class.java)
+                            val intent = Intent(this@SentenceDetailNoThemeActivity,ModifyActivity::class.java)
                             intent.putExtra("sentence", textView19_notheme.text.toString()) // 해당 문장 보내기
                             intent.putExtra("param", response.body()!!.data[0].sentenceIdx) // sentneceIdx 넘기기
                             startActivity(intent)

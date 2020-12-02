@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity android:name="com.mongle.mongleandroid_release.activity.OpenSourceDetailActivity"></activity>
-        <activity android:name="com.mongle.mongleandroid_release.activity.ModifyLibraryWrittenSentenceActivity"
+        <activity android:name="com.mongle.mongleandroid_release.activity.ModifyActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name="com.mongle.mongleandroid_release.activity.ThemeWritingSentenceFinishActivity" />
         <activity android:name="com.mongle.mongleandroid_release.activity.OnBoardingActivity" />

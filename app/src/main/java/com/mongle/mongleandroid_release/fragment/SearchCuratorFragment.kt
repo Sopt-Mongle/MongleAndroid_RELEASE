@@ -32,6 +32,16 @@ class SearchCuratorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_search_curator, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestSearchCurator()
+    }
+
+    private fun requestSearchCurator() {
         requestToServer.service.requestResultCuratorData(
             token = context?.let { SharedPreferenceController.getAccessToken(it) },
             words = search_result
@@ -52,7 +62,7 @@ class SearchCuratorFragment : Fragment() {
                     } else {
                         fragment_search_curator_cl.visibility = View.VISIBLE
                         fragment_search_curator_cl_noresult.visibility = View.GONE
-                        
+
                         response.body().let { body ->
                             Log.d("큐레이터 검색", response.body()!!.message)
                             fragment_search_curator_tv_count.text = body!!.data.size.toString()
@@ -112,9 +122,6 @@ class SearchCuratorFragment : Fragment() {
                 }
             }
         })
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_curator, container, false)
     }
 
 

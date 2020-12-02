@@ -23,7 +23,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
+class ModifyActivity : AppCompatActivity() {
 
     private val requestToServer = RequestToServer
 
@@ -42,6 +42,7 @@ class ModifyLibraryWrittenSentenceActivity : AppCompatActivity() {
 
         //기존 문장 editText 받아오기
         et_sentence_modify.setText(intent.getStringExtra("sentence"))
+        et_sentence_modify.setSelection(et_sentence_modify.length())
         val sentenceSize = et_sentence_modify.text.length.toString()
         tv_sentence_modify_words.setText(sentenceSize)
 

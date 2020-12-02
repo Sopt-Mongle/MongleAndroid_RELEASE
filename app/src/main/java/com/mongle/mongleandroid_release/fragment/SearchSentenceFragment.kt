@@ -28,6 +28,16 @@ class SearchSentenceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_search_sentence, container, false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requestSearchSentence()
+    }
+
+    private fun requestSearchSentence() {
         requestToServer.service.requestResultSentenceData(
             words = search_result
         ).enqueue(object : Callback<ResponseSearchSentenceData> {
@@ -73,8 +83,6 @@ class SearchSentenceFragment : Fragment() {
                 }
             }
         })
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_sentence, container, false)
     }
 
 }
