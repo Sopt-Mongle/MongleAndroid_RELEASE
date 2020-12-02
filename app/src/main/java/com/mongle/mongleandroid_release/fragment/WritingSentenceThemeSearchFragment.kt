@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,11 @@ import com.mongle.mongleandroid_release.network.data.response.FirstThemeData
 import com.mongle.mongleandroid_release.network.data.response.ResponseWritingSentenceThemeSearchFirstData
 import com.mongle.mongleandroid_release.network.data.response.ResponseSearchThemeData
 import com.mongle.mongleandroid_release.network.data.response.SearchTheme
+import com.mongle.mongleandroid_release.showKeyboard
+import com.mongle.mongleandroid_release.unshowKeyboard
+import com.mongle.mongleandroid_release.util.controlButton
+import com.mongle.mongleandroid_release.util.controlEditText
+import kotlinx.android.synthetic.main.writing_sentence_theme_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,34 +76,115 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         // 디폴트 rv 준비
         themeSearchFirst(view)
 
+        //1. 키보드 올라오는 시점 <맨 처음 화면>
+//        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).requestFocus()
+//        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).showKeyboard()
+        controlEditText(
+            view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search),
+            false
+        )
 
-        // 검색 창
+        // x버튼에 대한 컨트롤러 설치 (초기 한 번만 설치)
+        controlButton(
+            view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search),
+            view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_delete),
+            view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt)
+        )
+
+        //1. 키보드 올라오는 시점 <검색창 눌렀을 때>
         view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
-            .addTextChangedListener(object :
-                TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-                    view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_delete).visibility =
-                        View.VISIBLE
+            .setOnClickListener {
+                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+                    .requestFocus()
+                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+                    .showKeyboard()
+                controlEditText(
+                    view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search),
+                    true
+                )
+            }
 
+        //2. 키보드 내려가는 시점 ( == 검색 했을 때) <검색 버튼 눌렀을 때>
+        view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_search)
+            .setOnClickListener {
+
+                controlEditText(
+                    view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search),
+                    false
+                )
+                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+                    .unshowKeyboard()
+
+                // 서버 통신 및 rv 게시, user reaction
+                keyword =
+                    view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).text.toString()
+                if (keyword.isNullOrBlank()) {
+
+                } else {
+                    MainActivity.search_result = keyword.trim()
+                    themeSearch(keyword, view)
                 }
 
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
+            }
 
+        //        2. 키보드 내려가는 시점 ( == 검색 했을 때) <엔터키로 검색했을 때>
+        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+            .setOnKeyListener(View.OnKeyListener { v, keyCode, _ ->
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    controlEditText(
+                        v.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search),
+                        false
+                    )
+                    v.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+                        .unshowKeyboard()
+
+                    // 서버 통신 및 rv 게시, user reaction
+                    keyword =
+                        v.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).text.toString()
+                    if (keyword.isNullOrBlank()) {
+
+                    } else {
+                        MainActivity.search_result = keyword.trim()
+                        themeSearch(keyword, v)
+                    }
+
+                    return@OnKeyListener true
                 }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-                }
+                false
             })
 
-        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setOnClickListener {
-            view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setBackgroundResource(R.drawable.et_area_green)
-        }
+
+//
+//
+//
+//        // 검색 창
+//        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+//            .addTextChangedListener(object :
+//                TextWatcher {
+//                override fun afterTextChanged(s: Editable?) {
+//                    view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_delete).visibility =
+//                        View.VISIBLE
+//
+//                }
+//
+//                override fun beforeTextChanged(
+//                    s: CharSequence?,
+//                    start: Int,
+//                    count: Int,
+//                    after: Int
+//                ) {
+//
+//                }
+//
+//                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//
+//                }
+//            })
+
+//        view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setOnClickListener {
+//            view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setBackgroundResource(R.drawable.et_area_green)
+//        }
 
 
         // 나가기 버튼
@@ -108,32 +195,32 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                 // 책 제목 넘겨 줌
             }
 
-        // 검색창 비우기
-        view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_delete)
-            .setOnClickListener {
-                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
-                    .setText("")
-            }
+//        // 검색창 비우기
+//        view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_delete)
+//            .setOnClickListener {
+//                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search)
+//                    .setText("")
+//            }
 
-        // 검색 버튼
-        view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_search)
-            .setOnClickListener {
-                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setBackgroundResource(R.drawable.et_area)
-
-                // 서버 통신 및 rv 게시, user reaction
-                keyword =
-                    view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).text.toString()
-
-                if (keyword.isNullOrBlank()) {
-
-                } else {
-                    themeSearch(keyword, view)
-                    MainActivity.search_result = keyword.trim()
-
-
-                }
-
-            }
+//        // 검색 버튼
+//        view.findViewById<ImageView>(R.id.writing_sentence_theme_search_btn_search)
+//            .setOnClickListener {
+//                view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).setBackgroundResource(R.drawable.et_area)
+//
+//                // 서버 통신 및 rv 게시, user reaction
+//                keyword =
+//                    view.findViewById<EditText>(R.id.writing_sentence_theme_search_et_search).text.toString()
+//
+//                if (keyword.isNullOrBlank()) {
+//
+//                } else {
+//                    themeSearch(keyword, view)
+//                    MainActivity.search_result = keyword.trim()
+//
+//
+//                }
+//
+//            }
 
         // 테마 선택하기 버튼
         view.findViewById<TextView>(R.id.writing_sentence_theme_search_btn_next)
@@ -193,23 +280,23 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
                         if (body.data.isNullOrEmpty()) {
                             //if 서버 통신 성공 && 결과 없음
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                            writing_sentence_theme_search_cl_after.visibility =
                                 View.GONE
-                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                            writing_sentence_theme_search_ll_no.visibility =
                                 View.VISIBLE
 
                         } else {
                             // rv 동작 게시
-                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).adapter =
+                            writing_sentence_theme_search_rv.adapter =
                                 wrtingSentenceThemeSearchFirstAdapter
-                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv)
+                            writing_sentence_theme_search_rv
                                 .addItemDecoration(ItemDecoration())
                             wrtingSentenceThemeSearchFirstAdapter.datas = body.data
                             wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                            writing_sentence_theme_search_cl_after.visibility =
                                 View.VISIBLE
-                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                            writing_sentence_theme_search_ll_no.visibility =
                                 View.GONE
 
 
@@ -286,32 +373,32 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
                         if (body.data.isNullOrEmpty()) {
                             //if 서버 통신 성공 && 결과 없음
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                            writing_sentence_theme_search_cl_after.visibility =
                                 View.GONE
-                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                            writing_sentence_theme_search_ll_no.visibility =
                                 View.VISIBLE
 
                         } else {
                             // rv 동작 게시
-                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).adapter =
+                            writing_sentence_theme_search_rv.adapter =
                                 wrtingSentenceThemeSearchAdapter
-                            view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv)
+                            writing_sentence_theme_search_rv
                                 .addItemDecoration(ItemDecoration())
                             wrtingSentenceThemeSearchAdapter.datas = body.data
                             wrtingSentenceThemeSearchAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                            writing_sentence_theme_search_cl_after.visibility =
                                 View.VISIBLE
-                            view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                            writing_sentence_theme_search_ll_no.visibility =
                                 View.GONE
                             // user reaction : 검색 결과 키워드 변경
-                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_tv_keyword).text =
+                            writing_sentence_theme_search_tv_keyword.text =
                                 keyword
                             // user reaction : 검색 결과 건 수
-                            view.findViewById<TextView>(R.id.writing_sentence_theme_search_cnt).text =
+                            writing_sentence_theme_search_cnt.text =
                                 "총 " + body.data.size.toString() + "건"
                             // 위 두 가지 동작을 보이게 함
-                            view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_yes).visibility =
+                            writing_sentence_theme_search_yes.visibility =
                                 View.VISIBLE
 
                             // 리사이클러뷰 클릭 리스너
@@ -355,9 +442,9 @@ class WritingSentenceThemeSearchFragment : Fragment() {
                     //if 서버 통신 실패
                     Log.d("서버 통신", "서버 통신 실패")
 
-                    view.findViewById<ConstraintLayout>(R.id.writing_sentence_theme_search_cl_after).visibility =
+                    writing_sentence_theme_search_cl_after.visibility =
                         View.GONE
-                    view.findViewById<LinearLayout>(R.id.writing_sentence_theme_search_ll_no).visibility =
+                    writing_sentence_theme_search_ll_no.visibility =
                         View.VISIBLE
                 }
 
