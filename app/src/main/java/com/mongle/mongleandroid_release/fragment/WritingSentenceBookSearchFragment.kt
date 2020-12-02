@@ -10,13 +10,11 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mongle.mongleandroid_release.R
-import com.mongle.mongleandroid_release.activity.MainActivity
 import com.mongle.mongleandroid_release.activity.MainActivity.Companion.book_result
 import com.mongle.mongleandroid_release.activity.WritingSentenceActivity
 import com.mongle.mongleandroid_release.adapter.ItemDecoration
@@ -28,7 +26,6 @@ import com.mongle.mongleandroid_release.showKeyboard
 import com.mongle.mongleandroid_release.unshowKeyboard
 import com.mongle.mongleandroid_release.util.controlButton
 import com.mongle.mongleandroid_release.util.controlEditText
-import com.mongle.mongleandroid_release.util.searchEnter
 import kotlinx.android.synthetic.main.writing_sentence_book_search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -98,13 +95,6 @@ class WritingSentenceBookSearchFragment : Fragment() {
             controlEditText(view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search), false)
             view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).unshowKeyboard()
 
-//            controlButton(view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search),
-//                view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_delete),
-//                view.findViewById<TextView>(R.id.writing_sentence_book_search_tv_cnt))
-
-
-//            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setBackgroundResource(R.drawable.et_area)
-
             // 서버 통신 및 rv 게시, user reaction
             keyword = view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).text.toString()
             if(keyword.isNullOrBlank()){
@@ -118,11 +108,6 @@ class WritingSentenceBookSearchFragment : Fragment() {
 
 
         //3. 키보드 엔터로 검색 하게 하기
-//        searchEnter(view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search),
-//            view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_delete),
-//            view.findViewById<TextView>(R.id.writing_sentence_book_search_tv_cnt),
-//            bookSearch(keyword, view),0)
-
         view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnKeyListener(View.OnKeyListener { v, keyCode, _ ->
 
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -152,40 +137,6 @@ class WritingSentenceBookSearchFragment : Fragment() {
             it.findNavController().navigate(R.id.action_writing_sentence_book_search_fragment_to_writing_sentence_step2_fragment)
             // 책 제목 넘겨 줌
         }
-
-
-
-//        // 검색 창
-//        view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).addTextChangedListener(object : TextWatcher{
-//            override fun afterTextChanged(s: Editable?) {
-//            }
-//
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//                //실시간 글자 수 세기
-//                view.findViewById<TextView>(R.id.writing_sentence_book_search_tv_cnt).text =
-//                    view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).text.toString().length.toString()
-//            }
-//        })
-
-//        // 검색창 활성화 시 테두리 색 변화
-//        view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setOnClickListener {
-//            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setBackgroundResource(R.drawable.et_area_green)
-//        }
-
-
-
-
-
-//        // 검색창 비우기
-//        view.findViewById<ImageView>(R.id.writing_sentence_book_search_btn_delete).setOnClickListener {
-//            view.findViewById<EditText>(R.id.writing_sentence_book_search_et_search).setText("")
-//        }
-
-
     }
 
 
