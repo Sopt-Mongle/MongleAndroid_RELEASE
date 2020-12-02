@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,7 +24,11 @@ class WritingSentenceBookSearchViewHolder(itemView: View) : RecyclerView.ViewHol
 
     fun bind(bookData: BookData){
         Glide.with(itemView).load(bookData.thumbnail).into(itemView.findViewById<ImageView>(R.id.item_writing_sentence_book_result_img))
-        item_search_book_tv_author.text = bookData.authors[0]
+        if(bookData.authors.size == 0) {
+            item_search_book_tv_author.text = " "
+        } else {
+            item_search_book_tv_author.text = bookData.authors[0]
+        }
         item_search_book_tv_publisher.text = bookData.publisher
         item_writing_sentence_book_result_tv_thumbnail.text = bookData.thumbnail
 
