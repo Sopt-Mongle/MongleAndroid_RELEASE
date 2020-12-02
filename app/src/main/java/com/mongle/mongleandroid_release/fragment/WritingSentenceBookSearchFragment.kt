@@ -15,7 +15,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mongle.mongleandroid_release.R
-import com.mongle.mongleandroid_release.activity.MainActivity.Companion.book_result
+import com.mongle.mongleandroid_release.activity.MainActivity
 import com.mongle.mongleandroid_release.activity.WritingSentenceActivity
 import com.mongle.mongleandroid_release.adapter.ItemDecoration
 import com.mongle.mongleandroid_release.adapter.WritingSentenceBookSearchAdapter
@@ -99,7 +99,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
             if(keyword.isNullOrBlank()){
 
             }else{
-                book_result = keyword.trim()
+                MainActivity.book_result = keyword.trim()
                 bookSearch(keyword, view)
             }
 
@@ -118,7 +118,7 @@ class WritingSentenceBookSearchFragment : Fragment() {
                 if(keyword.isNullOrBlank()){
 
                 }else{
-                    book_result = keyword.trim()
+                    MainActivity.book_result = keyword.trim()
                     bookSearch(keyword, v)
                 }
 
@@ -158,8 +158,8 @@ class WritingSentenceBookSearchFragment : Fragment() {
 
                         if(body.data.isNullOrEmpty()){
                             //if 서버 통신 성공 && 결과 없음
-                            writing_sentence_book_search_cl_before.visibility = View.INVISIBLE
-                            writing_sentence_book_search_cl_after.visibility = View.INVISIBLE
+                            writing_sentence_book_search_cl_before.visibility = View.GONE
+                            writing_sentence_book_search_cl_after.visibility = View.GONE
                             writing_sentence_book_search_cl_no.visibility = View.VISIBLE
 
                         }else{
@@ -167,9 +167,9 @@ class WritingSentenceBookSearchFragment : Fragment() {
                             writingSentenceBookSearchAdapter.datas = body.data
                             writingSentenceBookSearchAdapter.notifyDataSetChanged()
                             //if 서버 통신 성공 && 결과 있음
-                            writing_sentence_book_search_cl_before.visibility = View.INVISIBLE
+                            writing_sentence_book_search_cl_before.visibility = View.GONE
                             writing_sentence_book_search_cl_after.visibility = View.VISIBLE
-                            writing_sentence_book_search_cl_no.visibility = View.INVISIBLE
+                            writing_sentence_book_search_cl_no.visibility = View.GONE
                             // user reaction : 검색 결과 키워드 변경
                             writing_sentence_book_search_tv_keyword.text = keyword
                             // user reaction : 검색 결과 건 수
@@ -199,8 +199,8 @@ class WritingSentenceBookSearchFragment : Fragment() {
                     //if 서버 통신 실패
                     Log.d("서버 통신", "서버 통신 실패")
 
-                    writing_sentence_book_search_cl_before.visibility = View.INVISIBLE
-                    writing_sentence_book_search_cl_after.visibility = View.INVISIBLE
+                    writing_sentence_book_search_cl_before.visibility = View.GONE
+                    writing_sentence_book_search_cl_after.visibility = View.GONE
                     writing_sentence_book_search_cl_no.visibility = View.VISIBLE
                 }
 
