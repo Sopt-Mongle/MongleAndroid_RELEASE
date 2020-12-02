@@ -22,11 +22,19 @@ class ThemeWritingSentenceFinishActivity : AppCompatActivity() {
 
         val sentenceIdx = intent.getIntExtra("sentenceIdx",0)
         Log.d("통신 응답바디 sentenceIdx ", sentenceIdx.toString())
+
+        // 플로우 스택 제거
+        ThemeWritingSentenceActivity.activity?.finish()
+        ThemeWritingSentenceBookActivity.activity2?.finish()
+
         // 문장 보러가기
         theme_writing_sentence_finish_btn_sentence.setOnClickListener {
             val intent = Intent(this,SentenceDetailNoThemeActivity::class.java)
             intent.putExtra("param", sentenceIdx)
             startActivity(intent)
+            ThemeWritingSentenceActivity.activity?.finish()
+            ThemeWritingSentenceBookActivity.activity2?.finish()
+            finish()
         }
         // 메인으로 돌아가기
         theme_writing_sentence_finish_btn_main.setOnClickListener {
@@ -40,5 +48,6 @@ class ThemeWritingSentenceFinishActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
     }
 }
