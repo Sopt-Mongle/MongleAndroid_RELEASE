@@ -22,7 +22,11 @@ class ThemeSentenceBookSearchViewHolder(itemView: View) : RecyclerView.ViewHolde
 
     fun bind(bookData: BookData){
         Glide.with(itemView).load(bookData.thumbnail).into(itemView.findViewById<ImageView>(R.id.item_writing_sentence_book_result_img))
-        item_search_book_tv_author.text = bookData.authors[0]
+        if(bookData.authors.size == 0) {
+            item_search_book_tv_author.text = " "
+        } else {
+            item_search_book_tv_author.text = bookData.authors[0]
+        }
         item_search_book_tv_publisher.text = bookData.publisher
 
         val inputString = theme_book_result
