@@ -1,5 +1,6 @@
 package com.mongle.mongleandroid_release.activity
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,10 +14,15 @@ import kotlinx.android.synthetic.main.activity_writing_sentence_in_theme.*
 
 class ThemeWritingSentenceActivity : AppCompatActivity() {
 
+    companion object{
+        var activity : Activity? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_writing_sentence_in_theme)
+
+        activity = this
 
         //테마 이름 받아오기
         activity_theme_writing_sentence_tv_themename.text = intent.getStringExtra("param")

@@ -1,6 +1,7 @@
 package com.mongle.mongleandroid_release.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,9 +23,15 @@ class ThemeWritingSentenceBookActivity : AppCompatActivity() {
 
     var sentenceIdx : Int = 0
 
+    companion object{
+        var activity2 : Activity? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_book)
+
+        activity2 = this
 
         // 나가기
         activity_theme_writing_sentence_book_btn_out.setOnClickListener {
