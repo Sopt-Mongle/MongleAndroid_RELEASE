@@ -96,7 +96,8 @@
         android:src="@drawable/writing_sentence_theme_6_error_btn_erase"
         app:layout_constraintEnd_toStartOf="@id/writing_sentence_theme_search_btn_search"
         app:layout_constraintTop_toTopOf="@id/writing_sentence_theme_search_et_search"
-        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_theme_search_et_search"/>
+        app:layout_constraintBottom_toBottomOf="@id/writing_sentence_theme_search_et_search"
+        android:visibility="invisible"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/writing_sentence_theme_search_cl_after"

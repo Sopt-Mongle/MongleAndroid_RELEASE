@@ -9,10 +9,10 @@ fun change_visible(view : View) {
 }
 
 fun change_gone(view : View) {
-    view.visibility = INVISIBLE
+    view.visibility = GONE
 }
 
 fun goNextPage(current : ConstraintLayout, next : ConstraintLayout){
-    current.visibility = View.INVISIBLE
+    current.visibility = View.GONE
     next.visibility = View.VISIBLE
 }
