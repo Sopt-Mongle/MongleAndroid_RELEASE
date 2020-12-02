@@ -46,6 +46,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_writing_sentence_book_search)
 
+        // 초기화면 세팅
         theme_writing_sentence_book_search_cl_before.visibility = View.VISIBLE
         writing_sentence_book_search_cl_after.visibility = View.GONE
         writing_sentence_book_search_rv.visibility = View.GONE
@@ -83,7 +84,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
             false
         }
 
-        goResult() // 검색 버튼 눌렀을 때!!!
+        //goResult() // 검색 버튼 눌렀을 때!!!
 
         //포커스는 검색창에
         theme_writing_sentence_book_search_et_search.requestFocus()
@@ -95,22 +96,41 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
 
         controlButton(theme_writing_sentence_book_search_et_search,theme_writing_sentence_book_search_btn_delete,theme_writing_sentence_book_search_tv_cnt)
 
+        // 검색 이미지 눌렀을 때
+        theme_writing_sentence_book_search_btn_search.setOnClickListener {
+
+            controlEditText(theme_writing_sentence_book_search_et_search,false)
+            theme_writing_sentence_book_search_et_search.unshowKeyboard()
+
+            //검색 결과가 있으면
+            goNextPage(
+                theme_writing_sentence_book_search_cl_before,
+                writing_sentence_book_search_cl_after
+            )
+            writing_sentence_book_search_rv.visibility = View.VISIBLE
+
+            //서버 데이타를 넣어줌
+            val bookSearchWord = theme_writing_sentence_book_search_et_search.text.toString()
+            theme_book_result = bookSearchWord.trim()
+            requestData(bookSearchWord)
+        }
+
         // 글자수 카운팅 및 경고 박스
-        theme_writing_sentence_book_search_et_search.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // 글자수 세기
-                theme_writing_sentence_book_search_tv_cnt.text= theme_writing_sentence_book_search_et_search.text.toString().length.toString()
-            }
-
-        })
+//        theme_writing_sentence_book_search_et_search.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(s: Editable?) {
+//
+//            }
+//
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                // 글자수 세기
+//                theme_writing_sentence_book_search_tv_cnt.text= theme_writing_sentence_book_search_et_search.text.toString().length.toString()
+//            }
+//
+//        })
 
         //rv 동작
         themeSentenceBookSearchAdapter = ThemeSentenceBookSearchAdapter(this)
@@ -198,6 +218,10 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                 }else{
                     //if 서버 통신 실패
                     Log.d("서버 통신", "서버 통신 실패")
+
+                    theme_writing_sentence_book_search_cl_before.visibility = View.GONE
+                    writing_sentence_book_search_cl_after.visibility = View.GONE
+                    writing_sentence_book_search_cl_no.visibility = View.VISIBLE
                 }
 
             }
