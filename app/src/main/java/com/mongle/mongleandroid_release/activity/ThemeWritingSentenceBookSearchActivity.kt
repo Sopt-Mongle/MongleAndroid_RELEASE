@@ -37,10 +37,6 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
         var theme_book_result = ""
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +64,7 @@ class ThemeWritingSentenceBookSearchActivity : AppCompatActivity() {
                 //키보드 제어
                 theme_writing_sentence_book_search_et_search.unshowKeyboard()
                 controlEditText(theme_writing_sentence_book_search_et_search,false)
+                change_gone(theme_writing_sentence_book_search_btn_delete)
 
                 //검색 결과가 있으면
                 goNextPage(
