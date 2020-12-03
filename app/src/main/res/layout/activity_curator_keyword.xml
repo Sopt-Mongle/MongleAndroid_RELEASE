@@ -62,7 +62,7 @@
         android:id="@+id/rv_curator_keyword"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +71,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_curator_keyword_topbar"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_search_curator" >
+        tools:listitem="@layout/item_search_curator">
 
     </androidx.recyclerview.widget.RecyclerView>
 
