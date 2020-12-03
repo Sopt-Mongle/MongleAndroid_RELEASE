@@ -10,29 +10,31 @@
         android:id="@+id/tv_setting_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         android:letterSpacing="-0.04"
         android:text="계정 설정"
         android:textColor="#292929"
         android:textSize="19sp"
+        android:fontFamily="@font/notosanscjkkr_regular"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back_setting_account"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="@+id/img_back_setting_account" />
 
     <ImageView
         android:id="@+id/img_back_setting_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/btn_back"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
+        android:layout_marginTop="4dp"
         android:paddingStart="17dp"
+        android:paddingTop="16dp"
         android:paddingEnd="23dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_setting_account"
+        android:paddingBottom="16dp"
+        android:src="@drawable/btn_back"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tv_setting_account"
-        app:layout_constraintTop_toTopOf="@id/tv_setting_account" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/password_change"
@@ -52,6 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="비밀번호 변경"
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
             android:textSize="17sp"
             android:textColor="@color/black_two"/>
 
@@ -66,13 +70,13 @@
         android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/password_change"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_change">
 
         <TextView
             android:id="@+id/tv_logout"
@@ -80,8 +84,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="로그아웃"
-            android:textSize="17sp"
-            android:textColor="@color/black_two"/>
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/black_two"
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -94,13 +100,13 @@
         android:id="@+id/quit_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toBottomOf="@id/logout"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logout">
 
         <TextView
             android:id="@+id/tv_quit_service"
@@ -108,8 +114,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="서비스 탈퇴"
-            android:textSize="17sp"
-            android:textColor="@color/black_two"/>
+            android:fontFamily="@font/notosanscjkkr_regular"
+            android:includeFontPadding="false"
+            android:textColor="@color/black_two"
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="wrap_content"
