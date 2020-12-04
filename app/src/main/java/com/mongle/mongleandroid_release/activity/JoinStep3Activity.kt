@@ -74,13 +74,6 @@ class JoinStep3Activity : AppCompatActivity() {
         goNextNumber(activity_join_step3_et_code4, activity_join_step3_et_code5)
         goNextNumber(activity_join_step3_et_code5, activity_join_step3_et_code6)
 
-//        // 지웠을때 왼쪽으로 이동
-//        deleteNumber(activity_join_step3_et_code6, activity_join_step3_et_code5)
-//        deleteNumber(activity_join_step3_et_code5, activity_join_step3_et_code4)
-//        deleteNumber(activity_join_step3_et_code4, activity_join_step3_et_code3)
-//        deleteNumber(activity_join_step3_et_code3, activity_join_step3_et_code2)
-//        deleteNumber(activity_join_step3_et_code2, activity_join_step3_et_code1)
-
         if(activity_join_step3_et_code1.requestFocus()) {
             activity_join_step3_et_code1.background = resources.getDrawable(
                 R.drawable.et_circle_join3_on,
@@ -155,32 +148,9 @@ class JoinStep3Activity : AppCompatActivity() {
                 if (s!!.length == 1) {
                     editText2.requestFocus()
                 }
-                deleteNumber(editText2, editText)
             }
 
         })
-    }
-
-    private fun deleteNumber(editText: EditText, editText2: EditText) {
-        var previous = 0
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                previous = s!!.length
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                val backspace = previous > s!!.length
-                if(backspace) {
-                    editText2.requestFocus()
-                }
-            }
-
-        })
-
     }
 
     private fun etTextChangedListener(editText: EditText) {
