@@ -69,7 +69,7 @@ class WritingSentenceThemeSearchFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.writing_sentence_theme_search_rv).layoutManager =
             myLayoutManager
         wrtingSentenceThemeSearchFirstAdapter =
-            context?.let { WritingSentenceThemeSearchFirstAdapter(it) }!!
+            context?.let { WritingSentenceThemeSearchFirstAdapter(it, onThemeItemClick()) }!!
         wrtingSentenceThemeSearchFirstAdapter.setHasStableIds(true)
         wrtingSentenceThemeSearchAdapter = context?.let { WritingSentenceThemeSearchAdapter(it) }!!
         wrtingSentenceThemeSearchAdapter.setHasStableIds(true)
@@ -301,40 +301,42 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
 
                             // 리사이클러뷰 클릭 리스너
-                            wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object :
-                                WritingSentenceThemeSearchFirstAdapter.ItemClickListener {
-                                override fun onClick(
-                                    view: View,
-                                    position: Int,
-                                    data: FirstThemeData,
-                                    datas: MutableList<FirstThemeData>
-                                ) {
-                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
 
 
-//                                  선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
-                                    theme =
-                                        view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
-
-                                    // (/post/sentence) req data init (6/6):: themeIdx
-                                    WritingSentenceActivity.writingSentenceData.themeIdx =
-                                        Integer.parseInt(
-                                            view.findViewById<TextView>(
-                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
-                                            ).text.toString()
-                                        )
-
-                                    // single selection impl
-                                    for (data in datas) {
-                                        data.themeChked = false
-                                    }
-                                    imgChk = true
-                                    datas[position].themeChked = true
-                                    wrtingSentenceThemeSearchFirstAdapter.datas = datas
-                                    wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
-                                }
-
-                            })
+//                            wrtingSentenceThemeSearchFirstAdapter.setItemClickListener(object :
+//                                WritingSentenceThemeSearchFirstAdapter.ItemClickListener {
+//                                override fun onClick(
+//                                    view: View,
+//                                    position: Int,
+//                                    data: FirstThemeData,
+//                                    datas: MutableList<FirstThemeData>
+//                                ) {
+//                                    Log.d("SSS", "${position}번 리스트 선택 && imgChked :: ${imgChked}")
+//
+//
+////                                  선택한 테마에 대해 action에 담아줄 테마 이름 넣어줌
+//                                    theme =
+//                                        view.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title).text.toString()
+//
+//                                    // (/post/sentence) req data init (6/6):: themeIdx
+//                                    WritingSentenceActivity.writingSentenceData.themeIdx =
+//                                        Integer.parseInt(
+//                                            view.findViewById<TextView>(
+//                                                R.id.item_writing_sentence_theme_result_tv_themeIdx
+//                                            ).text.toString()
+//                                        )
+//
+//                                    // single selection impl
+//                                    for (data in datas) {
+//                                        data.themeChked = false
+//                                    }
+//                                    imgChk = true
+//                                    datas[position].themeChked = true
+//                                    wrtingSentenceThemeSearchFirstAdapter.datas = datas
+//                                    wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
+//                                }
+//
+//                            })
                         }
                     }
                 } else {
@@ -450,6 +452,26 @@ class WritingSentenceThemeSearchFragment : Fragment() {
 
             }
         })
+    }
+
+    fun onThemeItemClick(): WritingSentenceThemeSearchFirstAdapter.ThemeItemClickListener {
+        return object : WritingSentenceThemeSearchFirstAdapter.ThemeItemClickListener {
+            override fun onThemeItemClick(
+                view: View,
+                position: Int,
+                data: FirstThemeData,
+                datas: MutableList<FirstThemeData>
+            ) {
+                for (data in datas) {
+                    data.themeChked = false
+                }
+                imgChk = true
+                datas[position].themeChked = true
+                wrtingSentenceThemeSearchFirstAdapter.datas = datas
+                wrtingSentenceThemeSearchFirstAdapter.notifyDataSetChanged()
+            }
+
+        }
     }
 
 

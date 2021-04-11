@@ -5,13 +5,18 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mongle.mongleandroid_release.R
 import com.mongle.mongleandroid_release.activity.WritingSentenceActivity
-import com.mongle.mongleandroid_release.adapter.viewholder.WritingSentenceThemeSearchFirstViewHolder
 import com.mongle.mongleandroid_release.network.data.response.FirstThemeData
 
-class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : RecyclerView.Adapter<WritingSentenceThemeSearchFirstViewHolder>() {
+class WritingSentenceThemeSearchFirstAdapter(private val context : Context,
+                                             private val themeItemClickListener: ThemeItemClickListener
+
+) : RecyclerView.Adapter<WritingSentenceThemeSearchFirstViewHolder>() {
     var datas = mutableListOf<FirstThemeData>()
     private val act by lazy { context as WritingSentenceActivity }
 
@@ -44,7 +49,7 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
 
         //view에 onClickListener를 달고, 그 안에서 직접 만든 itemClickListener를 연결시킨다
         holderFirst.itemView.setOnClickListener {
-            itemClickListener.onClick(it,position,datas[position], datas)
+            themeItemClickListener.onThemeItemClick(it,position,datas[position], datas)
             holderFirst.bind(datas[position])
 
         }
@@ -57,18 +62,34 @@ class WritingSentenceThemeSearchFirstAdapter(private val context : Context) : Re
 
 
     //클릭 인터페이스 정의
-    interface ItemClickListener{
-        fun onClick(view: View, position: Int, data: FirstThemeData, datas: MutableList<FirstThemeData>)
+    interface ThemeItemClickListener{
+        fun onThemeItemClick(view: View, position: Int, data: FirstThemeData, datas: MutableList<FirstThemeData>)
 
     }
 
-    //클릭리스너 선언
-    private lateinit var itemClickListener: ItemClickListener
+//    //클릭리스너 선언
+//    private lateinit var itemClickListener: ItemClickListener
+//
+//    //클릭리스너 등록 메소드
+//    fun setItemClickListener(itemClickListener: ItemClickListener) {
+//
+//        this.itemClickListener = itemClickListener
+//    }
 
-    //클릭리스너 등록 메소드
-    fun setItemClickListener(itemClickListener: ItemClickListener) {
+}
+class WritingSentenceThemeSearchFirstViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    var theme = itemView.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_title)
+    var themeIdx = itemView.findViewById<TextView>(R.id.item_writing_sentence_theme_result_tv_themeIdx)
+    var themeImg = itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img)
+    var themeChked = itemView.findViewById<ImageView>(R.id.item_writing_sentence_theme_result_img_chk)
 
-        this.itemClickListener = itemClickListener
+
+    fun bind(firstThemeData : FirstThemeData){
+        theme.text = firstThemeData.theme
+        themeIdx.text = firstThemeData.themeIdx.toString()
+        Glide.with(itemView).load(firstThemeData.themeImg).into(themeImg)
+        themeChked.visibility = if (firstThemeData.themeChked) View.VISIBLE  else View.GONE
     }
+
 
 }
